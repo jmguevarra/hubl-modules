@@ -1,0 +1,72 @@
+{% set s = module.styles %}
+
+<div class="dx-products-card"
+  style="
+    background-color: {{ s.card_background_color.color }};
+    border-radius: {{ s.card_border_radius }}px;
+    padding-top: {{ s.card_padding.padding.top.value }}{{ s.card_padding.padding.top.units }};
+    padding-right: {{ s.card_padding.padding.right.value }}{{ s.card_padding.padding.right.units }};
+    padding-bottom: {{ s.card_padding.padding.bottom.value }}{{ s.card_padding.padding.bottom.units }};
+    padding-left: {{ s.card_padding.padding.left.value }}{{ s.card_padding.padding.left.units }};
+    --btn-hover-bg: {{ s.button_hover_background_color.color }};
+    --btn-hover-color: {{ s.button_hover_text_color.color }};
+  "
+>
+
+  {% if module.card_image.src %}
+  <div class="dx-products-card__image" style="margin-bottom: {{ s.image_bottom_spacing }}px;">
+    <img
+      src="{{ module.card_image.src }}"
+      alt="{{ module.card_image.alt }}"
+      {% if module.card_image.width %}width="{{ module.card_image.width }}"{% endif %}
+      {% if module.card_image.height %}height="{{ module.card_image.height }}"{% endif %}
+      loading="lazy"
+    >
+  </div>
+  {% endif %}
+
+  <div class="dx-products-card__content">
+    {% if module.card_title %}
+    <h3 class="dx-products-card__title"
+      style="color: {{ s.title_color.color }}; font-size: {{ s.title_font_size }}px;">
+      {{ module.card_title }}
+    </h3>
+    {% endif %}
+
+    {% if module.card_description %}
+    <div class="dx-products-card__description"
+      style="color: {{ s.description_color.color }}; font-size: {{ s.description_font_size }}px;">
+      {{ module.card_description }}
+    </div>
+    {% endif %}
+  </div>
+
+  {% if module.card_button.button_text %}
+  <div class="dx-products-card__footer">
+    {% set btn = module.card_button %}
+    <a
+      href="{{ btn.button_link.url.href }}"
+      class="dx-products-card__btn"
+      {% if btn.button_link.open_in_new_tab and btn.button_link.no_follow %}
+        target="_blank" rel="noopener noreferrer nofollow"
+      {% elif btn.button_link.open_in_new_tab %}
+        target="_blank" rel="noopener noreferrer"
+      {% elif btn.button_link.no_follow %}
+        rel="nofollow"
+      {% endif %}
+      style="
+        background-color: {{ s.button_background_color.color }};
+        color: {{ s.button_text_color.color }};
+        border-radius: {{ s.button_border_radius }}px;
+        padding-top: {{ s.button_padding.padding.top.value }}{{ s.button_padding.padding.top.units }};
+        padding-right: {{ s.button_padding.padding.right.value }}{{ s.button_padding.padding.right.units }};
+        padding-bottom: {{ s.button_padding.padding.bottom.value }}{{ s.button_padding.padding.bottom.units }};
+        padding-left: {{ s.button_padding.padding.left.value }}{{ s.button_padding.padding.left.units }};
+      "
+    >
+      {{ btn.button_text }}
+    </a>
+  </div>
+  {% endif %}
+
+</div>
