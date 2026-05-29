@@ -1,0 +1,189 @@
+[
+  {
+    "id": "section_heading",
+    "name": "section_heading",
+    "label": "Section Heading",
+    "type": "text",
+    "default": "Our Services"
+  },
+  {
+    "id": "show_section_heading",
+    "name": "show_section_heading",
+    "label": "Show Section Heading",
+    "type": "boolean",
+    "default": true
+  },
+  {
+    "id": "background_color",
+    "name": "background_color",
+    "label": "Section Background Color",
+    "type": "color",
+    "default": {
+      "color": "#0d1b2e",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "card_background_color",
+    "name": "card_background_color",
+    "label": "Card Background Color",
+    "type": "color",
+    "default": {
+      "color": "#112240",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "card_hover_background_color",
+    "name": "card_hover_background_color",
+    "label": "Card Hover Background Color",
+    "type": "color",
+    "default": {
+      "color": "#1a2f52",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "card_border_color",
+    "name": "card_border_color",
+    "label": "Card Border Color",
+    "type": "color",
+    "default": {
+      "color": "#1e3a5f",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "title_color",
+    "name": "title_color",
+    "label": "Card Title Color",
+    "type": "color",
+    "default": {
+      "color": "#ffffff",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "description_color",
+    "name": "description_color",
+    "label": "Card Description Color",
+    "type": "color",
+    "default": {
+      "color": "#b0c4de",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "link_color",
+    "name": "link_color",
+    "label": "Learn More Link Color",
+    "type": "color",
+    "default": {
+      "color": "#ffffff",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "cards",
+    "name": "cards",
+    "label": "Service Cards",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 6
+    },
+    "children": [
+      {
+        "id": "icon_svg",
+        "name": "icon_svg",
+        "label": "Icon SVG Code",
+        "type": "textarea",
+        "help_text": "Paste raw SVG markup for the card icon.",
+        "default": "<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='3' width='20' height='14' rx='2'/><line x1='8' y1='21' x2='16' y2='21'/><line x1='12' y1='17' x2='12' y2='21'/></svg>"
+      },
+      {
+        "id": "icon_color",
+        "name": "icon_color",
+        "label": "Icon Accent Color",
+        "type": "color",
+        "help_text": "Controls the icon stroke color.",
+        "default": {
+          "color": "#e63946",
+          "opacity": 100
+        }
+      },
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Card Title",
+        "type": "text",
+        "default": "Service Title"
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "label": "Card Description",
+        "type": "textarea",
+        "default": "Describe the service offering in 2–3 sentences. This text appears on hover."
+      },
+      {
+        "id": "link_text",
+        "name": "link_text",
+        "label": "Link Label",
+        "type": "text",
+        "default": "Learn more"
+      },
+      {
+        "id": "link_url",
+        "name": "link_url",
+        "label": "Link URL",
+        "type": "link",
+        "default": {
+          "url": {
+            "type": "EXTERNAL",
+            "href": "#"
+          }
+        }
+      }
+    ],
+    "default": [
+      {
+        "title": "Unified User Experience",
+        "description": "Enable digital self-service for customers and employees by delivering web and mobile front-end applications that can run smoothly on any device and integrate seamlessly with all your core systems.",
+        "link_text": "Learn more",
+        "icon_color": { "color": "#e63946", "opacity": 100 }
+      },
+      {
+        "title": "Legacy Modernisation",
+        "description": "Modernise your existing systems and infrastructure to unlock scalability, reduce technical debt, and position your organisation for long-term digital growth.",
+        "link_text": "Learn more",
+        "icon_color": { "color": "#3a9bd5", "opacity": 100 }
+      },
+      {
+        "title": "Artificial Intelligence",
+        "description": "Embed AI-driven intelligence into your workflows and products to automate decision-making, surface insights, and create adaptive, personalised experiences at scale.",
+        "link_text": "Learn more",
+        "icon_color": { "color": "#f4a261", "opacity": 100 }
+      },
+      {
+        "title": "Digital Products",
+        "description": "Design and build digital products with end-to-end ownership — from discovery and UX through to deployment — aligned to real user needs and business outcomes.",
+        "link_text": "Learn more",
+        "icon_color": { "color": "#a855f7", "opacity": 100 }
+      },
+      {
+        "title": "Process Digitalisation",
+        "description": "Transform manual and paper-based processes into efficient digital workflows that reduce errors, improve visibility, and free your teams to focus on higher-value work.",
+        "link_text": "Learn more",
+        "icon_color": { "color": "#22c55e", "opacity": 100 }
+      },
+      {
+        "title": "Custom Core Systems",
+        "description": "Build tailored core platforms and back-office systems designed around your specific operational requirements, replacing off-the-shelf limitations with precise, scalable solutions.",
+        "link_text": "Learn more",
+        "icon_color": { "color": "#06b6d4", "opacity": 100 }
+      }
+    ]
+  }
+]
