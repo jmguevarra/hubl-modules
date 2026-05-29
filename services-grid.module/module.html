@@ -37,11 +37,10 @@
         {% endif %}
 
         {# Link #}
-        {% if card.link_url and card.link_text %}
+        {% if card.link_url.href and card.link_text %}
           <a
             class="service-card__link"
             href="{{ card.link_url.href }}"
-            {% if card.link_url.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
             aria-label="{{ card.link_text }} — {{ card.title }}"
           >
             {{ card.link_text }}

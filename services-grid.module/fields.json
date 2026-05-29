@@ -91,14 +91,16 @@
     "occurrence": {
       "min": 1,
       "max": 6,
-      "default": 6
+      "default": 6,
+      "sorting_label": "title"
     },
     "children": [
       {
         "id": "icon_svg",
         "name": "icon_svg",
         "label": "Icon SVG Code",
-        "type": "textarea",
+        "type": "text",
+        "allow_new_line": true,
         "help_text": "Paste raw SVG markup for the card icon.",
         "default": "<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='3' width='20' height='14' rx='2'/><line x1='8' y1='21' x2='16' y2='21'/><line x1='12' y1='17' x2='12' y2='21'/></svg>"
       },
@@ -124,7 +126,8 @@
         "id": "description",
         "name": "description",
         "label": "Card Description",
-        "type": "textarea",
+        "type": "text",
+        "allow_new_line": true,
         "default": "Describe the service offering in 2–3 sentences. This text appears on hover."
       },
       {
@@ -138,12 +141,12 @@
         "id": "link_url",
         "name": "link_url",
         "label": "Link URL",
-        "type": "link",
+        "type": "url",
+        "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"],
         "default": {
-          "url": {
-            "type": "EXTERNAL",
-            "href": "#"
-          }
+          "content_id": null,
+          "href": "https://example.com",
+          "type": "EXTERNAL"
         }
       }
     ],
