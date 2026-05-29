@@ -1,3 +1,22 @@
+.dx-products-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.dx-products-grid--cols-1 { grid-template-columns: repeat(1, 1fr); }
+.dx-products-grid--cols-2 { grid-template-columns: repeat(2, 1fr); }
+.dx-products-grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+.dx-products-grid--cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 1024px) {
+  .dx-products-grid--cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .dx-products-grid--cols-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .dx-products-grid { grid-template-columns: 1fr !important; }
+}
+
 .dx-products-card {
   display: flex;
   flex-direction: column;
