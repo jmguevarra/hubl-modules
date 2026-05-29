@@ -1,0 +1,57 @@
+{% if module.show_section_heading %}
+  {# Section wrapper #}
+{% endif %}
+
+<section class="services-section" aria-label="Services">
+
+  {% if module.show_section_heading and module.section_heading %}
+    <h2 class="services-section__heading">{{ module.section_heading }}</h2>
+  {% endif %}
+
+  <div class="services-grid">
+
+    {% for card in module.cards %}
+      {# Resolve icon color — fallback to white #}
+      {% set icon_hex = card.icon_color.color | default('#ffffff') %}
+
+      <div
+        class="service-card"
+        style="--icon-color: {{ icon_hex }};"
+        role="article"
+      >
+        {# Icon #}
+        {% if card.icon_svg %}
+          <div class="service-card__icon" aria-hidden="true">
+            {{ card.icon_svg }}
+          </div>
+        {% endif %}
+
+        {# Title #}
+        {% if card.title %}
+          <h3 class="service-card__title">{{ card.title }}</h3>
+        {% endif %}
+
+        {# Description (revealed on hover via CSS) #}
+        {% if card.description %}
+          <p class="service-card__description">{{ card.description }}</p>
+        {% endif %}
+
+        {# Link #}
+        {% if card.link_url and card.link_text %}
+          <a
+            class="service-card__link"
+            href="{{ card.link_url.href }}"
+            {% if card.link_url.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+            aria-label="{{ card.link_text }} — {{ card.title }}"
+          >
+            {{ card.link_text }}
+            <span class="service-card__link-arrow" aria-hidden="true">→</span>
+          </a>
+        {% endif %}
+
+      </div>
+    {% endfor %}
+
+  </div>
+
+</section>
