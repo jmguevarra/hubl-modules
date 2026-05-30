@@ -1,5 +1,3 @@
-{% set fa_map = {"REGULAR": "far", "SOLID": "fas", "LIGHT": "fal", "DUOTONE": "fad", "BRANDS": "fab"} %}
-
 <section class="dx-hero">
   <div class="dx-module__container content-wrapper">
 
@@ -79,10 +77,15 @@
     <div class="dx-hero__features">
       {% for feature in module.features %}
       <div class="dx-hero__feature-card">
-        {% if feature.feature_icon.name %}
-        <span class="dx-hero__feature-icon" aria-hidden="true">
-          <i class="{{ fa_map[feature.feature_icon.type] | default('far') }} fa-{{ feature.feature_icon.name }}"></i>
-        </span>
+        {% if feature.feature_icon.src %}
+        <img
+          src="{{ feature.feature_icon.src }}"
+          alt="{{ feature.feature_icon.alt }}"
+          class="dx-hero__feature-icon"
+          loading="lazy"
+          {% if feature.feature_icon.width %}width="{{ feature.feature_icon.width }}"{% endif %}
+          {% if feature.feature_icon.height %}height="{{ feature.feature_icon.height }}"{% endif %}
+        >
         {% endif %}
 
         {% if feature.feature_text %}
