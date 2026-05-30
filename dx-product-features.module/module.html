@@ -1,1 +1,59 @@
-<!-- module html  -->
+<section class="dx-features">
+  <div class="dx-module__container content-wrapper">
+    <div class="dx-features__columns">
+
+      {# ---- Left: Heading + Features grid ---- #}
+      <div class="dx-features__content">
+
+        {% if module.heading %}
+        <h2 class="dx-features__heading">{{ module.heading }}</h2>
+        {% endif %}
+
+        {% if module.features %}
+        <ul class="dx-features__grid">
+          {% for feature in module.features %}
+          <li class="dx-features__item">
+
+            {% if feature.feature_icon.src %}
+            <img
+              src="{{ feature.feature_icon.src }}"
+              alt="{{ feature.feature_icon.alt }}"
+              class="dx-features__icon"
+              loading="lazy"
+              {% if feature.feature_icon.width %}width="{{ feature.feature_icon.width }}"{% endif %}
+              {% if feature.feature_icon.height %}height="{{ feature.feature_icon.height }}"{% endif %}
+            >
+            {% else %}
+            <svg class="dx-features__icon" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true">
+              <path d="M1 4.88889L3.41975 8L7.04938 1" stroke="#F4C51F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {% endif %}
+
+            {% if feature.feature_text %}
+            <span class="dx-features__item-text">{{ feature.feature_text }}</span>
+            {% endif %}
+
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+      </div>
+
+      {# ---- Right: Image ---- #}
+      {% if module.section_image.src %}
+      <div class="dx-features__image-wrap">
+        <img
+          src="{{ module.section_image.src }}"
+          alt="{{ module.section_image.alt }}"
+          class="dx-features__image"
+          loading="lazy"
+          {% if module.section_image.width %}width="{{ module.section_image.width }}"{% endif %}
+          {% if module.section_image.height %}height="{{ module.section_image.height }}"{% endif %}
+        >
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>

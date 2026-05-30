@@ -1,11 +1,54 @@
 [
   {
-    "default": "<h1>Hello, world!</h1>",
-    "label": "Rich text field",
-    "locked": false,
-    "name": "text",
-    "required": false,
-    "type": "richtext",
-    "validation_regex": ""
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "Main features"
+  },
+  {
+    "id": "features",
+    "name": "features",
+    "label": "Features",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 20,
+      "default": 4,
+      "sorting_label_field": "feature_text"
+    },
+    "children": [
+      {
+        "id": "feature_icon",
+        "name": "feature_icon",
+        "label": "Custom Icon (optional)",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 16,
+          "height": 16
+        }
+      },
+      {
+        "id": "feature_text",
+        "name": "feature_text",
+        "label": "Feature",
+        "type": "text",
+        "default": "Offline data capture"
+      }
+    ]
+  },
+  {
+    "id": "section_image",
+    "name": "section_image",
+    "label": "Section Image",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Features preview",
+      "width": 600,
+      "height": 420
+    }
   }
 ]
