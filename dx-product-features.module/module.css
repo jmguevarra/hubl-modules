@@ -5,10 +5,11 @@
 
 /* Two-column layout: features left, image right */
 .dx-features__columns {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 60px;
   align-items: center;
+  display: grid;
+  gap: 0;
+  grid-template-columns: 3fr 2fr;
+  justify-content: end;
 }
 
 .dx-features__heading {
@@ -52,6 +53,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  width: 100%;
+  max-width: 430px
 }
 
 .dx-features__image {
@@ -74,7 +77,6 @@
 
   .dx-features__image-wrap {
     justify-content: center;
-    max-width: 520px;
     margin: 0 auto;
   }
 }
