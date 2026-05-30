@@ -1,25 +1,9 @@
-{% set s = module.styles %}
-
-<div class="dx-products-grid dx-products-grid--cols-{{ s.layout.columns }}"
-  style="
-    --btn-hover-bg: {{ s.button.button_hover_background_color.color }};
-    --btn-hover-color: {{ s.button.button_hover_text_color.color }};
-  "
->
+<div class="dx-products-grid dx-products-grid--cols-{{ module.layout.columns }}">
   {% for card in module.cards %}
-  <div class="dx-products-card"
-    style="
-      background-color: {{ s.card.card_background_color.color }};
-      border-radius: {{ s.card.card_border_radius }}px;
-      padding-top: {{ s.card.card_padding.padding.top.value }}{{ s.card.card_padding.padding.top.units }};
-      padding-right: {{ s.card.card_padding.padding.right.value }}{{ s.card.card_padding.padding.right.units }};
-      padding-bottom: {{ s.card.card_padding.padding.bottom.value }}{{ s.card.card_padding.padding.bottom.units }};
-      padding-left: {{ s.card.card_padding.padding.left.value }}{{ s.card.card_padding.padding.left.units }};
-    "
-  >
+  <div class="dx-products-card">
 
     {% if card.card_image.src %}
-    <div class="dx-products-card__image" style="margin-bottom: {{ s.typography.image_bottom_spacing }}px;">
+    <div class="dx-products-card__image">
       <img
         src="{{ card.card_image.src }}"
         alt="{{ card.card_image.alt }}"
@@ -32,15 +16,13 @@
 
     <div class="dx-products-card__content">
       {% if card.card_title %}
-      <h3 class="dx-products-card__title"
-        style="color: {{ s.typography.title_color.color }}; font-size: {{ s.typography.title_font_size }}px;">
+      <h3 class="dx-products-card__title">
         {{ card.card_title }}
       </h3>
       {% endif %}
 
       {% if card.card_description %}
-      <div class="dx-products-card__description"
-        style="color: {{ s.typography.description_color.color }}; font-size: {{ s.typography.description_font_size }}px;">
+      <div class="dx-products-card__description">
         {{ card.card_description }}
       </div>
       {% endif %}
@@ -51,7 +33,7 @@
       {% set btn = card.card_button %}
       <a
         href="{{ btn.button_link.url.href }}"
-        class="dx-products-card__btn"
+        class="dx-btn dx-hero__blog-btn"
         {% if btn.button_link.open_in_new_tab and btn.button_link.no_follow %}
           target="_blank" rel="noopener noreferrer nofollow"
         {% elif btn.button_link.open_in_new_tab %}
@@ -59,17 +41,11 @@
         {% elif btn.button_link.no_follow %}
           rel="nofollow"
         {% endif %}
-        style="
-          background-color: {{ s.button.button_background_color.color }};
-          color: {{ s.button.button_text_color.color }};
-          border-radius: {{ s.button.button_border_radius }}px;
-          padding-top: {{ s.button.button_padding.padding.top.value }}{{ s.button.button_padding.padding.top.units }};
-          padding-right: {{ s.button.button_padding.padding.right.value }}{{ s.button.button_padding.padding.right.units }};
-          padding-bottom: {{ s.button.button_padding.padding.bottom.value }}{{ s.button.button_padding.padding.bottom.units }};
-          padding-left: {{ s.button.button_padding.padding.left.value }}{{ s.button.button_padding.padding.left.units }};
-        "
       >
-        {{ btn.button_text }}
+        <span class="dx-btn-text">{{ btn.button_text }}</span>
+          <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
       </a>
     </div>
     {% endif %}

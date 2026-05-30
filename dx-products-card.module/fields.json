@@ -69,168 +69,23 @@
     ]
   },
   {
-    "id": "styles",
-    "name": "styles",
-    "label": "Styles",
+    "id": "layout",
+    "name": "layout",
+    "label": "Layout",
     "type": "group",
-    "tab": "STYLE",
     "children": [
       {
-        "id": "layout",
-        "name": "layout",
-        "label": "Layout",
-        "type": "group",
-        "children": [
-          {
-            "id": "columns",
-            "name": "columns",
-            "label": "Columns per Row",
-            "type": "choice",
-            "choices": [
-              ["1", "1 Column"],
-              ["2", "2 Columns"],
-              ["3", "3 Columns"],
-              ["4", "4 Columns"]
-            ],
-            "default": "4"
-          }
-        ]
-      },
-      {
-        "id": "card",
-        "name": "card",
-        "label": "Card",
-        "type": "group",
-        "children": [
-          {
-            "id": "card_background_color",
-            "name": "card_background_color",
-            "label": "Background Color",
-            "type": "color",
-            "default": { "color": "#ffffff", "opacity": 100 }
-          },
-          {
-            "id": "card_border_radius",
-            "name": "card_border_radius",
-            "label": "Border Radius (px)",
-            "type": "number",
-            "default": 8
-          },
-          {
-            "id": "card_padding",
-            "name": "card_padding",
-            "label": "Padding",
-            "type": "spacing",
-            "default": {
-              "padding": {
-                "top": { "value": 32, "units": "px" },
-                "right": { "value": 24, "units": "px" },
-                "bottom": { "value": 32, "units": "px" },
-                "left": { "value": 24, "units": "px" }
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "typography",
-        "name": "typography",
-        "label": "Typography",
-        "type": "group",
-        "children": [
-          {
-            "id": "image_bottom_spacing",
-            "name": "image_bottom_spacing",
-            "label": "Image Bottom Spacing (px)",
-            "type": "number",
-            "default": 20
-          },
-          {
-            "id": "title_color",
-            "name": "title_color",
-            "label": "Title Color",
-            "type": "color",
-            "default": { "color": "#1a1a2e", "opacity": 100 }
-          },
-          {
-            "id": "title_font_size",
-            "name": "title_font_size",
-            "label": "Title Font Size (px)",
-            "type": "number",
-            "default": 22
-          },
-          {
-            "id": "description_color",
-            "name": "description_color",
-            "label": "Description Color",
-            "type": "color",
-            "default": { "color": "#555555", "opacity": 100 }
-          },
-          {
-            "id": "description_font_size",
-            "name": "description_font_size",
-            "label": "Description Font Size (px)",
-            "type": "number",
-            "default": 15
-          }
-        ]
-      },
-      {
-        "id": "button",
-        "name": "button",
-        "label": "Button",
-        "type": "group",
-        "children": [
-          {
-            "id": "button_background_color",
-            "name": "button_background_color",
-            "label": "Background Color",
-            "type": "color",
-            "default": { "color": "#f5a623", "opacity": 100 }
-          },
-          {
-            "id": "button_text_color",
-            "name": "button_text_color",
-            "label": "Text Color",
-            "type": "color",
-            "default": { "color": "#1a1a2e", "opacity": 100 }
-          },
-          {
-            "id": "button_hover_background_color",
-            "name": "button_hover_background_color",
-            "label": "Hover Background Color",
-            "type": "color",
-            "default": { "color": "#e09410", "opacity": 100 }
-          },
-          {
-            "id": "button_hover_text_color",
-            "name": "button_hover_text_color",
-            "label": "Hover Text Color",
-            "type": "color",
-            "default": { "color": "#1a1a2e", "opacity": 100 }
-          },
-          {
-            "id": "button_border_radius",
-            "name": "button_border_radius",
-            "label": "Border Radius (px)",
-            "type": "number",
-            "default": 50
-          },
-          {
-            "id": "button_padding",
-            "name": "button_padding",
-            "label": "Padding",
-            "type": "spacing",
-            "default": {
-              "padding": {
-                "top": { "value": 12, "units": "px" },
-                "right": { "value": 28, "units": "px" },
-                "bottom": { "value": 12, "units": "px" },
-                "left": { "value": 28, "units": "px" }
-              }
-            }
-          }
-        ]
+        "id": "columns",
+        "name": "columns",
+        "label": "Columns per Row",
+        "type": "choice",
+        "choices": [
+          ["1", "1 Column"],
+          ["2", "2 Columns"],
+          ["3", "3 Columns"],
+          ["4", "4 Columns"]
+        ],
+        "default": "4"
       }
     ]
   }
