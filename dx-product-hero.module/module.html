@@ -1,17 +1,6 @@
-{% set s = module.styles %}
 {% set fa_map = {"REGULAR": "far", "SOLID": "fas", "LIGHT": "fal", "DUOTONE": "fad", "BRANDS": "fab"} %}
 
-<section class="dx-hero"
-  style="
-    background-color: {{ s.section.section_background_color.color }};
-    padding-top: {{ s.section.section_padding.padding.top.value }}{{ s.section.section_padding.padding.top.units }};
-    padding-right: {{ s.section.section_padding.padding.right.value }}{{ s.section.section_padding.padding.right.units }};
-    padding-bottom: {{ s.section.section_padding.padding.bottom.value }}{{ s.section.section_padding.padding.bottom.units }};
-    padding-left: {{ s.section.section_padding.padding.left.value }}{{ s.section.section_padding.padding.left.units }};
-    --hero-btn-hover-bg: {{ s.button_style.btn_hover_bg_color.color }};
-    --hero-btn-hover-color: {{ s.button_style.btn_hover_text_color.color }};
-  "
->
+<section class="dx-hero">
   <div class="dx-hero__container">
 
     <div class="dx-hero__columns">
@@ -21,25 +10,17 @@
 
         {# Breadcrumb #}
         {% if module.breadcrumbs %}
-        <nav class="dx-hero__breadcrumb"
-          aria-label="Breadcrumb"
-          style="
-            font-size: {{ s.breadcrumb_style.breadcrumb_font_size }}px;
-            gap: {{ s.breadcrumb_style.breadcrumb_item_spacing }}px;
-            margin-bottom: {{ s.breadcrumb_style.breadcrumb_margin_bottom }}px;
-          "
-        >
+        <nav class="dx-hero__breadcrumb" aria-label="Breadcrumb">
           {% for crumb in module.breadcrumbs %}
             {% if not loop.last %}
               <a
                 href="{{ crumb.crumb_link.url.href }}"
                 class="dx-hero__breadcrumb-link"
-                style="color: {{ s.breadcrumb_style.breadcrumb_color.color }};"
                 {% if crumb.crumb_link.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
               >{{ crumb.crumb_label }}</a>
-              <span class="dx-hero__breadcrumb-sep" style="color: {{ s.breadcrumb_style.breadcrumb_separator_color.color }};" aria-hidden="true">›</span>
+              <span class="dx-hero__breadcrumb-sep" aria-hidden="true">›</span>
             {% else %}
-              <span class="dx-hero__breadcrumb-current" style="color: {{ s.breadcrumb_style.breadcrumb_color.color }}; opacity: 0.65;">{{ crumb.crumb_label }}</span>
+              <span class="dx-hero__breadcrumb-current">{{ crumb.crumb_label }}</span>
             {% endif %}
           {% endfor %}
         </nav>
@@ -47,25 +28,12 @@
 
         {# Heading #}
         {% if module.heading %}
-        <h1 class="dx-hero__heading"
-          style="
-            color: {{ s.heading_style.heading_color.color }};
-            font-size: {{ s.heading_style.heading_font_size }}px;
-            margin-bottom: {{ s.heading_style.heading_margin_bottom }}px;
-          "
-        >{{ module.heading }}</h1>
+        <h1 class="dx-hero__heading">{{ module.heading }}</h1>
         {% endif %}
 
         {# Subheading #}
         {% if module.subheading %}
-        <div class="dx-hero__subheading"
-          style="
-            color: {{ s.subheading_style.subheading_color.color }};
-            font-size: {{ s.subheading_style.subheading_font_size }}px;
-            margin-top: {{ s.subheading_style.subheading_margin_top }}px;
-            margin-bottom: {{ s.subheading_style.subheading_margin_bottom }}px;
-          "
-        >{{ module.subheading }}</div>
+        <div class="dx-hero__subheading">{{ module.subheading }}</div>
         {% endif %}
 
         {# Button #}
@@ -81,15 +49,6 @@
           {% elif btn.button_link.no_follow %}
             rel="nofollow"
           {% endif %}
-          style="
-            background-color: {{ s.button_style.btn_bg_color.color }};
-            color: {{ s.button_style.btn_text_color.color }};
-            border-radius: {{ s.button_style.btn_border_radius }}px;
-            padding-top: {{ s.button_style.btn_padding.padding.top.value }}{{ s.button_style.btn_padding.padding.top.units }};
-            padding-right: {{ s.button_style.btn_padding.padding.right.value }}{{ s.button_style.btn_padding.padding.right.units }};
-            padding-bottom: {{ s.button_style.btn_padding.padding.bottom.value }}{{ s.button_style.btn_padding.padding.bottom.units }};
-            padding-left: {{ s.button_style.btn_padding.padding.left.value }}{{ s.button_style.btn_padding.padding.left.units }};
-          "
         >{{ btn.button_text }}</a>
         {% endif %}
 
@@ -113,38 +72,17 @@
 
     {# ---- Features row ---- #}
     {% if module.features %}
-    <div class="dx-hero__features dx-hero__features--cols-{{ s.features_style.feat_columns }}"
-      style="
-        gap: {{ s.features_style.feat_gap }}px;
-        margin-top: {{ s.features_style.feat_margin_top }}px;
-      "
-    >
+    <div class="dx-hero__features">
       {% for feature in module.features %}
-      <div class="dx-hero__feature-card"
-        style="
-          background-color: {{ s.features_style.feat_card_bg_color.color }};
-          border-radius: {{ s.features_style.feat_card_border_radius }}px;
-          padding-top: {{ s.features_style.feat_card_padding.padding.top.value }}{{ s.features_style.feat_card_padding.padding.top.units }};
-          padding-right: {{ s.features_style.feat_card_padding.padding.right.value }}{{ s.features_style.feat_card_padding.padding.right.units }};
-          padding-bottom: {{ s.features_style.feat_card_padding.padding.bottom.value }}{{ s.features_style.feat_card_padding.padding.bottom.units }};
-          padding-left: {{ s.features_style.feat_card_padding.padding.left.value }}{{ s.features_style.feat_card_padding.padding.left.units }};
-        "
-      >
+      <div class="dx-hero__feature-card">
         {% if feature.feature_icon.name %}
-        <span class="dx-hero__feature-icon"
-          style="color: {{ s.features_style.feat_icon_color.color }}; font-size: {{ s.features_style.feat_icon_size }}px;"
-          aria-hidden="true"
-        ><i class="{{ fa_map[feature.feature_icon.type] | default('far') }} fa-{{ feature.feature_icon.name }}"></i></span>
+        <span class="dx-hero__feature-icon" aria-hidden="true">
+          <i class="{{ fa_map[feature.feature_icon.type] | default('far') }} fa-{{ feature.feature_icon.name }}"></i>
+        </span>
         {% endif %}
 
         {% if feature.feature_text %}
-        <span class="dx-hero__feature-text"
-          style="
-            color: {{ s.features_style.feat_text_color.color }};
-            font-size: {{ s.features_style.feat_text_font_size }}px;
-            font-weight: {{ s.features_style.feat_text_font_weight }};
-          "
-        >{{ feature.feature_text }}</span>
+        <span class="dx-hero__feature-text">{{ feature.feature_text }}</span>
         {% endif %}
       </div>
       {% endfor %}
