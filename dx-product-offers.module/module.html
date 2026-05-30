@@ -1,1 +1,40 @@
-<!-- module html  -->
+<section class="dx-offers">
+  <div class="dx-module__container content-wrapper">
+
+      {# ---- Left: Heading + Description ---- #}
+      <div class="dx-offers__content">
+        {% if module.heading %}
+        <h2 class="dx-offers__heading">{{ module.heading }}</h2>
+        {% endif %}
+
+        {% if module.description %}
+        <div class="dx-offers__description">{{ module.description }}</div>
+        {% endif %}
+      </div>
+
+      {# ---- Right: Offers grid ---- #}
+      {% if module.offers %}
+      <div class="dx-offers__grid">
+        {% for offer in module.offers %}
+        <div class="dx-offers__item">
+          {% if offer.offer_icon.src %}
+          <img
+            src="{{ offer.offer_icon.src }}"
+            alt="{{ offer.offer_icon.alt }}"
+            class="dx-offers__icon"
+            loading="lazy"
+            {% if offer.offer_icon.width %}width="{{ offer.offer_icon.width }}"{% endif %}
+            {% if offer.offer_icon.height %}height="{{ offer.offer_icon.height }}"{% endif %}
+          >
+          {% endif %}
+
+          {% if offer.offer_text %}
+          <p class="dx-offers__item-text">{{ offer.offer_text }}</p>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+  </div>
+</section>
