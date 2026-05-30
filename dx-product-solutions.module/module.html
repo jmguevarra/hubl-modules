@@ -1,1 +1,40 @@
-<!-- module html  -->
+<section class="dx-solutions">
+  <div class="dx-module__container content-wrapper">
+
+    {% if module.heading %}
+    <h2 class="dx-solutions__heading">{{ module.heading }}</h2>
+    {% endif %}
+
+    {% if module.solutions %}
+    <div class="dx-solutions__list">
+      {% for solution in module.solutions %}
+      <div class="dx-solutions__card">
+
+        {% if solution.solution_icon.src %}
+        <img
+          src="{{ solution.solution_icon.src }}"
+          alt="{{ solution.solution_icon.alt }}"
+          class="dx-solutions__icon"
+          loading="lazy"
+          {% if solution.solution_icon.width %}width="{{ solution.solution_icon.width }}"{% endif %}
+          {% if solution.solution_icon.height %}height="{{ solution.solution_icon.height }}"{% endif %}
+        >
+        {% endif %}
+
+        <div class="dx-solutions__card-body">
+          {% if solution.solution_title %}
+          <h3 class="dx-solutions__card-title">{{ solution.solution_title }}</h3>
+          {% endif %}
+
+          {% if solution.solution_description %}
+          <p class="dx-solutions__card-desc">{{ solution.solution_description }}</p>
+          {% endif %}
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>

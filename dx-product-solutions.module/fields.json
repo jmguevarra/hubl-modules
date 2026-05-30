@@ -1,11 +1,49 @@
 [
   {
-    "default": "<h1>Hello, world!</h1>",
-    "label": "Rich text field",
-    "locked": false,
-    "name": "text",
-    "required": false,
-    "type": "richtext",
-    "validation_regex": ""
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "Problems solved"
+  },
+  {
+    "id": "solutions",
+    "name": "solutions",
+    "label": "Solutions",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 12,
+      "default": 4,
+      "sorting_label_field": "solution_title"
+    },
+    "children": [
+      {
+        "id": "solution_icon",
+        "name": "solution_icon",
+        "label": "Icon",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "id": "solution_title",
+        "name": "solution_title",
+        "label": "Title",
+        "type": "text",
+        "default": "Workflow solutions"
+      },
+      {
+        "id": "solution_description",
+        "name": "solution_description",
+        "label": "Description",
+        "type": "text",
+        "default": "Without development, business users can utilise DX Forms to create forms that can integrate into workflow processes."
+      }
+    ]
   }
 ]
