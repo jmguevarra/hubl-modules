@@ -67,6 +67,16 @@
           class="dx-hero__image"
           loading="eager"
         >
+        {% if module.overlay_image.enable_overlay_image and module.overlay_image.overlay_image_src.src %}
+        <img
+          src="{{ module.overlay_image.overlay_image_src.src }}"
+          alt="{{ module.overlay_image.overlay_image_src.alt }}"
+          class="dx-hero__image-overlay"
+          loading="lazy"
+          {% if module.overlay_image.overlay_image_src.width %}width="{{ module.overlay_image.overlay_image_src.width }}"{% endif %}
+          {% if module.overlay_image.overlay_image_src.height %}height="{{ module.overlay_image.overlay_image_src.height }}"{% endif %}
+        >
+        {% endif %}
       </div>
       {% endif %}
 

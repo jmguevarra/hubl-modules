@@ -77,12 +77,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .dx-hero__image {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.dx-hero__image-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 /* Features */
@@ -156,6 +165,7 @@
 
   .dx-hero__features {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .dx-hero__breadcrumb{

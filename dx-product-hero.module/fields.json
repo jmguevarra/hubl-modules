@@ -84,6 +84,38 @@
     }
   },
   {
+    "id": "overlay_image",
+    "name": "overlay_image",
+    "label": "Overlay Image",
+    "type": "group",
+    "children": [
+      {
+        "id": "enable_overlay_image",
+        "name": "enable_overlay_image",
+        "label": "Enable overlay image",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "overlay_image_src",
+        "name": "overlay_image_src",
+        "label": "Overlay Image",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 200,
+          "height": 200
+        },
+        "visibility": {
+          "controlling_field_path": "overlay_image.enable_overlay_image",
+          "operator": "EQUAL",
+          "controlling_value_regex": "true"
+        }
+      }
+    ]
+  },
+  {
     "id": "features",
     "name": "features",
     "label": "Features",
