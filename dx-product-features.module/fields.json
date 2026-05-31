@@ -70,6 +70,7 @@
             "label": "Features Grid Columns",
             "type": "choice",
             "choices": [
+              ["cols-1", "1 Column"],
               ["cols-2", "2 Columns"],
               ["cols-3", "3 Columns"],
               ["cols-4", "4 Columns"],

@@ -37,6 +37,7 @@
   padding: 0;
 }
 
+.dx-features__grid--cols-1 { grid-template-columns: 1fr; }
 .dx-features__grid--cols-2 { grid-template-columns: repeat(2, 1fr); }
 .dx-features__grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
 .dx-features__grid--cols-4 { grid-template-columns: repeat(4, 1fr); }
