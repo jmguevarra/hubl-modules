@@ -147,5 +147,34 @@
         "default": "Save dev time and cost"
       }
     ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "features_style",
+        "name": "features_style",
+        "label": "Features",
+        "type": "group",
+        "children": [
+          {
+            "id": "features_grid_columns",
+            "name": "features_grid_columns",
+            "label": "Features Grid Columns",
+            "type": "choice",
+            "choices": [
+              ["cols-2", "2 Columns"],
+              ["cols-3", "3 Columns"],
+              ["cols-4", "4 Columns"]
+            ],
+            "default": "cols-3"
+          }
+        ]
+      }
+    ]
   }
 ]

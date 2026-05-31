@@ -84,7 +84,7 @@
 
     {# ---- Features row ---- #}
     {% if module.features %}
-    <div class="dx-hero__features">
+    <div class="dx-hero__features{% if module.styles.features_style.features_grid_columns %} dx-hero__features--{{ module.styles.features_style.features_grid_columns }}{% endif %}">
       {% for feature in module.features %}
       <div class="dx-hero__feature-card">
         {% if feature.feature_icon.src %}
