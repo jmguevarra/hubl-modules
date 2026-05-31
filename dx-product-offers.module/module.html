@@ -31,6 +31,10 @@
           {% if offer.offer_text %}
           <p class="dx-offers__item-text">{{ offer.offer_text }}</p>
           {% endif %}
+
+          {% if offer.offer_content %}
+          <div class="dx-offers__item-content">{{ offer.offer_content }}</div>
+          {% endif %}
         </div>
         {% endfor %}
       </div>

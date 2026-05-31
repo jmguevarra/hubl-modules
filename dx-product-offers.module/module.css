@@ -58,6 +58,13 @@
   margin: 0;
 }
 
+.dx-offers__item-content {
+  color: var(--dx-color-body-text);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* Tablet: cap 5-col at 4 */
 @media (max-width: 1024px) {
   .dx-offers__grid--cols-5 {

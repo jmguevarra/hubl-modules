@@ -43,6 +43,13 @@
         "label": "Text",
         "type": "text",
         "default": "Reduces development cost"
+      },
+      {
+        "id": "offer_content",
+        "name": "offer_content",
+        "label": "Content",
+        "type": "richtext",
+        "default": ""
       }
     ]
   },
