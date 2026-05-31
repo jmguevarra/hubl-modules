@@ -10,7 +10,7 @@
         {% endif %}
 
         {% if module.features %}
-        <ul class="dx-features__grid">
+        <ul class="dx-features__grid{% if module.styles.layout.grid_columns %} dx-features__grid--{{ module.styles.layout.grid_columns }}{% endif %}">
           {% for feature in module.features %}
           <li class="dx-features__item">
 
