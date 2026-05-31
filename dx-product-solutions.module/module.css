@@ -31,7 +31,7 @@
 .dx-solutions__card-body {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .dx-solutions__card-title {
@@ -44,6 +44,52 @@
   font-size: 14px;
   line-height: 1.5;
   margin: 0;
+}
+
+/* Checklist content type */
+.dx-solutions__checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dx-solutions__checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.dx-solutions__checklist-icon {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.dx-solutions__checklist-text {
+  color: var(--dx-color-body-text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.dx-solutions__checklist-text p {
+  margin: 0;
+}
+
+/* Richtext content type */
+.dx-solutions__card-richtext {
+  color: var(--dx-color-body-text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.dx-solutions__card-richtext p {
+  margin: 0 0 8px;
+}
+
+.dx-solutions__card-richtext p:last-child {
+  margin-bottom: 0;
 }
 
 /* Mobile: 2-column card grid, icon stacks above content */

@@ -26,8 +26,46 @@
           <h3 class="dx-solutions__card-title">{{ solution.solution_title }}</h3>
           {% endif %}
 
-          {% if solution.solution_description %}
-          <p class="dx-solutions__card-desc">{{ solution.solution_description }}</p>
+          {% if solution.solution_content_type == 'checklist' %}
+
+            {% if solution.solution_checklist %}
+            <ul class="dx-solutions__checklist">
+              {% for item in solution.solution_checklist %}
+              <li class="dx-solutions__checklist-item">
+                {% if item.solution_checklist_icon.src %}
+                <img
+                  src="{{ item.solution_checklist_icon.src }}"
+                  alt="{{ item.solution_checklist_icon.alt }}"
+                  class="dx-solutions__checklist-icon"
+                  loading="lazy"
+                  {% if item.solution_checklist_icon.width %}width="{{ item.solution_checklist_icon.width }}"{% endif %}
+                  {% if item.solution_checklist_icon.height %}height="{{ item.solution_checklist_icon.height }}"{% endif %}
+                >
+                {% else %}
+                <svg class="dx-solutions__checklist-icon" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true">
+                  <path d="M1 4.88889L3.41975 8L7.04938 1" stroke="#F4C51F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {% endif %}
+                {% if item.solution_checklist_text %}
+                <div class="dx-solutions__checklist-text">{{ item.solution_checklist_text }}</div>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+
+          {% elif solution.solution_content_type == 'richtext' %}
+
+            {% if solution.solution_richtext %}
+            <div class="dx-solutions__card-richtext">{{ solution.solution_richtext }}</div>
+            {% endif %}
+
+          {% else %}
+
+            {% if solution.solution_description %}
+            <p class="dx-solutions__card-desc">{{ solution.solution_description }}</p>
+            {% endif %}
+
           {% endif %}
         </div>
 

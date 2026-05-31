@@ -38,11 +38,77 @@
         "default": "Workflow solutions"
       },
       {
+        "id": "solution_content_type",
+        "name": "solution_content_type",
+        "label": "Content Type",
+        "type": "choice",
+        "choices": [
+          ["short_text", "Short Text"],
+          ["checklist", "Check list"],
+          ["richtext", "Richtext"]
+        ],
+        "default": "short_text"
+      },
+      {
         "id": "solution_description",
         "name": "solution_description",
         "label": "Description",
         "type": "text",
-        "default": "Without development, business users can utilise DX Forms to create forms that can integrate into workflow processes."
+        "default": "Without development, business users can utilise DX Forms to create forms that can integrate into workflow processes.",
+        "visibility": {
+          "controlling_field_path": "solutions.solution_content_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "short_text"
+        }
+      },
+      {
+        "id": "solution_checklist",
+        "name": "solution_checklist",
+        "label": "Checklist",
+        "type": "group",
+        "occurrence": {
+          "min": 1,
+          "max": 20,
+          "default": 3
+        },
+        "visibility": {
+          "controlling_field_path": "solutions.solution_content_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "checklist"
+        },
+        "children": [
+          {
+            "id": "solution_checklist_icon",
+            "name": "solution_checklist_icon",
+            "label": "Icon (optional)",
+            "type": "image",
+            "default": {
+              "src": "",
+              "alt": "",
+              "width": 9,
+              "height": 9
+            }
+          },
+          {
+            "id": "solution_checklist_text",
+            "name": "solution_checklist_text",
+            "label": "Text",
+            "type": "richtext",
+            "default": ""
+          }
+        ]
+      },
+      {
+        "id": "solution_richtext",
+        "name": "solution_richtext",
+        "label": "Content",
+        "type": "richtext",
+        "default": "",
+        "visibility": {
+          "controlling_field_path": "solutions.solution_content_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "richtext"
+        }
       }
     ]
   }
