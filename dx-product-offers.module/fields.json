@@ -45,5 +45,35 @@
         "default": "Reduces development cost"
       }
     ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "layout",
+        "name": "layout",
+        "label": "Layout",
+        "type": "group",
+        "children": [
+          {
+            "id": "grid_columns",
+            "name": "grid_columns",
+            "label": "Offers Grid Columns",
+            "type": "choice",
+            "choices": [
+              ["cols-2", "2 Columns"],
+              ["cols-3", "3 Columns"],
+              ["cols-4", "4 Columns"],
+              ["cols-5", "5 Columns"]
+            ],
+            "default": "cols-3"
+          }
+        ]
+      }
+    ]
   }
 ]

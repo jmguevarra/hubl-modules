@@ -14,7 +14,7 @@
 
       {# ---- Right: Offers grid ---- #}
       {% if module.offers %}
-      <div class="dx-offers__grid">
+      <div class="dx-offers__grid{% if module.styles.layout.grid_columns %} dx-offers__grid--{{ module.styles.layout.grid_columns }}{% endif %}">
         {% for offer in module.offers %}
         <div class="dx-offers__item">
           {% if offer.offer_icon.src %}
