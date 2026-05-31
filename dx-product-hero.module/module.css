@@ -119,8 +119,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
   color: #ffffff;
   font-size: 20px;
 }
@@ -146,12 +144,11 @@
   .dx-hero__heading {
     font-size: 36px;
   }
-  .dx-hero__feature-icon{
-    height: 32px;
-    width: 32px;
-  }
   .dx-hero__features--cols-4 {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .dx-hero__feature-text {
+    font-size: 16px;
   }
 }
 
