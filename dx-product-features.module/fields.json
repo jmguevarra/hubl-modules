@@ -76,6 +76,17 @@
               ["cols-5", "5 Columns"]
             ],
             "default": "cols-4"
+          },
+          {
+            "id": "layout_style",
+            "name": "layout_style",
+            "label": "Layout Style",
+            "type": "choice",
+            "choices": [
+              ["default", "Default"],
+              ["boxed", "Boxed"]
+            ],
+            "default": "default"
           }
         ]
       }

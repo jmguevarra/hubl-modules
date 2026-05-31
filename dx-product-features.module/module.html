@@ -1,6 +1,6 @@
-<section class="dx-features">
+<section class="dx-features{% if module.styles.layout.layout_style == 'boxed' %} dx-features__boxed{% endif %}">
   <div class="dx-module__container content-wrapper">
-    <div class="dx-features__columns">
+    <div class="dx-features__columns{% if module.styles.layout.layout_style == 'boxed' %} dx-features__columns--boxed{% endif %}{% if module.styles.layout.grid_columns %} dx-features__boxed--{{ module.styles.layout.grid_columns }}{% endif %}">
 
       {# ---- Left: Heading + Features grid ---- #}
       <div class="dx-features__content">

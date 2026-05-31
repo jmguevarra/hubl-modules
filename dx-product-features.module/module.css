@@ -1,8 +1,9 @@
 .dx-features {
   padding: 60px 0;
-  background-color: var(--dx-color-bg-light, #f5f5f5);
 }
-
+.dx-features__boxed {
+    padding-top: 0;
+}
 /* Two-column layout: features left, image right */
 .dx-features__columns {
   align-items: center;
@@ -10,6 +11,13 @@
   gap: 0;
   grid-template-columns: 3fr 2fr;
   justify-content: end;
+}
+
+.dx-features__columns--boxed {
+  background-color: var(--dx-color-bg-white, #fff);
+  border-radius: 5px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 10px 30px -4px rgba(0, 0, 0, 0.1);
+  padding: 48px 100px;
 }
 
 .dx-features__heading {
@@ -23,7 +31,7 @@
 .dx-features__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px 16px;
+  gap: 12px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -68,12 +76,10 @@
 
 /* Tablet: section columns stack, features grid caps at 3 cols */
 @media (max-width: 1024px) {
-  .dx-features__columns {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  .dx-features__columns--boxed{
+    padding: 36px 56px;
   }
 
-  .dx-features__grid,
   .dx-features__grid--cols-4,
   .dx-features__grid--cols-5 {
     grid-template-columns: repeat(3, 1fr);
@@ -86,12 +92,15 @@
 }
 
 @media (max-width: 768px) {
-  .dx-features__grid,
+  .dx-features__grid--cols-2,
   .dx-features__grid--cols-3,
   .dx-features__grid--cols-4,
   .dx-features__grid--cols-5 {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+  }
+  .dx-features__boxed {
+    padding-bottom: 0;
   }
 }
 
@@ -99,17 +108,24 @@
   .dx-features {
     padding: 40px 0;
   }
-
+  .dx-features__boxed {
+    padding-top: 0;
+  }
+  .dx-features__image-wrap {
+    margin-top: 45px;
+    max-width: 360px;
+  }
   .dx-features__heading {
     margin-bottom: 24px;
   }
-
-  .dx-features__grid,
-  .dx-features__grid--cols-2,
-  .dx-features__grid--cols-3,
-  .dx-features__grid--cols-4,
-  .dx-features__grid--cols-5 {
-    grid-template-columns: 1fr;
-    gap: 14px;
+  .dx-features__grid{
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+  .dx-features__columns{
+    grid-template-columns: 1fr !important;
+  }
+  .dx-features__columns--boxed {
+      padding: 24px;
   }
 }
