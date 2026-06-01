@@ -1,0 +1,154 @@
+.dx-venues {
+  padding: 80px 0;
+}
+
+/* ---- Header ---- */
+.dx-venues__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dx-venues__top-text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.dx-venues__heading {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.dx-venues__subheading {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.dx-venues__subheading p {
+  margin: 0;
+}
+
+/* ---- Grid ---- */
+.dx-venues__grid {
+  display: grid;
+  gap: 24px;
+  align-items: start;
+}
+
+.dx-venues__grid--cols-2 { grid-template-columns: repeat(2, 1fr); }
+.dx-venues__grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+/* ---- Card ---- */
+.dx-venues__card {
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Image ---- */
+.dx-venues__image-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.dx-venues__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Card body ---- */
+.dx-venues__card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.dx-venues__meal-type {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.dx-venues__city-name {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 2px;
+}
+
+.dx-venues__region {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* ---- Detail rows ---- */
+.dx-venues__details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.dx-venues__detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.dx-venues__detail-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.dx-venues__detail-text {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Venue name + address stacked */
+.dx-venues__venue-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dx-venues__venue-address {
+  font-size: 12px;
+  line-height: 1.4;
+  display: block;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .dx-venues__grid--cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .dx-venues__grid--cols-2,
+  .dx-venues__grid--cols-3 {
+    grid-template-columns: 1fr;
+  }
+}

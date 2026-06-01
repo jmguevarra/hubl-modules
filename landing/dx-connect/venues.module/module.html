@@ -1,0 +1,154 @@
+{% set s = module.styles %}
+{% set hs = s.header_style %}
+{% set cs = s.card_style %}
+{% set ds = cs.details_style %}
+<style>
+  #dx-venues .dx-venues__top-text {
+    color: {{ hs.top_text_style.top_text_color.color }};
+    opacity: {{ hs.top_text_style.top_text_color.opacity / 100 }};
+  }
+  #dx-venues .dx-venues__heading {
+    color: {{ hs.heading_style.heading_color.color }};
+    opacity: {{ hs.heading_style.heading_color.opacity / 100 }};
+  }
+  #dx-venues .dx-venues__subheading {
+    color: {{ hs.subheading_style.subheading_color.color }};
+    opacity: {{ hs.subheading_style.subheading_color.opacity / 100 }};
+  }
+  #dx-venues .dx-venues__card {
+    background-color: {{ cs.card_bg_color.color }};
+  }
+  #dx-venues .dx-venues__meal-type {
+    color: {{ cs.meal_type_style.meal_type_color.color }};
+    opacity: {{ cs.meal_type_style.meal_type_color.opacity / 100 }};
+  }
+  #dx-venues .dx-venues__city-name {
+    color: {{ cs.city_name_style.city_name_color.color }};
+    opacity: {{ cs.city_name_style.city_name_color.opacity / 100 }};
+  }
+  #dx-venues .dx-venues__region {
+    color: {{ cs.region_style.region_color.color }};
+    opacity: {{ cs.region_style.region_color.opacity / 100 }};
+  }
+  #dx-venues .dx-venues__detail-icon {
+    color: {{ ds.icon_color.color }};
+    opacity: {{ ds.icon_color.opacity / 100 }};
+  }
+  #dx-venues .dx-venues__detail-text {
+    color: {{ ds.detail_text_color.color }};
+    opacity: {{ ds.detail_text_color.opacity / 100 }};
+  }
+  #dx-venues .dx-venues__venue-address {
+    color: {{ ds.venue_address_color.color }};
+    opacity: {{ ds.venue_address_color.opacity / 100 }};
+  }
+</style>
+
+<section id="dx-venues" class="dx-venues">
+  <div class="dx-module__container content-wrapper">
+
+    {# ---- Header ---- #}
+    <div class="dx-venues__header">
+
+      {% if module.header_section.top_text %}
+      <p class="dx-venues__top-text">{{ module.header_section.top_text }}</p>
+      {% endif %}
+
+      {% if module.header_section.heading %}
+      <h2 class="dx-venues__heading">{{ module.header_section.heading }}</h2>
+      {% endif %}
+
+      {% if module.header_section.subheading %}
+      <div class="dx-venues__subheading">{{ module.header_section.subheading }}</div>
+      {% endif %}
+
+    </div>
+
+    {# ---- Venues grid ---- #}
+    {% if module.venues_section.venues %}
+    <div class="dx-venues__grid dx-venues__grid--cols-{{ module.venues_section.columns }}">
+      {% for venue in module.venues_section.venues %}
+      <div class="dx-venues__card">
+
+        {# Image #}
+        {% if venue.venue_image.src %}
+        <div class="dx-venues__image-wrap">
+          <img
+            src="{{ venue.venue_image.src }}"
+            alt="{{ venue.venue_image.alt }}"
+            class="dx-venues__image"
+            loading="lazy"
+          />
+        </div>
+        {% endif %}
+
+        {# Card content #}
+        <div class="dx-venues__card-body">
+
+          {% if venue.meal_type %}
+          <span class="dx-venues__meal-type">{{ venue.meal_type }}</span>
+          {% endif %}
+
+          {% if venue.city_name %}
+          <h3 class="dx-venues__city-name">{{ venue.city_name }}</h3>
+          {% endif %}
+
+          {% if venue.region %}
+          <span class="dx-venues__region">{{ venue.region }}</span>
+          {% endif %}
+
+          <div class="dx-venues__details">
+
+            {% if venue.date %}
+            <div class="dx-venues__detail-row">
+              <svg class="dx-venues__detail-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 9h18M8 2v4M16 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="dx-venues__detail-text">{{ venue.date }}</span>
+            </div>
+            {% endif %}
+
+            {% if venue.time %}
+            <div class="dx-venues__detail-row">
+              <svg class="dx-venues__detail-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="dx-venues__detail-text">{{ venue.time }}</span>
+            </div>
+            {% endif %}
+
+            {% if venue.venue_name %}
+            <div class="dx-venues__detail-row dx-venues__detail-row--venue">
+              <svg class="dx-venues__detail-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <div class="dx-venues__venue-info">
+                <span class="dx-venues__detail-text">{{ venue.venue_name }}</span>
+                {% if venue.venue_address %}
+                <span class="dx-venues__venue-address">{{ venue.venue_address }}</span>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+
+            {% if venue.meal_description %}
+            <div class="dx-venues__detail-row">
+              <svg class="dx-venues__detail-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M2 16h20M12 3v4M6 7h12a2 2 0 0 1 2 2v4H4V9a2 2 0 0 1 2-2zM4 16v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="dx-venues__detail-text">{{ venue.meal_description }}</span>
+            </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>

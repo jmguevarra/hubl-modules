@@ -1,0 +1,314 @@
+[
+  {
+    "id": "header_section",
+    "name": "header_section",
+    "label": "Header",
+    "type": "group",
+    "children": [
+      {
+        "id": "top_text",
+        "name": "top_text",
+        "label": "Top Text",
+        "type": "text",
+        "default": "VENUES"
+      },
+      {
+        "id": "heading",
+        "name": "heading",
+        "label": "Heading",
+        "type": "text",
+        "default": "Three Cities. One Conversation."
+      },
+      {
+        "id": "subheading",
+        "name": "subheading",
+        "label": "Subheading",
+        "type": "richtext",
+        "default": "<p>Each city's onsite experience is hosted at a curated five-star venue — designed for the kind of candid, peer-level exchange that only happens in a private, intimate setting.</p>"
+      }
+    ]
+  },
+  {
+    "id": "venues_section",
+    "name": "venues_section",
+    "label": "Venues",
+    "type": "group",
+    "children": [
+      {
+        "id": "columns",
+        "name": "columns",
+        "label": "Columns",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["2", "2 Columns"],
+          ["3", "3 Columns"]
+        ],
+        "default": "3"
+      },
+      {
+        "id": "venues",
+        "name": "venues",
+        "label": "Venues",
+        "type": "group",
+        "occurrence": {
+          "min": 1,
+          "max": 9,
+          "default": 3,
+          "sorting_label_field": "city_name"
+        },
+        "children": [
+          {
+            "id": "venue_image",
+            "name": "venue_image",
+            "label": "City Image",
+            "type": "image",
+            "default": {
+              "src": "",
+              "alt": "City venue",
+              "width": 800,
+              "height": 480
+            }
+          },
+          {
+            "id": "meal_type",
+            "name": "meal_type",
+            "label": "Meal Type",
+            "type": "text",
+            "default": "LUNCH"
+          },
+          {
+            "id": "city_name",
+            "name": "city_name",
+            "label": "City Name",
+            "type": "text",
+            "default": "Sydney"
+          },
+          {
+            "id": "region",
+            "name": "region",
+            "label": "Region / Country",
+            "type": "text",
+            "default": "NEW SOUTH WALES, AUSTRALIA"
+          },
+          {
+            "id": "date",
+            "name": "date",
+            "label": "Date",
+            "type": "text",
+            "default": "19 August 2026"
+          },
+          {
+            "id": "time",
+            "name": "time",
+            "label": "Time",
+            "type": "text",
+            "default": "12:00 PM – 2:00 PM"
+          },
+          {
+            "id": "venue_name",
+            "name": "venue_name",
+            "label": "Venue Name",
+            "type": "text",
+            "default": "Four Seasons Hotel"
+          },
+          {
+            "id": "venue_address",
+            "name": "venue_address",
+            "label": "Venue Address",
+            "type": "text",
+            "default": "199 George Street, NSW 2000"
+          },
+          {
+            "id": "meal_description",
+            "name": "meal_description",
+            "label": "Meal Description",
+            "type": "text",
+            "default": "Hosted over an executive lunch"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "header_style",
+        "name": "header_style",
+        "label": "Header",
+        "type": "group",
+        "children": [
+          {
+            "id": "top_text_style",
+            "name": "top_text_style",
+            "label": "Top Text",
+            "type": "group",
+            "children": [
+              {
+                "id": "top_text_color",
+                "name": "top_text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "heading_style",
+            "name": "heading_style",
+            "label": "Heading",
+            "type": "group",
+            "children": [
+              {
+                "id": "heading_color",
+                "name": "heading_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "subheading_style",
+            "name": "subheading_style",
+            "label": "Subheading",
+            "type": "group",
+            "children": [
+              {
+                "id": "subheading_color",
+                "name": "subheading_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "card_style",
+        "name": "card_style",
+        "label": "Card",
+        "type": "group",
+        "children": [
+          {
+            "id": "card_bg_color",
+            "name": "card_bg_color",
+            "label": "Card Background Color",
+            "type": "color",
+            "default": {
+              "color": "#1C2340",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "meal_type_style",
+            "name": "meal_type_style",
+            "label": "Meal Type",
+            "type": "group",
+            "children": [
+              {
+                "id": "meal_type_color",
+                "name": "meal_type_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "city_name_style",
+            "name": "city_name_style",
+            "label": "City Name",
+            "type": "group",
+            "children": [
+              {
+                "id": "city_name_color",
+                "name": "city_name_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "region_style",
+            "name": "region_style",
+            "label": "Region",
+            "type": "group",
+            "children": [
+              {
+                "id": "region_color",
+                "name": "region_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 70
+                }
+              }
+            ]
+          },
+          {
+            "id": "details_style",
+            "name": "details_style",
+            "label": "Detail Rows",
+            "type": "group",
+            "children": [
+              {
+                "id": "icon_color",
+                "name": "icon_color",
+                "label": "Icon Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 60
+                }
+              },
+              {
+                "id": "detail_text_color",
+                "name": "detail_text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              },
+              {
+                "id": "venue_address_color",
+                "name": "venue_address_color",
+                "label": "Venue Address Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 60
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
