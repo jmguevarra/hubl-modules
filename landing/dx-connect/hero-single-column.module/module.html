@@ -13,11 +13,17 @@
     opacity: {{ module.colors.content_style.subheading_color.opacity / 100 }};
   }
   #dx-connect-hero .dx-connect-hero__btn {
-    color: {{ btn.button_text_color.color }};
-    {% if btn.bg_type == 'gradient' %}
-    background: linear-gradient({{ btn.gradient_direction }}, {{ btn.gradient_start.color }}, {{ btn.gradient_end.color }});
+    {% if btn.enable_styles %}
+    {% set sf = btn.style_fields %}
+    color: {{ sf.button_text_color.color }};
+    {% if sf.bg_type == 'gradient' %}
+    background: linear-gradient({{ sf.gradient_direction }}, {{ sf.gradient_start.color }}, {{ sf.gradient_end.color }});
     {% else %}
-    background-color: {{ btn.button_bg_color.color }};
+    background-color: {{ sf.button_bg_color.color }};
+    {% endif %}
+    {% else %}
+    color: var(--dx-connector-btn-color);
+    background: var(--dx-connector-btn-linear-bg-color);
     {% endif %}
   }
   {% if btn.enable_hover %}
