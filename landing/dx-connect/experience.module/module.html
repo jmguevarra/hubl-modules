@@ -1,1 +1,97 @@
-<!-- module html  -->
+{% set s = module.styles %}
+{% set cs = s.content_style %}
+{% set cds = s.cards_style %}
+<style>
+  #dx-connect-experience .dx-experience__top-text {
+    color: {{ cs.top_text_style.top_text_color.color }};
+    opacity: {{ cs.top_text_style.top_text_color.opacity / 100 }};
+  }
+  #dx-connect-experience .dx-experience__heading {
+    color: {{ cs.heading_style.heading_color.color }};
+    opacity: {{ cs.heading_style.heading_color.opacity / 100 }};
+  }
+  #dx-connect-experience .dx-experience__body {
+    color: {{ cs.content_text_style.content_color.color }};
+    opacity: {{ cs.content_text_style.content_color.opacity / 100 }};
+  }
+  #dx-connect-experience .dx-experience__card {
+    background-color: {{ cds.card_bg_color.color }};
+  }
+  #dx-connect-experience .dx-experience__stat-number {
+    color: {{ cds.stat_style.stat_number_color.color }};
+    opacity: {{ cds.stat_style.stat_number_color.opacity / 100 }};
+  }
+  #dx-connect-experience .dx-experience__stat-label {
+    color: {{ cds.stat_style.stat_label_color.color }};
+    opacity: {{ cds.stat_style.stat_label_color.opacity / 100 }};
+  }
+  #dx-connect-experience .dx-experience__event-location {
+    color: {{ cds.event_style.event_location_color.color }};
+    opacity: {{ cds.event_style.event_location_color.opacity / 100 }};
+  }
+  #dx-connect-experience .dx-experience__event-date {
+    color: {{ cds.event_style.event_date_color.color }};
+    opacity: {{ cds.event_style.event_date_color.opacity / 100 }};
+  }
+  #dx-connect-experience .dx-experience__event-details {
+    color: {{ cds.event_style.event_details_color.color }};
+    opacity: {{ cds.event_style.event_details_color.opacity / 100 }};
+  }
+</style>
+
+<section id="dx-connect-experience" class="dx-experience">
+  <div class="dx-module__container content-wrapper">
+    <div class="dx-experience__columns">
+
+      {# ---- Left: Content ---- #}
+      <div class="dx-experience__content">
+
+        {% if module.top_text %}
+        <p class="dx-experience__top-text">{{ module.top_text }}</p>
+        {% endif %}
+
+        {% if module.heading %}
+        <h2 class="dx-experience__heading">{{ module.heading }}</h2>
+        {% endif %}
+
+        {% if module.content %}
+        <div class="dx-experience__body">{{ module.content }}</div>
+        {% endif %}
+
+      </div>
+
+      {# ---- Right: Cards grid ---- #}
+      {% if module.cards %}
+      <div class="dx-experience__cards">
+        {% for card in module.cards %}
+        <div class="dx-experience__card dx-experience__card--{{ card.card_type }}">
+
+          {% if card.card_type == 'stat' %}
+            {% if card.stat_number %}
+            <span class="dx-experience__stat-number">{{ card.stat_number }}</span>
+            {% endif %}
+            {% if card.stat_label %}
+            <span class="dx-experience__stat-label">{{ card.stat_label }}</span>
+            {% endif %}
+
+          {% elif card.card_type == 'event' %}
+            {% if card.event_location %}
+            <span class="dx-experience__event-location">{{ card.event_location }}</span>
+            {% endif %}
+            {% if card.event_date %}
+            <span class="dx-experience__event-date">{{ card.event_date }}</span>
+            {% endif %}
+            {% if card.event_details %}
+            <span class="dx-experience__event-details">{{ card.event_details }}</span>
+            {% endif %}
+
+          {% endif %}
+
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>

@@ -1,11 +1,264 @@
 [
   {
-    "default": "<h1>Hello, world!</h1>",
-    "label": "Rich text field",
-    "locked": false,
-    "name": "text",
-    "required": false,
+    "id": "top_text",
+    "name": "top_text",
+    "label": "Top Text",
+    "type": "text",
+    "default": "THE EXPERIENCE"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "Where world-class thinking meets candid peer conversation"
+  },
+  {
+    "id": "content",
+    "name": "content",
+    "label": "Content",
     "type": "richtext",
-    "validation_regex": ""
+    "default": "<p>The agentic AI revolution is already creating an accelerating gap between organisations that act now and those that wait.</p>"
+  },
+  {
+    "id": "cards",
+    "name": "cards",
+    "label": "Cards",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "default": 4,
+      "sorting_label_field": "stat_number"
+    },
+    "children": [
+      {
+        "id": "card_type",
+        "name": "card_type",
+        "label": "Card Type",
+        "type": "choice",
+        "display": "radio",
+        "choices": [
+          ["stat", "Stat"],
+          ["event", "Event"]
+        ],
+        "default": "stat"
+      },
+      {
+        "id": "stat_number",
+        "name": "stat_number",
+        "label": "Stat Number",
+        "type": "text",
+        "default": "75",
+        "visibility": {
+          "controlling_field_path": "cards.card_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "stat"
+        }
+      },
+      {
+        "id": "stat_label",
+        "name": "stat_label",
+        "label": "Stat Label",
+        "type": "text",
+        "default": "LEADERS ACROSS APAC",
+        "visibility": {
+          "controlling_field_path": "cards.card_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "stat"
+        }
+      },
+      {
+        "id": "event_location",
+        "name": "event_location",
+        "label": "Event Location",
+        "type": "text",
+        "default": "SYDNEY & MELBOURNE",
+        "visibility": {
+          "controlling_field_path": "cards.card_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "event"
+        }
+      },
+      {
+        "id": "event_date",
+        "name": "event_date",
+        "label": "Event Date",
+        "type": "text",
+        "default": "19 August 2026",
+        "visibility": {
+          "controlling_field_path": "cards.card_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "event"
+        }
+      },
+      {
+        "id": "event_details",
+        "name": "event_details",
+        "label": "Event Details",
+        "type": "text",
+        "default": "Lunch · 12 – 2 PM",
+        "visibility": {
+          "controlling_field_path": "cards.card_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "event"
+        }
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "content_style",
+        "name": "content_style",
+        "label": "Content",
+        "type": "group",
+        "children": [
+          {
+            "id": "top_text_style",
+            "name": "top_text_style",
+            "label": "Top Text",
+            "type": "group",
+            "children": [
+              {
+                "id": "top_text_color",
+                "name": "top_text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "heading_style",
+            "name": "heading_style",
+            "label": "Heading",
+            "type": "group",
+            "children": [
+              {
+                "id": "heading_color",
+                "name": "heading_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "content_text_style",
+            "name": "content_text_style",
+            "label": "Body",
+            "type": "group",
+            "children": [
+              {
+                "id": "content_color",
+                "name": "content_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cards_style",
+        "name": "cards_style",
+        "label": "Cards",
+        "type": "group",
+        "children": [
+          {
+            "id": "card_bg_color",
+            "name": "card_bg_color",
+            "label": "Card Background Color",
+            "type": "color",
+            "default": {
+              "color": "#1C2340",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "stat_style",
+            "name": "stat_style",
+            "label": "Stat Card",
+            "type": "group",
+            "children": [
+              {
+                "id": "stat_number_color",
+                "name": "stat_number_color",
+                "label": "Number Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                }
+              },
+              {
+                "id": "stat_label_color",
+                "name": "stat_label_color",
+                "label": "Label Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "event_style",
+            "name": "event_style",
+            "label": "Event Card",
+            "type": "group",
+            "children": [
+              {
+                "id": "event_location_color",
+                "name": "event_location_color",
+                "label": "Location Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              },
+              {
+                "id": "event_date_color",
+                "name": "event_date_color",
+                "label": "Date Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                }
+              },
+              {
+                "id": "event_details_color",
+                "name": "event_details_color",
+                "label": "Details Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
