@@ -1,0 +1,110 @@
+{% set s = module.styles %}
+{% set cs = s.content_style %}
+{% set ps = s.publications_style %}
+{% set ss = s.stats_style %}
+<style>
+  #dx-keynote-speaker .dx-keynote-speaker__top-text {
+    color: {{ cs.top_text_style.top_text_color.color }};
+    opacity: {{ cs.top_text_style.top_text_color.opacity / 100 }};
+  }
+  #dx-keynote-speaker .dx-keynote-speaker__name {
+    color: {{ cs.speaker_name_style.speaker_name_color.color }};
+    opacity: {{ cs.speaker_name_style.speaker_name_color.opacity / 100 }};
+  }
+  #dx-keynote-speaker .dx-keynote-speaker__tagline {
+    color: {{ cs.tagline_style.tagline_color.color }};
+    opacity: {{ cs.tagline_style.tagline_color.opacity / 100 }};
+  }
+  #dx-keynote-speaker .dx-keynote-speaker__body {
+    color: {{ cs.body_style.body_color.color }};
+    opacity: {{ cs.body_style.body_color.opacity / 100 }};
+  }
+  #dx-keynote-speaker .dx-keynote-speaker__tag {
+    color: {{ ps.tag_text_color.color }};
+    border-color: {{ ps.tag_border_color.color }};
+    background-color: {{ ps.tag_bg_color.color }};
+  }
+  #dx-keynote-speaker .dx-keynote-speaker__stat-card {
+    background-color: {{ ss.stat_bg_color.color }};
+  }
+  #dx-keynote-speaker .dx-keynote-speaker__stat-number {
+    color: {{ ss.stat_number_color.color }};
+    opacity: {{ ss.stat_number_color.opacity / 100 }};
+  }
+  #dx-keynote-speaker .dx-keynote-speaker__stat-label {
+    color: {{ ss.stat_label_color.color }};
+    opacity: {{ ss.stat_label_color.opacity / 100 }};
+  }
+</style>
+
+<section id="dx-keynote-speaker" class="dx-keynote-speaker">
+  <div class="dx-module__container content-wrapper">
+
+    {# ---- Speaker: image + content columns ---- #}
+    <div class="dx-keynote-speaker__columns">
+
+      {# Image #}
+      {% if module.image_section.speaker_image.src %}
+      <div class="dx-keynote-speaker__image-wrap">
+        <img
+          src="{{ module.image_section.speaker_image.src }}"
+          alt="{{ module.image_section.speaker_image.alt }}"
+          class="dx-keynote-speaker__image"
+          width="{{ module.image_section.speaker_image.width }}"
+          height="{{ module.image_section.speaker_image.height }}"
+          loading="lazy"
+        />
+      </div>
+      {% endif %}
+
+      {# Content #}
+      <div class="dx-keynote-speaker__content">
+
+        {% if module.speaker_info.top_text %}
+        <p class="dx-keynote-speaker__top-text">{{ module.speaker_info.top_text }}</p>
+        {% endif %}
+
+        {% if module.speaker_info.speaker_name %}
+        <h2 class="dx-keynote-speaker__name">{{ module.speaker_info.speaker_name }}</h2>
+        {% endif %}
+
+        {% if module.speaker_info.speaker_tagline %}
+        <p class="dx-keynote-speaker__tagline">{{ module.speaker_info.speaker_tagline }}</p>
+        {% endif %}
+
+        {% if module.body_section.body_content %}
+        <div class="dx-keynote-speaker__body">{{ module.body_section.body_content }}</div>
+        {% endif %}
+
+        {# Publications tags #}
+        {% if module.publications_section.publications %}
+        <div class="dx-keynote-speaker__tags">
+          {% for pub in module.publications_section.publications %}
+          {% if pub.publication_name %}
+          <span class="dx-keynote-speaker__tag">{{ pub.publication_name }}</span>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+    {# ---- Stats grid ---- #}
+    {% if module.stats_section.stats %}
+    <div class="dx-keynote-speaker__stats dx-keynote-speaker__stats--cols-{{ module.stats_section.stats_columns }}">
+      {% for stat in module.stats_section.stats %}
+      <div class="dx-keynote-speaker__stat-card">
+        {% if stat.stat_number %}
+        <span class="dx-keynote-speaker__stat-number">{{ stat.stat_number }}</span>
+        {% endif %}
+        {% if stat.stat_label %}
+        <span class="dx-keynote-speaker__stat-label">{{ stat.stat_label }}</span>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>

@@ -1,0 +1,310 @@
+[
+  {
+    "id": "speaker_info",
+    "name": "speaker_info",
+    "label": "Speaker Info",
+    "type": "group",
+    "children": [
+      {
+        "id": "top_text",
+        "name": "top_text",
+        "label": "Top Text",
+        "type": "text",
+        "default": "KEYNOTE SPEAKER"
+      },
+      {
+        "id": "speaker_name",
+        "name": "speaker_name",
+        "label": "Speaker Name",
+        "type": "text",
+        "default": "Pascal Bornet"
+      },
+      {
+        "id": "speaker_tagline",
+        "name": "speaker_tagline",
+        "label": "Speaker Tagline",
+        "type": "text",
+        "default": "Global AI & Automation Expert · Best-Selling Author · Top 10 World Influencer"
+      }
+    ]
+  },
+  {
+    "id": "image_section",
+    "name": "image_section",
+    "label": "Image",
+    "type": "group",
+    "children": [
+      {
+        "id": "speaker_image",
+        "name": "speaker_image",
+        "label": "Speaker Image",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "Keynote Speaker",
+          "width": 600,
+          "height": 720
+        }
+      }
+    ]
+  },
+  {
+    "id": "body_section",
+    "name": "body_section",
+    "label": "Body Content",
+    "type": "group",
+    "children": [
+      {
+        "id": "body_content",
+        "name": "body_content",
+        "label": "Body Content",
+        "type": "richtext",
+        "default": "<p>Pascal Bornet is one of the world's foremost authorities on artificial intelligence and automation — consistently ranked among the top 10 global influencers in his field.</p>"
+      }
+    ]
+  },
+  {
+    "id": "publications_section",
+    "name": "publications_section",
+    "label": "Publications",
+    "type": "group",
+    "children": [
+      {
+        "id": "publications",
+        "name": "publications",
+        "label": "Publications",
+        "type": "group",
+        "occurrence": {
+          "min": 1,
+          "max": 20,
+          "default": 5,
+          "sorting_label_field": "publication_name"
+        },
+        "children": [
+          {
+            "id": "publication_name",
+            "name": "publication_name",
+            "label": "Publication Name",
+            "type": "text",
+            "default": "Forbes"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "stats_section",
+    "name": "stats_section",
+    "label": "Stats",
+    "type": "group",
+    "children": [
+      {
+        "id": "stats_columns",
+        "name": "stats_columns",
+        "label": "Stats Columns",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["2", "2 Columns"],
+          ["3", "3 Columns"],
+          ["4", "4 Columns"],
+          ["5", "5 Columns"]
+        ],
+        "default": "4"
+      },
+      {
+        "id": "stats",
+        "name": "stats",
+        "label": "Stats",
+        "type": "group",
+        "occurrence": {
+          "min": 1,
+          "max": 10,
+          "default": 4,
+          "sorting_label_field": "stat_number"
+        },
+        "children": [
+          {
+            "id": "stat_number",
+            "name": "stat_number",
+            "label": "Stat Number",
+            "type": "text",
+            "default": "100+"
+          },
+          {
+            "id": "stat_label",
+            "name": "stat_label",
+            "label": "Stat Label",
+            "type": "text",
+            "default": "KEYNOTES PER YEAR BY PASCAL BORNET"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "content_style",
+        "name": "content_style",
+        "label": "Content",
+        "type": "group",
+        "children": [
+          {
+            "id": "top_text_style",
+            "name": "top_text_style",
+            "label": "Top Text",
+            "type": "group",
+            "children": [
+              {
+                "id": "top_text_color",
+                "name": "top_text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "speaker_name_style",
+            "name": "speaker_name_style",
+            "label": "Speaker Name",
+            "type": "group",
+            "children": [
+              {
+                "id": "speaker_name_color",
+                "name": "speaker_name_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "tagline_style",
+            "name": "tagline_style",
+            "label": "Tagline",
+            "type": "group",
+            "children": [
+              {
+                "id": "tagline_color",
+                "name": "tagline_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "body_style",
+            "name": "body_style",
+            "label": "Body",
+            "type": "group",
+            "children": [
+              {
+                "id": "body_color",
+                "name": "body_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "publications_style",
+        "name": "publications_style",
+        "label": "Publications",
+        "type": "group",
+        "children": [
+          {
+            "id": "tag_text_color",
+            "name": "tag_text_color",
+            "label": "Tag Text Color",
+            "type": "color",
+            "default": {
+              "color": "#C9A84C",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "tag_border_color",
+            "name": "tag_border_color",
+            "label": "Tag Border Color",
+            "type": "color",
+            "default": {
+              "color": "#C9A84C",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "tag_bg_color",
+            "name": "tag_bg_color",
+            "label": "Tag Background Color",
+            "type": "color",
+            "default": {
+              "color": "#0A0A1A",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "stats_style",
+        "name": "stats_style",
+        "label": "Stats",
+        "type": "group",
+        "children": [
+          {
+            "id": "stat_bg_color",
+            "name": "stat_bg_color",
+            "label": "Card Background Color",
+            "type": "color",
+            "default": {
+              "color": "#1C2340",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "stat_number_color",
+            "name": "stat_number_color",
+            "label": "Number Color",
+            "type": "color",
+            "default": {
+              "color": "#C9A84C",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "stat_label_color",
+            "name": "stat_label_color",
+            "label": "Label Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
