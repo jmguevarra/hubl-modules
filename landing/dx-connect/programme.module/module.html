@@ -1,0 +1,108 @@
+{% set s = module.styles %}
+{% set hs = s.header_style %}
+{% set ls = s.locations_style %}
+{% set ss = s.schedule_style %}
+<style>
+  #dx-programme .dx-programme__top-text {
+    color: {{ hs.top_text_style.top_text_color.color }};
+    opacity: {{ hs.top_text_style.top_text_color.opacity / 100 }};
+  }
+  #dx-programme .dx-programme__heading {
+    color: {{ hs.heading_style.heading_color.color }};
+    opacity: {{ hs.heading_style.heading_color.opacity / 100 }};
+  }
+  #dx-programme .dx-programme__location-icon {
+    color: {{ ls.icon_color.color }};
+    opacity: {{ ls.icon_color.opacity / 100 }};
+  }
+  #dx-programme .dx-programme__location-name {
+    color: {{ ls.location_name_color.color }};
+    opacity: {{ ls.location_name_color.opacity / 100 }};
+  }
+  #dx-programme .dx-programme__location-time {
+    color: {{ ls.location_time_color.color }};
+    opacity: {{ ls.location_time_color.opacity / 100 }};
+  }
+  #dx-programme .dx-programme__table {
+    border-color: {{ ss.table_border_color.color }};
+  }
+  #dx-programme .dx-programme__row + .dx-programme__row {
+    border-top-color: {{ ss.row_divider_color.color }};
+  }
+  #dx-programme .dx-programme__duration {
+    color: {{ ss.duration_style.duration_text_color.color }};
+    border-right-color: {{ ss.duration_style.duration_border_color.color }};
+  }
+  #dx-programme .dx-programme__session-title {
+    color: {{ ss.session_title_style.session_title_color.color }};
+    opacity: {{ ss.session_title_style.session_title_color.opacity / 100 }};
+  }
+  #dx-programme .dx-programme__session-description {
+    color: {{ ss.session_description_style.session_description_color.color }};
+    opacity: {{ ss.session_description_style.session_description_color.opacity / 100 }};
+  }
+</style>
+
+<section id="dx-programme" class="dx-programme">
+  <div class="dx-module__container content-wrapper">
+
+    {# ---- Header ---- #}
+    <div class="dx-programme__header">
+
+      {% if module.header_section.top_text %}
+      <p class="dx-programme__top-text">{{ module.header_section.top_text }}</p>
+      {% endif %}
+
+      {% if module.header_section.heading %}
+      <h2 class="dx-programme__heading">{{ module.header_section.heading }}</h2>
+      {% endif %}
+
+    </div>
+
+    {# ---- Locations row ---- #}
+    {% if module.locations_section.locations %}
+    <div class="dx-programme__locations">
+      {% for loc in module.locations_section.locations %}
+      <div class="dx-programme__location">
+        <svg class="dx-programme__location-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {% if loc.location_name %}
+        <span class="dx-programme__location-name">{{ loc.location_name }}</span>
+        {% endif %}
+        {% if loc.location_time %}
+        <span class="dx-programme__location-separator">·</span>
+        <span class="dx-programme__location-time">{{ loc.location_time }}</span>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {# ---- Schedule table ---- #}
+    {% if module.schedule_section.schedule_items %}
+    <div class="dx-programme__table">
+      {% for item in module.schedule_section.schedule_items %}
+      <div class="dx-programme__row">
+
+        <div class="dx-programme__duration">
+          {% if item.duration %}{{ item.duration }}{% endif %}
+        </div>
+
+        <div class="dx-programme__session">
+          {% if item.session_title %}
+          <span class="dx-programme__session-title">{{ item.session_title }}</span>
+          {% endif %}
+          {% if item.session_description %}
+          <span class="dx-programme__session-description">{{ item.session_description }}</span>
+          {% endif %}
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>

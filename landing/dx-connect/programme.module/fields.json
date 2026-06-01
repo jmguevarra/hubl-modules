@@ -1,0 +1,286 @@
+[
+  {
+    "id": "header_section",
+    "name": "header_section",
+    "label": "Header",
+    "type": "group",
+    "children": [
+      {
+        "id": "top_text",
+        "name": "top_text",
+        "label": "Top Text",
+        "type": "text",
+        "default": "PROGRAMME"
+      },
+      {
+        "id": "heading",
+        "name": "heading",
+        "label": "Heading",
+        "type": "text",
+        "default": "Your Day, Designed for Depth"
+      }
+    ]
+  },
+  {
+    "id": "locations_section",
+    "name": "locations_section",
+    "label": "Locations",
+    "type": "group",
+    "children": [
+      {
+        "id": "locations",
+        "name": "locations",
+        "label": "Locations",
+        "type": "group",
+        "occurrence": {
+          "min": 1,
+          "max": 6,
+          "default": 2,
+          "sorting_label_field": "location_name"
+        },
+        "children": [
+          {
+            "id": "location_name",
+            "name": "location_name",
+            "label": "Location Name",
+            "type": "text",
+            "default": "Sydney & Melbourne"
+          },
+          {
+            "id": "location_time",
+            "name": "location_time",
+            "label": "Time",
+            "type": "text",
+            "default": "12:00 – 2:00 PM"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "schedule_section",
+    "name": "schedule_section",
+    "label": "Schedule",
+    "type": "group",
+    "children": [
+      {
+        "id": "schedule_items",
+        "name": "schedule_items",
+        "label": "Schedule Items",
+        "type": "group",
+        "occurrence": {
+          "min": 1,
+          "max": 20,
+          "default": 4,
+          "sorting_label_field": "session_title"
+        },
+        "children": [
+          {
+            "id": "duration",
+            "name": "duration",
+            "label": "Duration",
+            "type": "text",
+            "default": "40 min"
+          },
+          {
+            "id": "session_title",
+            "name": "session_title",
+            "label": "Session Title",
+            "type": "text",
+            "default": "Keynote: The Last Competitive Advantage"
+          },
+          {
+            "id": "session_description",
+            "name": "session_description",
+            "label": "Session Description",
+            "type": "text",
+            "default": "Pascal Bornet — Live keynote on leading Agentic AI and building an IRREPLACEABLE organisation"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "header_style",
+        "name": "header_style",
+        "label": "Header",
+        "type": "group",
+        "children": [
+          {
+            "id": "top_text_style",
+            "name": "top_text_style",
+            "label": "Top Text",
+            "type": "group",
+            "children": [
+              {
+                "id": "top_text_color",
+                "name": "top_text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "heading_style",
+            "name": "heading_style",
+            "label": "Heading",
+            "type": "group",
+            "children": [
+              {
+                "id": "heading_color",
+                "name": "heading_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "locations_style",
+        "name": "locations_style",
+        "label": "Locations",
+        "type": "group",
+        "children": [
+          {
+            "id": "icon_color",
+            "name": "icon_color",
+            "label": "Icon Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "location_name_color",
+            "name": "location_name_color",
+            "label": "Location Name Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "location_time_color",
+            "name": "location_time_color",
+            "label": "Time Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "schedule_style",
+        "name": "schedule_style",
+        "label": "Schedule",
+        "type": "group",
+        "children": [
+          {
+            "id": "table_border_color",
+            "name": "table_border_color",
+            "label": "Table Border Color",
+            "type": "color",
+            "default": {
+              "color": "#2E3A5C",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "row_divider_color",
+            "name": "row_divider_color",
+            "label": "Row Divider Color",
+            "type": "color",
+            "default": {
+              "color": "#2E3A5C",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "duration_style",
+            "name": "duration_style",
+            "label": "Duration",
+            "type": "group",
+            "children": [
+              {
+                "id": "duration_text_color",
+                "name": "duration_text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                }
+              },
+              {
+                "id": "duration_border_color",
+                "name": "duration_border_color",
+                "label": "Border Color",
+                "type": "color",
+                "default": {
+                  "color": "#2E3A5C",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "session_title_style",
+            "name": "session_title_style",
+            "label": "Session Title",
+            "type": "group",
+            "children": [
+              {
+                "id": "session_title_color",
+                "name": "session_title_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "session_description_style",
+            "name": "session_description_style",
+            "label": "Session Description",
+            "type": "group",
+            "children": [
+              {
+                "id": "session_description_color",
+                "name": "session_description_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 80
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

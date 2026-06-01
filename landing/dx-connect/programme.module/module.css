@@ -1,0 +1,130 @@
+.dx-programme {
+  padding: 80px 0;
+}
+
+/* ---- Header ---- */
+.dx-programme__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.dx-programme__top-text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.dx-programme__heading {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* ---- Locations row ---- */
+.dx-programme__locations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.dx-programme__location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dx-programme__location-icon {
+  flex-shrink: 0;
+}
+
+.dx-programme__location-name {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.dx-programme__location-separator {
+  font-size: 15px;
+  opacity: 0.5;
+}
+
+.dx-programme__location-time {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* ---- Schedule table ---- */
+.dx-programme__table {
+  border: 1px solid;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.dx-programme__row {
+  display: flex;
+  align-items: stretch;
+  border-top: 1px solid transparent;
+}
+
+.dx-programme__row:first-child {
+  border-top: none;
+}
+
+.dx-programme__duration {
+  flex-shrink: 0;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  border-right: 1px solid;
+  text-align: center;
+}
+
+.dx-programme__session {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 28px 32px;
+}
+
+.dx-programme__session-title {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.3;
+  display: block;
+}
+
+.dx-programme__session-description {
+  font-size: 14px;
+  line-height: 1.6;
+  display: block;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .dx-programme__locations {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .dx-programme__duration {
+    width: 80px;
+    padding: 20px 12px;
+  }
+
+  .dx-programme__session {
+    padding: 20px 20px;
+  }
+}
