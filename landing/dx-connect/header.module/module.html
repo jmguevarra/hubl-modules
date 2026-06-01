@@ -1,0 +1,73 @@
+{% set s = module.styles %}
+{% set btn = s.button_style %}
+<style>
+#dx-header .dx-header__nav-link {
+    color: {{ s.nav_style.nav_text_color.color }};
+    opacity: {{ s.nav_style.nav_text_color.opacity / 100 }};
+  }
+  #dx-header .dx-header__btn {
+    color: {{ btn.button_text_color.color }};
+    {% if btn.bg_type == 'gradient' %}
+    background: linear-gradient({{ btn.gradient_direction }}, {{ btn.gradient_start.color }}, {{ btn.gradient_end.color }});
+    {% else %}
+    background-color: {{ btn.button_bg_color.color }};
+    {% endif %}
+  }
+  {% if btn.enable_hover %}
+  {% set hover = btn.hover_styles %}
+  #dx-header .dx-header__btn:hover {
+    color: {{ hover.hover_text_color.color }};
+    {% if hover.hover_bg_type == 'gradient' %}
+    background: linear-gradient({{ hover.hover_gradient_direction }}, {{ hover.hover_gradient_start.color }}, {{ hover.hover_gradient_end.color }});
+    {% else %}
+    background-color: {{ hover.hover_bg_color.color }};
+    {% endif %}
+  }
+  {% endif %}
+</style>
+
+<header id="dx-header" class="dx-header">
+  <div class="dx-module__container content-wrapper">
+    <div class="dx-header__inner">
+
+      {# ---- Logo ---- #}
+      {% if module.logo_section.logo.src %}
+      <a href="{{ module.logo_section.logo_link }}" class="dx-header__logo-link">
+        <img
+          src="{{ module.logo_section.logo.src }}"
+          alt="{{ module.logo_section.logo.alt }}"
+          class="dx-header__logo"
+          loading="eager"
+        />
+      </a>
+      {% endif %}
+
+      {# ---- Navigation ---- #}
+      {% if module.nav_items %}
+      <nav class="dx-header__nav" aria-label="Main navigation">
+        {% for item in module.nav_items %}
+        {% if item.nav_label %}
+        <a
+          href="{{ item.nav_url }}"
+          class="dx-header__nav-link"
+          {% if item.nav_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+        >{{ item.nav_label }}</a>
+        {% endif %}
+        {% endfor %}
+      </nav>
+      {% endif %}
+
+      {# ---- Button ---- #}
+      {% if module.button_section.button_text %}
+      <a
+        href="{{ module.button_section.button_url }}"
+        class="dx-btn dx-header__btn"
+        {% if module.button_section.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+      >
+        <span class="dx-btn-text">{{ module.button_section.button_text }}</span>
+      </a>
+      {% endif %}
+
+    </div>
+  </div>
+</header>

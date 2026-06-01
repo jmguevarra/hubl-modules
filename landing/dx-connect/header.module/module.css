@@ -1,0 +1,73 @@
+.dx-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+/* ---- Inner layout ---- */
+.dx-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 20px 0;
+}
+
+/* ---- Logo ---- */
+.dx-header__logo-link {
+  flex-shrink: 0;
+  display: block;
+  line-height: 0;
+}
+
+.dx-header__logo {
+  max-height: 40px;
+  width: auto;
+  display: block;
+}
+
+/* ---- Navigation ---- */
+.dx-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex: 1;
+  justify-content: center;
+}
+
+.dx-header__nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.dx-header__nav-link:hover {
+  opacity: 0.75;
+}
+
+/* ---- Button ---- */
+.dx-header__btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .dx-header__nav {
+    display: none;
+  }
+}
