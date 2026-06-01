@@ -1,0 +1,178 @@
+[
+  {
+    "id": "columns",
+    "name": "columns",
+    "label": "Number of Columns",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      ["1", "1 Column"],
+      ["2", "2 Columns"],
+      ["3", "3 Columns"],
+      ["4", "4 Columns"]
+    ],
+    "default": "2"
+  },
+  {
+    "id": "items",
+    "name": "items",
+    "label": "Items",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "default": 2,
+      "sorting_label_field": "col_label"
+    },
+    "children": [
+          {
+            "id": "col_label",
+            "name": "col_label",
+            "label": "Label",
+            "type": "text",
+            "default": "About"
+          },
+          {
+            "id": "col_logo",
+            "name": "col_logo",
+            "label": "Logo",
+            "type": "image",
+            "default": {
+              "src": "",
+              "alt": "Logo",
+              "width": 300,
+              "height": 80
+            }
+          },
+          {
+            "id": "col_logo_sub_text",
+            "name": "col_logo_sub_text",
+            "label": "Logo Sub Text",
+            "type": "text",
+            "default": ""
+          },
+          {
+            "id": "col_body_content",
+            "name": "col_body_content",
+            "label": "Body Content",
+            "type": "richtext",
+            "default": "<p>Add your content here.</p>"
+          },
+          {
+            "id": "col_link_text",
+            "name": "col_link_text",
+            "label": "Link Text",
+            "type": "text",
+            "default": "Learn more"
+          },
+          {
+            "id": "col_link_url",
+            "name": "col_link_url",
+            "label": "Link URL",
+            "type": "url",
+            "default": ""
+          },
+          {
+            "id": "col_link_new_tab",
+            "name": "col_link_new_tab",
+            "label": "Open in New Tab",
+            "type": "boolean",
+            "default": false
+          }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "alignment",
+        "name": "alignment",
+        "label": "Alignment",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["left", "Left"],
+          ["center", "Center"],
+          ["right", "Right"]
+        ],
+        "default": "left"
+      },
+      {
+        "id": "label_style",
+        "name": "label_style",
+        "label": "Label",
+        "type": "group",
+        "children": [
+          {
+            "id": "label_color",
+            "name": "label_color",
+            "label": "Text Color",
+            "type": "color",
+            "default": {
+              "color": "#6B7280",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "logo_sub_style",
+        "name": "logo_sub_style",
+        "label": "Logo Sub Text",
+        "type": "group",
+        "children": [
+          {
+            "id": "logo_sub_color",
+            "name": "logo_sub_color",
+            "label": "Text Color",
+            "type": "color",
+            "default": {
+              "color": "#9CA3AF",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "body_style",
+        "name": "body_style",
+        "label": "Body",
+        "type": "group",
+        "children": [
+          {
+            "id": "body_color",
+            "name": "body_color",
+            "label": "Text Color",
+            "type": "color",
+            "default": {
+              "color": "#111827",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "link_style",
+        "name": "link_style",
+        "label": "Link",
+        "type": "group",
+        "children": [
+          {
+            "id": "link_color",
+            "name": "link_color",
+            "label": "Text Color",
+            "type": "color",
+            "default": {
+              "color": "#111827",
+              "opacity": 100
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

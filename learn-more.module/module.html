@@ -1,0 +1,74 @@
+{% set s = module.styles %}
+<style>
+  #dx-learn-more .dx-learn-more__column {
+    text-align: {{ s.alignment }};
+  }
+  #dx-learn-more .dx-learn-more__logo-wrap {
+    align-items: {% if s.alignment == 'center' %}center{% elif s.alignment == 'right' %}flex-end{% else %}flex-start{% endif %};
+  }
+  #dx-learn-more .dx-learn-more__link {
+    align-self: {% if s.alignment == 'center' %}center{% elif s.alignment == 'right' %}flex-end{% else %}flex-start{% endif %};
+  }
+  #dx-learn-more .dx-learn-more__col-label {
+    color: {{ s.label_style.label_color.color }};
+    opacity: {{ s.label_style.label_color.opacity / 100 }};
+  }
+  #dx-learn-more .dx-learn-more__logo-sub {
+    color: {{ s.logo_sub_style.logo_sub_color.color }};
+    opacity: {{ s.logo_sub_style.logo_sub_color.opacity / 100 }};
+  }
+  #dx-learn-more .dx-learn-more__body {
+    color: {{ s.body_style.body_color.color }};
+    opacity: {{ s.body_style.body_color.opacity / 100 }};
+  }
+  #dx-learn-more .dx-learn-more__link {
+    color: {{ s.link_style.link_color.color }};
+    opacity: {{ s.link_style.link_color.opacity / 100 }};
+  }
+</style>
+
+<section id="dx-learn-more" class="dx-learn-more">
+  <div class="dx-module__container content-wrapper">
+    <div class="dx-learn-more__inner">
+      <div class="dx-learn-more__grid dx-learn-more__grid--cols-{{ module.columns }}">
+
+        {% for item in module.items %}
+        <div class="dx-learn-more__column">
+
+          {% if item.col_label %}
+          <p class="dx-learn-more__col-label">{{ item.col_label }}</p>
+          {% endif %}
+
+          {% if item.col_logo.src %}
+          <div class="dx-learn-more__logo-wrap">
+            <img
+              src="{{ item.col_logo.src }}"
+              alt="{{ item.col_logo.alt }}"
+              class="dx-learn-more__logo"
+              loading="lazy"
+            />
+            {% if item.col_logo_sub_text %}
+            <span class="dx-learn-more__logo-sub">{{ item.col_logo_sub_text }}</span>
+            {% endif %}
+          </div>
+          {% endif %}
+
+          {% if item.col_body_content %}
+          <div class="dx-learn-more__body">{{ item.col_body_content }}</div>
+          {% endif %}
+
+          {% if item.col_link_text %}
+          <a
+            href="{{ item.col_link_url }}"
+            class="dx-learn-more__link"
+            {% if item.col_link_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+          >{{ item.col_link_text }} →</a>
+          {% endif %}
+
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</section>
