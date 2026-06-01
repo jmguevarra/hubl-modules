@@ -1,1 +1,73 @@
-<!-- module html  -->
+{% set btn = module.colors.button_style %}
+<style>
+  #dx-connect-hero .dx-connect-hero__top-text {
+    color: {{ module.colors.top_text_style.top_text_color.color }};
+    opacity: {{ module.colors.top_text_style.top_text_color.opacity / 100 }};
+  }
+  #dx-connect-hero .dx-connect-hero__heading {
+    color: {{ module.colors.main_header_style.heading_color.color }};
+    opacity: {{ module.colors.main_header_style.heading_color.opacity / 100 }};
+  }
+  #dx-connect-hero .dx-connect-hero__subheading {
+    color: {{ module.colors.content_style.subheading_color.color }};
+    opacity: {{ module.colors.content_style.subheading_color.opacity / 100 }};
+  }
+  #dx-connect-hero .dx-connect-hero__btn {
+    color: {{ btn.button_text_color.color }};
+    {% if btn.bg_type == 'gradient' %}
+    background: linear-gradient({{ btn.gradient_direction }}, {{ btn.gradient_start.color }}, {{ btn.gradient_end.color }});
+    {% else %}
+    background-color: {{ btn.button_bg_color.color }};
+    {% endif %}
+  }
+  {% if btn.enable_hover %}
+  {% set hover = btn.hover_styles %}
+  #dx-connect-hero .dx-connect-hero__btn:hover {
+    color: {{ hover.hover_text_color.color }};
+    {% if hover.hover_bg_type == 'gradient' %}
+    background: linear-gradient({{ hover.hover_gradient_direction }}, {{ hover.hover_gradient_start.color }}, {{ hover.hover_gradient_end.color }});
+    {% else %}
+    background-color: {{ hover.hover_bg_color.color }};
+    {% endif %}
+  }
+  {% endif %}
+  #dx-connect-hero .dx-connect-hero__below-btn {
+    color: {{ module.colors.disclaimer_style.below_button_text_color.color }};
+    opacity: {{ module.colors.disclaimer_style.below_button_text_color.opacity / 100 }};
+  }
+</style>
+
+<section id="dx-connect-hero" class="dx-connect-hero">
+  <div class="dx-module__container content-wrapper">
+    <div class="dx-connect-hero__content">
+
+      {% if module.top_text %}
+      <p class="dx-connect-hero__top-text">{{ module.top_text }}</p>
+      {% endif %}
+
+      {% if module.main_heading %}
+      <h1 class="dx-connect-hero__heading">{{ module.main_heading }}</h1>
+      {% endif %}
+
+      {% if module.subheading %}
+      <div class="dx-connect-hero__subheading">{{ module.subheading }}</div>
+      {% endif %}
+
+      {% if module.button.button_text %}
+      <div class="dx-connect-hero__cta-wrap">
+        <a href="{{ module.button.button_anchor }}" class="dx-btn dx-connect-hero__btn" target="_self">
+            <span class="dx-btn-text">{{ module.button.button_text }}</span>
+            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </a>
+
+        {% if module.below_button_text %}
+        <p class="dx-connect-hero__below-btn">{{ module.below_button_text }}</p>
+        {% endif %}
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>

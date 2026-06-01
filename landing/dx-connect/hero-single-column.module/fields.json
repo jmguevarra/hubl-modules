@@ -1,11 +1,336 @@
 [
   {
-    "default": "<h1>Hello, world!</h1>",
-    "label": "Rich text field",
-    "locked": false,
-    "name": "text",
-    "required": false,
+    "id": "top_text",
+    "name": "top_text",
+    "label": "Top Text",
+    "type": "text",
+    "default": "AN EXCLUSIVE EXECUTIVE EXPERIENCE"
+  },
+  {
+    "id": "main_heading",
+    "name": "main_heading",
+    "label": "Main Heading",
+    "type": "text",
+    "default": "The last competitive advantage"
+  },
+  {
+    "id": "subheading",
+    "name": "subheading",
+    "label": "Subheading",
     "type": "richtext",
-    "validation_regex": ""
+    "default": "<p>A private keynote and executive roundtable for APAC's most senior IT Leaders — live, unrecorded, and unrepeated.</p>"
+  },
+  {
+    "id": "button",
+    "name": "button",
+    "label": "Button",
+    "type": "group",
+    "children": [
+      {
+        "id": "button_text",
+        "name": "button_text",
+        "label": "Button Text",
+        "type": "text",
+        "default": "REQUEST YOUR SEAT →"
+      },
+      {
+        "id": "button_anchor",
+        "name": "button_anchor",
+        "label": "Button Anchor (Form Section ID)",
+        "type": "text",
+        "default": "#form-section",
+        "help_text": "Enter the section anchor ID to scroll to, e.g. #form-section"
+      }
+    ]
+  },
+  {
+    "id": "below_button_text",
+    "name": "below_button_text",
+    "label": "Text Below Button",
+    "type": "text",
+    "default": "This event will not be recorded or made available on demand."
+  },
+  {
+    "id": "colors",
+    "name": "colors",
+    "label": "Colors",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "top_text_style",
+        "name": "top_text_style",
+        "label": "Top Text",
+        "type": "group",
+        "children": [
+          {
+            "id": "top_text_color",
+            "name": "top_text_color",
+            "label": "Text Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "main_header_style",
+        "name": "main_header_style",
+        "label": "Main Header",
+        "type": "group",
+        "children": [
+          {
+            "id": "heading_color",
+            "name": "heading_color",
+            "label": "Text Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "content_style",
+        "name": "content_style",
+        "label": "Content",
+        "type": "group",
+        "children": [
+          {
+            "id": "subheading_color",
+            "name": "subheading_color",
+            "label": "Text Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "button_style",
+        "name": "button_style",
+        "label": "Button",
+        "type": "group",
+        "children": [
+          {
+            "id": "button_text_color",
+            "name": "button_text_color",
+            "label": "Text Color",
+            "type": "color",
+            "default": {
+              "color": "#0A0A1A",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "bg_type",
+            "name": "bg_type",
+            "label": "Background Type",
+            "type": "choice",
+            "display": "radio",
+            "choices": [
+              ["solid", "Solid"],
+              ["gradient", "Gradient"]
+            ],
+            "default": "solid"
+          },
+          {
+            "id": "button_bg_color",
+            "name": "button_bg_color",
+            "label": "Background Color",
+            "type": "color",
+            "default": {
+              "color": "#C9A84C",
+              "opacity": 100
+            },
+            "visibility": {
+              "controlling_field_path": "colors.button_style.bg_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "solid"
+            }
+          },
+          {
+            "id": "gradient_start",
+            "name": "gradient_start",
+            "label": "Gradient Start Color",
+            "type": "color",
+            "default": {
+              "color": "#C9A84C",
+              "opacity": 100
+            },
+            "visibility": {
+              "controlling_field_path": "colors.button_style.bg_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "gradient"
+            }
+          },
+          {
+            "id": "gradient_end",
+            "name": "gradient_end",
+            "label": "Gradient End Color",
+            "type": "color",
+            "default": {
+              "color": "#E8C96A",
+              "opacity": 100
+            },
+            "visibility": {
+              "controlling_field_path": "colors.button_style.bg_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "gradient"
+            }
+          },
+          {
+            "id": "gradient_direction",
+            "name": "gradient_direction",
+            "label": "Gradient Direction",
+            "type": "choice",
+            "default": "to right",
+            "choices": [
+              ["to right", "Left → Right"],
+              ["to left", "Right → Left"],
+              ["to bottom", "Top → Bottom"],
+              ["to top", "Bottom → Top"],
+              ["to bottom right", "Top Left → Bottom Right"],
+              ["to bottom left", "Top Right → Bottom Left"]
+            ],
+            "visibility": {
+              "controlling_field_path": "colors.button_style.bg_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "gradient"
+            }
+          },
+          {
+            "id": "enable_hover",
+            "name": "enable_hover",
+            "label": "Enable Hover Styles",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "hover_styles",
+            "name": "hover_styles",
+            "label": "Hover Styles",
+            "type": "group",
+            "visibility": {
+              "controlling_field_path": "colors.button_style.enable_hover",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            },
+            "children": [
+              {
+                "id": "hover_text_color",
+                "name": "hover_text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#0A0A1A",
+                  "opacity": 100
+                }
+              },
+              {
+                "id": "hover_bg_type",
+                "name": "hover_bg_type",
+                "label": "Background Type",
+                "type": "choice",
+                "display": "radio",
+                "choices": [
+                  ["solid", "Solid"],
+                  ["gradient", "Gradient"]
+                ],
+                "default": "solid"
+              },
+              {
+                "id": "hover_bg_color",
+                "name": "hover_bg_color",
+                "label": "Background Color",
+                "type": "color",
+                "default": {
+                  "color": "#A88A38",
+                  "opacity": 100
+                },
+                "visibility": {
+                  "controlling_field_path": "colors.button_style.hover_styles.hover_bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "solid"
+                }
+              },
+              {
+                "id": "hover_gradient_start",
+                "name": "hover_gradient_start",
+                "label": "Gradient Start Color",
+                "type": "color",
+                "default": {
+                  "color": "#A88A38",
+                  "opacity": 100
+                },
+                "visibility": {
+                  "controlling_field_path": "colors.button_style.hover_styles.hover_bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              },
+              {
+                "id": "hover_gradient_end",
+                "name": "hover_gradient_end",
+                "label": "Gradient End Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                },
+                "visibility": {
+                  "controlling_field_path": "colors.button_style.hover_styles.hover_bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              },
+              {
+                "id": "hover_gradient_direction",
+                "name": "hover_gradient_direction",
+                "label": "Gradient Direction",
+                "type": "choice",
+                "default": "to right",
+                "choices": [
+                  ["to right", "Left → Right"],
+                  ["to left", "Right → Left"],
+                  ["to bottom", "Top → Bottom"],
+                  ["to top", "Bottom → Top"],
+                  ["to bottom right", "Top Left → Bottom Right"],
+                  ["to bottom left", "Top Right → Bottom Left"]
+                ],
+                "visibility": {
+                  "controlling_field_path": "colors.button_style.hover_styles.hover_bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "disclaimer_style",
+        "name": "disclaimer_style",
+        "label": "Disclaimer",
+        "type": "group",
+        "children": [
+          {
+            "id": "below_button_text_color",
+            "name": "below_button_text_color",
+            "label": "Text Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          }
+        ]
+      }
+    ]
   }
 ]
