@@ -1,1 +1,98 @@
-<!-- module html  -->
+{% set s = module.styles %}
+{% set hs = s.header_style %}
+{% set cs = s.card_style %}
+<style>
+  #dx-the-panel .dx-the-panel__top-text {
+    color: {{ hs.top_text_style.top_text_color.color }};
+    opacity: {{ hs.top_text_style.top_text_color.opacity / 100 }};
+  }
+  #dx-the-panel .dx-the-panel__heading {
+    color: {{ hs.heading_style.heading_color.color }};
+    opacity: {{ hs.heading_style.heading_color.opacity / 100 }};
+  }
+  #dx-the-panel .dx-the-panel__subheading {
+    color: {{ hs.subheading_style.subheading_color.color }};
+    opacity: {{ hs.subheading_style.subheading_color.opacity / 100 }};
+  }
+  #dx-the-panel .dx-the-panel__card {
+    background-color: {{ cs.card_bg_color.color }};
+  }
+  #dx-the-panel .dx-the-panel__member-name {
+    color: {{ cs.member_name_style.member_name_color.color }};
+    opacity: {{ cs.member_name_style.member_name_color.opacity / 100 }};
+  }
+  #dx-the-panel .dx-the-panel__member-title {
+    color: {{ cs.member_title_style.member_title_color.color }};
+    opacity: {{ cs.member_title_style.member_title_color.opacity / 100 }};
+  }
+  #dx-the-panel .dx-the-panel__member-company {
+    color: {{ cs.member_company_style.member_company_color.color }};
+    opacity: {{ cs.member_company_style.member_company_color.opacity / 100 }};
+  }
+  #dx-the-panel .dx-the-panel__member-bio {
+    color: {{ cs.member_bio_style.member_bio_color.color }};
+    opacity: {{ cs.member_bio_style.member_bio_color.opacity / 100 }};
+  }
+</style>
+
+<section id="dx-the-panel" class="dx-the-panel">
+  <div class="dx-module__container content-wrapper">
+
+    {# ---- Header ---- #}
+    <div class="dx-the-panel__header">
+
+      {% if module.header_section.top_text %}
+      <p class="dx-the-panel__top-text">{{ module.header_section.top_text }}</p>
+      {% endif %}
+
+      {% if module.header_section.heading %}
+      <h2 class="dx-the-panel__heading">{{ module.header_section.heading }}</h2>
+      {% endif %}
+
+      {% if module.header_section.subheading %}
+      <div class="dx-the-panel__subheading">{{ module.header_section.subheading }}</div>
+      {% endif %}
+
+    </div>
+
+    {# ---- Panel members grid ---- #}
+    {% if module.panel_section.members %}
+    <div class="dx-the-panel__grid dx-the-panel__grid--cols-{{ module.panel_section.columns }}">
+      {% for member in module.panel_section.members %}
+      <div class="dx-the-panel__card">
+
+        <div class="dx-the-panel__card-header">
+          {% if member.member_image.src %}
+          <div class="dx-the-panel__avatar-wrap">
+            <img
+              src="{{ member.member_image.src }}"
+              alt="{{ member.member_image.alt }}"
+              class="dx-the-panel__avatar"
+              loading="lazy"
+            />
+          </div>
+          {% endif %}
+          <div class="dx-the-panel__member-info">
+            {% if member.member_name %}
+            <span class="dx-the-panel__member-name">{{ member.member_name }}</span>
+            {% endif %}
+            {% if member.member_title %}
+            <span class="dx-the-panel__member-title">{{ member.member_title }}</span>
+            {% endif %}
+            {% if member.member_company %}
+            <span class="dx-the-panel__member-company">{{ member.member_company }}</span>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if member.member_bio %}
+        <div class="dx-the-panel__member-bio">{{ member.member_bio }}</div>
+        {% endif %}
+
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>

@@ -1,11 +1,266 @@
 [
   {
-    "default": "<h1>Hello, world!</h1>",
-    "label": "Rich text field",
-    "locked": false,
-    "name": "text",
-    "required": false,
-    "type": "richtext",
-    "validation_regex": ""
+    "id": "header_section",
+    "name": "header_section",
+    "label": "Header",
+    "type": "group",
+    "children": [
+      {
+        "id": "top_text",
+        "name": "top_text",
+        "label": "Top Text",
+        "type": "text",
+        "default": "THE PANEL"
+      },
+      {
+        "id": "heading",
+        "name": "heading",
+        "label": "Heading",
+        "type": "text",
+        "default": "Direct Access. No Filter."
+      },
+      {
+        "id": "subheading",
+        "name": "subheading",
+        "label": "Subheading",
+        "type": "richtext",
+        "default": "<p>Following the keynote, Pascal is joined by two leaders who are actively shaping how AI is adopted at enterprise scale — for an unscripted conversation on what's actually working, what isn't, and what APAC IT Leaders need to hear.</p>"
+      }
+    ]
+  },
+  {
+    "id": "panel_section",
+    "name": "panel_section",
+    "label": "Panel Members",
+    "type": "group",
+    "children": [
+      {
+        "id": "columns",
+        "name": "columns",
+        "label": "Columns",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["2", "2 Columns"],
+          ["3", "3 Columns"]
+        ],
+        "default": "2"
+      },
+      {
+        "id": "members",
+        "name": "members",
+        "label": "Members",
+        "type": "group",
+        "occurrence": {
+          "min": 1,
+          "max": 6,
+          "default": 2,
+          "sorting_label_field": "member_name"
+        },
+        "children": [
+          {
+            "id": "member_image",
+            "name": "member_image",
+            "label": "Photo",
+            "type": "image",
+            "default": {
+              "src": "",
+              "alt": "Panel Member",
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "id": "member_name",
+            "name": "member_name",
+            "label": "Name",
+            "type": "text",
+            "default": "Woodson Martin"
+          },
+          {
+            "id": "member_title",
+            "name": "member_title",
+            "label": "Title",
+            "type": "text",
+            "default": "Title"
+          },
+          {
+            "id": "member_company",
+            "name": "member_company",
+            "label": "Company",
+            "type": "text",
+            "default": "OutSystems"
+          },
+          {
+            "id": "member_bio",
+            "name": "member_bio",
+            "label": "Bio",
+            "type": "richtext",
+            "default": "<p>Woodson Martin brings deep expertise in enterprise low-code and AI-driven application development.</p>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "header_style",
+        "name": "header_style",
+        "label": "Header",
+        "type": "group",
+        "children": [
+          {
+            "id": "top_text_style",
+            "name": "top_text_style",
+            "label": "Top Text",
+            "type": "group",
+            "children": [
+              {
+                "id": "top_text_color",
+                "name": "top_text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "heading_style",
+            "name": "heading_style",
+            "label": "Heading",
+            "type": "group",
+            "children": [
+              {
+                "id": "heading_color",
+                "name": "heading_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "subheading_style",
+            "name": "subheading_style",
+            "label": "Subheading",
+            "type": "group",
+            "children": [
+              {
+                "id": "subheading_color",
+                "name": "subheading_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "card_style",
+        "name": "card_style",
+        "label": "Card",
+        "type": "group",
+        "children": [
+          {
+            "id": "card_bg_color",
+            "name": "card_bg_color",
+            "label": "Card Background Color",
+            "type": "color",
+            "default": {
+              "color": "#1C2340",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "member_name_style",
+            "name": "member_name_style",
+            "label": "Member Name",
+            "type": "group",
+            "children": [
+              {
+                "id": "member_name_color",
+                "name": "member_name_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "member_title_style",
+            "name": "member_title_style",
+            "label": "Member Title",
+            "type": "group",
+            "children": [
+              {
+                "id": "member_title_color",
+                "name": "member_title_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "member_company_style",
+            "name": "member_company_style",
+            "label": "Member Company",
+            "type": "group",
+            "children": [
+              {
+                "id": "member_company_color",
+                "name": "member_company_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "member_bio_style",
+            "name": "member_bio_style",
+            "label": "Member Bio",
+            "type": "group",
+            "children": [
+              {
+                "id": "member_bio_color",
+                "name": "member_bio_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#FFFFFF",
+                  "opacity": 100
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]

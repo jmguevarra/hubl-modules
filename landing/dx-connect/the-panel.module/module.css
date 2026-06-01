@@ -1,0 +1,127 @@
+.dx-the-panel {
+  padding: 80px 0;
+}
+
+/* ---- Header ---- */
+.dx-the-panel__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dx-the-panel__top-text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.dx-the-panel__heading {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.dx-the-panel__subheading {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.dx-the-panel__subheading p {
+  margin: 0;
+}
+
+/* ---- Grid ---- */
+.dx-the-panel__grid {
+  display: grid;
+  gap: 24px;
+}
+
+.dx-the-panel__grid--cols-2 { grid-template-columns: repeat(2, 1fr); }
+.dx-the-panel__grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+/* ---- Card ---- */
+.dx-the-panel__card {
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dx-the-panel__card-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ---- Avatar ---- */
+.dx-the-panel__avatar-wrap {
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.dx-the-panel__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Member info ---- */
+.dx-the-panel__member-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dx-the-panel__member-name {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  display: block;
+}
+
+.dx-the-panel__member-title {
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+}
+
+.dx-the-panel__member-company {
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+}
+
+/* ---- Bio ---- */
+.dx-the-panel__member-bio {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.dx-the-panel__member-bio p {
+  margin: 0;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .dx-the-panel__grid--cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .dx-the-panel__grid--cols-2,
+  .dx-the-panel__grid--cols-3 {
+    grid-template-columns: 1fr;
+  }
+}
