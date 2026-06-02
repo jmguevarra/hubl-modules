@@ -6,17 +6,13 @@
 .dx-venues__header {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto 64px;
+  margin: 0 auto 48px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
 .dx-venues__top-text {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   margin: 0;
 }
 
@@ -39,7 +35,7 @@
 /* ---- Grid ---- */
 .dx-venues__grid {
   display: grid;
-  gap: 24px;
+  gap: 28px;
   align-items: start;
 }
 
@@ -77,15 +73,6 @@
   flex: 1;
 }
 
-.dx-venues__meal-type {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 2px;
-}
-
 .dx-venues__city-name {
   font-size: clamp(24px, 3vw, 32px);
   font-weight: 700;
@@ -94,9 +81,6 @@
 }
 
 .dx-venues__region {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
   display: block;
   margin-bottom: 12px;
@@ -121,11 +105,6 @@
   margin-top: 1px;
 }
 
-.dx-venues__detail-text {
-  font-size: 14px;
-  line-height: 1.4;
-}
-
 /* Venue name + address stacked */
 .dx-venues__venue-info {
   display: flex;
@@ -140,15 +119,52 @@
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
+  .dx-venues__grid {
+    gap: 12px;
+  }
+  .dx-venues__card-body {
+    padding: 24px 12px;
+  }
+  .dx-venues {
+    padding: 60px 0;
+  }
+}
+@media (max-width: 768px) {
   .dx-venues__grid--cols-3 {
     grid-template-columns: repeat(2, 1fr);
   }
+  .dx-venues__grid {
+    gap: 24px;
+  }
+  .dx-venues__card-body {
+    padding: 24px;
+  }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 480px) {
+  .dx-venues {
+    padding: 40px 0;
+  }
   .dx-venues__grid--cols-2,
   .dx-venues__grid--cols-3 {
     grid-template-columns: 1fr;
+  }
+  .dx-venues__details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  .dx-venues__details {
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  .dx-venues__region{
+    font-size: 14px;
+  }
+  .dx-venues__header{
+    margin-bottom: 32px;
   }
 }

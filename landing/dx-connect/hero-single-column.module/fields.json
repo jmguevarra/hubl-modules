@@ -34,12 +34,53 @@
         "default": "REQUEST YOUR SEAT →"
       },
       {
+        "id": "button_type",
+        "name": "button_type",
+        "label": "Button Type",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["link", "Link"],
+          ["anchor", "Anchor"]
+        ],
+        "default": "link"
+      },
+      {
+        "id": "button_url",
+        "name": "button_url",
+        "label": "Button URL",
+        "type": "url",
+        "default": "",
+        "visibility": {
+          "controlling_field_path": "button.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_new_tab",
+        "name": "button_new_tab",
+        "label": "Open in New Tab",
+        "type": "boolean",
+        "default": false,
+        "visibility": {
+          "controlling_field_path": "button.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
         "id": "button_anchor",
         "name": "button_anchor",
-        "label": "Button Anchor (Form Section ID)",
+        "label": "Anchor ID",
         "type": "text",
         "default": "#form-section",
-        "help_text": "Enter the section anchor ID to scroll to, e.g. #form-section"
+        "help_text": "Enter the section anchor ID to scroll to, e.g. #form-section",
+        "visibility": {
+          "controlling_field_path": "button.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "anchor"
+        }
       }
     ]
   },

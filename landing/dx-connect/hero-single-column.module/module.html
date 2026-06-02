@@ -60,8 +60,13 @@
       {% endif %}
 
       {% if module.button.button_text %}
+      {% set btn_href = module.button.button_type == 'anchor' ? module.button.button_anchor : module.button.button_url %}
       <div class="dx-connect-hero__cta-wrap">
-        <a href="{{ module.button.button_anchor }}" class="dx-btn dx-connect-hero__btn" target="_self">
+        <a
+          href="{{ btn_href }}"
+          class="dx-btn dx-connect-hero__btn"
+          {% if module.button.button_type != 'anchor' and module.button.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+        >
             <span class="dx-btn-text">{{ module.button.button_text }}</span>
             <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>

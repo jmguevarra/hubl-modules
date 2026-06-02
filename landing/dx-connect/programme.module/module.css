@@ -1,5 +1,5 @@
 .dx-programme {
-  padding: 80px 0;
+  padding: 80px 0 40px;
 }
 
 /* ---- Header ---- */
@@ -12,17 +12,6 @@
 }
 
 .dx-programme__top-text {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-.dx-programme__heading {
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 700;
-  line-height: 1.1;
   margin: 0;
 }
 
@@ -31,8 +20,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 32px;
-  margin-bottom: 48px;
+  gap: 30px;
+  margin-bottom: 35px;
 }
 
 .dx-programme__location {
@@ -43,11 +32,6 @@
 
 .dx-programme__location-icon {
   flex-shrink: 0;
-}
-
-.dx-programme__location-name {
-  font-size: 15px;
-  font-weight: 700;
 }
 
 .dx-programme__location-separator {
@@ -62,15 +46,20 @@
 
 /* ---- Schedule table ---- */
 .dx-programme__table {
-  border: 1px solid;
-  border-radius: 12px;
   overflow: hidden;
+  max-width: 1008px;
+  margin: 0 auto;
 }
-
+.dx-programme__row:first-child .dx-programme__duration {
+  border-top-left-radius: 12px;
+}
+.dx-programme__row:last-child .dx-programme__duration {
+  border-bottom-left-radius: 12px;
+  border-bottom-width: 1px;
+}
 .dx-programme__row {
   display: flex;
   align-items: stretch;
-  border-top: 1px solid transparent;
 }
 
 .dx-programme__row:first-child {
@@ -78,53 +67,99 @@
 }
 
 .dx-programme__duration {
-  flex-shrink: 0;
-  width: 120px;
-  display: flex;
   align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  font-weight: 700;
   justify-content: center;
   padding: 28px 16px;
-  font-size: 14px;
-  font-weight: 700;
-  border-right: 1px solid;
   text-align: center;
+  width: 110px;
+  border-color: #EDCCA1 !important;
+  border-style: solid;
+  border-width: 1px 1px 0 1px;
 }
 
 .dx-programme__session {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   padding: 28px 32px;
+  border-color: #A4AFC0;
+  border-style: solid;
+  border-width: 1px 1px 0 1px;
 }
-
+.dx-programme__row:first-child .dx-programme__session {
+    border-top-right-radius: 12px;
+}
+.dx-programme__row:last-child .dx-programme__session {
+    border-bottom-right-radius: 12px;
+    border-bottom-width: 1px;
+}
 .dx-programme__session-title {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.5;
   display: block;
 }
 
 .dx-programme__session-description {
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.5;
   display: block;
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .dx-programme{
+    padding-top: 60px;
+  }
+  .dx-programme__header{
+    margin-bottom: 28px;
+  }
+  .dx-programme__locations {
+      margin-bottom: 25px;
+  }
+  .dx-programme__duration {
+    width: 80px;
+    padding: 20px 12px;
+  }
+  .dx-programme__session {
+    padding: 20px 20px;
+  }
+  .dx-programme__session-title{
+    font-size: 16px;
+  }
+  .dx-programme__duration,
+  .dx-programme__location {
+      font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
   .dx-programme__locations {
     flex-direction: column;
     align-items: center;
     gap: 16px;
   }
-
+  .dx-programme {
+    padding-top: 40px;
+  }
   .dx-programme__duration {
-    width: 80px;
-    padding: 20px 12px;
+    padding: 12px 10px;
+  }
+  .dx-programme__session {
+    padding: 20px 10px;
+  }
+  .dx-programme__session-title {
+    font-size: 14px;
+  }
+  .dx-programme__location{
+    gap: 4px;
+  }
+  .dx-programme__locations {
+    gap: 8px;
   }
 
-  .dx-programme__session {
-    padding: 20px 20px;
-  }
 }
