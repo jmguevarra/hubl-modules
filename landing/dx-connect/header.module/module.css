@@ -171,7 +171,7 @@
   .dx-header__nav{
     gap: 20px;
   }
-  img.dx-header__logo {
+  .dx-header__logo {
       width: 220px;
   }
 }
