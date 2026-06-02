@@ -1,0 +1,106 @@
+{% set s = module.styles %}
+{% set cs = s.content_style %}
+{% set ds = cs.disclaimer_style %}
+{% set fcs = s.form_card_style %}
+{% set bs = fcs.button_style %}
+
+<style>
+#dx-connect-form .dx-connect-form__top-text {
+    color: {{ cs.top_text_color.color }};
+    opacity: {{ cs.top_text_color.opacity / 100 }};
+  }
+  #dx-connect-form .dx-connect-form__heading {
+    color: {{ cs.heading_color.color }};
+    opacity: {{ cs.heading_color.opacity / 100 }};
+  }
+  #dx-connect-form .dx-connect-form__body {
+    color: {{ cs.description_color.color }};
+    opacity: {{ cs.description_color.opacity / 100 }};
+  }
+  #dx-connect-form .dx-connect-form__disclaimer {
+    border-left-color: {{ ds.disclaimer_border_color.color }};
+  }
+  #dx-connect-form .dx-connect-form__disclaimer-item {
+    color: {{ ds.disclaimer_text_color.color }};
+    opacity: {{ ds.disclaimer_text_color.opacity / 100 }};
+  }
+  #dx-connect-form .dx-connect-form__form-card {
+    background-color: {{ fcs.card_bg_color.color }};
+  }
+  #dx-connect-form .dx-connect-form__form-wrapper .hs-form label {
+    color: {{ fcs.label_color.color }};
+  }
+  #dx-connect-form .dx-connect-form__form-wrapper .hs-form input:not([type="submit"]),
+  #dx-connect-form .dx-connect-form__form-wrapper .hs-form select,
+  #dx-connect-form .dx-connect-form__form-wrapper .hs-form textarea {
+    background-color: {{ fcs.input_bg_color.color }};
+    border-color: {{ fcs.input_border_color.color }};
+    color: {{ fcs.input_text_color.color }};
+  }
+  #dx-connect-form .dx-connect-form__form-wrapper .hs-form input::placeholder,
+  #dx-connect-form .dx-connect-form__form-wrapper .hs-form textarea::placeholder {
+    color: {{ fcs.placeholder_color.color }};
+  }
+  #dx-connect-form .dx-connect-fomr_f_orm-wrapper .hs-form input[type="submit"],
+  #dx-connect-form .dx-connect-form__form-wrapper .hs-form .hs-button {
+    background-color: {{ bs.button_bg_color.color }};
+    color: {{ bs.button_text_color.color }};
+    border-color: {{ bs.button_bg_color.color }};
+  }
+  #dx-connect-form .dx-connect-form__form-note {
+    color: {{ fcs.form_note_color.color }};
+    opacity: {{ fcs.form_note_color.opacity / 100 }};
+  }
+</style>
+
+<section id="dx-connect-form" class="dx-connect-form">
+  <div class="dx-module__container content-wrapper">
+    <div class="dx-connect-form__inner">
+
+      {# ---- Content Panel ---- #}
+      <div class="dx-connect-form__content">
+
+        {% if module.content.top_text %}
+        <p class="dx-connect__top-heading-text dx-connect-form__top-text">{{ module.content.top_text }}</p>
+        {% endif %}
+
+        {% if module.content.heading %}
+        <h2 class="dx-connect-form__heading">{{ module.content.heading }}</h2>
+        {% endif %}
+
+        {% if module.content.description %}
+        <div class="dx-connect-form__body">{{ module.content.description }}</div>
+        {% endif %}
+
+        {% if module.content.disclaimer_items %}
+        <div class="dx-connect-form__disclaimer">
+          {% for item in module.content.disclaimer_items %}
+          {% if item.text %}
+          <p class="dx-connect-form__disclaimer-item">{{ item.text }}</p>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div>
+
+      {# ---- Form Card ---- #}
+      <div class="dx-connect-form__form-card">
+
+        <div class="dx-connect-form__form-wrapper">
+          {% form form_to_use="{{ module.form.form_id }}"
+                 response_response_type="{{ module.form.response_type }}"
+                 response_message="{{ module.form.message }}"
+                 response_redirect_id="{{ module.form.redirect_id }}"
+                 response_redirect_url="{{ module.form.redirect_url }}" %}
+        </div>
+
+        {% if module.form_note %}
+        <div class="dx-connect-form__form-note">{{ module.form_note }}</div>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</section>
