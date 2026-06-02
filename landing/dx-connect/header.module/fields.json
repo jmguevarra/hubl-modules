@@ -46,18 +46,53 @@
         "default": "The Experience"
       },
       {
+        "id": "nav_type",
+        "name": "nav_type",
+        "label": "Link Type",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["link", "Link"],
+          ["anchor", "Anchor"]
+        ],
+        "default": "link"
+      },
+      {
         "id": "nav_url",
         "name": "nav_url",
         "label": "URL",
         "type": "url",
-        "default": ""
+        "default": "",
+        "visibility": {
+          "controlling_field_path": "nav_items.nav_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
       },
       {
         "id": "nav_new_tab",
         "name": "nav_new_tab",
         "label": "Open in New Tab",
         "type": "boolean",
-        "default": false
+        "default": false,
+        "visibility": {
+          "controlling_field_path": "nav_items.nav_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "nav_anchor",
+        "name": "nav_anchor",
+        "label": "Anchor ID",
+        "type": "text",
+        "default": "#section",
+        "help_text": "Enter the section anchor ID to scroll to, e.g. #form-section",
+        "visibility": {
+          "controlling_field_path": "nav_items.nav_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "anchor"
+        }
       }
     ]
   },
@@ -75,18 +110,53 @@
         "default": "REQUEST YOUR SEAT"
       },
       {
+        "id": "button_type",
+        "name": "button_type",
+        "label": "Button Type",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["link", "Link"],
+          ["anchor", "Anchor"]
+        ],
+        "default": "link"
+      },
+      {
         "id": "button_url",
         "name": "button_url",
         "label": "Button URL",
         "type": "url",
-        "default": ""
+        "default": "",
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
       },
       {
         "id": "button_new_tab",
         "name": "button_new_tab",
         "label": "Open in New Tab",
         "type": "boolean",
-        "default": false
+        "default": false,
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_anchor",
+        "name": "button_anchor",
+        "label": "Anchor ID",
+        "type": "text",
+        "default": "#section",
+        "help_text": "Enter the section anchor ID to scroll to, e.g. #form-section",
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "anchor"
+        }
       }
     ]
   },
@@ -122,91 +192,11 @@
         "type": "group",
         "children": [
           {
-            "id": "button_text_color",
-            "name": "button_text_color",
-            "label": "Text Color",
-            "type": "color",
-            "default": {
-              "color": "#0A0A1A",
-              "opacity": 100
-            }
-          },
-          {
-            "id": "bg_type",
-            "name": "bg_type",
-            "label": "Background Type",
-            "type": "choice",
-            "display": "radio",
-            "choices": [
-              ["solid", "Solid"],
-              ["gradient", "Gradient"]
-            ],
-            "default": "solid"
-          },
-          {
-            "id": "button_bg_color",
-            "name": "button_bg_color",
-            "label": "Background Color",
-            "type": "color",
-            "default": {
-              "color": "#C9A84C",
-              "opacity": 100
-            },
-            "visibility": {
-              "controlling_field_path": "styles.button_style.bg_type",
-              "operator": "EQUAL",
-              "controlling_value_regex": "solid"
-            }
-          },
-          {
-            "id": "gradient_start",
-            "name": "gradient_start",
-            "label": "Gradient Start Color",
-            "type": "color",
-            "default": {
-              "color": "#C9A84C",
-              "opacity": 100
-            },
-            "visibility": {
-              "controlling_field_path": "styles.button_style.bg_type",
-              "operator": "EQUAL",
-              "controlling_value_regex": "gradient"
-            }
-          },
-          {
-            "id": "gradient_end",
-            "name": "gradient_end",
-            "label": "Gradient End Color",
-            "type": "color",
-            "default": {
-              "color": "#E8C96A",
-              "opacity": 100
-            },
-            "visibility": {
-              "controlling_field_path": "styles.button_style.bg_type",
-              "operator": "EQUAL",
-              "controlling_value_regex": "gradient"
-            }
-          },
-          {
-            "id": "gradient_direction",
-            "name": "gradient_direction",
-            "label": "Gradient Direction",
-            "type": "choice",
-            "default": "to right",
-            "choices": [
-              ["to right", "Left → Right"],
-              ["to left", "Right → Left"],
-              ["to bottom", "Top → Bottom"],
-              ["to top", "Bottom → Top"],
-              ["to bottom right", "Top Left → Bottom Right"],
-              ["to bottom left", "Top Right → Bottom Left"]
-            ],
-            "visibility": {
-              "controlling_field_path": "styles.button_style.bg_type",
-              "operator": "EQUAL",
-              "controlling_value_regex": "gradient"
-            }
+            "id": "enable_styles",
+            "name": "enable_styles",
+            "label": "Enable Styles",
+            "type": "boolean",
+            "default": false
           },
           {
             "id": "enable_hover",
@@ -214,6 +204,106 @@
             "label": "Enable Hover Styles",
             "type": "boolean",
             "default": false
+          },
+          {
+            "id": "style_fields",
+            "name": "style_fields",
+            "label": "Style Options",
+            "type": "group",
+            "visibility": {
+              "controlling_field_path": "styles.button_style.enable_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            },
+            "children": [
+              {
+                "id": "button_text_color",
+                "name": "button_text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#0A0A1A",
+                  "opacity": 100
+                }
+              },
+              {
+                "id": "bg_type",
+                "name": "bg_type",
+                "label": "Background Type",
+                "type": "choice",
+                "display": "radio",
+                "choices": [
+                  ["solid", "Solid"],
+                  ["gradient", "Gradient"]
+                ],
+                "default": "solid"
+              },
+              {
+                "id": "button_bg_color",
+                "name": "button_bg_color",
+                "label": "Background Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                },
+                "visibility": {
+                  "controlling_field_path": "styles.button_style.style_fields.bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "solid"
+                }
+              },
+              {
+                "id": "gradient_start",
+                "name": "gradient_start",
+                "label": "Gradient Start Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                },
+                "visibility": {
+                  "controlling_field_path": "styles.button_style.style_fields.bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              },
+              {
+                "id": "gradient_end",
+                "name": "gradient_end",
+                "label": "Gradient End Color",
+                "type": "color",
+                "default": {
+                  "color": "#E8C96A",
+                  "opacity": 100
+                },
+                "visibility": {
+                  "controlling_field_path": "styles.button_style.style_fields.bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              },
+              {
+                "id": "gradient_direction",
+                "name": "gradient_direction",
+                "label": "Gradient Direction",
+                "type": "choice",
+                "default": "to right",
+                "choices": [
+                  ["to right", "Left → Right"],
+                  ["to left", "Right → Left"],
+                  ["to bottom", "Top → Bottom"],
+                  ["to top", "Bottom → Top"],
+                  ["to bottom right", "Top Left → Bottom Right"],
+                  ["to bottom left", "Top Right → Bottom Left"]
+                ],
+                "visibility": {
+                  "controlling_field_path": "styles.button_style.style_fields.bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              }
+            ]
           },
           {
             "id": "hover_styles",

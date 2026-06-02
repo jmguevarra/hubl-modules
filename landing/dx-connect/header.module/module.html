@@ -1,16 +1,29 @@
 {% set s = module.styles %}
 {% set btn = s.button_style %}
 <style>
-#dx-header .dx-header__nav-link {
+  .dx-mobile-menu__nav-link,
+  #dx-header .dx-header__nav-link {
     color: {{ s.nav_style.nav_text_color.color }};
     opacity: {{ s.nav_style.nav_text_color.opacity / 100 }};
   }
+  .dx-mobile-menu__nav-link:hover,
+  #dx-header .dx-header__nav-link:hover {
+    color: var(--dx-connector-primary-color);
+    opacity: 1;
+  }
+  .dx-mobile-menu .dx-mobile-menu__btn,
   #dx-header .dx-header__btn {
-    color: {{ btn.button_text_color.color }};
-    {% if btn.bg_type == 'gradient' %}
-    background: linear-gradient({{ btn.gradient_direction }}, {{ btn.gradient_start.color }}, {{ btn.gradient_end.color }});
+    {% if btn.enable_styles %}
+    {% set sf = btn.style_fields %}
+    color: {{ sf.button_text_color.color }};
+    {% if sf.bg_type == 'gradient' %}
+    background: linear-gradient({{ sf.gradient_direction }}, {{ sf.gradient_start.color }}, {{ sf.gradient_end.color }});
     {% else %}
-    background-color: {{ btn.button_bg_color.color }};
+    background-color: {{ sf.button_bg_color.color }};
+    {% endif %}
+    {% else %}
+    color: var(--dx-connector-btn-color);
+    background: var(--dx-connector-btn-linear-bg-color);
     {% endif %}
   }
   {% if btn.enable_hover %}
@@ -26,7 +39,7 @@
   {% endif %}
 </style>
 
-<header id="dx-header" class="dx-header">
+<header id="dx-header" class="dx-header bg-gradient">
   <div class="dx-module__container content-wrapper">
     <div class="dx-header__inner">
 
@@ -42,32 +55,136 @@
       </a>
       {% endif %}
 
-      {# ---- Navigation ---- #}
+      {# ---- Navigation (desktop) ---- #}
       {% if module.nav_items %}
       <nav class="dx-header__nav" aria-label="Main navigation">
         {% for item in module.nav_items %}
         {% if item.nav_label %}
+        {% set nav_href = item.nav_type == 'anchor' ? item.nav_anchor : item.nav_url %}
         <a
-          href="{{ item.nav_url }}"
+          href="{{ nav_href }}"
           class="dx-header__nav-link"
-          {% if item.nav_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+          {% if item.nav_type != 'anchor' and item.nav_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
         >{{ item.nav_label }}</a>
         {% endif %}
         {% endfor %}
       </nav>
       {% endif %}
 
-      {# ---- Button ---- #}
+      {# ---- Button (desktop) ---- #}
       {% if module.button_section.button_text %}
+      {% set btn_href = module.button_section.button_type == 'anchor' ? module.button_section.button_anchor : module.button_section.button_url %}
       <a
-        href="{{ module.button_section.button_url }}"
+        href="{{ btn_href }}"
         class="dx-btn dx-header__btn"
-        {% if module.button_section.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+        {% if module.button_section.button_type != 'anchor' and module.button_section.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
       >
         <span class="dx-btn-text">{{ module.button_section.button_text }}</span>
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
       </a>
       {% endif %}
+
+      {# ---- Hamburger (tablet/mobile) ---- #}
+      <button
+        class="dx-header__hamburger"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="dx-mobile-menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
     </div>
   </div>
 </header>
+
+{# ---- Mobile overlay ---- #}
+<div class="dx-mobile-overlay" id="dx-mobile-overlay" aria-hidden="true"></div>
+
+{# ---- Mobile menu panel ---- #}
+<div class="dx-mobile-menu" id="dx-mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true">
+
+  <div class="dx-mobile-menu__header">
+    <button class="dx-mobile-menu__close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
+  {% if module.nav_items %}
+  <nav class="dx-mobile-menu__nav" aria-label="Mobile navigation">
+    {% for item in module.nav_items %}
+    {% if item.nav_label %}
+    {% set nav_href = item.nav_type == 'anchor' ? item.nav_anchor : item.nav_url %}
+    <a
+      href="{{ nav_href }}"
+      class="dx-header__nav-link dx-mobile-menu__nav-link"
+      {% if item.nav_type != 'anchor' and item.nav_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+    >{{ item.nav_label }}</a>
+    {% endif %}
+    {% endfor %}
+  </nav>
+  {% endif %}
+
+  {% if module.button_section.button_text %}
+  {% set btn_href = module.button_section.button_type == 'anchor' ? module.button_section.button_anchor : module.button_section.button_url %}
+  <div class="dx-mobile-menu__btn-wrap">
+    <a
+      href="{{ btn_href }}"
+      class="dx-btn dx-header__btn dx-mobile-menu__btn"
+      {% if module.button_section.button_type != 'anchor' and module.button_section.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+    >
+      <span class="dx-btn-text">{{ module.button_section.button_text }}</span>
+      <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </a>
+  </div>
+  {% endif %}
+
+</div>
+
+<script>
+(function () {
+  var hamburger = document.querySelector('#dx-header .dx-header__hamburger');
+  var overlay = document.getElementById('dx-mobile-overlay');
+  var menu = document.getElementById('dx-mobile-menu');
+  var closeBtn = menu ? menu.querySelector('.dx-mobile-menu__close') : null;
+
+  function openMenu() {
+    menu.classList.add('is-open');
+    overlay.classList.add('is-active');
+    hamburger.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    overlay.classList.remove('is-active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (hamburger) hamburger.addEventListener('click', openMenu);
+  if (overlay) overlay.addEventListener('click', closeMenu);
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+  var menuLinks = document.querySelectorAll('#dx-mobile-menu .dx-mobile-menu__nav-link');
+  menuLinks.forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
+  });
+})();
+</script>
