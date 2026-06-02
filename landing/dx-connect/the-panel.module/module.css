@@ -6,30 +6,13 @@
 .dx-the-panel__header {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto 64px;
+  margin: 0 auto 48px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-
-.dx-the-panel__top-text {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.dx-the-panel__top-text{
   margin: 0;
-}
-
-.dx-the-panel__heading {
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 700;
-  line-height: 1.1;
-  margin: 0;
-}
-
-.dx-the-panel__subheading {
-  font-size: 16px;
-  line-height: 1.7;
 }
 
 .dx-the-panel__subheading p {
@@ -84,23 +67,12 @@
 }
 
 .dx-the-panel__member-name {
-  font-size: 20px;
+  font-size: clamp(18px, 2.60vw, 24px);
   font-weight: 700;
   line-height: 1.2;
   display: block;
 }
 
-.dx-the-panel__member-title {
-  font-size: 14px;
-  font-weight: 500;
-  display: block;
-}
-
-.dx-the-panel__member-company {
-  font-size: 14px;
-  font-weight: 500;
-  display: block;
-}
 
 /* ---- Bio ---- */
 .dx-the-panel__member-bio {
@@ -113,9 +85,21 @@
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .dx-the-panel__grid--cols-3 {
     grid-template-columns: repeat(2, 1fr);
+  }
+  #dx-the-panel {
+    padding: 60px 0 60px;
+  }
+  .dx-the-panel__card{
+    gap: 20px;
+  }
+  .dx-the-panel__member-info {
+      gap: 0px;
+  }
+  .dx-the-panel__header{
+    margin-bottom: 36px;
   }
 }
 
@@ -123,5 +107,18 @@
   .dx-the-panel__grid--cols-2,
   .dx-the-panel__grid--cols-3 {
     grid-template-columns: 1fr;
+  }
+  .dx-the-panel__card {
+      padding: 24px;
+  }
+  .dx-the-panel__card-header{
+    gap: 16px;
+  }
+  #dx-the-panel{
+    padding: 40px 0;
+  }
+  .dx-the-panel__avatar-wrap {
+      height: 65px;
+      width: 65px;
   }
 }

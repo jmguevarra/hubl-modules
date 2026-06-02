@@ -61,7 +61,7 @@
       <div class="dx-keynote-speaker__content">
 
         {% if module.speaker_info.top_text %}
-        <p class="dx-keynote-speaker__top-text">{{ module.speaker_info.top_text }}</p>
+        <p class="dx-connect__top-heading-text dx-keynote-speaker__top-text">{{ module.speaker_info.top_text }}</p>
         {% endif %}
 
         {% if module.speaker_info.speaker_name %}
@@ -94,7 +94,7 @@
     {% if module.stats_section.stats %}
     <div class="dx-keynote-speaker__stats dx-keynote-speaker__stats--cols-{{ module.stats_section.stats_columns }}">
       {% for stat in module.stats_section.stats %}
-      <div class="dx-keynote-speaker__stat-card">
+      <div class="dx-connect_card dx-keynote-speaker__stat-card">
         {% if stat.stat_number %}
         <span class="dx-keynote-speaker__stat-number">{{ stat.stat_number }}</span>
         {% endif %}

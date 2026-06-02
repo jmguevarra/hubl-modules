@@ -42,7 +42,7 @@
     <div class="dx-the-panel__header">
 
       {% if module.header_section.top_text %}
-      <p class="dx-the-panel__top-text">{{ module.header_section.top_text }}</p>
+      <p class="dx-connect__top-heading-text dx-the-panel__top-text">{{ module.header_section.top_text }}</p>
       {% endif %}
 
       {% if module.header_section.heading %}
@@ -59,7 +59,7 @@
     {% if module.panel_section.members %}
     <div class="dx-the-panel__grid dx-the-panel__grid--cols-{{ module.panel_section.columns }}">
       {% for member in module.panel_section.members %}
-      <div class="dx-the-panel__card">
+      <div class="dx-connect_card dx-the-panel__card">
 
         <div class="dx-the-panel__card-header">
           {% if member.member_image.src %}
