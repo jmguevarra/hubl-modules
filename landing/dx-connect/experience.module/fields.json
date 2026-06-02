@@ -182,16 +182,6 @@
         "type": "group",
         "children": [
           {
-            "id": "card_bg_color",
-            "name": "card_bg_color",
-            "label": "Card Background Color",
-            "type": "color",
-            "default": {
-              "color": "#1C2340",
-              "opacity": 100
-            }
-          },
-          {
             "id": "stat_style",
             "name": "stat_style",
             "label": "Stat Card",

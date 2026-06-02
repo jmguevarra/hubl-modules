@@ -14,10 +14,7 @@
     color: {{ cs.content_text_style.content_color.color }};
     opacity: {{ cs.content_text_style.content_color.opacity / 100 }};
   }
-  #dx-connect-experience .dx-experience__card {
-    background-color: {{ cds.card_bg_color.color }};
-  }
-  #dx-connect-experience .dx-experience__stat-number {
+#dx-connect-experience .dx-experience__stat-number {
     color: {{ cds.stat_style.stat_number_color.color }};
     opacity: {{ cds.stat_style.stat_number_color.opacity / 100 }};
   }
@@ -47,7 +44,7 @@
       <div class="dx-experience__content">
 
         {% if module.top_text %}
-        <p class="dx-experience__top-text">{{ module.top_text }}</p>
+        <p class="dx-connect__top-heading-text dx-experience__top-text">{{ module.top_text }}</p>
         {% endif %}
 
         {% if module.heading %}
@@ -62,9 +59,9 @@
 
       {# ---- Right: Cards grid ---- #}
       {% if module.cards %}
-      <div class="dx-experience__cards">
+      <div class="dx-connect_cards dx-experience__cards">
         {% for card in module.cards %}
-        <div class="dx-experience__card dx-experience__card--{{ card.card_type }}">
+        <div class="dx-connect_card dx-experience__card dx-experience__card--{{ card.card_type }}">
 
           {% if card.card_type == 'stat' %}
             {% if card.stat_number %}
