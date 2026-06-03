@@ -59,7 +59,7 @@
 
           {% if item.col_link_text %}
           <a
-            href="{{ item.col_link_url }}"
+            href="{{ item.col_link_url.href }}"
             class="dx-learn-more__link"
             {% if item.col_link_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
           >{{ item.col_link_text }} →</a>
