@@ -39,6 +39,7 @@
   {% endif %}
 </style>
 
+<div class="header-spacer"></div>
 <header id="dx-header" class="dx-header bg-gradient">
   <div class="dx-module__container content-wrapper">
     <div class="dx-header__inner">
@@ -148,43 +149,3 @@
   {% endif %}
 
 </div>
-
-<script>
-(function () {
-  var hamburger = document.querySelector('#dx-header .dx-header__hamburger');
-  var overlay = document.getElementById('dx-mobile-overlay');
-  var menu = document.getElementById('dx-mobile-menu');
-  var closeBtn = menu ? menu.querySelector('.dx-mobile-menu__close') : null;
-
-  function openMenu() {
-    menu.classList.add('is-open');
-    overlay.classList.add('is-active');
-    hamburger.setAttribute('aria-expanded', 'true');
-    menu.setAttribute('aria-hidden', 'false');
-    overlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMenu() {
-    menu.classList.remove('is-open');
-    overlay.classList.remove('is-active');
-    hamburger.setAttribute('aria-expanded', 'false');
-    menu.setAttribute('aria-hidden', 'true');
-    overlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  if (hamburger) hamburger.addEventListener('click', openMenu);
-  if (overlay) overlay.addEventListener('click', closeMenu);
-  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-
-  var menuLinks = document.querySelectorAll('#dx-mobile-menu .dx-mobile-menu__nav-link');
-  menuLinks.forEach(function (link) {
-    link.addEventListener('click', closeMenu);
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
-  });
-})();
-</script>

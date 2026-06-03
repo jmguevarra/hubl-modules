@@ -1,5 +1,8 @@
+.header-spacer {
+    height: 83.19px;
+}
 .dx-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 100;
   width: 100%;
@@ -200,8 +203,16 @@
   }
 }
 
+@media (max-width: 768px) {
+  .header-spacer {
+    height: 71.53px;
+  }
+}
 
 @media (max-width: 480px){
+  .header-spacer {
+    height: 66.55px;
+  }
   .dx-header__logo {
       width: 160px;
   }
