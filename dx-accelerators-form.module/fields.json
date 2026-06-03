@@ -1,0 +1,200 @@
+[
+  {
+    "id": "content",
+    "name": "content",
+    "label": "Content",
+    "type": "group",
+    "children": [
+      {
+        "id": "heading",
+        "name": "heading",
+        "label": "Heading",
+        "type": "text",
+        "default": "Accelerate your transformation journey."
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "label": "Description",
+        "type": "richtext",
+        "default": "<p>Fill out the form to get started with our DX Accelerators program and connect with our team.</p>"
+      },
+      {
+        "id": "image",
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 600,
+          "height": 400
+        }
+      }
+    ]
+  },
+  {
+    "id": "form",
+    "name": "form",
+    "display_width": null,
+    "label": "Form",
+    "required": false,
+    "locked": false,
+    "type": "form",
+    "disable_inline_form_editing": true,
+    "default": {
+      "response_type": "inline",
+      "message": "Thanks for submitting the form."
+    }
+  },
+  {
+    "id": "form_note",
+    "name": "form_note",
+    "label": "Form Note",
+    "type": "richtext",
+    "default": "<p>Our team will be in touch shortly after you submit.</p>"
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "content_style",
+        "name": "content_style",
+        "label": "Content Panel",
+        "type": "group",
+        "children": [
+          {
+            "id": "heading_color",
+            "name": "heading_color",
+            "label": "Heading Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "description_color",
+            "name": "description_color",
+            "label": "Description Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 80
+            }
+          }
+        ]
+      },
+      {
+        "id": "form_card_style",
+        "name": "form_card_style",
+        "label": "Form Card",
+        "type": "group",
+        "children": [
+          {
+            "id": "card_bg_color",
+            "name": "card_bg_color",
+            "label": "Card Background Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "label_color",
+            "name": "label_color",
+            "label": "Label Color",
+            "type": "color",
+            "default": {
+              "color": "#1C2340",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "input_bg_color",
+            "name": "input_bg_color",
+            "label": "Input Background",
+            "type": "color",
+            "default": {
+              "color": "#F2F2F2",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "input_border_color",
+            "name": "input_border_color",
+            "label": "Input Border Color",
+            "type": "color",
+            "default": {
+              "color": "#E0E0E0",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "input_text_color",
+            "name": "input_text_color",
+            "label": "Input Text Color",
+            "type": "color",
+            "default": {
+              "color": "#1C2340",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "placeholder_color",
+            "name": "placeholder_color",
+            "label": "Placeholder Color",
+            "type": "color",
+            "default": {
+              "color": "#9CA3AF",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "button_style",
+            "name": "button_style",
+            "label": "Submit Button",
+            "type": "group",
+            "children": [
+              {
+                "id": "button_bg_color",
+                "name": "button_bg_color",
+                "label": "Background Color",
+                "type": "color",
+                "default": {
+                  "color": "#C9A84C",
+                  "opacity": 100
+                }
+              },
+              {
+                "id": "button_text_color",
+                "name": "button_text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": {
+                  "color": "#1C2340",
+                  "opacity": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "form_note_color",
+            "name": "form_note_color",
+            "label": "Form Note Color",
+            "type": "color",
+            "default": {
+              "color": "#6B7280",
+              "opacity": 100
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,159 @@
+
+.dx-accelerators-form {
+  padding: 80px 0;
+}
+
+/* ---- Layout ---- */
+.dx-accelerators-form__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+/* ---- Content Panel ---- */
+.dx-accelerators-form__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dx-accelerators-form__description {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.dx-accelerators-form__description p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- Image ---- */
+.dx-accelerators-form__image {
+  margin-top: 8px;
+}
+
+.dx-accelerators-form__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* ---- Form Card ---- */
+.dx-accelerators-form__form-card {
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---- Form Wrapper ---- */
+.dx-accelerators-form__form-wrapper {
+  [data-hsfc-id=Renderer] .hsfc-Step .hsfc-Step__Content {
+    padding: 0;
+  }
+  [data-hsfc-id=Renderer] .hsfc-FieldLabel {
+    font-family: Avenir, sans-serif, Arial;
+  }
+  [data-hsfc-id=Renderer] .hsfc-Row {
+    margin-bottom: 15px;
+  }
+  [data-hsfc-id=Renderer] .hsfc-Row {
+    gap: 12px;
+  }
+  [data-hsfc-id=Renderer] .hsfc-TextareaInput {
+    min-height: 110px;
+  }
+  [data-hsfc-id=Renderer] .hsfc-Button {
+    background: linear-gradient(94.81deg, #FFD693 11.63%, #E19E5B 98.62%);
+    border-radius: 100px;
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: 800;
+    gap: 0;
+    justify-content: center;
+    line-height: 1.2;
+    padding: .75rem 1.875rem;
+    text-decoration: none;
+    transition: .2s ease;
+    font-family: 'Avenir', sans-serif, Arial;
+
+    & > svg {
+      width: 0;
+      transition: .5s;
+    }
+    &:hover > .dx-btn-text {
+      transition: .5s;
+    }
+    &:hover {
+      transform: none !important;
+      gap: 12px;
+    }
+    &:hover > .dx-btn-text {
+      padding-left: 4px;
+    }
+    &:hover > svg {
+      width: auto;
+    }
+  }
+}
+
+.dx-accelerators-form__form-wrapper {
+  width: 100%;
+}
+
+/* ---- Form Note ---- */
+.dx-accelerators-form__form-note p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.dx-accelerators-form__form-note p {
+  margin: 0;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .dx-accelerators-form__form-wrapper {
+    [data-hsfc-id=Renderer] .hsfc-Button {
+      font-size: 16px;
+    }
+  }
+  .dx-accelerators-form__inner {
+    gap: 40px;
+  }
+  .dx-accelerators-form__form-card {
+    padding: 32px;
+  }
+  .dx-accelerators-form {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .dx-accelerators-form__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  #dx-accelerators-form .dx-accelerators-form__heading {
+    width: 100%;
+    max-width: 480px;
+  }
+  .dx-accelerators-form__form-card {
+    width: 100%;
+    max-width: 560px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dx-accelerators-form {
+    padding: 40px 0;
+  }
+  .dx-accelerators-form__form-card {
+    padding: 24px 16px;
+    border-radius: 8px;
+  }
+  .dx-accelerators-form__form-wrapper .hs-form .form-columns-2 {
+    grid-template-columns: 1fr;
+  }
+}
