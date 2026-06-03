@@ -46,6 +46,9 @@
   opacity: 0.75;
 }
 
+ #dx-header .dx-header__btn{
+  font-size: 16px;
+ }
 /* ---- Hamburger ---- */
 .dx-header__hamburger {
   display: none;
