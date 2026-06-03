@@ -4,6 +4,7 @@
 {% set bs = fcs.button_style %}
 
 <style>
+  {% if cs.enable_styles %}
   #dx-accelerators-form .dx-accelerators-form__heading {
     color: {{ cs.heading_color.color }};
     opacity: {{ cs.heading_color.opacity / 100 }};
@@ -12,6 +13,8 @@
     color: {{ cs.description_color.color }};
     opacity: {{ cs.description_color.opacity / 100 }};
   }
+  {% endif %}
+  {% if fcs.enable_styles %}
   #dx-accelerators-form .dx-accelerators-form__form-card {
     background-color: {{ fcs.card_bg_color.color }};
   }
@@ -39,6 +42,7 @@
     color: {{ fcs.form_note_color.color }};
     opacity: {{ fcs.form_note_color.opacity / 100 }};
   }
+  {% endif %}
 </style>
 
 <section id="dx-accelerators-form" class="dx-accelerators-form">
@@ -70,7 +74,7 @@
       {# ---- Form Card ---- #}
       <div class="dx-accelerators-form__form-card">
 
-        <div class="dx-accelerators-form__form-wrapper">
+        <div class="dx-form dx-accelerators-form__form-wrapper">
           {% form form_to_use="{{ module.form.form_id }}"
                  response_response_type="{{ module.form.response_type }}"
                  response_message="{{ module.form.message }}"

@@ -68,6 +68,13 @@
         "type": "group",
         "children": [
           {
+            "id": "content_enable_styles",
+            "name": "enable_styles",
+            "label": "Use module styles",
+            "type": "boolean",
+            "default": false
+          },
+          {
             "id": "heading_color",
             "name": "heading_color",
             "label": "Heading Color",
@@ -95,6 +102,13 @@
         "label": "Form Card",
         "type": "group",
         "children": [
+          {
+            "id": "form_card_enable_styles",
+            "name": "enable_styles",
+            "label": "Use module styles",
+            "type": "boolean",
+            "default": false
+          },
           {
             "id": "card_bg_color",
             "name": "card_bg_color",
