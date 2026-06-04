@@ -1,0 +1,147 @@
+[
+  {
+    "id": "breadcrumbs",
+    "name": "breadcrumbs",
+    "label": "Breadcrumbs",
+    "type": "group",
+    "children": [
+      {
+        "id": "show_breadcrumbs",
+        "name": "show_breadcrumbs",
+        "label": "Show Breadcrumbs",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "id": "home_label",
+        "name": "home_label",
+        "label": "Home Label",
+        "type": "text",
+        "default": "Home"
+      }
+    ]
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "Case Study Title"
+  },
+  {
+    "id": "subheading",
+    "name": "subheading",
+    "label": "Subheading",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "id": "stats",
+    "name": "stats",
+    "label": "Stats / Info Items",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 4,
+      "default": 2,
+      "sorting_label_field": "stat_label"
+    },
+    "default": [
+      {
+        "icon_type": "clock",
+        "enable_custom_icon": false,
+        "custom_icon": { "src": "", "alt": "" },
+        "stat_value": "",
+        "stat_label": "Project Duration"
+      },
+      {
+        "icon_type": "people",
+        "enable_custom_icon": false,
+        "custom_icon": { "src": "", "alt": "" },
+        "stat_value": "",
+        "stat_label": "Team Size"
+      }
+    ],
+    "children": [
+      {
+        "id": "icon_type",
+        "name": "icon_type",
+        "label": "Default Icon",
+        "type": "choice",
+        "choices": [
+          ["clock", "Clock"],
+          ["people", "People"]
+        ],
+        "default": "clock",
+        "help_text": "Preset icon used unless 'Use Custom Icon' is checked."
+      },
+      {
+        "id": "enable_custom_icon",
+        "name": "enable_custom_icon",
+        "label": "Use Custom Icon",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "custom_icon",
+        "name": "custom_icon",
+        "label": "Custom Icon Image",
+        "type": "image",
+        "visibility": {
+          "controlling_field_path": "stats.enable_custom_icon",
+          "operator": "EQUAL",
+          "controlling_value_regex": "true"
+        },
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 48,
+          "height": 48
+        }
+      },
+      {
+        "id": "stat_value",
+        "name": "stat_value",
+        "label": "Value",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "stat_label",
+        "name": "stat_label",
+        "label": "Label",
+        "type": "text",
+        "default": ""
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "layout",
+        "name": "layout",
+        "label": "Layout",
+        "type": "group",
+        "children": [
+          {
+            "id": "grid_columns",
+            "name": "grid_columns",
+            "label": "Stats Grid Columns",
+            "type": "choice",
+            "choices": [
+              ["cols-2", "2 Columns"],
+              ["cols-3", "3 Columns"],
+              ["cols-4", "4 Columns"]
+            ],
+            "default": "cols-2"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,85 @@
+<section class="cs-hero">
+  <div class="dx-module__container content-wrapper">
+
+    {# ---- Breadcrumbs — auto-populated from blog_post content variables ---- #}
+    {# content.blog.absolute_url = listing page, content.blog.name = blog title, content.name = post title #}
+    {% if module.breadcrumbs.show_breadcrumbs %}
+    <nav class="cs-hero__breadcrumbs" aria-label="Breadcrumb">
+      <ol class="cs-hero__breadcrumb-list">
+        <li class="cs-hero__breadcrumb-item">
+          <a href="/" class="cs-hero__breadcrumb-link">{{ module.breadcrumbs.home_label }}</a>
+        </li>
+        {% if content.blog %}
+        <li class="cs-hero__breadcrumb-item">
+          <a href="{{ content.blog.absolute_url }}" class="cs-hero__breadcrumb-link">{{ content.blog.name }}</a>
+        </li>
+        {% endif %}
+        <li class="cs-hero__breadcrumb-item cs-hero__breadcrumb-item--current" aria-current="page">
+          {{ content.name }}
+        </li>
+      </ol>
+    </nav>
+    {% endif %}
+
+    {# ---- Heading ---- #}
+    {% if module.heading %}
+    <h1 class="cs-hero__heading">{{ module.heading }}</h1>
+    {% endif %}
+
+    {# ---- Subheading ---- #}
+    {% if module.subheading %}
+    <p class="cs-hero__subheading">{{ module.subheading }}</p>
+    {% endif %}
+
+    {# ---- Stats / Icon + Text grid ---- #}
+    {% if module.stats %}
+    <ul class="cs-hero__stats cs-hero__stats--{{ module.styles.layout.grid_columns | default('cols-2') }}">
+      {% for stat in module.stats %}
+      <li class="cs-hero__stat">
+
+        {# Icon: custom image overrides preset only when checkbox is on #}
+        {% if stat.enable_custom_icon and stat.custom_icon.src %}
+          <img
+            src="{{ stat.custom_icon.src }}"
+            alt="{{ stat.custom_icon.alt }}"
+            class="cs-hero__stat-icon"
+            loading="lazy"
+            {% if stat.custom_icon.width %}width="{{ stat.custom_icon.width }}"{% endif %}
+            {% if stat.custom_icon.height %}height="{{ stat.custom_icon.height }}"{% endif %}
+          >
+        {% elif stat.icon_type == 'people' %}
+          <img
+            src="https://7803079.fs1.hubspotusercontent-ap1.net/hubfs/7803079/Icons/Red%20-%20Big/persons-red-big.svg"
+            alt="People"
+            class="cs-hero__stat-icon"
+            loading="lazy"
+            width="48"
+            height="48"
+          >
+        {% else %}
+          <img
+            src="https://7803079.fs1.hubspotusercontent-ap1.net/hubfs/7803079/Icons/Red%20-%20Big/clock-red-big.svg"
+            alt="Clock"
+            class="cs-hero__stat-icon"
+            loading="lazy"
+            width="48"
+            height="48"
+          >
+        {% endif %}
+
+        <div class="cs-hero__stat-text">
+          {% if stat.stat_value %}
+          <span class="cs-hero__stat-value">{{ stat.stat_value }}</span>
+          {% endif %}
+          {% if stat.stat_label %}
+          <span class="cs-hero__stat-label">{{ stat.stat_label }}</span>
+          {% endif %}
+        </div>
+
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+  </div>
+</section>
