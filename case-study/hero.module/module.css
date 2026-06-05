@@ -14,7 +14,7 @@
   align-items: center;
   display: grid;
   gap: 32px;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 /* Breadcrumbs */
@@ -84,7 +84,7 @@
 /* Subheading (richtext) */
 .cs-hero__subheading,
 .cs-hero__subheading p {
-  color: var(--dx-color-body-text);
+  color: var(--clr-text-lt);
   font-size: 18px;
   line-height: 1.5;
   max-width: 560px;
@@ -171,9 +171,6 @@
     max-width: 100%;
   }
 
-  .cs-hero__columns {
-    grid-template-columns: 1fr 1fr;
-  }
   .cs-hero__content{
     gap: 24px;
   }
