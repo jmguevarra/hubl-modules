@@ -18,6 +18,20 @@
         "label": "Home Label",
         "type": "text",
         "default": "Home"
+      },
+      {
+        "id": "parent_label",
+        "name": "parent_label",
+        "label": "Parent Page Label",
+        "type": "text",
+        "default": "Case Studies"
+      },
+      {
+        "id": "parent_url",
+        "name": "parent_url",
+        "label": "Parent Page URL",
+        "type": "text",
+        "default": "/case-studies/"
       }
     ]
   },
@@ -32,7 +46,7 @@
     "id": "subheading",
     "name": "subheading",
     "label": "Subheading",
-    "type": "text",
+    "type": "richtext",
     "default": ""
   },
   {
@@ -116,6 +130,82 @@
     ]
   },
   {
+    "id": "button_section",
+    "name": "button_section",
+    "label": "Button",
+    "type": "group",
+    "children": [
+      {
+        "id": "button_text",
+        "name": "button_text",
+        "label": "Button Text",
+        "type": "text",
+        "default": "Let's Talk"
+      },
+      {
+        "id": "button_type",
+        "name": "button_type",
+        "label": "Button Type",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["link", "Link"],
+          ["anchor", "Anchor"]
+        ],
+        "default": "link"
+      },
+      {
+        "id": "button_url",
+        "name": "button_url",
+        "label": "Button URL",
+        "type": "url",
+        "default": "",
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_new_tab",
+        "name": "button_new_tab",
+        "label": "Open in New Tab",
+        "type": "boolean",
+        "default": false,
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_anchor",
+        "name": "button_anchor",
+        "label": "Anchor ID",
+        "type": "text",
+        "default": "#section",
+        "help_text": "Enter the section anchor ID to scroll to, e.g. #form-section",
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "anchor"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hero_image",
+    "name": "hero_image",
+    "label": "Hero Image",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "",
+      "width": 600,
+      "height": 500
+    }
+  },
+  {
     "id": "styles",
     "name": "styles",
     "label": "Styles",
@@ -139,6 +229,198 @@
               ["cols-4", "4 Columns"]
             ],
             "default": "cols-2"
+          }
+        ]
+      },
+      {
+        "id": "button_style",
+        "name": "button_style",
+        "label": "Button",
+        "type": "group",
+        "children": [
+          {
+            "id": "enable_styles",
+            "name": "enable_styles",
+            "label": "Enable Styles",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "enable_hover",
+            "name": "enable_hover",
+            "label": "Enable Hover Styles",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "style_fields",
+            "name": "style_fields",
+            "label": "Style Options",
+            "type": "group",
+            "visibility": {
+              "controlling_field_path": "styles.button_style.enable_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            },
+            "children": [
+              {
+                "id": "button_text_color",
+                "name": "button_text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": { "color": "#ffffff", "opacity": 100 }
+              },
+              {
+                "id": "bg_type",
+                "name": "bg_type",
+                "label": "Background Type",
+                "type": "choice",
+                "display": "radio",
+                "choices": [["solid", "Solid"], ["gradient", "Gradient"]],
+                "default": "solid"
+              },
+              {
+                "id": "button_bg_color",
+                "name": "button_bg_color",
+                "label": "Background Color",
+                "type": "color",
+                "default": { "color": "#E2001A", "opacity": 100 },
+                "visibility": {
+                  "controlling_field_path": "styles.button_style.style_fields.bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "solid"
+                }
+              },
+              {
+                "id": "gradient_start",
+                "name": "gradient_start",
+                "label": "Gradient Start Color",
+                "type": "color",
+                "default": { "color": "#E2001A", "opacity": 100 },
+                "visibility": {
+                  "controlling_field_path": "styles.button_style.style_fields.bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              },
+              {
+                "id": "gradient_end",
+                "name": "gradient_end",
+                "label": "Gradient End Color",
+                "type": "color",
+                "default": { "color": "#ff3333", "opacity": 100 },
+                "visibility": {
+                  "controlling_field_path": "styles.button_style.style_fields.bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              },
+              {
+                "id": "gradient_direction",
+                "name": "gradient_direction",
+                "label": "Gradient Direction",
+                "type": "choice",
+                "default": "to right",
+                "choices": [
+                  ["to right", "Left → Right"],
+                  ["to left", "Right → Left"],
+                  ["to bottom", "Top → Bottom"],
+                  ["to top", "Bottom → Top"],
+                  ["to bottom right", "Top Left → Bottom Right"],
+                  ["to bottom left", "Top Right → Bottom Left"]
+                ],
+                "visibility": {
+                  "controlling_field_path": "styles.button_style.style_fields.bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              }
+            ]
+          },
+          {
+            "id": "hover_styles",
+            "name": "hover_styles",
+            "label": "Hover Styles",
+            "type": "group",
+            "visibility": {
+              "controlling_field_path": "styles.button_style.enable_hover",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            },
+            "children": [
+              {
+                "id": "hover_text_color",
+                "name": "hover_text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": { "color": "#ffffff", "opacity": 100 }
+              },
+              {
+                "id": "hover_bg_type",
+                "name": "hover_bg_type",
+                "label": "Background Type",
+                "type": "choice",
+                "display": "radio",
+                "choices": [["solid", "Solid"], ["gradient", "Gradient"]],
+                "default": "solid"
+              },
+              {
+                "id": "hover_bg_color",
+                "name": "hover_bg_color",
+                "label": "Background Color",
+                "type": "color",
+                "default": { "color": "#b8001a", "opacity": 100 },
+                "visibility": {
+                  "controlling_field_path": "styles.button_style.hover_styles.hover_bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "solid"
+                }
+              },
+              {
+                "id": "hover_gradient_start",
+                "name": "hover_gradient_start",
+                "label": "Gradient Start Color",
+                "type": "color",
+                "default": { "color": "#b8001a", "opacity": 100 },
+                "visibility": {
+                  "controlling_field_path": "styles.button_style.hover_styles.hover_bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              },
+              {
+                "id": "hover_gradient_end",
+                "name": "hover_gradient_end",
+                "label": "Gradient End Color",
+                "type": "color",
+                "default": { "color": "#E2001A", "opacity": 100 },
+                "visibility": {
+                  "controlling_field_path": "styles.button_style.hover_styles.hover_bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              },
+              {
+                "id": "hover_gradient_direction",
+                "name": "hover_gradient_direction",
+                "label": "Gradient Direction",
+                "type": "choice",
+                "default": "to right",
+                "choices": [
+                  ["to right", "Left → Right"],
+                  ["to left", "Right → Left"],
+                  ["to bottom", "Top → Bottom"],
+                  ["to top", "Bottom → Top"],
+                  ["to bottom right", "Top Left → Bottom Right"],
+                  ["to bottom left", "Top Right → Bottom Left"]
+                ],
+                "visibility": {
+                  "controlling_field_path": "styles.button_style.hover_styles.hover_bg_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              }
+            ]
           }
         ]
       }
