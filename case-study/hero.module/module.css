@@ -216,5 +216,8 @@
   .cs-hero__breadcrumbs .cs-hero__breadcrumb-item--current span {
     max-width: 90px;
   }
+  .cs-hero {
+    padding-bottom: 20px;
+}
   
 }
