@@ -1,0 +1,82 @@
+{% set s = module.styles %}
+
+<style>
+  .dx-partner-card {
+    {% if s.section_style.enable_section_styles %}
+    {% set sf = s.section_style.section_style_fields %}
+    background-color: {{ sf.section_bg_color.color }};
+    opacity: {{ sf.section_bg_color.opacity / 100 }};
+    border-radius: {{ sf.section_border_radius }};
+    padding: {{ sf.section_padding }};
+    {% endif %}
+  }
+
+  .dx-partner-card__title {
+    {% if s.title_style.enable_title_styles %}
+    {% set tf = s.title_style.title_style_fields %}
+    color: {{ tf.title_color.color }};
+    font-size: {{ tf.title_font_size }};
+    text-transform: {{ tf.title_text_transform }};
+    {% endif %}
+  }
+
+  .dx-partner-card__description,
+  .dx-partner-card__description p {
+    {% if s.description_style.enable_description_styles %}
+    {% set df = s.description_style.description_style_fields %}
+    color: {{ df.description_color.color }};
+    font-size: {{ df.description_font_size }};
+    {% endif %}
+  }
+</style>
+
+<div class="dx-partner-card">
+  <div class="content-wrapper">
+      <div class="dx-partner-card__inner">
+        {# Partner logo (left badge) #}
+        
+        <div class="partner-logos">
+          {% if module.partner_logo.src %}
+          <div class="dx-partner-card__partner-logo">
+            <img
+              src="{{ module.partner_logo.src }}"
+              alt="{{ module.partner_logo.alt }}"
+              {% if module.partner_logo.width %}width="{{ module.partner_logo.width }}"{% endif %}
+              {% if module.partner_logo.height %}height="{{ module.partner_logo.height }}"{% endif %}
+              loading="lazy"
+            >
+          </div>
+          {% endif %}
+
+          {# Vertical divider #}
+          {% if module.show_divider %}
+          <div class="dx-partner-card__divider" aria-hidden="true"></div>
+          {% endif %}
+
+          {# Product logo (icon) #}
+          {% if module.product_logo.src %}
+          <div class="dx-partner-card__product-logo">
+            <img
+              src="{{ module.product_logo.src }}"
+              alt="{{ module.product_logo.alt }}"
+              {% if module.product_logo.width %}width="{{ module.product_logo.width }}"{% endif %}
+              {% if module.product_logo.height %}height="{{ module.product_logo.height }}"{% endif %}
+              loading="lazy"
+            >
+          </div>
+          {% endif %}
+        </div>    
+
+      {# Content: title + description #}
+      <div class="dx-partner-card__content">
+        {% if module.product_name %}
+        <h3 class="dx-partner-card__title">{{ module.product_name }}</h3>
+        {% endif %}
+
+        {% if module.description %}
+        <div class="dx-partner-card__description">{{ module.description }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
