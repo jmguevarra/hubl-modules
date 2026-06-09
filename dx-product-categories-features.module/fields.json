@@ -69,6 +69,31 @@
           "width": 600,
           "height": 420
         }
+      },
+      {
+        "id": "layout_direction",
+        "name": "layout_direction",
+        "label": "Feature Item Direction",
+        "type": "choice",
+        "choices": [
+          ["horizontal", "Horizontal (icon + text side by side)"],
+          ["vertical", "Vertical (icon above text)"]
+        ],
+        "default": "horizontal"
+      },
+      {
+        "id": "layout_columns",
+        "name": "layout_columns",
+        "label": "Features Columns",
+        "type": "choice",
+        "choices": [
+          ["cols-1", "1 Column"],
+          ["cols-2", "2 Columns"],
+          ["cols-3", "3 Columns"],
+          ["cols-4", "4 Columns"],
+          ["cols-5", "5 Columns"]
+        ],
+        "default": "cols-4"
       }
     ]
   },
@@ -80,24 +105,65 @@
     "tab": "STYLE",
     "children": [
       {
-        "id": "layout",
-        "name": "layout",
-        "label": "Layout",
+        "id": "enable_styles",
+        "name": "enable_styles",
+        "label": "Enable Styles",
+        "type": "boolean",
+        "display": "toggle",
+        "default": false
+      },
+      {
+        "id": "colors",
+        "name": "colors",
+        "label": "Colors",
         "type": "group",
+        "visibility": {
+          "controlling_field_path": "styles.enable_styles",
+          "operator": "EQUAL",
+          "controlling_value_regex": "true"
+        },
         "children": [
           {
-            "id": "grid_columns",
-            "name": "grid_columns",
-            "label": "Features Grid Columns",
-            "type": "choice",
-            "choices": [
-              ["cols-1", "1 Column"],
-              ["cols-2", "2 Columns"],
-              ["cols-3", "3 Columns"],
-              ["cols-4", "4 Columns"],
-              ["cols-5", "5 Columns"]
-            ],
-            "default": "cols-4"
+            "id": "background_color",
+            "name": "background_color",
+            "label": "Section Background",
+            "type": "color",
+            "default": { "color": "#ffffff", "opacity": 100 }
+          },
+          {
+            "id": "heading_color",
+            "name": "heading_color",
+            "label": "Section Heading",
+            "type": "color",
+            "default": { "color": "#000000", "opacity": 100 }
+          },
+          {
+            "id": "category_title_color",
+            "name": "category_title_color",
+            "label": "Category Title",
+            "type": "color",
+            "default": { "color": "#000000", "opacity": 100 }
+          },
+          {
+            "id": "feature_text_color",
+            "name": "feature_text_color",
+            "label": "Feature Text",
+            "type": "color",
+            "default": { "color": "#4a4a6a", "opacity": 100 }
+          },
+          {
+            "id": "icon_color",
+            "name": "icon_color",
+            "label": "Default Icon Color",
+            "type": "color",
+            "default": { "color": "#F4C51F", "opacity": 100 }
+          },
+          {
+            "id": "divider_color",
+            "name": "divider_color",
+            "label": "Divider",
+            "type": "color",
+            "default": { "color": "#e0e0e0", "opacity": 100 }
           }
         ]
       }

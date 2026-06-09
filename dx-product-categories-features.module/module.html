@@ -1,4 +1,4 @@
-<section class="dx-rep-features">
+<section class="dx-rep-features"{% if module.styles.enable_styles %} style="--dx-feat-bg: {{ module.styles.colors.background_color.color }}; --dx-feat-heading: {{ module.styles.colors.heading_color.color }}; --dx-feat-title: {{ module.styles.colors.category_title_color.color }}; --dx-feat-text: {{ module.styles.colors.feature_text_color.color }}; --dx-feat-icon: {{ module.styles.colors.icon_color.color }}; --dx-feat-divider: {{ module.styles.colors.divider_color.color }};"{% endif %}>
   <div class="dx-module__container content-wrapper">
 
     {% if module.heading %}
@@ -23,7 +23,8 @@
           {% endif %}
 
           {% if category.features %}
-          <ul class="dx-rep-features__grid{% if module.styles.layout.grid_columns %} dx-rep-features__grid--{{ module.styles.layout.grid_columns }}{% endif %}">
+          {% set direction = category.layout_direction if category.layout_direction else "horizontal" %}
+          <ul class="dx-rep-features__grid{% if category.layout_columns %} dx-rep-features__grid--{{ category.layout_columns }}{% endif %} dx-rep-features__grid--{{ direction }}">
             {% for feature in category.features %}
             <li class="dx-rep-features__item">
 
@@ -38,7 +39,7 @@
               >
               {% else %}
               <svg class="dx-rep-features__icon" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true">
-                <path d="M1 4.88889L3.41975 8L7.04938 1" stroke="#F4C51F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1 4.88889L3.41975 8L7.04938 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
               {% endif %}
 
