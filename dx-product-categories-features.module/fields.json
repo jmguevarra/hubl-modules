@@ -1,0 +1,106 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Section Heading",
+    "type": "text",
+    "default": "Main features"
+  },
+  {
+    "id": "categories",
+    "name": "categories",
+    "label": "Categories",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 10,
+      "default": 3,
+      "sorting_label_field": "category_title"
+    },
+    "children": [
+      {
+        "id": "category_title",
+        "name": "category_title",
+        "label": "Category Title",
+        "type": "text",
+        "default": "For Business Users"
+      },
+      {
+        "id": "features",
+        "name": "features",
+        "label": "Features",
+        "type": "group",
+        "occurrence": {
+          "min": 1,
+          "max": 20,
+          "default": 4,
+          "sorting_label_field": "feature_text"
+        },
+        "children": [
+          {
+            "id": "feature_icon",
+            "name": "feature_icon",
+            "label": "Custom Icon (optional)",
+            "type": "image",
+            "default": {
+              "src": "",
+              "alt": "",
+              "width": 16,
+              "height": 16
+            }
+          },
+          {
+            "id": "feature_text",
+            "name": "feature_text",
+            "label": "Feature",
+            "type": "text",
+            "default": "Feature item"
+          }
+        ]
+      },
+      {
+        "id": "section_image",
+        "name": "section_image",
+        "label": "Section Image",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "Category preview",
+          "width": 600,
+          "height": 420
+        }
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "layout",
+        "name": "layout",
+        "label": "Layout",
+        "type": "group",
+        "children": [
+          {
+            "id": "grid_columns",
+            "name": "grid_columns",
+            "label": "Features Grid Columns",
+            "type": "choice",
+            "choices": [
+              ["cols-1", "1 Column"],
+              ["cols-2", "2 Columns"],
+              ["cols-3", "3 Columns"],
+              ["cols-4", "4 Columns"],
+              ["cols-5", "5 Columns"]
+            ],
+            "default": "cols-4"
+          }
+        ]
+      }
+    ]
+  }
+]
