@@ -1,0 +1,764 @@
+{# --- Testing/production HubDB resolution --- #}
+{% set testing = false %}
+{% set testing_table_id = null %}
+{% set testing_row_id = null %}
+{% set testing_page_level = 0 %}
+
+{% if testing %}
+{% set table_id = testing_table_id %}
+{% set row = hubdb_table_row(table_id, testing_row_id) %}
+{% set page_level = testing_page_level %}
+{% else %}
+{% set table_id = dynamic_page_hubdb_table_id %}
+{% set row = dynamic_page_hubdb_row %}
+{% set page_level = dynamic_page_route_level %}
+{% endif %}
+
+{% set rows = hubdb_table_rows(table_id) %}
+
+{% set _per_page = module.cards_per_page or 9 %}
+{% set _page_num = request.query_dict.page_num|int %}
+{% if _page_num < 1 %}{% set _page_num = 1 %}{% endif %}
+
+{# Filter rows first, then batch — avoids HubL loop-scope mutation bug #}
+{% if module.upcoming_only %}
+  {% set _filtered = rows|selectattr('sessions')|list %}
+{% else %}
+  {% set _filtered = rows %}
+{% endif %}
+
+{% set _batched = _filtered|batch(_per_page)|list %}
+{% set _total_pages = _batched|length %}
+{% if _total_pages < 1 %}{% set _total_pages = 1 %}{% endif %}
+{% if _page_num > _total_pages %}{% set _page_num = _total_pages %}{% endif %}
+{% set _page_items = _batched[_page_num - 1] if _page_num <= _batched|length else [] %}
+
+<section class="pdx-courses" data-instance="{{ name }}">
+  <div class="content-wrapper">
+    {% if table_id %}
+
+      {# ============================================================
+         LISTING PAGE (page_level == 0)
+         ============================================================ #}
+      {% if page_level == 0 and rows|length > 0 %}
+        <div class="pdx-catalog__header">
+          <h1 class="pdx-catalog__heading">
+            {{ module.title }}
+          </h1>
+          <div class="pdx-catalog__search">
+            <div class="hs-search-field">
+              {% set search_page = module.results.use_custom_search_results_template is truthy and module.results.path_id ? content_by_id(module.results.path_id).absolute_url : site_settings.content_search_results_page_path %}
+              {% unless (search_page is string_containing "//") %}
+                {% set search_page = "/" ~ search_page %}
+              {% endunless %}
+              {% set search_page = search_page|regex_replace("http:", "") %}
+              {% set content_types = [{ field_name: "blog_posts", content_type: "BLOG_POST" }] %}
+              {% require_head %}
+                <script id="hs-search-input__valid-content-types" type="application/json">
+                  [{% for type in content_types %}"{{ type.content_type }}"{% if not loop.last %},{% endif %}{% endfor %}]
+                </script>
+              {% end_require_head %}
+              <div class="hs-search-field__bar">
+                <form data-hs-do-not-collect="true" action="{{ search_page|escape_url }}">
+                  <label for="term">Search</label>
+                  <svg class="hs-search-field__search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.4639 2.5882C13.9148 5.03914 13.9148 9.0129 11.4639 11.4638C9.01292 13.9148 5.03916 13.9148 2.58821 11.4638C0.137263 9.0129 0.137263 5.03914 2.58821 2.5882C5.03916 0.137265 9.01292 0.137265 11.4639 2.5882" stroke="#9F9F9F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14.75 14.75L11.46 11.46" stroke="#9F9F9F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="Search" placeholder="{{ module.search_placeholder }}">
+                  <input type="hidden" name="tableId" value="{{ table_id }}">
+                  <button aria-label="Search">
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M2.46638 15.698L16.0465 9.39307C16.9858 8.95731 16.9858 7.60767 16.0465 7.17191L2.46638 0.868899C1.49227 0.417138 0.461692 1.37525 0.825924 2.39453L2.92756 8.28061L0.825924 14.1733C0.461692 15.1916 1.49227 16.1497 2.46638 15.698Z" stroke="#9F9F9F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M2.9248 8.28333H16.7506" stroke="#9F9F9F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </form>
+              </div>
+              <ul class="hs-search-field__suggestions"></ul>
+            </div>
+          </div>
+        </div>
+        {# --- Filter chips (built from categories column) --- #}
+        <div class="pdx-courses__filters" role="tablist" id="pdx-filters-{{ name }}">
+          <a href="#" class="pdx-courses__filter pdx-courses__filter--active" data-filter="all" role="tab">
+            {{ module.filter_all_label or 'All' }}
+          </a>
+          {% set tableColCategories = hubdb_table_column(table_id, 'categories') %}
+          {% if tableColCategories and tableColCategories.options %}
+            {% for tableColCategory in tableColCategories.options|sort(False, False, "label") %}
+              {% if tableColCategory.label %}
+                <a href="#"
+                   class="pdx-courses__filter"
+                   data-filter="{{ tableColCategory.name }}"
+                   data-source-column="categories"
+                   role="tab">
+                  {{ tableColCategory.label }}
+                </a>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        {# --- Course grid --- #}
+      <div class="pdx-courses__grid" id="pdx-grid-{{ name }}">
+        {% set today_unix = unixtimestamp() %}
+        {% for course in _page_items %}
+          {% set has_upcoming_session = false %}
+          {% if course.sessions and course.sessions|length > 0 %}
+            {% set has_upcoming_session = true %}
+          {% endif %}
+          {% set is_pub = true %}
+          {% if course.is_published is defined and course.is_published == false %}
+            {% set is_pub = false %}
+          {% endif %}
+          {% set should_render = is_pub %}
+          {% if module.upcoming_only and not has_upcoming_session %}
+            {% set should_render = false %}
+          {% endif %}
+          {% if should_render %}
+           {% set tags = course.categories|map(attribute='name')|join(' ') %}
+
+            <div class="pdx-courses__col" data-tags="{{ tags }}">
+              <div class="pdx-courses__box">
+
+                {# ========== BADGES ========== #}
+                <div class="pdx-courses__badges">
+                  <div class="pdx-courses__badges-wrap">
+                      {# CATALOG — Categories + Hours #}
+                      {% if course.categories %}
+                        {% for cat in course.categories %}
+                          {% set _cat_class = cat.name|lower|replace(' ', '-')|replace('_', '-') %}
+                          <span class="pdx-courses__badge pdx-courses__badge--{{ _cat_class }}">
+                            {{ cat.label or cat.name }}
+                          </span>
+                        {% endfor %}
+                      {% endif %}
+                      {% if course.format %}
+                        <span class="pdx-courses__badge pdx-courses__badge--format">
+                          {{ course.format.label or course.format.name }}
+                        </span>
+                      {% endif %}
+                      {% if course.duration_hours && ! module.upcoming_only %}
+                        <span class="pdx-courses__badge pdx-courses__badge--hours">
+                          {{ course.duration_hours }} hours
+                        </span>
+                      {% endif %}
+
+                  </div>
+
+                  {# Online indicator — sirf upcoming pe #}
+                  {% if module.upcoming_only and course.delivery %}
+                    <span class="pdx-courses__delivery">
+                      <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="4" cy="3.99609" r="2" fill="#3F4F67"/>
+                        <circle cx="3.99805" cy="3.99805" r="3.49805" stroke="#3F4F67"/>
+                      </svg>
+                      {{ course.delivery.label or course.delivery.name }}
+                    </span>
+                  {% endif %}
+                </div>
+
+                {# ========== TITLE ========== #}
+                <h3 class="pdx-courses__title">{{ course.hs_name }}</h3>
+
+                {# ========== BODY (date+time OR description) ========== #}
+                {% if module.upcoming_only %}
+                  {% if course.sessions and course.sessions|length > 0 %}
+                    {% set first_session = course.sessions[0] %}
+                    {% set start_date = first_session.start_date %}
+                    {% set end_date = first_session.end_date %}
+                    {% set timezone = first_session.time_zone %}
+                    <p class="pdx-courses__date">
+                      <span class="pdx-courses__icon" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect x="0.5" y="0.5" width="16" height="16" rx="3"
+                            stroke="#049D72" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M16.5 4.94444H0.5"
+                            stroke="#049D72" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      {{ start_date|datetimeformat('%B %-d') }} to {{ end_date|datetimeformat('%B %-d, %Y') }}
+                    </p>
+                    <p class="pdx-courses__time">
+                      <span class="pdx-courses__icon" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5.43929 1.11106C9.52003 -0.579547 14.1981 1.35905 15.8887 5.43979C17.5793 9.52053 15.6407 14.1986 11.56 15.8892C7.47922 17.5798 2.80117 15.6412 1.11056 11.5605C-0.579153 7.47971 1.35855 2.80166 5.43929 1.11106"
+                            stroke="#049D72" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M8.25 4.9314V9.06547L11.4997 11.0467"
+                            stroke="#049D72" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      {{ start_date|datetimeformat('%-I %p') }} to {{ end_date|datetimeformat('%-I %p') }}
+                      <span class="pdx-courses__tz">({{ timezone }})</span>
+                    </p>
+                  {% else %}
+                    <p class="pdx-courses__date pdx-courses__date--soon">Coming soon</p>
+                  {% endif %}
+
+                {% else %}
+                  {# Catalog — show description #}
+                  {% if course.short_description %}
+                    <p class="pdx-courses__desc">{{ course.short_description }}</p>
+                  {% endif %}
+                {% endif %}
+
+                {# ========== CTA ========== #}
+                <a href="{{ request.path }}/{{ course.hs_path }}"
+                   class="pdx-courses__cta scale-border-primary">
+                  Enroll now
+                  <svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.75 3.8125L0.75 3.8125M5.52778 0.75L7.75 3.8125L5.52778 6.875"
+                          stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {# --- Pagination --- #}
+      {% if _total_pages > 1 %}
+      <nav class="pdx-courses__pagination" aria-label="Course pages">
+        {% if _page_num > 1 %}
+          <a href="{{ request.path }}?page_num={{ _page_num|add(-1) }}" class="pdx-courses__page-btn pdx-courses__page-btn--prev" aria-label="Previous page">
+        {% else %}
+          <span class="pdx-courses__page-btn pdx-courses__page-btn--prev pdx-courses__page-btn--disabled" aria-disabled="true">
+        {% endif %}
+          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.06055 0.75L1.06055 4.75L5.06055 8.75" stroke="#3F4F67" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        {% if _page_num > 1 %}</a>{% else %}</span>{% endif %}
+
+        <span class="pdx-courses__page-info">{{ _page_num }} of {{ _total_pages }}</span>
+
+        {% if _page_num < _total_pages %}
+          <a href="{{ request.path }}?page_num={{ _page_num|add(1) }}" class="pdx-courses__page-btn pdx-courses__page-btn--next" aria-label="Next page">
+        {% else %}
+          <span class="pdx-courses__page-btn pdx-courses__page-btn--next pdx-courses__page-btn--disabled" aria-disabled="true">
+        {% endif %}
+          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.75 8.75L4.75 4.75L0.749999 0.75" stroke="#3F4F67" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        {% if _page_num < _total_pages %}</a>{% else %}</span>{% endif %}
+      </nav>
+      {% endif %}
+      {% elif page_level == 1 and row %}
+        <div class="pdx-course-detail">
+          <div class="pdx-course-detail__logo">
+            <svg width="165" height="32" viewBox="0 0 165 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.0959 16.7048C10.2459 18.1662 10.9325 19.52 12.023 20.5043C13.1135 21.4886 14.5303 22.0335 15.9993 22.0335C17.4684 22.0335 18.8852 21.4886 19.9757 20.5043C21.0661 19.52 21.7528 18.1662 21.9027 16.7048C21.9238 16.5032 21.9334 16.3006 21.9313 16.098C21.938 15.3148 21.7895 14.538 21.4945 13.8124C21.1994 13.0869 20.7635 12.427 20.2121 11.8708C19.6606 11.3146 19.0044 10.8731 18.2815 10.5719C17.5585 10.2706 16.783 10.1155 15.9998 10.1155C15.2165 10.1155 14.441 10.2706 13.7181 10.5719C12.9951 10.8731 12.3389 11.3146 11.7875 11.8708C11.236 12.427 10.8002 13.0869 10.5051 13.8124C10.21 14.538 10.0615 15.3148 10.0682 16.098C10.0663 16.3006 10.0756 16.5032 10.0959 16.7048ZM5.87382e-09 16.0004C-8.57225e-05 12.8359 0.938235 9.7424 2.6963 7.11115C4.45437 4.4799 6.95322 2.42907 9.87685 1.21802C12.8005 0.0069619 16.0176 -0.309928 19.1213 0.307421C22.2251 0.924771 25.076 2.44863 27.3137 4.6863C29.5513 6.92396 31.0752 9.77493 31.6926 12.8787C32.3099 15.9824 31.993 19.1995 30.782 22.1231C29.5709 25.0468 27.5201 27.5456 24.8888 29.3037C22.2576 31.0618 19.1641 32.0001 15.9996 32C11.7563 31.9995 7.68707 30.3137 4.68667 27.3133C1.68627 24.3129 0.00045975 20.2436 5.87382e-09 16.0004Z" fill="#FF2400"/>
+              <path d="M51.6861 15.8921C51.6861 20.7563 48.3173 22.8806 45.1358 22.8806C41.5733 22.8806 38.8291 20.2734 38.8291 16.114C38.8291 11.7106 41.7094 9.12549 45.3517 9.12549C49.1301 9.12549 51.6861 11.8697 51.6861 15.8921ZM41.2495 16.0291C41.2495 18.9098 42.9083 21.0857 45.2433 21.0857C47.5276 21.0857 49.238 18.9375 49.238 15.971C49.238 13.7439 48.124 10.9148 45.2936 10.9148C42.4632 10.9148 41.2482 13.5281 41.2482 16.0295" fill="#333333"/>
+              <path d="M65.7145 18.9944C65.7145 20.3528 65.7431 21.5517 65.822 22.5855H63.7033L63.5672 20.4377H63.51C63.0669 21.1953 62.4303 21.8213 61.6655 22.2517C60.9007 22.6821 60.0352 22.9012 59.1577 22.8867C57.0893 22.8867 54.6182 21.7446 54.6182 17.1257V9.42114H57.0099V16.7105C57.0099 19.2106 57.7711 20.8976 59.9479 20.8976C60.393 20.8987 60.8339 20.8113 61.2449 20.6406C61.656 20.4699 62.0291 20.2192 62.3425 19.9032C62.6559 19.5871 62.9034 19.2119 63.0706 18.7994C63.2379 18.3869 63.3215 17.9453 63.3167 17.5002V9.42114H65.7089V18.9944H65.7145Z" fill="#333333"/>
+              <path d="M77.98 20.1364C78.9279 20.7282 80.0167 21.056 81.1338 21.0856C82.8724 21.0856 83.6911 20.2161 83.6911 19.1308C83.6911 17.9891 83.0093 17.364 81.2422 16.7108C78.879 15.8699 77.7654 14.5626 77.7654 12.9888C77.7654 10.8696 79.475 9.13105 82.305 9.13105C83.4352 9.11995 84.5491 9.40174 85.5381 9.94898L84.9408 11.688C84.1303 11.1907 83.1978 10.9279 82.2469 10.929C80.8325 10.929 80.0428 11.7469 80.0428 12.7244C80.0428 13.808 80.8325 14.3039 82.5429 14.9514C84.8264 15.8183 85.9971 16.9627 85.9971 18.9232C85.9971 21.2356 84.2018 22.894 81.0766 22.894C79.7845 22.9096 78.5104 22.5908 77.3779 21.9686L77.98 20.1364Z" fill="#333333"/>
+              <path d="M101.361 20.1364C102.309 20.7275 103.398 21.0551 104.514 21.0857C106.253 21.0857 107.072 20.2162 107.072 19.1308C107.072 17.9891 106.39 17.364 104.623 16.7108C102.26 15.8699 101.146 14.5626 101.146 12.9888C101.146 10.8696 102.856 9.13106 105.686 9.13106C106.816 9.11982 107.93 9.40162 108.918 9.94898L108.32 11.688C107.509 11.1901 106.577 10.9266 105.626 10.9268C104.211 10.9268 103.422 11.7448 103.422 12.7222C103.422 13.8058 104.211 14.3017 105.922 14.9493C108.206 15.8162 109.376 16.9605 109.376 18.921C109.376 21.2335 107.581 22.8918 104.455 22.8918C103.163 22.9074 101.889 22.5886 100.757 21.9664L101.361 20.1364Z" fill="#333333"/>
+              <path d="M134.383 12.9831C134.383 11.6251 134.355 10.5125 134.275 9.42145H136.364L136.472 11.5402H136.552C136.946 10.7912 137.541 10.1676 138.271 9.73979C139.001 9.31201 139.836 9.09723 140.682 9.11977C141.502 9.11011 142.303 9.36 142.971 9.83363C143.64 10.3073 144.142 10.9803 144.404 11.7565H144.461C144.824 11.0902 145.324 10.5076 145.926 10.0461C146.758 9.40789 147.787 9.08028 148.835 9.11977C150.574 9.11977 153.16 10.2624 153.16 14.8301V22.5797H150.825V15.1309C150.825 12.603 149.898 11.0803 147.972 11.0803C147.333 11.1073 146.719 11.3308 146.213 11.7203C145.706 12.1098 145.332 12.6462 145.142 13.2562C145.019 13.6438 144.955 14.0482 144.955 14.4551V22.5854H142.62V14.7C142.62 12.6095 141.693 11.0868 139.876 11.0868C138.381 11.0868 137.29 12.2857 136.91 13.4781C136.777 13.8536 136.713 14.2502 136.722 14.6484V22.5854H134.387V12.9831H134.383Z" fill="#333333"/>
+              <path d="M156.693 20.1364C157.641 20.7275 158.729 21.0552 159.846 21.0857C161.584 21.0857 162.404 20.2162 162.404 19.1308C162.404 17.9891 161.723 17.364 159.955 16.7108C157.592 15.8699 156.478 14.5626 156.478 12.9888C156.478 10.8696 158.188 9.13106 161.018 9.13106C162.148 9.11982 163.262 9.40162 164.251 9.94898L163.654 11.688C162.844 11.1901 161.912 10.9266 160.961 10.9268C159.546 10.9268 158.757 11.7448 158.757 12.7222C158.757 13.8058 159.546 14.3017 161.256 14.9493C163.541 15.8162 164.711 16.9605 164.711 18.921C164.711 21.2335 162.915 22.8918 159.79 22.8918C158.498 22.9075 157.224 22.5887 156.092 21.9664L156.693 20.1364Z" fill="#333333"/>
+              <path d="M97.1108 9.38674L94.5032 17.1022C94.1794 18.051 93.9059 19.1589 93.6623 19.8407H93.6051C93.3884 19.1589 93.0602 18.0224 92.7642 17.1533L89.8839 9.38674H87.2754L92.1396 21.5286C92.226 21.7313 92.2815 21.9457 92.3043 22.1649C92.2757 22.3658 92.2121 22.5602 92.1166 22.7392C91.6612 23.7709 90.9728 24.683 90.1054 25.4036C89.4881 25.9217 88.7788 26.3187 88.0144 26.574L88.662 28.5739C89.7375 28.3135 90.729 27.7836 91.5431 27.0343C93.1738 25.6195 94.3441 23.2897 96.0541 18.7788L99.6448 9.3811H97.1108V9.38674Z" fill="#333333"/>
+              <path d="M131.336 16.4339C131.387 16.0628 131.413 15.6888 131.415 15.3143C131.415 12.8869 130.273 9.099 125.966 9.099C122.126 9.099 119.779 12.2355 119.779 16.2124C119.779 20.1893 122.207 22.8875 126.262 22.8875C127.762 22.8992 129.245 22.5748 130.603 21.9383L130.007 20.1147C128.001 20.9327 126.5 21.0917 125.381 20.8819C124.926 20.7857 124.487 20.621 124.081 20.3934C122.308 19.3098 122.092 17.0125 122.069 16.5245C122.069 16.4902 122.064 16.433 122.064 16.433L131.336 16.4339ZM125.779 10.8319C128.478 10.8319 129.131 13.1955 129.103 14.7295H122.099C122.292 13.1955 123.356 10.8319 125.781 10.8319" fill="#333333"/>
+              <path d="M75.0301 20.1616C74.5951 20.4836 74.084 20.6872 73.5468 20.7524C72.7176 20.7411 72.1554 20.1672 72.1554 18.5591V11.1484H75.5636V9.44406H72.1554V4.75671L69.6553 6.54037V18.4208C69.6553 19.9722 69.9734 21.1368 70.6552 21.8451C71.0286 22.2504 71.5062 22.5452 72.0358 22.6973C72.6459 22.8846 73.2931 22.9172 73.919 22.7922C74.5449 22.6672 75.1299 22.3885 75.6213 21.9812L75.0301 20.1616Z" fill="#333333"/>
+              <path d="M117.759 20.1616C117.324 20.4836 116.813 20.6872 116.276 20.7524C115.446 20.7411 114.884 20.1672 114.884 18.5591V11.1484H118.293V9.44406H114.884V4.75671L112.384 6.54037V18.4208C112.384 19.9722 112.702 21.1368 113.384 21.8451C113.757 22.2505 114.235 22.5453 114.764 22.6973C115.374 22.8846 116.022 22.9172 116.648 22.7922C117.273 22.6672 117.858 22.3885 118.35 21.9812L117.759 20.1616Z" fill="#333333"/>
+            </svg>
+          </div>
+          <div class="pdx-course-detail__row">
+            <div class="pdx-course-detail__left-col">
+              {% if row.hs_name %}
+                <h1 class="pdx-course-detail__title">{{ row.hs_name }}</h1>
+              {% endif %}
+              {% if row.description %}
+                <div class="pdx-course-detail__description">
+                  {{ row.description }}
+                </div>
+              {% endif %}
+              <div class="pdx-course-detail__badges-details">
+                <div class="pdx-course-detail__badges-left">
+                   {% if row.categories %} 
+                      {% for cat in row.categories %} 
+                        <span class="pdx-course-detail__badges-cat"> {{ cat.label }} </span>
+                      {% endfor %} 
+                    {% endif %}
+                    {% if row.duration_hours %}
+                      <span class="pdx-course-detail__badges-duration">{{ row.duration_hours }} Hours</span>
+                    {% endif %}
+                </div>
+                {% if row.price %}
+                  <span class="pdx-course-detail__badges-price">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12.75" cy="12.75" r="12" stroke="#D81F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M12.7497 7.0658V8.32895" stroke="#D81F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M12.7497 18.4342V17.171" stroke="#D81F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10.0455 15.5921C10.5448 16.617 11.6124 17.2402 12.7503 17.1711C14.1392 17.3227 15.3975 16.344 15.5924 14.9605V14.9605C15.5924 14.0057 14.9185 13.1836 13.9822 12.9964L11.5184 12.5036C10.5821 12.3164 9.9082 11.4943 9.9082 10.5395V10.5395C10.1031 9.15601 11.3614 8.17734 12.7503 8.32896C13.8883 8.25984 14.9558 8.88302 15.4551 9.9079" stroke="#D81F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Price: <span class="pdx-course-detail__badges-price-unit">{{ row.price|format_currency_value(2, '.', ',')|replace('.00', '')|replace('AU$', 'AU $') }} (exc. GST)</span> 
+                  </span>
+                {% endif %}
+              </div>
+              {% if row.course_overview %}
+                <h2 class="pdx-course-detail__heading">
+                  Course Overview
+                </h2>
+                {{ row.course_overview }}
+              {% endif %}
+              {% if row.modules %}
+                <h2 class="pdx-course-detail__heading">
+                  Curriculum
+                </h2>
+                <div class="pdx-course-detail__curriculum">
+                  <div class="pdx-course-detail__module-tabs">
+                    {% for module_item in row.modules|sort(False, False, '9') %}
+                      <button class="pdx-course-detail__module-tab{% if loop.first %} pdx-course-detail__module-tab--active{% endif %}" data-module-target="pdx-mod-{{ name }}-{{ loop.index }}" role="tab" type="button">
+                        Module {{ loop.index }}
+                      </button>
+                    {% endfor %}
+                  </div>
+                  <div class="pdx-course-detail__module-panels">
+                    {% for module_item in row.modules|sort(False, False, '9') %}
+                      <div class="pdx-course-detail__module-panel{% if loop.first %} pdx-detail__module-panel--active{% endif %}" id="pdx-mod-{{ name }}-{{ loop.index }}" role="tabpanel">
+                        <div class="pdx-course-detail__module-tab-wrap">
+                          <button class="pdx-course-detail__module-tab pdx-course-detail__module-tab--active">
+                            Module {{ loop.index }}
+                          </button>
+                        </div>
+                        {% if module_item.duration_hours %}
+                          <span class="pdx-detail__module-duration">{{ module_item.duration_hours }} hours</span>
+                        {% endif %}
+                        <h3 class="pdx-detail__module-title">{{ module_item.name }}</h3>
+                        {{ module_item.description }}
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+            <div class="pdx-course-detail__right-col">
+              <aside class="pdx-course-detail__sidebar">
+                  <h3 class="pdx-course-detail__sidebar-title">Pick your start date</h3>
+                  <div class="pdx-course-detail__dates" id="pdx-dates-{{ name }}">
+                    {% for s in row.sessions %}
+                      {% set _is_default = default_session and (s.hs_id == default_session.hs_id) %}
+                      {% set _is_avail = (s.status.name == 'Available') %}
+                      <a href="#"
+                         role="button"
+                         tabindex="{% if _is_avail %}0{% else %}-1{% endif %}"
+                         class="pdx-course-detail__date-item{% if loop.first %}  pdx-course-detail__date-item--selected{% endif %}"
+                         data-session-id="{{ s.hs_id }}"
+                         data-start-date="{{ s.start_date|datetimeformat('%B %-d') }}"
+                         data-end-date="{{ s.end_date|datetimeformat('%-d %B, %Y') }}"
+                         data-start-time="{{ s.start_date|datetimeformat('%-I %p') }}"
+                         data-end-time="{{ s.end_date|datetimeformat('%-I %p') }}"
+                         data-timezone="{{ s.timezone }}"
+                         {% if not _is_avail %}aria-disabled="true"{% endif %}>
+
+                        {# Top: rounded rectangle with date info #}
+                        <span class="pdx-course-detail__date-card">
+                          <span class="pdx-course-detail__date-row">
+                            <span class="pdx-course-detail__date-day">{{ s.start_date|datetimeformat('%-d') }}</span>
+                            <span class="pdx-course-detail__date-monthwrap">
+                              <span class="pdx-course-detail__date-month">{{ s.start_date|datetimeformat('%b')|upper }}</span>
+                              <span class="pdx-course-detail__date-year">{{ s.start_date|datetimeformat('%Y') }}</span>
+                            </span>
+                          </span>
+                          <span class="pdx-course-detail__date-tz">(GMT +10)</span>
+                        </span>
+
+                        {# Bottom: separate pill with status #}
+                        <span class="pdx-detail__date-status scale-button">
+                          {% if _is_default %}Selected{% elif _is_avail %}Available{% else %}{{ s.status.label or s.status.name }}{% endif %}
+                        </span>
+                      </a>
+                    {% endfor %}
+                  </div>
+                 <div class="pdx-course-detail__enroll-form">
+                   <div class="pdx-course-detail__summary" id="pdx-summary-{{ name }}">
+                     {% set first_session = row.sessions[0] %}
+                     {% set start_date = first_session.start_date %}
+                     {% set end_date = first_session.end_date %}
+                     {% set timezone = first_session.time_zone %}
+                     {% if start_date %}
+                     <div class="pdx-course-detail__summary-row">
+                       Selected Date:
+                       <span id="pdx-sel-date-{{ name }}">
+                         {{ start_date|datetimeformat('%B %-d') }} to {{ end_date|datetimeformat('%B %-d, %Y') }}
+                       </span>
+                     </div>
+                     {% endif %}
+                     <div class="pdx-course-detail__summary-row">
+                       Time:
+                       <span id="pdx-sel-time-{{ name }}">
+                         {{ start_date|datetimeformat('%-I %p') }} to {{ end_date|datetimeformat('%-I %p') }}
+                         Local Time
+                       </span>
+                     </div>
+                     {% if row.price %}
+                     <div class="pdx-course-detail__summary-row">
+                       Price:
+                       <span>{{ row.price|format_currency_value(2, '.', ',')|replace('.00', '')|replace('AU$', 'AU $') }} (exc. GST)</span>
+                     </div>
+                     {% endif %}
+                     <div class="pdx-course-detail__summary-meta">
+                       {% if row.format %}{{ row.format.label or row.format.name }}{% endif %}
+                       {% if row.format and row.delivery %} | {% endif %}
+                       {% if row.delivery %}{{ row.delivery.label or row.delivery.name }}{% endif %}
+                     </div>
+                   </div>
+                   <h3 class="pdx-course-detail__enroll-title">{{ module.form_heading }}</h3>
+                    {% set first_session = row.sessions[0] %}
+                    {% set start_date = first_session.start_date %}
+                    {% set end_date = first_session.end_date %}
+                    {% set timezone = first_session.time_zone %}
+                   <input type="hidden"
+                     id="pdx-enroll-course-name-{{ name }}"
+                     value="{{ row.name or row.hs_name }}">
+
+                    <input type="hidden"
+                           id="pdx-enroll-course-slug-{{ name }}"
+                           value="{{ row.hs_path }}">
+
+                    <input type="hidden"
+                           id="pdx-enroll-session-date-{{ name }}"
+                           value="{{ start_date|datetimeformat('%-d %B') }} to {{end_date|datetimeformat('%-d %B, %Y') }}">
+
+                    <input type="hidden"
+                           id="pdx-enroll-session-time-{{ name }}"
+                           value="{{ start_date|datetimeformat('%-I %p') }} to {{ end_date|datetimeformat('%-I %p') }} Local Time">
+
+                    <input type="hidden"
+                           id="pdx-enroll-session-price-{{ name }}"
+                           value="{% if row.price %}{{ row.currency or 'AU' }} ${{ row.price|format_currency_value(2, '.', ',') }} (exc. GST){% endif %}">
+
+                    <input type="hidden"
+                           id="pdx-enroll-session-format-{{ name }}"
+                           value="{% if row.format %}{{ row.format.label or row.format.name }}{% endif %}{% if row.format and row.delivery %} | {% endif %}{% if row.delivery %}{{ row.delivery.label or row.delivery.name }}{% endif %}">
+                   {% form
+                          form_to_use="{{ module.form_field.form_id }}"
+                          response_response_type="{{ module.form_field.response_type }}"
+                          response_message="{{ module.form_field.message }}"
+                          response_redirect_id="{{ module.form_field.redirect_id }}"
+                          response_redirect_url="{{module.form_field.redirect_url}}"
+                          gotowebinar_webinar_key="{{ module.form_field.gotowebinar_webinar_key }}"
+                        %}
+                </div>
+              </aside>
+            </div>
+          </div>
+          {# ============================================================
+          RELATED COURSES — same categories, exclude current, limit N
+          ============================================================ #}
+          {% if module.show_related %}
+                {% set maxRelated = module.related_count or 3 %}
+                {% set currentCatNames = row.categories|map(attribute='name')|list if row.categories else [] %}
+                {% set allCourses = hubdb_table_rows(table_id, "&is_published=true") %}
+
+                <section class="pdx-course-detail__related">
+                  <div class="pdx-course-detail__related-header">
+                    <h2 class="pdx-course-detail__related-title">
+                      {{ module.related_heading }}
+                    </h2>
+                    {% set href = module.related_link.link_field.url.href %}
+                    {% if module.related_link.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                      {% set href = "mailto:" + href %}
+                    {% elif module.related_link.link_field.url.type is equalto "PHONE_NUMBER" %}
+                      {% set href = "tel:" + href %}
+                    {% endif %}
+                    {% if module.related_link.link_text %}
+                      <a
+                        {% if module.related_link.link_field.url.type is equalto "CALL_TO_ACTION"  %}
+                          href="{{ href }}" {# The href here is not escaped as it is not editable and functions as a JavaScript call to the associated CTA #}
+                        {% else %}
+                          href="{{ href|escape_url }}"
+                        {% endif %}
+                        {% if module.related_link.link_field.open_in_new_tab %}
+                          target="_blank"
+                        {% endif %}
+                        {% if module.related_link.link_field.rel %}
+                          rel="{{ module.related_link.link_field.rel|escape_attr }}"
+                        {% endif %}
+                         class="pdx-course-detail__related-link"
+                        >
+                        {{ module.related_link.link_text }}
+                        <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M9.89258 4.75L0.74972 4.75M6.99008 0.75L9.89258 4.75L6.99008 8.75" stroke="#D81F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </a>
+                     {% endif %}
+                  </div>
+
+                  <div class="pdx-courses__grid">
+
+                    {# Tracking via counter + string of shown IDs #}
+                    {% set shownCount = 0 %}
+                    {% set shownIdsStr = '' %}
+
+                    {# PASS 1: Render category-matched courses inline #}
+                    {% for c in allCourses %}
+                      {% if c.hs_id != row.hs_id and shownCount < maxRelated %}
+                        {% set cCats = c.categories|map(attribute='name')|list if c.categories else [] %}
+
+                        {% if currentCatNames|length > 0 and currentCatNames[0] in cCats %}
+                          {% set shownCount = shownCount + 1 %}
+                          {% set shownIdsStr = shownIdsStr ~ ',' ~ c.hs_id|string ~ ',' %}
+
+                          <article class="pdx-courses__col">
+                            <div class="pdx-courses__box">
+                              <div class="pdx-courses__badges">
+                                <div class="pdx-courses__badges-wrap">
+                                  {% if c.categories %}
+                                    {% for cat in c.categories %}
+                                      <span class="pdx-courses__badge pdx-courses__badge--cat.name">
+                                        {{ cat.label or cat.name }}
+                                      </span>
+                                    {% endfor %}
+                                  {% endif %}
+                                   {% if c.format %}
+                                    <span class="pdx-courses__badge pdx-course-detail__badge--{{ levelClass }}">
+                                      {{ c.format.label or c.format.name }}
+                                    </span>
+                                  {% endif %}
+                                   {% if c.duration_hours %}
+                                  <span class="pdx-courses__badge pdx-courses__badge--hours">
+                                    {{ c.duration_hours }} hours
+                                  </span>
+                                {% endif %}
+                                </div>
+                              </div>
+                              <h3 class="pdx-courses__title">{{ c.name or c.hs_name }}</h3>
+                              {% if c.short_description %}
+                                <div class="pdx-course-detail__desc">{{ c.short_description|truncate(140) }}</div>
+                              {% endif %}
+                              <a href="{{ module.course_base_url|default('/courses') }}/{{ c.hs_path }}"
+                                 class="pdx-course-detail__cta">
+                                <span>Enroll now</span>
+                                <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.89258 4.75L0.74972 4.75M6.99008 0.75L9.89258 4.75L6.99008 8.75" stroke="#5137CB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                              </a>
+                            </div>
+                          </article>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </section>
+              {% endif %}
+        </div>
+      {% endif %}
+    {% else %}
+      <p class="pdx-courses__empty">No upcoming courses scheduled. Check back soon.</p>
+    {% endif %}
+  </div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    /* ============================================================
+       1. Curriculum module tabs
+       ============================================================ */
+    const curriculumSections = document.querySelectorAll('.pdx-course-detail__curriculum');
+    curriculumSections.forEach((section) => {
+      const tabs = section.querySelectorAll('.pdx-course-detail__module-tab');
+      const panels = section.querySelectorAll('.pdx-course-detail__module-panel');
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', function () {
+          const targetId = this.getAttribute('data-module-target');
+          tabs.forEach((item) => {
+            item.classList.remove('pdx-course-detail__module-tab--active');
+          });
+          panels.forEach((panel) => {
+            panel.classList.remove('pdx-detail__module-panel--active');
+          });
+          this.classList.add('pdx-course-detail__module-tab--active');
+          const targetPanel = section.querySelector('#' + targetId);
+          if (targetPanel) {
+            targetPanel.classList.add('pdx-detail__module-panel--active');
+          }
+        });
+      });
+    });
+  
+  
+    /* ============================================================
+       2. Date picker (Pick your start date)
+       ============================================================ */
+    const datePickers = document.querySelectorAll('[id^="pdx-dates-"]');
+    datePickers.forEach((container) => {
+      const items = container.querySelectorAll('.pdx-course-detail__date-item');
+      if (items.length === 0) return;
+  
+      const detail = container.closest('.pdx-course-detail') || document;
+      const selDateEl = detail.querySelector('[id^="pdx-sel-date-"]');
+      const selTimeEl = detail.querySelector('[id^="pdx-sel-time-"]');
+  
+      // Hidden data holders that feed the HubSpot form
+      const enrollDateInput = detail.querySelector('[id^="pdx-enroll-session-date-"]');
+      const enrollTimeInput = detail.querySelector('[id^="pdx-enroll-session-time-"]');
+  
+      items.forEach((item) => {
+        if (item.classList.contains('pdx-course-detail__date-item--disabled')) return;
+  
+        item.addEventListener('click', function (e) {
+          e.preventDefault();
+  
+          // Reset state on every item AND its pill
+          items.forEach((i) => {
+            i.classList.remove('pdx-course-detail__date-item--selected');
+            const pill = i.querySelector('.pdx-detail__date-status');
+            if (pill) {
+              pill.classList.remove('pdx-detail__date-status--selected');
+              if (!i.classList.contains('pdx-course-detail__date-item--disabled')) {
+                pill.textContent = 'Available';
+              }
+            }
+          });
+  
+          // Activate clicked item
+          this.classList.add('pdx-course-detail__date-item--selected');
+          const activePill = this.querySelector('.pdx-detail__date-status');
+          if (activePill) {
+            activePill.classList.add('pdx-detail__date-status--selected');
+            activePill.textContent = 'Selected';
+          }
+  
+          // Read selected card's data
+          const startDate = this.getAttribute('data-start-date') || '';
+          const endDate = this.getAttribute('data-end-date') || '';
+          const startTime = this.getAttribute('data-start-time') || '';
+          const endTime = this.getAttribute('data-end-time') || '';
+  
+          // Update visual summary box
+          if (selDateEl) selDateEl.textContent = startDate + ' - ' + endDate;
+          if (selTimeEl) selTimeEl.textContent = startTime + ' - ' + endTime + ' (Local Time)';
+  
+          // Update hidden inputs that feed the HubSpot form
+          if (enrollDateInput) enrollDateInput.value = startDate + ' to ' + endDate;
+          if (enrollTimeInput) enrollTimeInput.value = startTime + ' to ' + endTime + ' Local Time';
+  
+          // Re-sync into the embedded HubSpot form immediately
+          syncFormFields();
+        });
+  
+        // Keyboard accessibility — Enter / Space triggers click
+        item.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            item.click();
+          }
+        });
+      });
+    });
+  
+  
+    /* ============================================================
+       3. HubSpot form sync — using official postMessage events
+       ============================================================ */
+  
+    // Mapping: <hidden input ID prefix> → <HubSpot form field internal name>
+    const formFieldMap = {
+      'pdx-enroll-course-name-':    'course_name',
+      'pdx-enroll-course-slug-':    'course_slug',
+      'pdx-enroll-session-date-':   'course_session_date',
+      'pdx-enroll-session-time-':   'course_session_time',
+      'pdx-enroll-session-price-':  'course_session_price',
+      'pdx-enroll-session-format-': 'course_session_format'
+    };
+  
+    function syncFormFields() {
+      const form = document.querySelector('form.hs-form, form[id^="hsForm_"]');
+      if (!form) return false;
+  
+      Object.keys(formFieldMap).forEach((prefix) => {
+        const holder = document.querySelector('[id^="' + prefix + '"]');
+        if (!holder) return;
+  
+        const fieldName = formFieldMap[prefix];
+        const input = form.querySelector(
+          'input[name="' + fieldName + '"], select[name="' + fieldName + '"], textarea[name="' + fieldName + '"]'
+        );
+  
+        if (input) {
+          input.value = holder.value || '';
+          input.dispatchEvent(new Event('input',  { bubbles: true }));
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      });
+  
+      return true;
+    }
+  
+    /* ============================================================
+       4. Category filter chips
+       ============================================================ */
+    document.querySelectorAll('[id^="pdx-filters-"]').forEach((filterBar) => {
+      const instanceId = filterBar.id.replace('pdx-filters-', '');
+      const grid = document.getElementById('pdx-grid-' + instanceId);
+      if (!grid) return;
+
+      const filters = filterBar.querySelectorAll('.pdx-courses__filter');
+
+      filters.forEach((btn) => {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          filters.forEach((f) => f.classList.remove('pdx-courses__filter--active'));
+          this.classList.add('pdx-courses__filter--active');
+
+          const selected = this.getAttribute('data-filter');
+          grid.querySelectorAll('.pdx-courses__col').forEach((card) => {
+            if (selected === 'all') {
+              card.style.display = '';
+            } else {
+              const tags = (card.getAttribute('data-tags') || '').split(' ');
+              card.style.display = tags.includes(selected) ? '' : 'none';
+            }
+          });
+        });
+      });
+    });
+
+
+    // Listen for HubSpot's official form lifecycle events
+    window.addEventListener('message', function (event) {
+      if (!event.data || event.data.type !== 'hsFormCallback') return;
+  
+      switch (event.data.eventName) {
+  
+        case 'onFormReady':
+          // Form fully rendered — sync values now (most reliable trigger)
+          setTimeout(syncFormFields, 50);
+          break;
+  
+        case 'onFormSubmit':
+          // User clicked submit — last-chance final sync of any updated values
+          syncFormFields();
+  
+          // BONUS: Push custom enrollment data to dataLayer for analytics (GTM)
+          if (window.dataLayer) {
+            window.dataLayer.push({
+              'event': 'course-enrollment-submit',
+              'hs-form-guid': event.data.id,
+              'course_name':  document.querySelector('[id^="pdx-enroll-course-name-"]')?.value,
+              'course_slug':  document.querySelector('[id^="pdx-enroll-course-slug-"]')?.value,
+              'session_date': document.querySelector('[id^="pdx-enroll-session-date-"]')?.value,
+              'session_time': document.querySelector('[id^="pdx-enroll-session-time-"]')?.value,
+              'session_price':document.querySelector('[id^="pdx-enroll-session-price-"]')?.value,
+              'session_format':document.querySelector('[id^="pdx-enroll-session-format-"]')?.value
+            });
+          }
+          break;
+  
+        case 'onFormSubmitted':
+          // Successful submission completed — push success event to dataLayer
+          if (window.dataLayer) {
+            window.dataLayer.push({
+              'event': 'course-enrollment-success',
+              'hs-form-guid': event.data.id,
+              'course_name': document.querySelector('[id^="pdx-enroll-course-name-"]')?.value
+            });
+          }
+          break;
+      }
+    });
+  });
+
+</script>
