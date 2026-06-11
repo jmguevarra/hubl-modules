@@ -19,12 +19,23 @@
 {% set _per_page = module.cards_per_page or 9 %}
 {% set _page_num = request.query_dict.page_num|int %}
 {% if _page_num < 1 %}{% set _page_num = 1 %}{% endif %}
+{% set _active_filter = request.query_dict.category|default('') %}
 
 {# Filter rows first, then batch — avoids HubL loop-scope mutation bug #}
 {% if module.upcoming_only %}
   {% set _filtered = rows|selectattr('sessions')|list %}
 {% else %}
   {% set _filtered = rows %}
+{% endif %}
+{% if _active_filter %}
+  {% set _cat_filtered = [] %}
+  {% for course in _filtered %}
+    {% set _course_cats = course.categories|map(attribute='name')|join(',') if course.categories else '' %}
+    {% if _active_filter in _course_cats.split(',') %}
+      {% set _ = _cat_filtered.append(course) %}
+    {% endif %}
+  {% endfor %}
+  {% set _filtered = _cat_filtered %}
 {% endif %}
 
 {% set _batched = _filtered|batch(_per_page)|list %}
@@ -81,15 +92,15 @@
         </div>
         {# --- Filter chips (built from categories column) --- #}
         <div class="pdx-courses__filters" role="tablist" id="pdx-filters-{{ name }}">
-          <a href="#" class="pdx-courses__filter pdx-courses__filter--active" data-filter="all" role="tab">
+          <a href="{{ request.path }}" class="pdx-courses__filter{% if not _active_filter %} pdx-courses__filter--active{% endif %}" data-filter="all" role="tab">
             {{ module.filter_all_label or 'All' }}
           </a>
           {% set tableColCategories = hubdb_table_column(table_id, 'categories') %}
           {% if tableColCategories and tableColCategories.options %}
             {% for tableColCategory in tableColCategories.options|sort(False, False, "label") %}
               {% if tableColCategory.label %}
-                <a href="#"
-                   class="pdx-courses__filter"
+                <a href="{{ request.path }}?category={{ tableColCategory.name }}"
+                   class="pdx-courses__filter{% if _active_filter == tableColCategory.name %} pdx-courses__filter--active{% endif %}"
                    data-filter="{{ tableColCategory.name }}"
                    data-source-column="categories"
                    role="tab">
@@ -223,7 +234,7 @@
       {% if _total_pages > 1 %}
       <nav class="pdx-courses__pagination" aria-label="Course pages">
         {% if _page_num > 1 %}
-          <a href="{{ request.path }}?page_num={{ _page_num|add(-1) }}" class="pdx-courses__page-btn pdx-courses__page-btn--prev" aria-label="Previous page">
+          <a href="{{ request.path }}?{% if _active_filter %}category={{ _active_filter }}&{% endif %}page_num={{ _page_num|add(-1) }}" class="pdx-courses__page-btn pdx-courses__page-btn--prev" aria-label="Previous page">
         {% else %}
           <span class="pdx-courses__page-btn pdx-courses__page-btn--prev pdx-courses__page-btn--disabled" aria-disabled="true">
         {% endif %}
@@ -235,7 +246,7 @@
         <span class="pdx-courses__page-info">{{ _page_num }} of {{ _total_pages }}</span>
 
         {% if _page_num < _total_pages %}
-          <a href="{{ request.path }}?page_num={{ _page_num|add(1) }}" class="pdx-courses__page-btn pdx-courses__page-btn--next" aria-label="Next page">
+          <a href="{{ request.path }}?{% if _active_filter %}category={{ _active_filter }}&{% endif %}page_num={{ _page_num|add(1) }}" class="pdx-courses__page-btn pdx-courses__page-btn--next" aria-label="Next page">
         {% else %}
           <span class="pdx-courses__page-btn pdx-courses__page-btn--next pdx-courses__page-btn--disabled" aria-disabled="true">
         {% endif %}
@@ -687,34 +698,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   
     /* ============================================================
-       4. Category filter chips
+       4. Category filter chips — handled server-side via ?category= URL param
        ============================================================ */
-    document.querySelectorAll('[id^="pdx-filters-"]').forEach((filterBar) => {
-      const instanceId = filterBar.id.replace('pdx-filters-', '');
-      const grid = document.getElementById('pdx-grid-' + instanceId);
-      if (!grid) return;
-
-      const filters = filterBar.querySelectorAll('.pdx-courses__filter');
-
-      filters.forEach((btn) => {
-        btn.addEventListener('click', function (e) {
-          e.preventDefault();
-
-          filters.forEach((f) => f.classList.remove('pdx-courses__filter--active'));
-          this.classList.add('pdx-courses__filter--active');
-
-          const selected = this.getAttribute('data-filter');
-          grid.querySelectorAll('.pdx-courses__col').forEach((card) => {
-            if (selected === 'all') {
-              card.style.display = '';
-            } else {
-              const tags = (card.getAttribute('data-tags') || '').split(' ');
-              card.style.display = tags.includes(selected) ? '' : 'none';
-            }
-          });
-        });
-      });
-    });
 
 
     // Listen for HubSpot's official form lifecycle events
