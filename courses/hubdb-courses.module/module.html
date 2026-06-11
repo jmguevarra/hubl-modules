@@ -681,7 +681,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const allCards = Array.from(grid.querySelectorAll('.pdx-courses__col'));
       const filters = filterBar.querySelectorAll('.pdx-courses__filter');
 
-      let activeFilter = 'all';
+      const _urlCatalog = new URLSearchParams(window.location.search).get('catalog');
+      let activeFilter = _urlCatalog ? _urlCatalog.toLowerCase() : 'all';
       let currentPage = 1;
 
       function getVisibleCards() {
@@ -741,6 +742,19 @@ document.addEventListener('DOMContentLoaded', function () {
             const total = Math.max(1, Math.ceil(getVisibleCards().length / perPage));
             if (currentPage < total) { currentPage++; renderPage(); }
           });
+        }
+      }
+
+      // Pre-activate chip matching ?catalog= URL param on first load
+      if (activeFilter !== 'all') {
+        const matchChip = Array.from(filters).find(function (f) {
+          return f.getAttribute('data-filter') === activeFilter;
+        });
+        if (matchChip) {
+          filters.forEach(function (f) { f.classList.remove('pdx-courses__filter--active'); });
+          matchChip.classList.add('pdx-courses__filter--active');
+        } else {
+          activeFilter = 'all';
         }
       }
 
