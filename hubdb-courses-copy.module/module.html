@@ -17,32 +17,13 @@
 {% set rows = hubdb_table_rows(table_id) %}
 
 {% set _per_page = module.cards_per_page or 9 %}
-{% set _page_num = request.query_dict.page_num|int %}
-{% if _page_num < 1 %}{% set _page_num = 1 %}{% endif %}
-{% set _active_filter = request.query_dict.category|default('') %}
 
-{# Filter rows first, then batch — avoids HubL loop-scope mutation bug #}
+{# All rows rendered into DOM; JS handles category filtering and pagination globally #}
 {% if module.upcoming_only %}
   {% set _filtered = rows|selectattr('sessions')|list %}
 {% else %}
   {% set _filtered = rows %}
 {% endif %}
-{% if _active_filter %}
-  {% set _cat_filtered = [] %}
-  {% for course in _filtered %}
-    {% set _course_cats = course.categories|map(attribute='name')|join(',') if course.categories else '' %}
-    {% if _active_filter in _course_cats.split(',') %}
-      {% set _ = _cat_filtered.append(course) %}
-    {% endif %}
-  {% endfor %}
-  {% set _filtered = _cat_filtered %}
-{% endif %}
-
-{% set _batched = _filtered|batch(_per_page)|list %}
-{% set _total_pages = _batched|length %}
-{% if _total_pages < 1 %}{% set _total_pages = 1 %}{% endif %}
-{% if _page_num > _total_pages %}{% set _page_num = _total_pages %}{% endif %}
-{% set _page_items = _batched[_page_num - 1] if _page_num <= _batched|length else [] %}
 
 <section class="pdx-courses" data-instance="{{ name }}">
   <div class="content-wrapper">
@@ -92,15 +73,15 @@
         </div>
         {# --- Filter chips (built from categories column) --- #}
         <div class="pdx-courses__filters" role="tablist" id="pdx-filters-{{ name }}">
-          <a href="{{ request.path }}" class="pdx-courses__filter{% if not _active_filter %} pdx-courses__filter--active{% endif %}" data-filter="all" role="tab">
+          <a href="#" class="pdx-courses__filter pdx-courses__filter--active" data-filter="all" role="tab">
             {{ module.filter_all_label or 'All' }}
           </a>
           {% set tableColCategories = hubdb_table_column(table_id, 'categories') %}
           {% if tableColCategories and tableColCategories.options %}
             {% for tableColCategory in tableColCategories.options|sort(False, False, "label") %}
               {% if tableColCategory.label %}
-                <a href="{{ request.path }}?category={{ tableColCategory.name }}"
-                   class="pdx-courses__filter{% if _active_filter == tableColCategory.name %} pdx-courses__filter--active{% endif %}"
+                <a href="#"
+                   class="pdx-courses__filter"
                    data-filter="{{ tableColCategory.name }}"
                    data-source-column="categories"
                    role="tab">
@@ -112,9 +93,9 @@
         </div>
 
         {# --- Course grid --- #}
-      <div class="pdx-courses__grid" id="pdx-grid-{{ name }}">
+      <div class="pdx-courses__grid" id="pdx-grid-{{ name }}" data-per-page="{{ _per_page }}">
         {% set today_unix = unixtimestamp() %}
-        {% for course in _page_items %}
+        {% for course in _filtered %}
           {% set has_upcoming_session = false %}
           {% if course.sessions and course.sessions|length > 0 %}
             {% set has_upcoming_session = true %}
@@ -230,32 +211,20 @@
         {% endfor %}
       </div>
 
-      {# --- Pagination --- #}
-      {% if _total_pages > 1 %}
-      <nav class="pdx-courses__pagination" aria-label="Course pages">
-        {% if _page_num > 1 %}
-          <a href="{{ request.path }}?{% if _active_filter %}category={{ _active_filter }}&{% endif %}page_num={{ _page_num|add(-1) }}" class="pdx-courses__page-btn pdx-courses__page-btn--prev" aria-label="Previous page">
-        {% else %}
-          <span class="pdx-courses__page-btn pdx-courses__page-btn--prev pdx-courses__page-btn--disabled" aria-disabled="true">
-        {% endif %}
+      {# --- Pagination (managed by JS) --- #}
+      <nav class="pdx-courses__pagination" id="pdx-pagination-{{ name }}" aria-label="Course pages" style="display:none">
+        <button class="pdx-courses__page-btn pdx-courses__page-btn--prev" aria-label="Previous page" type="button">
           <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M5.06055 0.75L1.06055 4.75L5.06055 8.75" stroke="#3F4F67" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
-        {% if _page_num > 1 %}</a>{% else %}</span>{% endif %}
-
-        <span class="pdx-courses__page-info">{{ _page_num }} of {{ _total_pages }}</span>
-
-        {% if _page_num < _total_pages %}
-          <a href="{{ request.path }}?{% if _active_filter %}category={{ _active_filter }}&{% endif %}page_num={{ _page_num|add(1) }}" class="pdx-courses__page-btn pdx-courses__page-btn--next" aria-label="Next page">
-        {% else %}
-          <span class="pdx-courses__page-btn pdx-courses__page-btn--next pdx-courses__page-btn--disabled" aria-disabled="true">
-        {% endif %}
+        </button>
+        <span class="pdx-courses__page-info"></span>
+        <button class="pdx-courses__page-btn pdx-courses__page-btn--next" aria-label="Next page" type="button">
           <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.75 8.75L4.75 4.75L0.749999 0.75" stroke="#3F4F67" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
-        {% if _page_num < _total_pages %}</a>{% else %}</span>{% endif %}
+        </button>
       </nav>
-      {% endif %}
       {% elif page_level == 1 and row %}
         <div class="pdx-course-detail">
           <div class="pdx-course-detail__logo">
@@ -698,8 +667,85 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   
     /* ============================================================
-       4. Category filter chips — handled server-side via ?category= URL param
+       4. Category filter chips + client-side pagination
+          All cards are rendered server-side; JS filters and
+          paginates across the full HubDB dataset globally.
        ============================================================ */
+    document.querySelectorAll('[id^="pdx-filters-"]').forEach((filterBar) => {
+      const instanceId = filterBar.id.replace('pdx-filters-', '');
+      const grid = document.getElementById('pdx-grid-' + instanceId);
+      const paginationEl = document.getElementById('pdx-pagination-' + instanceId);
+      if (!grid) return;
+
+      const perPage = parseInt(grid.getAttribute('data-per-page') || '9', 10);
+      const allCards = Array.from(grid.querySelectorAll('.pdx-courses__col'));
+      const filters = filterBar.querySelectorAll('.pdx-courses__filter');
+
+      let activeFilter = 'all';
+      let currentPage = 1;
+
+      function getVisibleCards() {
+        if (activeFilter === 'all') return allCards;
+        return allCards.filter(function (card) {
+          return (card.getAttribute('data-tags') || '').split(' ').includes(activeFilter);
+        });
+      }
+
+      function renderPage() {
+        const visible = getVisibleCards();
+        const totalPages = Math.max(1, Math.ceil(visible.length / perPage));
+        if (currentPage > totalPages) currentPage = totalPages;
+        const start = (currentPage - 1) * perPage;
+
+        allCards.forEach(function (card) { card.style.display = 'none'; });
+        visible.slice(start, start + perPage).forEach(function (card) { card.style.display = ''; });
+
+        if (paginationEl) {
+          const prevBtn = paginationEl.querySelector('.pdx-courses__page-btn--prev');
+          const nextBtn = paginationEl.querySelector('.pdx-courses__page-btn--next');
+          const pageInfo = paginationEl.querySelector('.pdx-courses__page-info');
+          if (pageInfo) pageInfo.textContent = currentPage + ' of ' + totalPages;
+          if (prevBtn) {
+            prevBtn.disabled = currentPage <= 1;
+            prevBtn.classList.toggle('pdx-courses__page-btn--disabled', currentPage <= 1);
+          }
+          if (nextBtn) {
+            nextBtn.disabled = currentPage >= totalPages;
+            nextBtn.classList.toggle('pdx-courses__page-btn--disabled', currentPage >= totalPages);
+          }
+          paginationEl.style.display = totalPages > 1 ? '' : 'none';
+        }
+      }
+
+      filters.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          filters.forEach(function (f) { f.classList.remove('pdx-courses__filter--active'); });
+          this.classList.add('pdx-courses__filter--active');
+          activeFilter = this.getAttribute('data-filter');
+          currentPage = 1;
+          renderPage();
+        });
+      });
+
+      if (paginationEl) {
+        const prevBtn = paginationEl.querySelector('.pdx-courses__page-btn--prev');
+        const nextBtn = paginationEl.querySelector('.pdx-courses__page-btn--next');
+        if (prevBtn) {
+          prevBtn.addEventListener('click', function () {
+            if (currentPage > 1) { currentPage--; renderPage(); }
+          });
+        }
+        if (nextBtn) {
+          nextBtn.addEventListener('click', function () {
+            const total = Math.max(1, Math.ceil(getVisibleCards().length / perPage));
+            if (currentPage < total) { currentPage++; renderPage(); }
+          });
+        }
+      }
+
+      renderPage();
+    });
 
 
     // Listen for HubSpot's official form lifecycle events

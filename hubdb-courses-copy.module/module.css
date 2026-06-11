@@ -448,6 +448,12 @@
 .pdx-courses__page-info {
   font-weight: 700;
 }
+.pdx-courses__pagination .pdx-courses__page-btn:disabled,
+.pdx-courses__pagination .pdx-courses__page-btn--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 .pdx-catalog__search .hs-search-field__suggestions {
   background-color: rgb(243, 243, 243);
   display: none;
