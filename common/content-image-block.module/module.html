@@ -1,1 +1,92 @@
-<!-- module html  -->
+{% set colors = module.styles.colors %}
+{% set btn = module.styles.button_style %}
+{% set sf = btn.style_fields %}
+{% set hover = btn.hover_styles %}
+
+<style>
+  {% if colors.enable_color_styles %}
+  .dx-cib--{{ module.id }} {
+    {% if colors.section_bg_color.color %}background-color: {{ colors.section_bg_color.color }};{% endif %}
+  }
+  .dx-cib--{{ module.id }} .dx-cib__top-text {
+    {% if colors.top_text_color.color %}color: {{ colors.top_text_color.color }};{% endif %}
+  }
+  .dx-cib--{{ module.id }} .dx-cib__heading {
+    {% if colors.heading_color.color %}color: {{ colors.heading_color.color }};{% endif %}
+  }
+  .dx-cib--{{ module.id }} .dx-cib__content {
+    {% if colors.content_color.color %}color: {{ colors.content_color.color }};{% endif %}
+  }
+  {% endif %}
+  .dx-cib--{{ module.id }} .dx-cib__btn {
+    {% if btn.enable_styles %}
+      color: {{ sf.button_text_color.color }};
+      {% if sf.bg_type == 'gradient' %}
+      background: linear-gradient({{ sf.gradient_direction }}, {{ sf.gradient_start.color }}, {{ sf.gradient_end.color }});
+      {% else %}
+      background-color: {{ sf.button_bg_color.color }};
+      {% endif %}
+    {% else %}
+      color: var(--dx-connector-btn-color);
+      background: var(--dx-connector-btn-linear-bg-color);
+    {% endif %}
+  }
+  {% if btn.enable_hover %}
+  .dx-cib--{{ module.id }} .dx-cib__btn:hover {
+    color: {{ hover.hover_text_color.color }};
+    {% if hover.hover_bg_type == 'gradient' %}
+    background: linear-gradient({{ hover.hover_gradient_direction }}, {{ hover.hover_gradient_start.color }}, {{ hover.hover_gradient_end.color }});
+    {% else %}
+    background-color: {{ hover.hover_bg_color.color }};
+    {% endif %}
+  }
+  {% endif %}
+</style>
+
+<section class="dx-cib dx-cib--{{ module.layout }} dx-cib--{{ module.id }}">
+  <div class="dx-module__container content-wrapper">
+    <div class="dx-cib__columns">
+
+      {# ---- Content column ---- #}
+      <div class="dx-cib__content-col">
+
+        {% if module.top_text %}
+        <p class="dx-cib__top-text">{{ module.top_text }}</p>
+        {% endif %}
+
+        {% if module.heading %}
+        <h2 class="dx-cib__heading">{{ module.heading }}</h2>
+        {% endif %}
+
+        {% if module.content %}
+        <div class="dx-cib__content">{{ module.content }}</div>
+        {% endif %}
+
+        {% if module.button_section.button_text %}
+        {% set btn_href = module.button_section.button_type == 'anchor' ? module.button_section.button_anchor : module.button_section.button_url %}
+        <a
+          href="{{ btn_href }}"
+          class="dx-btn dx-cib__btn"
+          {% if module.button_section.button_type != 'anchor' and module.button_section.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+        ><span class="dx-btn-text">{{ module.button_section.button_text }}</span></a>
+        {% endif %}
+
+      </div>{# end content-col #}
+
+      {# ---- Image column ---- #}
+      {% if module.image.src %}
+      <div class="dx-cib__image-col">
+        <img
+          src="{{ module.image.src }}"
+          alt="{{ module.image.alt }}"
+          {% if module.image.width %}width="{{ module.image.width }}"{% endif %}
+          {% if module.image.height %}height="{{ module.image.height }}"{% endif %}
+          class="dx-cib__image"
+          loading="lazy"
+        >
+      </div>
+      {% endif %}
+
+    </div>{# end columns #}
+  </div>{# end container #}
+</section>
