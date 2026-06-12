@@ -1,5 +1,19 @@
 [
   {
+    "id": "layout",
+    "name": "layout",
+    "label": "Layout",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      ["default", "Default"],
+      ["no-feature", "No Feature"],
+      ["no-breadcrumbs", "No Breadcrumbs"],
+      ["no-breadcrumb-feature", "No Breadcrumb and Feature"]
+    ],
+    "default": "default"
+  },
+  {
     "id": "breadcrumbs",
     "name": "breadcrumbs",
     "label": "Breadcrumbs",
