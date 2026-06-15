@@ -1,0 +1,138 @@
+[
+  {
+    "id": "buttons",
+    "name": "buttons",
+    "label": "Buttons",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 10,
+      "default": 1,
+      "sorting_label_field": "button_text"
+    },
+    "children": [
+      {
+        "id": "button_text",
+        "name": "button_text",
+        "label": "Button Text",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "button_type",
+        "name": "button_type",
+        "label": "Button Type",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["link", "Link"],
+          ["anchor", "Anchor"]
+        ],
+        "default": "link"
+      },
+      {
+        "id": "button_url",
+        "name": "button_url",
+        "label": "Button URL",
+        "type": "url",
+        "default": "",
+        "visibility": {
+          "controlling_field_path": "buttons.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_new_tab",
+        "name": "button_new_tab",
+        "label": "Open in New Tab",
+        "type": "boolean",
+        "default": false,
+        "visibility": {
+          "controlling_field_path": "buttons.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_anchor",
+        "name": "button_anchor",
+        "label": "Anchor ID",
+        "type": "text",
+        "default": "",
+        "help_text": "Enter the section anchor ID to scroll to, e.g. #form-section",
+        "visibility": {
+          "controlling_field_path": "buttons.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "anchor"
+        }
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "layout",
+        "name": "layout",
+        "label": "Layout",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["row", "Horizontal"],
+          ["column", "Vertical"]
+        ],
+        "default": "row"
+      },
+      {
+        "id": "alignment",
+        "name": "alignment",
+        "label": "Alignment",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["flex-start", "Left"],
+          ["center", "Center"],
+          ["flex-end", "Right"]
+        ],
+        "default": "flex-start"
+      },
+      {
+        "id": "gap",
+        "name": "gap",
+        "label": "Gap",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["8px", "Small"],
+          ["16px", "Medium"],
+          ["24px", "Large"]
+        ],
+        "default": "16px"
+      },
+      {
+        "id": "button_style",
+        "name": "button_style",
+        "label": "Button Style",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["primary", "Primary"],
+          ["secondary", "Secondary"],
+          ["blog", "Blog"],
+          ["training", "Training"],
+          ["blog-hover-fill", "Blog Hover-Fill"],
+          ["training-hover-fill", "Training Hover-Fill"],
+          ["primary-outline", "Primary Outline"],
+          ["secondary-outline", "Secondary Outline"],
+          ["tertiary-outline", "Tertiary Outline"]
+        ],
+        "default": "primary"
+      }
+    ]
+  }
+]

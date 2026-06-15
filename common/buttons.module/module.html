@@ -1,0 +1,37 @@
+{% set styles = module.styles %}
+{% set btn_style_class = {
+  "primary":             "dx-btn--primary",
+  "secondary":           "dx-btn--secondary",
+  "blog":                "dx-btn--blog",
+  "training":            "dx-btn--training",
+  "blog-hover-fill":     "dx-btn--blog-hover-fill",
+  "training-hover-fill": "dx-btn--training-hover-fill",
+  "primary-outline":     "dx-btn--primary-outline",
+  "secondary-outline":   "dx-btn--secondary-outline",
+  "tertiary-outline":    "dx-btn--tertiary-outline"
+}[styles.button_style] %}
+
+{% if module.buttons %}
+<div
+  class="dx-buttons"
+  style="flex-direction:{{ styles.layout }};{% if styles.layout == 'column' %}align-items:{{ styles.alignment }};{% else %}justify-content:{{ styles.alignment }};{% endif %}gap:{{ styles.gap }};"
+>
+  {% for btn in module.buttons %}
+  {% if btn.button_text %}
+  {% set btn_href_raw = btn.button_type == 'anchor' ? btn.button_anchor : btn.button_url.href %}
+  {% set is_email = btn.button_type != 'anchor' and btn.button_url.href and '@' in btn.button_url.href and btn.button_url.href[:7] != 'mailto:' %}
+  {% set btn_href = is_email ? 'mailto:' ~ btn.button_url.href : btn_href_raw %}
+  <a
+    href="{{ btn_href }}"
+    class="dx-btn {{ btn_style_class }} dx-buttons__btn"
+    {% if btn.button_type != 'anchor' and btn.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+  >
+    <span class="dx-btn-text">{{ btn.button_text }}</span>
+    <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </a>
+  {% endif %}
+  {% endfor %}
+</div>
+{% endif %}

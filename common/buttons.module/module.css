@@ -1,0 +1,17 @@
+.dx-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.dx-buttons__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dx-buttons__btn-icon {
+  display: block;
+  flex-shrink: 0;
+}
+
