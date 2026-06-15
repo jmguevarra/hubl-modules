@@ -1,7 +1,4 @@
 {% set colors = module.styles.colors %}
-{% set btn = module.styles.button_style %}
-{% set sf = btn.style_fields %}
-{% set hover = btn.hover_styles %}
 
 <style>
   {% if colors.enable_color_styles %}
@@ -16,29 +13,6 @@
   }
   .dx-cib--{{ module.id }} .dx-cib__content {
     {% if colors.content_color.color %}color: {{ colors.content_color.color }};{% endif %}
-  }
-  {% endif %}
-  .dx-cib--{{ module.id }} .dx-cib__btn {
-    {% if btn.enable_styles %}
-      color: {{ sf.button_text_color.color }};
-      {% if sf.bg_type == 'gradient' %}
-      background: linear-gradient({{ sf.gradient_direction }}, {{ sf.gradient_start.color }}, {{ sf.gradient_end.color }});
-      {% else %}
-      background-color: {{ sf.button_bg_color.color }};
-      {% endif %}
-    {% else %}
-      color: var(--dx-connector-btn-color);
-      background: var(--dx-connector-btn-linear-bg-color);
-    {% endif %}
-  }
-  {% if btn.enable_hover %}
-  .dx-cib--{{ module.id }} .dx-cib__btn:hover {
-    color: {{ hover.hover_text_color.color }};
-    {% if hover.hover_bg_type == 'gradient' %}
-    background: linear-gradient({{ hover.hover_gradient_direction }}, {{ hover.hover_gradient_start.color }}, {{ hover.hover_gradient_end.color }});
-    {% else %}
-    background-color: {{ hover.hover_bg_color.color }};
-    {% endif %}
   }
   {% endif %}
 </style>
@@ -64,11 +38,26 @@
 
         {% if module.button_section.button_text %}
         {% set btn_href = module.button_section.button_type == 'anchor' ? module.button_section.button_anchor : module.button_section.button_url %}
+        {% set btn_style_class = {
+          "primary":           "dx-btn--primary",
+          "secondary":         "dx-btn--secondary",
+          "blog":              "dx-btn--blog",
+          "training":          "dx-btn--training",
+          "blog-hover-fill":   "dx-btn--blog-hover-fill",
+          "training-hover-fill": "dx-btn--training-hover-fill",
+          "primary-outline":   "dx-btn--primary-outline",
+          "secondary-outline": "dx-btn--secondary-outline",
+          "tertiary-outline":  "dx-btn--tertiary-outline"
+        }[module.styles.button_style] %}
         <a
           href="{{ btn_href }}"
-          class="dx-btn dx-cib__btn"
+          class="dx-btn {{ btn_style_class }} dx-cib__btn"
           {% if module.button_section.button_type != 'anchor' and module.button_section.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
-        ><span class="dx-btn-text">{{ module.button_section.button_text }}</span></a>
+        ><span class="dx-btn-text">{{ module.button_section.button_text }}</span>
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
         {% endif %}
 
       </div>{# end content-col #}

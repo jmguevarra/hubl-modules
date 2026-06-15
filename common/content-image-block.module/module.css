@@ -3,6 +3,7 @@
   padding: 80px 0;
 }
 
+
 /* Two-column grid */
 .dx-cib__columns {
   display: grid;
@@ -60,6 +61,17 @@
   height: auto;
   display: block;
 }
+
+/* Button variants */
+.dx-cib__btn.dx-btn--primary {}
+.dx-cib__btn.dx-btn--secondary {}
+.dx-cib__btn.dx-btn--blog {}
+.dx-cib__btn.dx-btn--training {}
+.dx-cib__btn.dx-btn--blog-hover-fill {}
+.dx-cib__btn.dx-btn--training-hover-fill {}
+.dx-cib__btn.dx-btn--primary-outline {}
+.dx-cib__btn.dx-btn--secondary-outline {}
+.dx-cib__btn.dx-btn--tertiary-outline {}
 
 /* Responsive — Tablet */
 @media (max-width: 1024px) {
