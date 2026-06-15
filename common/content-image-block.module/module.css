@@ -29,6 +29,12 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin: 0 0 16px;
+  color: var(--cib-top-text-color, inherit);
+}
+
+/* Heading */
+.dx-cib__heading span{
+  color: var(--cib-heading-color, inherit);
 }
 
 /* Content richtext */
@@ -36,6 +42,7 @@
   font-size: 16px;
   line-height: 1.7;
   margin: 0 0 1.5rem;
+  color: var(--cib-content-color, inherit);
 }
 
 .dx-cib__content p {

@@ -1,27 +1,10 @@
 {% set colors = module.styles.colors %}
 {% set section = module.styles.section %}
 
-<style>
-  {% if section.bg_color.color or section.box_shadow %}
-  .dx-cib--{{ module.id }} {
-    {% if section.bg_color.color %}background-color: {{ section.bg_color.color }};{% endif %}
-    {% if section.box_shadow %}box-shadow: 0 5px 60px -15px #47474f26;{% endif %}
-  }
-  {% endif %}
-  {% if colors.enable_color_styles %}
-  .dx-cib--{{ module.id }} .dx-cib__top-text {
-    {% if colors.top_text_color.color %}color: {{ colors.top_text_color.color }};{% endif %}
-  }
-  .dx-cib--{{ module.id }} .dx-cib__heading {
-    {% if colors.heading_color.color %}color: {{ colors.heading_color.color }};{% endif %}
-  }
-  .dx-cib--{{ module.id }} .dx-cib__content {
-    {% if colors.content_color.color %}color: {{ colors.content_color.color }};{% endif %}
-  }
-  {% endif %}
-</style>
-
-<section class="dx-cib dx-cib--{{ module.layout }} dx-cib--{{ module.id }}">
+<section
+  class="dx-cib dx-cib--{{ module.layout }}"
+  style="{% if section.bg_color.color %}background-color:{{ section.bg_color.color }};{% endif %}{% if section.box_shadow %}box-shadow:0 5px 60px -15px #47474f26;{% endif %}{% if colors.enable_color_styles %}{% if colors.top_text_color.color %}--cib-top-text-color:{{ colors.top_text_color.color }};{% endif %}{% if colors.heading_color.color %}--cib-heading-color:{{ colors.heading_color.color }};{% endif %}{% if colors.content_color.color %}--cib-content-color:{{ colors.content_color.color }};{% endif %}{% endif %}"
+>
   <div class="dx-module__container content-wrapper">
     <div class="dx-cib__columns dx-cib__columns--align-{{ module.styles.section.content_alignment }}">
 
@@ -33,7 +16,7 @@
         {% endif %}
 
         {% if module.heading.heading_text %}
-        <{{ module.heading.heading_tag }} class="dx-cib__heading">{{ module.heading.heading_text }}</{{ module.heading.heading_tag }}>
+        <{{ module.heading.heading_tag }} class="dx-cib__heading"><span>{{ module.heading.heading_text }}</span></{{ module.heading.heading_tag }}>
         {% endif %}
 
         {% if module.content %}
@@ -41,27 +24,27 @@
         {% endif %}
 
         {% if module.button_section.button_text %}
-        {% set btn_href = module.button_section.button_type == 'anchor' ? module.button_section.button_anchor : module.button_section.button_url %}
+        {% set btn_href = module.button_section.button_type == 'anchor' ? module.button_section.button_anchor : module.button_section.button_url.href %}
         {% set btn_style_class = {
-          "primary":           "dx-btn--primary",
-          "secondary":         "dx-btn--secondary",
-          "blog":              "dx-btn--blog",
-          "training":          "dx-btn--training",
-          "blog-hover-fill":   "dx-btn--blog-hover-fill",
+          "primary":             "dx-btn--primary",
+          "secondary":           "dx-btn--secondary",
+          "blog":                "dx-btn--blog",
+          "training":            "dx-btn--training",
+          "blog-hover-fill":     "dx-btn--blog-hover-fill",
           "training-hover-fill": "dx-btn--training-hover-fill",
-          "primary-outline":   "dx-btn--primary-outline",
-          "secondary-outline": "dx-btn--secondary-outline",
-          "tertiary-outline":  "dx-btn--tertiary-outline"
+          "primary-outline":     "dx-btn--primary-outline",
+          "secondary-outline":   "dx-btn--secondary-outline",
+          "tertiary-outline":    "dx-btn--tertiary-outline"
         }[module.styles.button_style] %}
         <a
           href="{{ btn_href }}"
           class="dx-btn {{ btn_style_class }} dx-cib__btn"
           {% if module.button_section.button_type != 'anchor' and module.button_section.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
         ><span class="dx-btn-text">{{ module.button_section.button_text }}</span>
-        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-      </a>
+          <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
         {% endif %}
 
       </div>{# end content-col #}
