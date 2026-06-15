@@ -1,0 +1,90 @@
+[
+  {
+    "id": "show_breadcrumb",
+    "name": "show_breadcrumb",
+    "label": "Show Breadcrumb",
+    "type": "boolean",
+    "default": true
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Page Title",
+    "type": "text",
+    "default": "Page Title"
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "section",
+        "name": "section",
+        "label": "Section",
+        "type": "group",
+        "children": [
+          {
+            "id": "bg_color",
+            "name": "bg_color",
+            "label": "Background Color",
+            "type": "color"
+          }
+        ]
+      },
+      {
+        "id": "colors",
+        "name": "colors",
+        "label": "Colors",
+        "type": "group",
+        "children": [
+          {
+            "id": "enable_color_styles",
+            "name": "enable_color_styles",
+            "label": "Enable Styles",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "breadcrumb_color",
+            "name": "breadcrumb_color",
+            "label": "Breadcrumb Color",
+            "type": "color",
+            "default": { "color": "#0A0A1A", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.colors.enable_color_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "breadcrumb_hover_color",
+            "name": "breadcrumb_hover_color",
+            "label": "Breadcrumb Hover Color",
+            "type": "color",
+            "default": { "color": "#0A0A1A", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.colors.enable_color_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "heading_color",
+            "name": "heading_color",
+            "label": "Heading Color",
+            "type": "color",
+            "default": { "color": "#0A0A1A", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.colors.enable_color_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

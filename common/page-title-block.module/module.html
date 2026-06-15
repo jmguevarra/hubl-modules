@@ -1,0 +1,29 @@
+{% set colors = module.styles.colors %}
+{% set section = module.styles.section %}
+
+<section
+  class="dx-ptb"
+  style="{% if section.bg_color.color %}background-color:{{ section.bg_color.color }};{% endif %}{% if colors.enable_color_styles %}{% if colors.breadcrumb_color.color %}--ptb-breadcrumb-color:{{ colors.breadcrumb_color.color }};{% endif %}{% if colors.breadcrumb_hover_color.color %}--ptb-breadcrumb-hover-color:{{ colors.breadcrumb_hover_color.color }};{% endif %}{% if colors.heading_color.color %}--ptb-heading-color:{{ colors.heading_color.color }};{% endif %}{% endif %}"
+>
+  <div class="dx-module__container content-wrapper">
+
+    {# Auto Breadcrumb #}
+    {% if module.show_breadcrumb %}
+    <nav class="dx-ptb__breadcrumb" aria-label="Breadcrumb">
+      <a href="/" class="dx-ptb__breadcrumb-link">Home</a>
+      <span class="dx-ptb__breadcrumb-sep" aria-hidden="true">›</span>
+      {% if content.ancestors %}
+        {% for ancestor in content.ancestors %}
+          <a href="{{ ancestor.absolute_url }}" class="dx-ptb__breadcrumb-link">{{ ancestor.html_title }}</a>
+          <span class="dx-ptb__breadcrumb-sep" aria-hidden="true">›</span>
+        {% endfor %}
+      {% endif %}
+      <span class="dx-ptb__breadcrumb-current">{{ content.html_title }}</span>
+    </nav>
+    {% endif %}
+
+    {# Page Title #}
+    <h1 class="dx-ptb__heading">{{ module.heading if module.heading else content.html_title }}</h1>
+
+  </div>{# end container #}
+</section>
