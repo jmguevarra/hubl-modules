@@ -22,8 +22,32 @@
     "id": "heading",
     "name": "heading",
     "label": "Heading",
-    "type": "text",
-    "default": "Section Heading"
+    "type": "group",
+    "children": [
+      {
+        "id": "heading_text",
+        "name": "heading_text",
+        "label": "Heading Text",
+        "type": "text",
+        "default": "Section Heading"
+      },
+      {
+        "id": "heading_tag",
+        "name": "heading_tag",
+        "label": "Heading Tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["h1", "H1"],
+          ["h2", "H2"],
+          ["h3", "H3"],
+          ["h4", "H4"],
+          ["h5", "H5"],
+          ["h6", "H6"]
+        ],
+        "default": "h2"
+      }
+    ]
   },
   {
     "id": "content",
@@ -116,9 +140,43 @@
     "tab": "STYLE",
     "children": [
       {
+        "id": "section",
+        "name": "section",
+        "label": "Section",
+        "type": "group",
+        "children": [
+          {
+            "id": "content_alignment",
+            "name": "content_alignment",
+            "label": "Content Alignment",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["start", "Start"],
+              ["center", "Center"],
+              ["end", "End"]
+            ],
+            "default": "start"
+          },
+          {
+            "id": "bg_color",
+            "name": "bg_color",
+            "label": "Background Color",
+            "type": "color"
+          },
+          {
+            "id": "box_shadow",
+            "name": "box_shadow",
+            "label": "Box Shadow",
+            "type": "boolean",
+            "default": false
+          }
+        ]
+      },
+      {
         "id": "colors",
         "name": "colors",
-        "label": "Colors",
+        "label": "Content",
         "type": "group",
         "children": [
           {
@@ -127,18 +185,6 @@
             "label": "Enable Styles",
             "type": "boolean",
             "default": false
-          },
-          {
-            "id": "section_bg_color",
-            "name": "section_bg_color",
-            "label": "Section Background",
-            "type": "color",
-            "default": { "color": "#ffffff", "opacity": 100 },
-            "visibility": {
-              "controlling_field_path": "styles.colors.enable_color_styles",
-              "operator": "EQUAL",
-              "controlling_value_regex": "true"
-            }
           },
           {
             "id": "top_text_color",

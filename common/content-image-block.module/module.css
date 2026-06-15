@@ -12,6 +12,11 @@
   align-items: center;
 }
 
+/* Content alignment */
+.dx-cib__columns--align-start  { align-items: start; }
+.dx-cib__columns--align-center { align-items: center; }
+.dx-cib__columns--align-end    { align-items: end; }
+
 /* Image-first layout — swap column order */
 .dx-cib--image-content .dx-cib__image-col {
   order: -1;
@@ -26,19 +31,11 @@
   margin: 0 0 16px;
 }
 
-/* Heading */
-.dx-cib__heading {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 1.2;
-  margin: 0 0 20px;
-}
-
 /* Content richtext */
 .dx-cib__content {
   font-size: 16px;
   line-height: 1.7;
-  margin: 0 0 32px;
+  margin: 0 0 1.5rem;
 }
 
 .dx-cib__content p {
@@ -62,17 +59,6 @@
   display: block;
 }
 
-/* Button variants */
-.dx-cib__btn.dx-btn--primary {}
-.dx-cib__btn.dx-btn--secondary {}
-.dx-cib__btn.dx-btn--blog {}
-.dx-cib__btn.dx-btn--training {}
-.dx-cib__btn.dx-btn--blog-hover-fill {}
-.dx-cib__btn.dx-btn--training-hover-fill {}
-.dx-cib__btn.dx-btn--primary-outline {}
-.dx-cib__btn.dx-btn--secondary-outline {}
-.dx-cib__btn.dx-btn--tertiary-outline {}
-
 /* Responsive — Tablet */
 @media (max-width: 1024px) {
   .dx-cib {
@@ -82,14 +68,10 @@
   .dx-cib__columns {
     gap: 40px;
   }
-
-  .dx-cib__heading {
-    font-size: 32px;
-  }
 }
 
 /* Responsive — Mobile */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .dx-cib {
     padding: 40px 0;
   }
@@ -101,15 +83,5 @@
 
   .dx-cib--image-content .dx-cib__image-col {
     order: 0;
-  }
-
-  .dx-cib__heading {
-    font-size: 28px;
-  }
-}
-
-@media (max-width: 480px) {
-  .dx-cib__heading {
-    font-size: 24px;
   }
 }

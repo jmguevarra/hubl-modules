@@ -1,10 +1,14 @@
 {% set colors = module.styles.colors %}
+{% set section = module.styles.section %}
 
 <style>
-  {% if colors.enable_color_styles %}
+  {% if section.bg_color.color or section.box_shadow %}
   .dx-cib--{{ module.id }} {
-    {% if colors.section_bg_color.color %}background-color: {{ colors.section_bg_color.color }};{% endif %}
+    {% if section.bg_color.color %}background-color: {{ section.bg_color.color }};{% endif %}
+    {% if section.box_shadow %}box-shadow: 0 5px 60px -15px #47474f26;{% endif %}
   }
+  {% endif %}
+  {% if colors.enable_color_styles %}
   .dx-cib--{{ module.id }} .dx-cib__top-text {
     {% if colors.top_text_color.color %}color: {{ colors.top_text_color.color }};{% endif %}
   }
@@ -19,7 +23,7 @@
 
 <section class="dx-cib dx-cib--{{ module.layout }} dx-cib--{{ module.id }}">
   <div class="dx-module__container content-wrapper">
-    <div class="dx-cib__columns">
+    <div class="dx-cib__columns dx-cib__columns--align-{{ module.styles.section.content_alignment }}">
 
       {# ---- Content column ---- #}
       <div class="dx-cib__content-col">
@@ -28,8 +32,8 @@
         <p class="dx-cib__top-text">{{ module.top_text }}</p>
         {% endif %}
 
-        {% if module.heading %}
-        <h2 class="dx-cib__heading">{{ module.heading }}</h2>
+        {% if module.heading.heading_text %}
+        <{{ module.heading.heading_tag }} class="dx-cib__heading">{{ module.heading.heading_text }}</{{ module.heading.heading_tag }}>
         {% endif %}
 
         {% if module.content %}
