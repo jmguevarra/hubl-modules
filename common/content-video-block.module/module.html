@@ -1,1 +1,78 @@
-<!-- module html  -->
+{% set colors = module.styles.colors %}
+{% set section = module.styles.section %}
+
+<section
+  class="dx-cvb dx-cvb--{{ module.layout }}"
+  style="{% if section.bg_color.color %}background-color:{{ section.bg_color.color }};{% endif %}{% if section.box_shadow %}box-shadow:0 5px 60px -15px #47474f26;{% endif %}{% if colors.enable_color_styles %}{% if colors.top_text_color.color %}--cvb-top-text-color:{{ colors.top_text_color.color }};{% endif %}{% if colors.heading_color.color %}--cvb-heading-color:{{ colors.heading_color.color }};{% endif %}{% if colors.content_color.color %}--cvb-content-color:{{ colors.content_color.color }};{% endif %}{% endif %}"
+>
+  <div class="dx-module__container content-wrapper">
+    <div class="dx-cvb__columns dx-cvb__columns--align-{{ module.styles.section.content_alignment }}">
+
+      {# ---- Content column ---- #}
+      <div class="dx-cvb__content-col">
+
+        {% if module.top_text %}
+        <p class="dx-cvb__top-text">{{ module.top_text }}</p>
+        {% endif %}
+
+        {% if module.heading.heading_text %}
+        <{{ module.heading.heading_tag }} class="dx-cvb__heading"><span>{{ module.heading.heading_text }}</span></{{ module.heading.heading_tag }}>
+        {% endif %}
+
+        {% if module.content %}
+        <div class="dx-cvb__content">{{ module.content }}</div>
+        {% endif %}
+
+        {% if module.button_section.button_text %}
+        {% set btn_href = module.button_section.button_type == 'anchor' ? module.button_section.button_anchor : module.button_section.button_url.href %}
+        {% set btn_style_class = {
+          "primary":             "dx-btn--primary",
+          "secondary":           "dx-btn--secondary",
+          "blog":                "dx-btn--blog",
+          "training":            "dx-btn--training",
+          "blog-hover-fill":     "dx-btn--blog-hover-fill",
+          "training-hover-fill": "dx-btn--training-hover-fill",
+          "primary-outline":     "dx-btn--primary-outline",
+          "secondary-outline":   "dx-btn--secondary-outline",
+          "tertiary-outline":    "dx-btn--tertiary-outline"
+        }[module.styles.button_style] %}
+        <a
+          href="{{ btn_href }}"
+          class="dx-btn {{ btn_style_class }} dx-cvb__btn"
+          {% if module.button_section.button_type != 'anchor' and module.button_section.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+        ><span class="dx-btn-text">{{ module.button_section.button_text }}</span>
+          <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        {% endif %}
+
+      </div>{# end content-col #}
+
+      {# ---- Video column ---- #}
+      {% set vs = module.video_section %}
+      {% if vs.video_type == 'hubspot' and vs.video.player_id %}
+      <div class="dx-cvb__video-col">
+        {{ video_player(vs.video) }}
+      </div>
+      {% elif vs.video_type == 'embed' %}
+        {% if vs.embed.embed_type == 'url' and vs.embed.embed_url %}
+        <div class="dx-cvb__video-col">
+          <iframe
+            src="{{ vs.embed.embed_url }}"
+            class="dx-cvb__embed"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        {% elif vs.embed.embed_type == 'code' and vs.embed.embed_code %}
+        <div class="dx-cvb__video-col">
+          {{ vs.embed.embed_code }}
+        </div>
+        {% endif %}
+      {% endif %}
+
+    </div>{# end columns #}
+  </div>{# end container #}
+</section>

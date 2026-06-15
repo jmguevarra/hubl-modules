@@ -1,0 +1,106 @@
+.dx-cvb {
+  width: 100%;
+  padding: 80px 0;
+}
+
+/* Two-column grid */
+.dx-cvb__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Content alignment */
+.dx-cvb__columns--align-start  { align-items: start; }
+.dx-cvb__columns--align-center { align-items: center; }
+.dx-cvb__columns--align-end    { align-items: end; }
+
+/* Video-first layout — swap column order */
+.dx-cvb--video-content .dx-cvb__video-col {
+  order: -1;
+}
+
+/* Top text */
+.dx-cvb__top-text {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+  color: var(--cvb-top-text-color, inherit);
+}
+
+/* Heading */
+.dx-cvb__heading span {
+  color: var(--cvb-heading-color, inherit);
+}
+
+/* Content richtext */
+.dx-cvb__content {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+  color: var(--cvb-content-color, inherit);
+}
+
+.dx-cvb__content p {
+  margin: 0 0 16px;
+}
+
+.dx-cvb__content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Video */
+.dx-cvb__video-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dx-cvb__video-col iframe,
+.dx-cvb__video-col video {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
+}
+
+/* Button variants */
+.dx-cvb__btn.dx-btn--primary {}
+.dx-cvb__btn.dx-btn--secondary {}
+.dx-cvb__btn.dx-btn--blog {}
+.dx-cvb__btn.dx-btn--training {}
+.dx-cvb__btn.dx-btn--blog-hover-fill {}
+.dx-cvb__btn.dx-btn--training-hover-fill {}
+.dx-cvb__btn.dx-btn--primary-outline {}
+.dx-cvb__btn.dx-btn--secondary-outline {}
+.dx-cvb__btn.dx-btn--tertiary-outline {}
+
+/* Responsive — Tablet */
+@media (max-width: 1024px) {
+  .dx-cvb {
+    padding: 60px 0;
+  }
+
+  .dx-cvb__columns {
+    gap: 40px;
+  }
+}
+
+/* Responsive — Mobile */
+@media (max-width: 767px) {
+  .dx-cvb {
+    padding: 40px 0;
+  }
+
+  .dx-cvb__columns {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .dx-cvb--video-content .dx-cvb__video-col {
+    order: 0;
+  }
+}

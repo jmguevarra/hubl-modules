@@ -1,11 +1,318 @@
 [
   {
-    "default": "<h1>Hello, world!</h1>",
-    "label": "Rich text field",
-    "locked": false,
-    "name": "text",
-    "required": false,
+    "id": "layout",
+    "name": "layout",
+    "label": "Layout",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      ["content-video", "Content | Video"],
+      ["video-content", "Video | Content"]
+    ],
+    "default": "content-video"
+  },
+  {
+    "id": "top_text",
+    "name": "top_text",
+    "label": "Top Text",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "children": [
+      {
+        "id": "heading_text",
+        "name": "heading_text",
+        "label": "Heading Text",
+        "type": "text",
+        "default": "Section Heading"
+      },
+      {
+        "id": "heading_tag",
+        "name": "heading_tag",
+        "label": "Heading Tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["h1", "H1"],
+          ["h2", "H2"],
+          ["h3", "H3"],
+          ["h4", "H4"],
+          ["h5", "H5"],
+          ["h6", "H6"]
+        ],
+        "default": "h2"
+      }
+    ]
+  },
+  {
+    "id": "content",
+    "name": "content",
+    "label": "Content",
     "type": "richtext",
-    "validation_regex": ""
+    "default": "<p>Add your content here.</p>"
+  },
+  {
+    "id": "button_section",
+    "name": "button_section",
+    "label": "Button",
+    "type": "group",
+    "children": [
+      {
+        "id": "button_text",
+        "name": "button_text",
+        "label": "Button Text",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "button_type",
+        "name": "button_type",
+        "label": "Button Type",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["link", "Link"],
+          ["anchor", "Anchor"]
+        ],
+        "default": "link"
+      },
+      {
+        "id": "button_url",
+        "name": "button_url",
+        "label": "Button URL",
+        "type": "url",
+        "default": "",
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_new_tab",
+        "name": "button_new_tab",
+        "label": "Open in New Tab",
+        "type": "boolean",
+        "default": false,
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_anchor",
+        "name": "button_anchor",
+        "label": "Anchor ID",
+        "type": "text",
+        "default": "",
+        "help_text": "Enter the section anchor ID to scroll to, e.g. #form-section",
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "anchor"
+        }
+      }
+    ]
+  },
+  {
+    "id": "video_section",
+    "name": "video_section",
+    "label": "Video",
+    "type": "group",
+    "children": [
+      {
+        "id": "video_type",
+        "name": "video_type",
+        "label": "Video Type",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["hubspot", "HubSpot Video"],
+          ["embed", "Embed"]
+        ],
+        "default": "hubspot"
+      },
+      {
+        "id": "video",
+        "name": "video",
+        "label": "HubSpot Video",
+        "type": "videoplayer",
+        "visibility": {
+          "controlling_field_path": "video_section.video_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "hubspot"
+        }
+      },
+      {
+        "id": "embed",
+        "name": "embed",
+        "label": "Embed",
+        "type": "group",
+        "visibility": {
+          "controlling_field_path": "video_section.video_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "embed"
+        },
+        "children": [
+          {
+            "id": "embed_type",
+            "name": "embed_type",
+            "label": "Embed Type",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["url", "URL"],
+              ["code", "Embed Code"]
+            ],
+            "default": "url"
+          },
+          {
+            "id": "embed_url",
+            "name": "embed_url",
+            "label": "Embed URL",
+            "type": "text",
+            "default": "",
+            "help_text": "Enter the embed URL, e.g. https://www.youtube.com/embed/VIDEO_ID",
+            "visibility": {
+              "controlling_field_path": "video_section.embed.embed_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "url"
+            }
+          },
+          {
+            "id": "embed_code",
+            "name": "embed_code",
+            "label": "Embed Code",
+            "type": "html",
+            "default": "",
+            "help_text": "Paste the full iframe or embed code here",
+            "visibility": {
+              "controlling_field_path": "video_section.embed.embed_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "code"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "section",
+        "name": "section",
+        "label": "Section",
+        "type": "group",
+        "children": [
+          {
+            "id": "content_alignment",
+            "name": "content_alignment",
+            "label": "Content Alignment",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["start", "Start"],
+              ["center", "Center"],
+              ["end", "End"]
+            ],
+            "default": "start"
+          },
+          {
+            "id": "bg_color",
+            "name": "bg_color",
+            "label": "Background Color",
+            "type": "color"
+          },
+          {
+            "id": "box_shadow",
+            "name": "box_shadow",
+            "label": "Box Shadow",
+            "type": "boolean",
+            "default": false
+          }
+        ]
+      },
+      {
+        "id": "colors",
+        "name": "colors",
+        "label": "Content",
+        "type": "group",
+        "children": [
+          {
+            "id": "enable_color_styles",
+            "name": "enable_color_styles",
+            "label": "Enable Styles",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "top_text_color",
+            "name": "top_text_color",
+            "label": "Top Text Color",
+            "type": "color",
+            "default": { "color": "#0A0A1A", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.colors.enable_color_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "heading_color",
+            "name": "heading_color",
+            "label": "Heading Color",
+            "type": "color",
+            "default": { "color": "#0A0A1A", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.colors.enable_color_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "content_color",
+            "name": "content_color",
+            "label": "Content Color",
+            "type": "color",
+            "default": { "color": "#333333", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.colors.enable_color_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          }
+        ]
+      },
+      {
+        "id": "button_style",
+        "name": "button_style",
+        "label": "Button Style",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["primary", "Primary"],
+          ["secondary", "Secondary"],
+          ["blog", "Blog"],
+          ["training", "Training"],
+          ["blog-hover-fill", "Blog Hover-Fill"],
+          ["training-hover-fill", "Training Hover-Fill"],
+          ["primary-outline", "Primary Outline"],
+          ["secondary-outline", "Secondary Outline"],
+          ["tertiary-outline", "Tertiary Outline"]
+        ],
+        "default": "primary"
+      }
+    ]
   }
 ]
