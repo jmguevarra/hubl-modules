@@ -23,6 +23,7 @@
     // ── Settings from data attributes ────────────────────
     var autoplay      = el.getAttribute('data-autoplay') === 'true';
     var autoplaySpeed = parseInt(el.getAttribute('data-autoplay-speed'), 10) || 4000;
+    var loop          = el.getAttribute('data-loop') === 'true';
 
     var currentIndex  = 0;
     var perView, maxIndex;
@@ -66,13 +67,18 @@
         track.style.transform = 'translateX(-' + offset + 'px)';
       }
 
-      if (prevBtn) prevBtn.disabled = currentIndex <= 0;
-      if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+      if (prevBtn) prevBtn.disabled = !loop && currentIndex <= 0;
+      if (nextBtn) nextBtn.disabled = !loop && currentIndex >= maxIndex;
 
       updateDots();
     }
 
     function goTo(index) {
+      if (loop) {
+        // Wrap around both ends
+        if (index < 0) index = maxIndex;
+        else if (index > maxIndex) index = 0;
+      }
       currentIndex = Math.max(0, Math.min(index, maxIndex));
       slide(true);
       // Restart autoplay timer so manual nav resets the interval

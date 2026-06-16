@@ -219,6 +219,14 @@
         "label": "Show Navigation Arrows",
         "type": "boolean",
         "default": true
+      },
+      {
+        "id": "loop",
+        "name": "loop",
+        "label": "Infinite Loop",
+        "help_text": "When enabled, the slider wraps around — next after the last slide returns to the first, and vice versa",
+        "type": "boolean",
+        "default": false
       }
     ]
   },

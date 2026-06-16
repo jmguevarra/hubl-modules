@@ -18,6 +18,7 @@
   data-slider-id="{{ module.widget_id }}"
   data-autoplay="{{ 'true' if ss.enable_autoplay else 'false' }}"
   data-autoplay-speed="{{ ss.autoplay_speed if ss.autoplay_speed else 4000 }}"
+  data-loop="{{ 'true' if ss.loop else 'false' }}"
   style="
     {% if s.section.bg_color.color %}background-color: {{ s.section.bg_color.css }};{% endif %}
     {% if s.section.text_color.color %}--bslider-text-color: {{ s.section.text_color.css }};{% endif %}
