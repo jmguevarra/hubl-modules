@@ -70,8 +70,8 @@
 .dx-bslider__wrapper {
     overflow: hidden;
     position: relative;
-    padding: 0 10px;
-    margin: 0 -5px;
+    padding: 0 12px;
+    margin: 0 -12px;
 }
 
 .dx-bslider__track {
@@ -102,7 +102,7 @@
 
 .dx-bslider__card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 /* Featured image */
@@ -220,7 +220,7 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 /* Nav buttons */
@@ -228,13 +228,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
   flex-shrink: 0;
+  padding: 0;
 }
 
 .dx-bslider__nav-btn:disabled {
@@ -244,7 +245,8 @@
 }
 
 .dx-bslider__nav-btn:not(:disabled):hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
+  opacity: 1;
 }
 
 /* Primary style (default) */
@@ -313,10 +315,22 @@
 }
 
 /* ── Responsive ──────────────────────────────────────────── */
-
+@media (max-width: 1200px){
+  .dx-bslider {
+      padding: 60px 0;
+  }
+}
 @media (max-width: 1024px) {
   .dx-bslider__track {
     gap: 16px;
+  }
+
+  .dx-bslider__wrapper {
+    padding: 0;
+    margin: 0;
+  }
+  .dx-bslider__header {
+    margin-bottom: 1.5rem;
   }
 
   /* 2 cards per view at tablet */
@@ -330,34 +344,32 @@
     padding: 60px 0;
   }
 
-  .dx-bslider__header {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 28px;
-  }
 
   .dx-bslider__track {
     gap: 12px;
   }
 
-  /* 1 card per view on mobile */
-  .dx-bslider__card {
-    flex: 0 0 calc(100% - 32px); /* leave a peek of next card */
-  }
-
   .dx-bslider__controls {
-    margin-top: 24px;
     gap: 16px;
+    margin-top: 1rem;
+  }
+  .dx-bslider {
+      padding: 40px 0;
   }
 }
 
 @media (max-width: 480px) {
-  .dx-bslider {
-    padding: 40px 0;
-  }
-
+  /* 1 card per view on mobile */
   .dx-bslider__card {
-    flex: 0 0 88%;
+    flex: 0 0 100%; /* leave a peek of next card */
+  }
+  .dx-bslider__header {
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+  }
+  .dx-bslider__controls{
+    margin-top: 0.5rem;
   }
 }
 
@@ -370,4 +382,5 @@
   .dx-bslider__card-img {
     transition: none;
   }
+  
 }
