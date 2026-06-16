@@ -1,0 +1,146 @@
+{% set s = module.styles %}
+{% set h = module.heading %}
+{% set btn = module.button %}
+
+<section
+  class="dx-home-hero"
+  style="
+    --dx-hero-bg: {{ s.background.bg_color.css }};
+    background-color: {{ s.background.bg_color.css }};
+    {% if s.background.bg_image.src %}background-image: url('{{ s.background.bg_image.src }}');{% endif %}
+    {% if s.heading_style.enable_styles %}--dx-hero-heading-color: {{ s.heading_style.static_color.css }}; --dx-hero-word-color: {{ s.heading_style.animated_color.css }};{% endif %}
+    {% if s.button_style.enable_btn_styles %}--dx-hero-btn-bg: {{ s.button_style.btn_bg_color.css }}; --dx-hero-btn-color: {{ s.button_style.btn_text_color.css }};{% endif %}
+  "
+>
+
+  {# ── Hero Content ──────────────────────────── #}
+  <div class="dx-home-hero__content">
+
+    {# Heading with typewriter animated word #}
+    <h1 class="dx-home-hero__heading">
+      <span class="dx-home-hero__heading-static">{{ h.heading_static }}</span>
+      <span class="dx-home-hero__heading-animated">
+        <span class="dx-home-hero__typing" aria-live="polite" aria-atomic="true"></span><span class="dx-home-hero__cursor" aria-hidden="true">|</span>
+      </span>
+    </h1>
+
+    {# Subheading #}
+    {% if module.subheading %}
+    <p class="dx-home-hero__subheading">{{ module.subheading }}</p>
+    {% endif %}
+
+    {# CTA Button #}
+    {% if btn.button_text %}
+    <a
+      href="{{ btn.button_link.url.href }}"
+      class="dx-home-hero__btn"
+      {% if btn.button_link.open_in_new_tab and btn.button_link.no_follow %}
+        target="_blank" rel="noopener noreferrer nofollow"
+      {% elif btn.button_link.open_in_new_tab %}
+        target="_blank" rel="noopener noreferrer"
+      {% elif btn.button_link.no_follow %}
+        rel="nofollow"
+      {% endif %}
+    >
+      <span class="dx-home-hero__btn-text">{{ btn.button_text }}</span>
+      <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    {% endif %}
+
+  </div>{# end content #}
+
+  {# ── Navigation Cards ──────────────────────── #}
+  {% if module.cards %}
+  <div class="dx-home-hero__cards">
+    {% for card in module.cards %}
+    <a
+      href="{{ card.card_link.url.href }}"
+      class="dx-home-hero__card"
+      {% if card.card_link.open_in_new_tab and card.card_link.no_follow %}
+        target="_blank" rel="noopener noreferrer nofollow"
+      {% elif card.card_link.open_in_new_tab %}
+        target="_blank" rel="noopener noreferrer"
+      {% elif card.card_link.no_follow %}
+        rel="nofollow"
+      {% endif %}
+      style="--card-accent-rgb: {{ card.card_accent_color.r }}, {{ card.card_accent_color.g }}, {{ card.card_accent_color.b }};"
+    >
+      {# Card image – visible in default state, fades on hover #}
+      {% if card.card_image.src %}
+      <div class="dx-home-hero__card-media">
+        <img
+          src="{{ card.card_image.src }}"
+          alt="{{ card.card_image.alt }}"
+          loading="lazy"
+          {% if card.card_image.width %}width="{{ card.card_image.width }}"{% endif %}
+          {% if card.card_image.height %}height="{{ card.card_image.height }}"{% endif %}
+        >
+      </div>
+      {% endif %}
+
+      {# Default state footer: title + accent arrow #}
+      <div class="dx-home-hero__card-default">
+        <h3 class="dx-home-hero__card-title">{{ card.card_title }}</h3>
+        <span class="dx-home-hero__card-arrow" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
+
+      {# Hover state: full card content with description #}
+      <div class="dx-home-hero__card-hover" aria-hidden="true">
+        <h3 class="dx-home-hero__card-title">{{ card.card_title }}</h3>
+        {% if card.card_description %}
+        <div class="dx-home-hero__card-desc">{{ card.card_description }}</div>
+        {% endif %}
+        <span class="dx-home-hero__card-arrow dx-home-hero__card-arrow--bottom" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
+
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {# ── Trusted By ────────────────────────────── #}
+  {% if module.trusted_by.logos %}
+  <div class="dx-home-hero__trusted">
+    {% if module.trusted_by.section_label %}
+    <p class="dx-home-hero__trusted-label">{{ module.trusted_by.section_label }}</p>
+    {% endif %}
+    <div class="dx-home-hero__marquee" role="presentation">
+      <div class="dx-home-hero__marquee-track">
+        {% for logo in module.trusted_by.logos %}
+        {% if logo.logo_image.src %}
+        <div class="dx-home-hero__trusted-logo">
+          <img src="{{ logo.logo_image.src }}" alt="{{ logo.logo_image.alt }}" loading="lazy">
+        </div>
+        {% endif %}
+        {% endfor %}
+        {# Duplicate for seamless infinite loop #}
+        {% for logo in module.trusted_by.logos %}
+        {% if logo.logo_image.src %}
+        <div class="dx-home-hero__trusted-logo" aria-hidden="true">
+          <img src="{{ logo.logo_image.src }}" alt="{{ logo.logo_image.alt }}" loading="lazy">
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+</section>
+
+{# Hidden word list for typewriter JS #}
+<div class="dx-home-hero__words" hidden aria-hidden="true">
+  {% for item in h.heading_words %}
+  {% if item.word %}<span>{{ item.word }}</span>{% endif %}
+  {% endfor %}
+</div>

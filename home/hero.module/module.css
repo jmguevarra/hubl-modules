@@ -1,0 +1,410 @@
+/* ============================================================
+   Homepage Hero
+   ============================================================ */
+
+.dx-home-hero {
+  position: relative;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px 60px;
+  overflow: hidden;
+  gap: 44px;
+}
+
+/* ── Hero Content ────────────────────────────────── */
+
+.dx-home-hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+  gap: 20px;
+}
+
+/* Heading */
+.dx-home-hero__heading {
+  font-size: clamp(32px, 4.5vw, 64px);
+  font-weight: 700;
+  color: var(--dx-hero-heading-color, #ffffff);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.dx-home-hero__heading-static {
+  display: inline;
+}
+
+.dx-home-hero__heading-animated {
+  display: inline;
+  color: var(--dx-hero-word-color, #4dc8d0);
+  white-space: nowrap;
+  margin-left: 0.22em;
+}
+
+.dx-home-hero__typing {
+  display: inline;
+}
+
+/* Blinking cursor */
+.dx-home-hero__cursor {
+  display: inline;
+  color: #ffffff;
+  margin-left: 1px;
+  animation: dx-hero-cursor 1s step-end infinite;
+}
+
+@keyframes dx-hero-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Subheading */
+.dx-home-hero__subheading {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 640px;
+}
+
+/* CTA Button */
+.dx-home-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background-color: var(--dx-hero-btn-bg, #c41e3a);
+  color: var(--dx-hero-btn-color, #ffffff);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  line-height: 1;
+}
+
+.dx-home-hero__btn:hover {
+  background-color: color-mix(in srgb, var(--dx-hero-btn-bg, #c41e3a) 80%, #000);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(196, 30, 58, 0.35);
+}
+
+.dx-home-hero__btn svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.dx-home-hero__btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* ── Navigation Cards ────────────────────────────── */
+
+.dx-home-hero__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* Card base */
+.dx-home-hero__card {
+  --card-accent-rgb: 196, 30, 58; /* fallback – red */
+  position: relative;
+  display: block;
+  min-height: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #ffffff;
+  background:
+    linear-gradient(155deg, rgba(var(--card-accent-rgb), 0.42) 0%, #0d1b2e 65%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dx-home-hero__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45);
+}
+
+/* Dark vignette at bottom (default only) */
+.dx-home-hero__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, transparent 55%);
+  z-index: 1;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.dx-home-hero__card:hover::before {
+  opacity: 0;
+}
+
+/* Card image */
+.dx-home-hero__card-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 72px; /* room for default footer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dx-home-hero__card-media img {
+  max-width: 80%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.dx-home-hero__card:hover .dx-home-hero__card-media {
+  opacity: 0;
+  transform: translateY(-24px);
+}
+
+/* Default footer: title + arrow */
+.dx-home-hero__card-default {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dx-home-hero__card:hover .dx-home-hero__card-default {
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+}
+
+/* Hover overlay: title + description + arrow */
+.dx-home-hero__card-hover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease 0.06s, transform 0.35s ease 0.06s;
+  pointer-events: none;
+}
+
+.dx-home-hero__card:hover .dx-home-hero__card-hover {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dx-home-hero__card-hover .dx-home-hero__card-desc {
+  flex: 1;
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.dx-home-hero__card-hover .dx-home-hero__card-desc p {
+  margin: 0;
+}
+
+.dx-home-hero__card-hover .dx-home-hero__card-arrow--bottom {
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+/* Shared: card title */
+.dx-home-hero__card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Shared: card arrow */
+.dx-home-hero__card-arrow {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  color: rgba(var(--card-accent-rgb), 1);
+  transition: transform 0.25s ease;
+}
+
+.dx-home-hero__card:hover .dx-home-hero__card-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Trusted By ──────────────────────────────────── */
+
+.dx-home-hero__trusted {
+  width: 100%;
+  max-width: 1100px;
+  text-align: center;
+}
+
+.dx-home-hero__trusted-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  margin: 0 0 18px;
+}
+
+/* Marquee container */
+.dx-home-hero__marquee {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fade edges using the section background color */
+.dx-home-hero__marquee::before,
+.dx-home-hero__marquee::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.dx-home-hero__marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--dx-hero-bg, #061226), transparent);
+}
+
+.dx-home-hero__marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--dx-hero-bg, #061226), transparent);
+}
+
+/* Scrolling track – contains 2× the logo set */
+.dx-home-hero__marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: max-content;
+  animation: dx-hero-marquee 32s linear infinite;
+}
+
+.dx-home-hero__marquee:hover .dx-home-hero__marquee-track {
+  animation-play-state: paused;
+}
+
+.dx-home-hero__trusted-logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dx-home-hero__trusted-logo img {
+  height: 34px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+  display: block;
+}
+
+.dx-home-hero__trusted-logo:hover img {
+  opacity: 0.9;
+}
+
+@keyframes dx-hero-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Responsive ──────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .dx-home-hero__cards {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .dx-home-hero {
+    padding: 60px 20px 48px;
+    gap: 36px;
+  }
+
+  .dx-home-hero__heading {
+    font-size: clamp(28px, 6vw, 44px);
+  }
+
+  .dx-home-hero__cards {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+
+  .dx-home-hero__card {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dx-home-hero {
+    padding: 48px 16px 36px;
+  }
+
+  .dx-home-hero__subheading {
+    font-size: 14px;
+  }
+
+  .dx-home-hero__btn {
+    font-size: 14px;
+    padding: 12px 22px;
+  }
+
+  .dx-home-hero__marquee::before,
+  .dx-home-hero__marquee::after {
+    width: 40px;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .dx-home-hero__marquee-track {
+    animation: none;
+  }
+
+  .dx-home-hero__cursor {
+    animation: none;
+    opacity: 1;
+  }
+
+  .dx-home-hero__card-media,
+  .dx-home-hero__card-default,
+  .dx-home-hero__card-hover {
+    transition: none;
+  }
+}

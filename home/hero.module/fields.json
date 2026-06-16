@@ -1,0 +1,310 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "children": [
+      {
+        "id": "heading_static",
+        "name": "heading_static",
+        "label": "Static Prefix",
+        "help_text": "The non-animated part of the heading, e.g. 'AI-powered'",
+        "type": "text",
+        "default": "AI-powered"
+      },
+      {
+        "id": "heading_words",
+        "name": "heading_words",
+        "label": "Animated Words",
+        "help_text": "Words that cycle in the typewriter animation after the static prefix",
+        "type": "group",
+        "occurrence": {
+          "min": 1,
+          "max": 20,
+          "default": 3,
+          "sorting_label_field": "word"
+        },
+        "children": [
+          {
+            "id": "word",
+            "name": "word",
+            "label": "Word / Phrase",
+            "type": "text",
+            "default": "legacy modernisation"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "subheading",
+    "name": "subheading",
+    "label": "Subheading",
+    "type": "text",
+    "default": "APAC's leading custom software development and innovation company"
+  },
+  {
+    "id": "button",
+    "name": "button",
+    "label": "CTA Button",
+    "type": "group",
+    "children": [
+      {
+        "id": "button_text",
+        "name": "button_text",
+        "label": "Button Text",
+        "type": "text",
+        "default": "Let's talk about your next project"
+      },
+      {
+        "id": "button_link",
+        "name": "button_link",
+        "label": "Button Link",
+        "type": "link",
+        "default": {
+          "url": { "type": "EXTERNAL", "href": "#" },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "cards",
+    "name": "cards",
+    "label": "Navigation Cards",
+    "help_text": "Repeatable cards displayed in a grid below the hero content. Hover reveals the description.",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 3,
+      "sorting_label_field": "card_title"
+    },
+    "children": [
+      {
+        "id": "card_image",
+        "name": "card_image",
+        "label": "Card Image",
+        "help_text": "3D icon or illustration shown in the default (non-hovered) state",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 400,
+          "height": 300
+        }
+      },
+      {
+        "id": "card_title",
+        "name": "card_title",
+        "label": "Title",
+        "type": "text",
+        "default": "Card Title"
+      },
+      {
+        "id": "card_description",
+        "name": "card_description",
+        "label": "Description",
+        "help_text": "Shown when the card is hovered",
+        "type": "richtext",
+        "default": "<p>Short description shown when the card is hovered.</p>"
+      },
+      {
+        "id": "card_link",
+        "name": "card_link",
+        "label": "Link",
+        "type": "link",
+        "default": {
+          "url": { "type": "EXTERNAL", "href": "#" },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "id": "card_accent_color",
+        "name": "card_accent_color",
+        "label": "Accent Color",
+        "help_text": "Used for the card gradient overlay and arrow icon color",
+        "type": "color",
+        "default": {
+          "color": "#C41E3A",
+          "opacity": 100
+        }
+      }
+    ]
+  },
+  {
+    "id": "trusted_by",
+    "name": "trusted_by",
+    "label": "Trusted By",
+    "type": "group",
+    "children": [
+      {
+        "id": "section_label",
+        "name": "section_label",
+        "label": "Section Label",
+        "type": "text",
+        "default": "TRUSTED BY"
+      },
+      {
+        "id": "logos",
+        "name": "logos",
+        "label": "Client Logos",
+        "help_text": "Logos are displayed in an infinite scrolling marquee. Upload white/light versions for best results.",
+        "type": "group",
+        "occurrence": {
+          "min": 1,
+          "max": 30,
+          "default": 7,
+          "sorting_label_field": "logo_alt"
+        },
+        "children": [
+          {
+            "id": "logo_image",
+            "name": "logo_image",
+            "label": "Logo",
+            "type": "image",
+            "default": {
+              "src": "",
+              "alt": "Client logo",
+              "width": 120,
+              "height": 60
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "background",
+        "name": "background",
+        "label": "Background",
+        "type": "group",
+        "children": [
+          {
+            "id": "bg_color",
+            "name": "bg_color",
+            "label": "Background Color",
+            "type": "color",
+            "default": {
+              "color": "#061226",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "bg_image",
+            "name": "bg_image",
+            "label": "Background Image",
+            "help_text": "Optional background image (e.g. wave/particle art). Overlays the background color.",
+            "type": "image",
+            "default": {
+              "src": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ]
+      },
+      {
+        "id": "heading_style",
+        "name": "heading_style",
+        "label": "Heading Colors",
+        "type": "group",
+        "children": [
+          {
+            "id": "enable_styles",
+            "name": "enable_styles",
+            "label": "Enable Custom Colors",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "static_color",
+            "name": "static_color",
+            "label": "Static Text Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            },
+            "visibility": {
+              "controlling_field_path": "styles.heading_style.enable_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "animated_color",
+            "name": "animated_color",
+            "label": "Animated Word Color",
+            "type": "color",
+            "default": {
+              "color": "#4DC8D0",
+              "opacity": 100
+            },
+            "visibility": {
+              "controlling_field_path": "styles.heading_style.enable_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          }
+        ]
+      },
+      {
+        "id": "button_style",
+        "name": "button_style",
+        "label": "CTA Button",
+        "type": "group",
+        "children": [
+          {
+            "id": "enable_btn_styles",
+            "name": "enable_btn_styles",
+            "label": "Enable Custom Colors",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "btn_bg_color",
+            "name": "btn_bg_color",
+            "label": "Button Background",
+            "type": "color",
+            "default": {
+              "color": "#C41E3A",
+              "opacity": 100
+            },
+            "visibility": {
+              "controlling_field_path": "styles.button_style.enable_btn_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "btn_text_color",
+            "name": "btn_text_color",
+            "label": "Button Text Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            },
+            "visibility": {
+              "controlling_field_path": "styles.button_style.enable_btn_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
