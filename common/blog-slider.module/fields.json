@@ -1,0 +1,326 @@
+[
+  {
+    "id": "header_type",
+    "name": "header_type",
+    "label": "Header Type",
+    "help_text": "Choose what appears in the top section of the module",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      ["heading", "Eyebrow & Heading"],
+      ["image_button", "Image & Button"]
+    ],
+    "default": "heading"
+  },
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow Text",
+    "help_text": "Small label displayed above the heading",
+    "type": "text",
+    "default": "",
+    "visibility": {
+      "controlling_field_path": "header_type",
+      "operator": "EQUAL",
+      "controlling_value_regex": "heading"
+    }
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "visibility": {
+      "controlling_field_path": "header_type",
+      "operator": "EQUAL",
+      "controlling_value_regex": "heading"
+    },
+    "children": [
+      {
+        "id": "heading_text",
+        "name": "heading_text",
+        "label": "Heading Text",
+        "type": "text",
+        "default": "Latest Insights"
+      },
+      {
+        "id": "heading_tag",
+        "name": "heading_tag",
+        "label": "Heading Tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["h1", "H1"],
+          ["h2", "H2"],
+          ["h3", "H3"],
+          ["h4", "H4"]
+        ],
+        "default": "h2"
+      }
+    ]
+  },
+  {
+    "id": "header_image_block",
+    "name": "header_image_block",
+    "label": "Image & Button",
+    "type": "group",
+    "visibility": {
+      "controlling_field_path": "header_type",
+      "operator": "EQUAL",
+      "controlling_value_regex": "image_button"
+    },
+    "children": [
+      {
+        "id": "img",
+        "name": "img",
+        "label": "Image",
+        "help_text": "Logo or decorative image displayed on the left",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 300,
+          "height": 100
+        }
+      },
+      {
+        "id": "btn_text",
+        "name": "btn_text",
+        "label": "Button Text",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "btn_url",
+        "name": "btn_url",
+        "label": "Button URL",
+        "type": "url",
+        "default": ""
+      },
+      {
+        "id": "btn_new_tab",
+        "name": "btn_new_tab",
+        "label": "Open in New Tab",
+        "type": "boolean",
+        "default": false
+      }
+    ]
+  },
+  {
+    "id": "blog_source",
+    "name": "blog_source",
+    "label": "Blog",
+    "help_text": "Select the blog to pull posts from. Leave empty to use the account default blog.",
+    "type": "blog",
+    "default": "default"
+  },
+  {
+    "id": "post_count",
+    "name": "post_count",
+    "label": "Number of Posts",
+    "help_text": "How many posts to show (3–12). Posts display 3 at a time in the slider.",
+    "type": "number",
+    "default": 6,
+    "min": 3,
+    "max": 12,
+    "step": 1
+  },
+  {
+    "id": "view_all_btn",
+    "name": "view_all_btn",
+    "label": "View All Button",
+    "help_text": "Optional button shown on the right side of the heading",
+    "type": "group",
+    "visibility": {
+      "controlling_field_path": "header_type",
+      "operator": "EQUAL",
+      "controlling_value_regex": "heading"
+    },
+    "children": [
+      {
+        "id": "button_text",
+        "name": "button_text",
+        "label": "Button Text",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "button_url",
+        "name": "button_url",
+        "label": "Button URL",
+        "type": "url",
+        "default": ""
+      },
+      {
+        "id": "button_new_tab",
+        "name": "button_new_tab",
+        "label": "Open in New Tab",
+        "type": "boolean",
+        "default": false
+      }
+    ]
+  },
+  {
+    "id": "card_content",
+    "name": "card_content",
+    "label": "Card Content",
+    "type": "group",
+    "children": [
+      {
+        "id": "show_excerpt",
+        "name": "show_excerpt",
+        "label": "Show Excerpt",
+        "help_text": "Display the post summary below the title",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "id": "show_meta",
+        "name": "show_meta",
+        "label": "Show Author & Date",
+        "help_text": "Display the author name and publish date at the bottom of each card",
+        "type": "boolean",
+        "default": true
+      }
+    ]
+  },
+  {
+    "id": "slider_settings",
+    "name": "slider_settings",
+    "label": "Slider Settings",
+    "type": "group",
+    "children": [
+      {
+        "id": "enable_autoplay",
+        "name": "enable_autoplay",
+        "label": "Enable Autoplay",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "autoplay_speed",
+        "name": "autoplay_speed",
+        "label": "Autoplay Speed (ms)",
+        "help_text": "Time in milliseconds before advancing to the next slide (e.g. 4000 = 4 seconds)",
+        "type": "number",
+        "default": 4000,
+        "min": 1000,
+        "max": 10000,
+        "step": 500,
+        "visibility": {
+          "controlling_field_path": "slider_settings.enable_autoplay",
+          "operator": "EQUAL",
+          "controlling_value_regex": "true"
+        }
+      },
+      {
+        "id": "show_arrows",
+        "name": "show_arrows",
+        "label": "Show Navigation Arrows",
+        "type": "boolean",
+        "default": true
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "section",
+        "name": "section",
+        "label": "Section",
+        "type": "group",
+        "children": [
+          {
+            "id": "bg_color",
+            "name": "bg_color",
+            "label": "Background Color",
+            "type": "color"
+          },
+          {
+            "id": "text_color",
+            "name": "text_color",
+            "label": "Heading / Eyebrow Color",
+            "type": "color"
+          }
+        ]
+      },
+      {
+        "id": "card",
+        "name": "card",
+        "label": "Cards",
+        "type": "group",
+        "children": [
+          {
+            "id": "enable_card_styles",
+            "name": "enable_card_styles",
+            "label": "Enable Custom Card Colors",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "card_bg_color",
+            "name": "card_bg_color",
+            "label": "Card Background",
+            "type": "color",
+            "default": { "color": "#FFFFFF", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.card.enable_card_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "card_text_color",
+            "name": "card_text_color",
+            "label": "Card Text Color",
+            "type": "color",
+            "default": { "color": "#0A0A1A", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.card.enable_card_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "tag_color",
+            "name": "tag_color",
+            "label": "Tag / Category Color",
+            "type": "color",
+            "default": { "color": "#C41E3A", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.card.enable_card_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          }
+        ]
+      },
+      {
+        "id": "nav_btn_style",
+        "name": "nav_btn_style",
+        "label": "Navigation Buttons",
+        "type": "group",
+        "children": [
+          {
+            "id": "btn_style",
+            "name": "btn_style",
+            "label": "Button Style",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["primary", "Primary"],
+              ["secondary", "Secondary"],
+              ["outline", "Outline"]
+            ],
+            "default": "primary"
+          }
+        ]
+      }
+    ]
+  }
+]

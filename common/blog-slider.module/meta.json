@@ -1,0 +1,16 @@
+{
+  "label": "Blog Slider",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Displays the latest posts from a selected blog in a 3-column slider (max 12 posts).",
+  "content_types": [
+    "LANDING_PAGE",
+    "SITE_PAGE"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}

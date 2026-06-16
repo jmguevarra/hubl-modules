@@ -1,0 +1,202 @@
+{% set s = module.styles %}
+{% set btn_style_class = {
+  "primary":   "dx-bslider__nav-btn--primary",
+  "secondary": "dx-bslider__nav-btn--secondary",
+  "outline":   "dx-bslider__nav-btn--outline"
+}[s.nav_btn_style.btn_style] %}
+
+{# Fetch blog posts #}
+{% set blog_id = module.blog_source if module.blog_source else "default" %}
+{% set post_limit = module.post_count if module.post_count >= 3 else 6 %}
+{% set posts = blog_recent_posts(blog_id, post_limit) %}
+
+{% set ss = module.slider_settings %}
+
+<section
+  class="dx-bslider"
+  id="dx-bslider-{{ module.widget_id }}"
+  data-slider-id="{{ module.widget_id }}"
+  data-autoplay="{{ 'true' if ss.enable_autoplay else 'false' }}"
+  data-autoplay-speed="{{ ss.autoplay_speed if ss.autoplay_speed else 4000 }}"
+  style="
+    {% if s.section.bg_color.color %}background-color: {{ s.section.bg_color.css }};{% endif %}
+    {% if s.section.text_color.color %}--bslider-text-color: {{ s.section.text_color.css }};{% endif %}
+    {% if s.card.enable_card_styles %}
+      {% if s.card.card_bg_color.color %}--bslider-card-bg: {{ s.card.card_bg_color.css }};{% endif %}
+      {% if s.card.card_text_color.color %}--bslider-card-text: {{ s.card.card_text_color.css }};{% endif %}
+      {% if s.card.tag_color.color %}--bslider-tag-color: {{ s.card.tag_color.css }};{% endif %}
+    {% endif %}
+  "
+>
+  <div class="dx-module__container content-wrapper">
+
+    {# ── Section Header ──────────────────────────────── #}
+    <div class="dx-bslider__header">
+
+      {% if module.header_type == 'image_button' %}
+
+        {# Image & Button mode #}
+        {% if module.header_image_block.img.src %}
+        <div class="dx-bslider__header-img-wrap">
+          <img
+            src="{{ module.header_image_block.img.src }}"
+            alt="{{ module.header_image_block.img.alt }}"
+            class="dx-bslider__header-img"
+            loading="lazy"
+            {% if module.header_image_block.img.width %}width="{{ module.header_image_block.img.width }}"{% endif %}
+            {% if module.header_image_block.img.height %}height="{{ module.header_image_block.img.height }}"{% endif %}
+          >
+        </div>
+        {% endif %}
+
+        {% if module.header_image_block.btn_text %}
+        <div class="dx-bslider__header-cta">
+          <a
+            href="{{ module.header_image_block.btn_url.href }}"
+            class="dx-btn dx-btn--primary dx-bslider__view-all"
+            {% if module.header_image_block.btn_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+          >
+            <span class="dx-btn-text">{{ module.header_image_block.btn_text }}</span>
+            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        {% endif %}
+
+      {% else %}
+
+        {# Heading mode (default) #}
+        <div class="dx-bslider__header-text">
+          {% if module.eyebrow %}
+          <p class="dx-bslider__eyebrow">{{ module.eyebrow }}</p>
+          {% endif %}
+
+          {% if module.heading.heading_text %}
+          <{{ module.heading.heading_tag }} class="dx-bslider__heading">{{ module.heading.heading_text }}</{{ module.heading.heading_tag }}>
+          {% endif %}
+        </div>
+
+        {% if module.view_all_btn.button_text %}
+        <div class="dx-bslider__header-cta">
+          <a
+            href="{{ module.view_all_btn.button_url.href }}"
+            class="dx-btn dx-btn--primary-outline dx-bslider__view-all"
+            {% if module.view_all_btn.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+          >
+            <span class="dx-btn-text">{{ module.view_all_btn.button_text }}</span>
+            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        {% endif %}
+
+      {% endif %}
+
+    </div>{# end header #}
+
+    {# ── Slider ──────────────────────────────────────── #}
+    {% if posts %}
+    <div class="dx-bslider__wrapper" aria-label="Blog posts slider">
+      <div class="dx-bslider__track" role="list">
+        {% for post in posts %}
+        <article class="dx-bslider__card" role="listitem">
+
+          {# Featured image #}
+          <a
+            href="{{ post.absolute_url }}"
+            class="dx-bslider__card-img-wrap"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            {% if post.featured_image %}
+            <img
+              src="{{ post.featured_image }}"
+              alt="{{ post.featured_image_alt_text }}"
+              class="dx-bslider__card-img"
+              loading="lazy"
+            >
+            {% else %}
+            <div class="dx-bslider__card-img-placeholder" aria-hidden="true"></div>
+            {% endif %}
+          </a>
+
+          {# Card body #}
+          <div class="dx-bslider__card-body">
+
+            {# Tag / category #}
+            {% if post.tag_list %}
+            <span class="dx-bslider__card-tag">{{ post.tag_list[0].name }}</span>
+            {% endif %}
+
+            {# Title #}
+            <h3 class="dx-bslider__card-title">
+              <a href="{{ post.absolute_url }}" class="dx-bslider__card-title-link">{{ post.name }}</a>
+            </h3>
+
+            {# Excerpt #}
+            {% if module.card_content.show_excerpt != false and post.post_summary %}
+            <p class="dx-bslider__card-excerpt">
+              {{ post.post_summary|striptags|truncate(130, True, '...') }}
+            </p>
+            {% endif %}
+
+            {# Meta: author + date #}
+            {% if module.card_content.show_meta != false %}
+            <div class="dx-bslider__card-meta">
+              {% if post.blog_author %}
+              <span class="dx-bslider__card-author">{{ post.blog_author.display_name }}</span>
+              <span class="dx-bslider__card-meta-sep" aria-hidden="true">·</span>
+              {% endif %}
+              <time class="dx-bslider__card-date" datetime="{{ post.publish_date|datetimeformat('%Y-%m-%d') }}">
+                {{ post.publish_date|datetimeformat('%b %d, %Y') }}
+              </time>
+            </div>
+            {% endif %}
+
+          </div>{# end card-body #}
+        </article>
+        {% endfor %}
+      </div>{# end track #}
+    </div>{# end wrapper #}
+
+    {# ── Navigation ──────────────────────────────────── #}
+    {% set show_arrows = ss.show_arrows != false %}
+    <div class="dx-bslider__controls{% if not show_arrows %} dx-bslider__controls--no-arrows{% endif %}">
+
+      {% if show_arrows %}
+      <button
+        class="dx-bslider__nav-btn dx-bslider__nav-btn--prev {{ btn_style_class }}"
+        aria-label="Previous posts"
+        type="button"
+        disabled
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      {% endif %}
+
+      <div class="dx-bslider__dots" role="tablist" aria-label="Slider position"></div>
+
+      {% if show_arrows %}
+      <button
+        class="dx-bslider__nav-btn dx-bslider__nav-btn--next {{ btn_style_class }}"
+        aria-label="Next posts"
+        type="button"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      {% endif %}
+
+    </div>
+
+    {% else %}
+    <p class="dx-bslider__empty">No posts found. Please check your blog selection.</p>
+    {% endif %}
+
+  </div>{# end container #}
+</section>
