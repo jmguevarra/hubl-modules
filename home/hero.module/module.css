@@ -4,6 +4,8 @@
 section.dx-home-hero {
     padding: 80px 0 100px;
     min-height: calc(100vh - 76px);
+    overflow: hidden;
+    position: relative;
 }
 
 .dx-home-hero .dx-module__container{
@@ -16,6 +18,7 @@ section.dx-home-hero {
   align-items: center;
   justify-content: center;
   gap: 44px;
+  z-index: 10;
 }
 
 /* ── Hero Content ────────────────────────────────── */
