@@ -7,9 +7,6 @@
 {% set t_align   = s.tablet.tablet_alignment %}
 {% set mob_align = s.mobile.mobile_alignment %}
 
-{% set ratio_map = {'16-9': '16/9', '4-3': '4/3', '1-1': '1/1', '9-16': '9/16', '21-9': '21/9'} %}
-{% set ratio = ratio_map[s.aspect_ratio | default('16-9')] | default('16/9') %}
-
 {% set d_mw   = s.desktop.desktop_max_width | default(0) | int %}
 {% set t_mw   = s.tablet.tablet_max_width | default(0) | int %}
 {% set mob_mw = s.mobile.mobile_max_width | default(0) | int %}
@@ -17,7 +14,6 @@
 <div
   class="dx-video"
   style="
-    --dx-video-ratio: {{ ratio }};
     --dx-video-align-d: {{ align_map[d_align] | default('center') }};
     --dx-video-align-t: {{ t_align ? align_map[t_align] : 'var(--dx-video-align-d)' }};
     --dx-video-align-m: {{ mob_align ? align_map[mob_align] : 'var(--dx-video-align-t)' }};
@@ -28,8 +24,24 @@
 >
   <div class="dx-video__wrap">
 
-    {# ── URL embed (YouTube / Vimeo / HubSpot) ─── #}
-    {% if m.video_type == 'url' or not m.video_type %}
+    {# ── HubSpot Video ─────────────────────────── #}
+    {% if m.video_type == 'hubspot' or not m.video_type %}
+      {% if m.hs_video.player_id %}
+      <div class="dx-video__embed-wrap">
+        {% video_player "embed_player"
+          autoplay={{ m.hs_video.autoplay }},
+          full_width=true,
+          hidden_controls={{ m.hs_video.hide_control }},
+          loop={{ m.hs_video.loop_video }},
+          muted={{ m.hs_video.mute_by_default }},
+          player_id={{ m.hs_video.player_id }},
+          type='scriptV4'
+        %}
+      </div>
+      {% endif %}
+
+    {# ── URL embed (YouTube / Vimeo) ───────────── #}
+    {% elif m.video_type == 'url' %}
       {% if m.video_url %}
       <div class="dx-video__embed-wrap">
         <iframe

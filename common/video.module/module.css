@@ -20,7 +20,7 @@
 .dx-video__embed-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: var(--dx-video-ratio, 16 / 9);
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 8px;
   background: #000;
