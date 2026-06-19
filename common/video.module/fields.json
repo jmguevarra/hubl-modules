@@ -66,6 +66,12 @@
     "tab": "STYLE",
     "children": [
       {
+        "id": "spacing",
+        "name": "spacing",
+        "label": "Spacing",
+        "type": "spacing"
+      },
+      {
         "id": "desktop",
         "name": "desktop",
         "label": "Desktop",
@@ -75,14 +81,11 @@
             "id": "desktop_alignment",
             "name": "desktop_alignment",
             "label": "Alignment",
-            "type": "choice",
-            "display": "select",
-            "choices": [
-              ["left", "Left"],
-              ["center", "Center"],
-              ["right", "Right"]
-            ],
-            "default": "center"
+            "type": "alignment",
+            "alignment_direction": "HORIZONTAL",
+            "default": {
+              "horizontal_align": "CENTER"
+            }
           },
           {
             "id": "desktop_max_width",
@@ -106,15 +109,11 @@
             "id": "tablet_alignment",
             "name": "tablet_alignment",
             "label": "Alignment",
-            "type": "choice",
-            "display": "select",
-            "choices": [
-              ["", "Same as Desktop"],
-              ["left", "Left"],
-              ["center", "Center"],
-              ["right", "Right"]
-            ],
-            "default": ""
+            "type": "alignment",
+            "alignment_direction": "HORIZONTAL",
+            "default": {
+              "horizontal_align": "CENTER"
+            }
           },
           {
             "id": "tablet_max_width",
@@ -138,15 +137,11 @@
             "id": "mobile_alignment",
             "name": "mobile_alignment",
             "label": "Alignment",
-            "type": "choice",
-            "display": "select",
-            "choices": [
-              ["", "Same as Tablet"],
-              ["left", "Left"],
-              ["center", "Center"],
-              ["right", "Right"]
-            ],
-            "default": ""
+            "type": "alignment",
+            "alignment_direction": "HORIZONTAL",
+            "default": {
+              "horizontal_align": "CENTER"
+            }
           },
           {
             "id": "mobile_max_width",

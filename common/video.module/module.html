@@ -1,11 +1,12 @@
 {% set m = module %}
 {% set s = m.styles %}
+{% set sp = s.spacing %}
 
-{% set align_map = {'left': 'flex-start', 'center': 'center', 'right': 'flex-end'} %}
+{% set align_map = {'LEFT': 'flex-start', 'CENTER': 'center', 'RIGHT': 'flex-end'} %}
 
-{% set d_align   = s.desktop.desktop_alignment | default('center') %}
-{% set t_align   = s.tablet.tablet_alignment %}
-{% set mob_align = s.mobile.mobile_alignment %}
+{% set d_align   = s.desktop.desktop_alignment.horizontal_align | default('CENTER') %}
+{% set t_align   = s.tablet.tablet_alignment.horizontal_align | default('CENTER') %}
+{% set mob_align = s.mobile.mobile_alignment.horizontal_align | default('CENTER') %}
 
 {% set d_mw   = s.desktop.desktop_max_width | default(0) | int %}
 {% set t_mw   = s.tablet.tablet_max_width | default(0) | int %}
@@ -15,11 +16,19 @@
   class="dx-video"
   style="
     --dx-video-align-d: {{ align_map[d_align] | default('center') }};
-    --dx-video-align-t: {{ t_align ? align_map[t_align] : 'var(--dx-video-align-d)' }};
-    --dx-video-align-m: {{ mob_align ? align_map[mob_align] : 'var(--dx-video-align-t)' }};
+    --dx-video-align-t: {{ align_map[t_align] | default('center') }};
+    --dx-video-align-m: {{ align_map[mob_align] | default('center') }};
     --dx-video-max-desktop: {{ d_mw > 0 ? d_mw ~ 'px' : '100%' }};
     --dx-video-max-tablet: {{ t_mw > 0 ? t_mw ~ 'px' : '100%' }};
     --dx-video-max-mobile: {{ mob_mw > 0 ? mob_mw ~ 'px' : '100%' }};
+    padding-top: {{ sp.padding.top.value }}{{ sp.padding.top.units }};
+    padding-right: {{ sp.padding.right.value }}{{ sp.padding.right.units }};
+    padding-bottom: {{ sp.padding.bottom.value }}{{ sp.padding.bottom.units }};
+    padding-left: {{ sp.padding.left.value }}{{ sp.padding.left.units }};
+    margin-top: {{ sp.margin.top.value }}{{ sp.margin.top.units }};
+    margin-right: {{ sp.margin.right.value }}{{ sp.margin.right.units }};
+    margin-bottom: {{ sp.margin.bottom.value }}{{ sp.margin.bottom.units }};
+    margin-left: {{ sp.margin.left.value }}{{ sp.margin.left.units }};
   "
 >
   <div class="dx-video__wrap">
