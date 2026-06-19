@@ -1,0 +1,62 @@
+{% set m = module %}
+{% set s = m.styles %}
+
+{% set align_map = {'left': 'flex-start', 'center': 'center', 'right': 'flex-end'} %}
+
+{% set d_align   = s.desktop.desktop_alignment | default('center') %}
+{% set t_align   = s.tablet.tablet_alignment %}
+{% set mob_align = s.mobile.mobile_alignment %}
+
+{% set ratio_map = {'16-9': '16/9', '4-3': '4/3', '1-1': '1/1', '9-16': '9/16', '21-9': '21/9'} %}
+{% set ratio = ratio_map[s.aspect_ratio | default('16-9')] | default('16/9') %}
+
+{% set d_mw   = s.desktop.desktop_max_width | default(0) | int %}
+{% set t_mw   = s.tablet.tablet_max_width | default(0) | int %}
+{% set mob_mw = s.mobile.mobile_max_width | default(0) | int %}
+
+<div
+  class="dx-video"
+  style="
+    --dx-video-ratio: {{ ratio }};
+    --dx-video-align-d: {{ align_map[d_align] | default('center') }};
+    --dx-video-align-t: {{ t_align ? align_map[t_align] : 'var(--dx-video-align-d)' }};
+    --dx-video-align-m: {{ mob_align ? align_map[mob_align] : 'var(--dx-video-align-t)' }};
+    --dx-video-max-desktop: {{ d_mw > 0 ? d_mw ~ 'px' : '100%' }};
+    --dx-video-max-tablet: {{ t_mw > 0 ? t_mw ~ 'px' : '100%' }};
+    --dx-video-max-mobile: {{ mob_mw > 0 ? mob_mw ~ 'px' : '100%' }};
+  "
+>
+  <div class="dx-video__wrap">
+
+    {# ── URL embed (YouTube / Vimeo / HubSpot) ─── #}
+    {% if m.video_type == 'url' or not m.video_type %}
+      {% if m.video_url %}
+      <div class="dx-video__embed-wrap">
+        <iframe
+          src="{{ m.video_url }}"
+          frameborder="0"
+          allowfullscreen
+          allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+          title="{{ m.caption }}"
+          loading="lazy"
+        ></iframe>
+      </div>
+      {% endif %}
+
+    {# ── Raw embed code ────────────────────────── #}
+    {% elif m.video_type == 'embed' %}
+      {% if m.embed_code %}
+      <div class="dx-video__embed-code">
+        {{ m.embed_code }}
+      </div>
+      {% endif %}
+
+    {% endif %}
+
+    {# ── Caption ───────────────────────────────── #}
+    {% if m.caption %}
+    <p class="dx-video__caption">{{ m.caption }}</p>
+    {% endif %}
+
+  </div>
+</div>

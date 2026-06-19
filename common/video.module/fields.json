@@ -1,0 +1,167 @@
+[
+  {
+    "id": "video_type",
+    "name": "video_type",
+    "label": "Video Type",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      ["url", "URL (YouTube / Vimeo / HubSpot)"],
+      ["embed", "Embed Code"]
+    ],
+    "default": "url"
+  },
+  {
+    "id": "video_url",
+    "name": "video_url",
+    "label": "Video URL",
+    "help_text": "Paste the embed URL. YouTube: https://www.youtube.com/embed/ID — Vimeo: https://player.vimeo.com/video/ID — HubSpot: use the embed URL from the video's Share options.",
+    "type": "text",
+    "default": "",
+    "visibility": {
+      "controlling_field_path": "video_type",
+      "operator": "EQUAL",
+      "controlling_value_regex": "url"
+    }
+  },
+  {
+    "id": "embed_code",
+    "name": "embed_code",
+    "label": "Embed Code",
+    "help_text": "Paste your full embed code. Click the Source (</>) icon in the editor toolbar to switch to HTML view before pasting.",
+    "type": "richtext",
+    "default": "",
+    "visibility": {
+      "controlling_field_path": "video_type",
+      "operator": "EQUAL",
+      "controlling_value_regex": "embed"
+    }
+  },
+  {
+    "id": "caption",
+    "name": "caption",
+    "label": "Caption",
+    "help_text": "Optional text shown below the video",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "aspect_ratio",
+        "name": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["16-9", "16:9 — Widescreen"],
+          ["4-3", "4:3 — Standard"],
+          ["1-1", "1:1 — Square"],
+          ["9-16", "9:16 — Vertical"],
+          ["21-9", "21:9 — Ultrawide"]
+        ],
+        "default": "16-9"
+      },
+      {
+        "id": "desktop",
+        "name": "desktop",
+        "label": "Desktop",
+        "type": "group",
+        "children": [
+          {
+            "id": "desktop_alignment",
+            "name": "desktop_alignment",
+            "label": "Alignment",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["left", "Left"],
+              ["center", "Center"],
+              ["right", "Right"]
+            ],
+            "default": "center"
+          },
+          {
+            "id": "desktop_max_width",
+            "name": "desktop_max_width",
+            "label": "Max Width (px)",
+            "help_text": "Set to 0 for full width",
+            "type": "number",
+            "min": 0,
+            "max": 2560,
+            "default": 0
+          }
+        ]
+      },
+      {
+        "id": "tablet",
+        "name": "tablet",
+        "label": "Tablet  (≤ 1024px)",
+        "type": "group",
+        "children": [
+          {
+            "id": "tablet_alignment",
+            "name": "tablet_alignment",
+            "label": "Alignment",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["", "Same as Desktop"],
+              ["left", "Left"],
+              ["center", "Center"],
+              ["right", "Right"]
+            ],
+            "default": ""
+          },
+          {
+            "id": "tablet_max_width",
+            "name": "tablet_max_width",
+            "label": "Max Width (px)",
+            "help_text": "Set to 0 for full width",
+            "type": "number",
+            "min": 0,
+            "max": 1024,
+            "default": 0
+          }
+        ]
+      },
+      {
+        "id": "mobile",
+        "name": "mobile",
+        "label": "Mobile  (≤ 767px)",
+        "type": "group",
+        "children": [
+          {
+            "id": "mobile_alignment",
+            "name": "mobile_alignment",
+            "label": "Alignment",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["", "Same as Tablet"],
+              ["left", "Left"],
+              ["center", "Center"],
+              ["right", "Right"]
+            ],
+            "default": ""
+          },
+          {
+            "id": "mobile_max_width",
+            "name": "mobile_max_width",
+            "label": "Max Width (px)",
+            "help_text": "Set to 0 for full width",
+            "type": "number",
+            "min": 0,
+            "max": 767,
+            "default": 0
+          }
+        ]
+      }
+    ]
+  }
+]
