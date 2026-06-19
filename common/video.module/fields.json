@@ -66,12 +66,6 @@
     "tab": "STYLE",
     "children": [
       {
-        "id": "spacing",
-        "name": "spacing",
-        "label": "Spacing",
-        "type": "spacing"
-      },
-      {
         "id": "desktop",
         "name": "desktop",
         "label": "Desktop",
@@ -96,6 +90,12 @@
             "min": 0,
             "max": 2560,
             "default": 0
+          },
+          {
+            "id": "desktop_spacing",
+            "name": "desktop_spacing",
+            "label": "Spacing",
+            "type": "spacing"
           }
         ]
       },
@@ -124,6 +124,12 @@
             "min": 0,
             "max": 1024,
             "default": 0
+          },
+          {
+            "id": "tablet_spacing",
+            "name": "tablet_spacing",
+            "label": "Spacing",
+            "type": "spacing"
           }
         ]
       },
@@ -152,6 +158,12 @@
             "min": 0,
             "max": 767,
             "default": 0
+          },
+          {
+            "id": "mobile_spacing",
+            "name": "mobile_spacing",
+            "label": "Spacing",
+            "type": "spacing"
           }
         ]
       }
