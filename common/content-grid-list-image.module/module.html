@@ -1,0 +1,133 @@
+{% set m = module %}
+{% set s = m.styles %}
+{% set colors = s.colors %}
+
+{# ── Alignment maps ────────────────────────────────────── #}
+{% set h_align_map = {'LEFT': 'left', 'CENTER': 'center', 'RIGHT': 'right'} %}
+
+{# ── Content alignment per breakpoint ─────────────────── #}
+{% set d_align   = s.content.desktop.desktop_content_alignment.horizontal_align | default('LEFT') %}
+{% set t_align   = s.content.tablet.tablet_content_alignment.horizontal_align | default('LEFT') %}
+{% set mob_align = s.content.mobile.mobile_content_alignment.horizontal_align | default('LEFT') %}
+
+{# ── Spacing per breakpoint ────────────────────────────── #}
+{% set d_sp   = s.spacing.desktop.desktop_spacing %}
+{% set t_sp   = s.spacing.tablet.tablet_spacing %}
+{% set mob_sp = s.spacing.mobile.mobile_spacing %}
+
+{# ── Heading tag ───────────────────────────────────────── #}
+{% set htag = m.heading_tag | default('h2') %}
+
+{# ── Image options ─────────────────────────────────────── #}
+{% set img_pos   = s.image.image_position | default('right') %}
+{% set img_align = s.image.image_alignment | default('center') %}
+
+<section
+  class="cgli{% if img_pos == 'left' %} cgli--img-left{% endif %}{% if img_pos == 'hidden' %} cgli--img-hidden{% endif %}"
+  style="
+    --cgli-list-cols-d: {{ s.content.desktop.desktop_list_columns | default('2') }};
+    --cgli-list-cols-t: {{ s.content.tablet.tablet_list_columns | default('2') }};
+    --cgli-list-cols-m: {{ s.content.mobile.mobile_list_columns | default('1') }};
+    --cgli-align-d: {{ h_align_map[d_align] | default('left') }};
+    --cgli-align-t: {{ h_align_map[t_align] | default('left') }};
+    --cgli-align-m: {{ h_align_map[mob_align] | default('left') }};
+    --cgli-img-align: {{ img_align }};
+    --cgli-pt-d: {{ d_sp.padding.top.value | default(60) }}{{ d_sp.padding.top.units | default('px') }};
+    --cgli-pr-d: {{ d_sp.padding.right.value | default(0) }}{{ d_sp.padding.right.units | default('px') }};
+    --cgli-pb-d: {{ d_sp.padding.bottom.value | default(60) }}{{ d_sp.padding.bottom.units | default('px') }};
+    --cgli-pl-d: {{ d_sp.padding.left.value | default(0) }}{{ d_sp.padding.left.units | default('px') }};
+    --cgli-mt-d: {{ d_sp.margin.top.value | default(0) }}{{ d_sp.margin.top.units | default('px') }};
+    --cgli-mr-d: {{ d_sp.margin.right.value | default(0) }}{{ d_sp.margin.right.units | default('px') }};
+    --cgli-mb-d: {{ d_sp.margin.bottom.value | default(0) }}{{ d_sp.margin.bottom.units | default('px') }};
+    --cgli-ml-d: {{ d_sp.margin.left.value | default(0) }}{{ d_sp.margin.left.units | default('px') }};
+    --cgli-pt-t: {{ t_sp.padding.top.value | default(0) }}{{ t_sp.padding.top.units | default('px') }};
+    --cgli-pr-t: {{ t_sp.padding.right.value | default(0) }}{{ t_sp.padding.right.units | default('px') }};
+    --cgli-pb-t: {{ t_sp.padding.bottom.value | default(0) }}{{ t_sp.padding.bottom.units | default('px') }};
+    --cgli-pl-t: {{ t_sp.padding.left.value | default(0) }}{{ t_sp.padding.left.units | default('px') }};
+    --cgli-mt-t: {{ t_sp.margin.top.value | default(0) }}{{ t_sp.margin.top.units | default('px') }};
+    --cgli-mr-t: {{ t_sp.margin.right.value | default(0) }}{{ t_sp.margin.right.units | default('px') }};
+    --cgli-mb-t: {{ t_sp.margin.bottom.value | default(0) }}{{ t_sp.margin.bottom.units | default('px') }};
+    --cgli-ml-t: {{ t_sp.margin.left.value | default(0) }}{{ t_sp.margin.left.units | default('px') }};
+    --cgli-pt-m: {{ mob_sp.padding.top.value | default(0) }}{{ mob_sp.padding.top.units | default('px') }};
+    --cgli-pr-m: {{ mob_sp.padding.right.value | default(0) }}{{ mob_sp.padding.right.units | default('px') }};
+    --cgli-pb-m: {{ mob_sp.padding.bottom.value | default(0) }}{{ mob_sp.padding.bottom.units | default('px') }};
+    --cgli-pl-m: {{ mob_sp.padding.left.value | default(0) }}{{ mob_sp.padding.left.units | default('px') }};
+    --cgli-mt-m: {{ mob_sp.margin.top.value | default(0) }}{{ mob_sp.margin.top.units | default('px') }};
+    --cgli-mr-m: {{ mob_sp.margin.right.value | default(0) }}{{ mob_sp.margin.right.units | default('px') }};
+    --cgli-mb-m: {{ mob_sp.margin.bottom.value | default(0) }}{{ mob_sp.margin.bottom.units | default('px') }};
+    --cgli-ml-m: {{ mob_sp.margin.left.value | default(0) }}{{ mob_sp.margin.left.units | default('px') }};
+    {% if colors.enable_styles %}{% set cf = colors.style_fields %}{% if cf.bg_color.color %}--cgli-bg: #{{ cf.bg_color.color }};{% endif %}{% if cf.heading_color.color %}--cgli-heading-color: #{{ cf.heading_color.color }};{% endif %}{% if cf.text_color.color %}--cgli-text-color: #{{ cf.text_color.color }};{% endif %}{% if cf.icon_color.color %}--cgli-icon-color: #{{ cf.icon_color.color }};{% endif %}{% endif %}
+  "
+>
+  <div class="dx-module__container content-wrapper">
+    <div class="cgli__columns">
+
+      {# ---- Content: heading + description + list ---- #}
+      <div class="cgli__content">
+
+        {% if m.heading %}
+        <{{ htag }} class="cgli__heading">{{ m.heading }}</{{ htag }}>
+        {% endif %}
+
+        {% if m.description %}
+        <div class="cgli__description">{{ m.description }}</div>
+        {% endif %}
+
+        {% if m.items %}
+        <ul class="cgli__list">
+          {% for item in m.items %}
+          <li class="cgli__item">
+
+            {% if item.icon.src %}
+            <img
+              src="{{ item.icon.src }}"
+              alt="{{ item.icon.alt }}"
+              class="cgli__icon"
+              loading="lazy"
+              {% if item.icon.width %}width="{{ item.icon.width }}"{% endif %}
+              {% if item.icon.height %}height="{{ item.icon.height }}"{% endif %}
+            >
+            {% else %}
+            <svg
+              class="cgli__icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20" height="20" viewBox="0 0 20 20" fill="none"
+              aria-hidden="true"
+            >
+              <circle cx="10" cy="10" r="8.25" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6.5 10.5L8.75 13L13.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {% endif %}
+
+            {% if item.text %}
+            <span class="cgli__item-text">{{ item.text }}</span>
+            {% endif %}
+
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+      </div>
+
+      {# ---- Side images / badges ---- #}
+      {% if img_pos != 'hidden' and m.side_images %}
+      <div class="cgli__images">
+        {% for img_item in m.side_images %}
+        {% if img_item.image.src %}
+        <img
+          src="{{ img_item.image.src }}"
+          alt="{{ img_item.image.alt }}"
+          class="cgli__badge"
+          loading="lazy"
+          {% if img_item.image.width %}width="{{ img_item.image.width }}"{% endif %}
+          {% if img_item.image.height %}height="{{ img_item.image.height }}"{% endif %}
+        >
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>

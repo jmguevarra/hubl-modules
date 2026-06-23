@@ -1,0 +1,346 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "What we offer"
+  },
+  {
+    "id": "heading_tag",
+    "name": "heading_tag",
+    "label": "Heading Tag",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      ["h1", "H1"],
+      ["h2", "H2"],
+      ["h3", "H3"],
+      ["h4", "H4"]
+    ],
+    "default": "h2"
+  },
+  {
+    "id": "description",
+    "name": "description",
+    "label": "Description (optional)",
+    "type": "richtext",
+    "default": ""
+  },
+  {
+    "id": "items",
+    "name": "items",
+    "label": "List Items",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 20,
+      "default": 4,
+      "sorting_label_field": "text"
+    },
+    "children": [
+      {
+        "id": "icon",
+        "name": "icon",
+        "label": "Custom Icon (optional)",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 20,
+          "height": 20
+        }
+      },
+      {
+        "id": "text",
+        "name": "text",
+        "label": "Item Text",
+        "type": "text",
+        "default": "List item text"
+      }
+    ]
+  },
+  {
+    "id": "side_images",
+    "name": "side_images",
+    "label": "Side Images / Badges",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 6,
+      "default": 2,
+      "sorting_label_field": "image"
+    },
+    "children": [
+      {
+        "id": "image",
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 120,
+          "height": 120
+        }
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "spacing",
+        "name": "spacing",
+        "label": "Spacing",
+        "type": "group",
+        "children": [
+          {
+            "id": "desktop",
+            "name": "desktop",
+            "label": "Desktop",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop_spacing",
+                "name": "desktop_spacing",
+                "label": "Spacing",
+                "type": "spacing",
+                "default": {
+                  "padding": {
+                    "top": { "value": 60, "units": "px" },
+                    "bottom": { "value": 60, "units": "px" },
+                    "left": { "value": 0, "units": "px" },
+                    "right": { "value": 0, "units": "px" }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "name": "tablet",
+            "label": "Tablet",
+            "type": "group",
+            "children": [
+              {
+                "id": "tablet_spacing",
+                "name": "tablet_spacing",
+                "label": "Spacing",
+                "type": "spacing"
+              }
+            ]
+          },
+          {
+            "id": "mobile",
+            "name": "mobile",
+            "label": "Mobile",
+            "type": "group",
+            "children": [
+              {
+                "id": "mobile_spacing",
+                "name": "mobile_spacing",
+                "label": "Spacing",
+                "type": "spacing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "content",
+        "name": "content",
+        "label": "Content",
+        "type": "group",
+        "children": [
+          {
+            "id": "desktop",
+            "name": "desktop",
+            "label": "Desktop",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop_list_columns",
+                "name": "desktop_list_columns",
+                "label": "List Columns",
+                "type": "choice",
+                "display": "select",
+                "choices": [
+                  ["1", "1 Column"],
+                  ["2", "2 Columns"],
+                  ["3", "3 Columns"]
+                ],
+                "default": "2"
+              },
+              {
+                "id": "desktop_content_alignment",
+                "name": "desktop_content_alignment",
+                "label": "Content Alignment",
+                "type": "alignment",
+                "alignment_direction": "HORIZONTAL",
+                "default": {
+                  "horizontal_align": "LEFT"
+                }
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "name": "tablet",
+            "label": "Tablet",
+            "type": "group",
+            "children": [
+              {
+                "id": "tablet_list_columns",
+                "name": "tablet_list_columns",
+                "label": "List Columns",
+                "type": "choice",
+                "display": "select",
+                "choices": [
+                  ["1", "1 Column"],
+                  ["2", "2 Columns"],
+                  ["3", "3 Columns"]
+                ],
+                "default": "2"
+              },
+              {
+                "id": "tablet_content_alignment",
+                "name": "tablet_content_alignment",
+                "label": "Content Alignment",
+                "type": "alignment",
+                "alignment_direction": "HORIZONTAL",
+                "default": {
+                  "horizontal_align": "LEFT"
+                }
+              }
+            ]
+          },
+          {
+            "id": "mobile",
+            "name": "mobile",
+            "label": "Mobile",
+            "type": "group",
+            "children": [
+              {
+                "id": "mobile_list_columns",
+                "name": "mobile_list_columns",
+                "label": "List Columns",
+                "type": "choice",
+                "display": "select",
+                "choices": [
+                  ["1", "1 Column"],
+                  ["2", "2 Columns"]
+                ],
+                "default": "1"
+              },
+              {
+                "id": "mobile_content_alignment",
+                "name": "mobile_content_alignment",
+                "label": "Content Alignment",
+                "type": "alignment",
+                "alignment_direction": "HORIZONTAL",
+                "default": {
+                  "horizontal_align": "LEFT"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "image",
+        "name": "image",
+        "label": "Image",
+        "type": "group",
+        "children": [
+          {
+            "id": "image_position",
+            "name": "image_position",
+            "label": "Image Panel Position",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["right", "Right"],
+              ["left", "Left"],
+              ["hidden", "Hide Images"]
+            ],
+            "default": "right"
+          },
+          {
+            "id": "image_alignment",
+            "name": "image_alignment",
+            "label": "Image Vertical Alignment",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["start", "Top"],
+              ["center", "Center"],
+              ["end", "Bottom"]
+            ],
+            "default": "center"
+          }
+        ]
+      },
+      {
+        "id": "colors",
+        "name": "colors",
+        "label": "Colors",
+        "type": "group",
+        "children": [
+          {
+            "id": "enable_styles",
+            "name": "enable_styles",
+            "label": "Enable Custom Colors",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "style_fields",
+            "name": "style_fields",
+            "label": "Color Options",
+            "type": "group",
+            "visibility": {
+              "controlling_field_path": "styles.colors.enable_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            },
+            "children": [
+              {
+                "id": "bg_color",
+                "name": "bg_color",
+                "label": "Background Color",
+                "type": "color",
+                "default": { "color": "#FFFFFF", "opacity": 100 }
+              },
+              {
+                "id": "heading_color",
+                "name": "heading_color",
+                "label": "Heading Color",
+                "type": "color",
+                "default": { "color": "#1A1A2E", "opacity": 100 }
+              },
+              {
+                "id": "text_color",
+                "name": "text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": { "color": "#333333", "opacity": 100 }
+              },
+              {
+                "id": "icon_color",
+                "name": "icon_color",
+                "label": "Icon Color",
+                "type": "color",
+                "default": { "color": "#E8264C", "opacity": 100 }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,164 @@
+/* ============================================================
+   Content Grid - List | Image
+   ============================================================ */
+
+.cgli {
+  background-color: var(--cgli-bg, transparent);
+  padding: var(--cgli-pt-d, 60px) var(--cgli-pr-d, 0) var(--cgli-pb-d, 60px) var(--cgli-pl-d, 0);
+  margin: var(--cgli-mt-d, 0) var(--cgli-mr-d, 0) var(--cgli-mb-d, 0) var(--cgli-ml-d, 0);
+}
+
+/* ── Two-column wrapper ──────────────────────────────────── */
+
+.cgli__columns {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 48px;
+}
+
+/* Images left: push images before content */
+.cgli--img-left .cgli__images {
+  order: -1;
+}
+
+/* No images: full-width single column */
+.cgli--img-hidden .cgli__columns {
+  grid-template-columns: 1fr;
+}
+
+/* ── Content ─────────────────────────────────────────────── */
+
+.cgli__content {
+  text-align: var(--cgli-align-d, left);
+}
+
+.cgli__heading {
+  color: var(--cgli-heading-color, var(--dx-color-header-text));
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 32px;
+}
+
+.cgli__description {
+  color: var(--cgli-text-color, var(--dx-color-body-text));
+  margin: -16px 0 32px;
+}
+
+/* ── List ────────────────────────────────────────────────── */
+
+.cgli__list {
+  display: grid;
+  grid-template-columns: repeat(var(--cgli-list-cols-d, 2), 1fr);
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cgli__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.cgli__icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--cgli-icon-color, var(--dx-color-primary, #E8264C));
+}
+
+.cgli__item-text {
+  color: var(--cgli-text-color, var(--dx-color-body-text));
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── Side images / badges ────────────────────────────────── */
+
+.cgli__images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-self: var(--cgli-img-align, center);
+  justify-content: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.cgli__badge {
+  display: block;
+  width: auto;
+  max-height: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ============================================================
+   Tablet (≤1023px)
+   ============================================================ */
+
+@media (max-width: 1023px) {
+  .cgli {
+    padding: var(--cgli-pt-t, 0) var(--cgli-pr-t, 0) var(--cgli-pb-t, 0) var(--cgli-pl-t, 0);
+    margin: var(--cgli-mt-t, 0) var(--cgli-mr-t, 0) var(--cgli-mb-t, 0) var(--cgli-ml-t, 0);
+  }
+
+  .cgli__content {
+    text-align: var(--cgli-align-t, var(--cgli-align-d, left));
+  }
+
+  .cgli__list {
+    grid-template-columns: repeat(var(--cgli-list-cols-t, 2), 1fr);
+  }
+
+  .cgli__columns {
+    gap: 36px;
+  }
+
+  .cgli__badge {
+    max-height: 120px;
+  }
+}
+
+/* ============================================================
+   Mobile (≤767px)
+   ============================================================ */
+
+@media (max-width: 767px) {
+  .cgli {
+    padding: var(--cgli-pt-m, 0) var(--cgli-pr-m, 0) var(--cgli-pb-m, 0) var(--cgli-pl-m, 0);
+    margin: var(--cgli-mt-m, 0) var(--cgli-mr-m, 0) var(--cgli-mb-m, 0) var(--cgli-ml-m, 0);
+  }
+
+  .cgli__content {
+    text-align: var(--cgli-align-m, var(--cgli-align-t, var(--cgli-align-d, left)));
+  }
+
+  /* Single column — images always below content regardless of position setting */
+  .cgli__columns {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .cgli--img-left .cgli__images {
+    order: 0;
+  }
+
+  .cgli__list {
+    grid-template-columns: repeat(var(--cgli-list-cols-m, 1), 1fr);
+  }
+
+  .cgli__heading {
+    margin-bottom: 24px;
+  }
+
+  .cgli__images {
+    justify-content: flex-start;
+  }
+
+  .cgli__badge {
+    max-height: 100px;
+  }
+}
