@@ -3,7 +3,6 @@
    ============================================================ */
 
 .cgli {
-  background-color: var(--cgli-bg, transparent);
   padding: var(--cgli-pt-d, 60px) var(--cgli-pr-d, 0) var(--cgli-pb-d, 60px) var(--cgli-pl-d, 0);
   margin: var(--cgli-mt-d, 0) var(--cgli-mr-d, 0) var(--cgli-mb-d, 0) var(--cgli-ml-d, 0);
 }
@@ -34,14 +33,14 @@
 }
 
 .cgli__heading {
-  color: var(--cgli-heading-color, var(--dx-color-header-text));
+  color: var(--dx-color-header-text);
   font-weight: 700;
   line-height: 1.2;
   margin: 0 0 32px;
 }
 
 .cgli__description {
-  color: var(--cgli-text-color, var(--dx-color-body-text));
+  color: var(--dx-color-body-text);
   margin: -16px 0 32px;
 }
 
@@ -65,11 +64,11 @@
 .cgli__icon {
   flex-shrink: 0;
   margin-top: 1px;
-  color: var(--cgli-icon-color, var(--dx-color-primary, #E8264C));
+  color: var(--dx-color-primary, #E8264C);
 }
 
 .cgli__item-text {
-  color: var(--cgli-text-color, var(--dx-color-body-text));
+  color: var(--dx-color-body-text);
   font-size: 14px;
   line-height: 1.5;
 }

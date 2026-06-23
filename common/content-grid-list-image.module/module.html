@@ -1,6 +1,5 @@
 {% set m = module %}
 {% set s = m.styles %}
-{% set colors = s.colors %}
 
 {# ── Alignment maps ────────────────────────────────────── #}
 {% set h_align_map = {'LEFT': 'left', 'CENTER': 'center', 'RIGHT': 'right'} %}
@@ -56,7 +55,6 @@
     --cgli-mr-m: {{ mob_sp.margin.right.value | default(0) }}{{ mob_sp.margin.right.units | default('px') }};
     --cgli-mb-m: {{ mob_sp.margin.bottom.value | default(0) }}{{ mob_sp.margin.bottom.units | default('px') }};
     --cgli-ml-m: {{ mob_sp.margin.left.value | default(0) }}{{ mob_sp.margin.left.units | default('px') }};
-    {% if colors.enable_styles %}{% set cf = colors.style_fields %}{% if cf.bg_color.color %}--cgli-bg: #{{ cf.bg_color.color }};{% endif %}{% if cf.heading_color.color %}--cgli-heading-color: #{{ cf.heading_color.color }};{% endif %}{% if cf.text_color.color %}--cgli-text-color: #{{ cf.text_color.color }};{% endif %}{% if cf.icon_color.color %}--cgli-icon-color: #{{ cf.icon_color.color }};{% endif %}{% endif %}
   "
 >
   <div class="dx-module__container content-wrapper">
@@ -110,21 +108,17 @@
 
       </div>
 
-      {# ---- Side images / badges ---- #}
-      {% if img_pos != 'hidden' and m.side_images %}
+      {# ---- Side image / badge ---- #}
+      {% if img_pos != 'hidden' and m.side_image.src %}
       <div class="cgli__images">
-        {% for img_item in m.side_images %}
-        {% if img_item.side_image.src %}
         <img
-          src="{{ img_item.side_image.src }}"
-          alt="{{ img_item.side_image.alt }}"
+          src="{{ m.side_image.src }}"
+          alt="{{ m.side_image.alt }}"
           class="cgli__badge"
           loading="lazy"
-          {% if img_item.side_image.width %}width="{{ img_item.side_image.width }}"{% endif %}
-          {% if img_item.side_image.height %}height="{{ img_item.side_image.height }}"{% endif %}
+          {% if m.side_image.width %}width="{{ m.side_image.width }}"{% endif %}
+          {% if m.side_image.height %}height="{{ m.side_image.height }}"{% endif %}
         >
-        {% endif %}
-        {% endfor %}
       </div>
       {% endif %}
 

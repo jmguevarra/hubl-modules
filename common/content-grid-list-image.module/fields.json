@@ -61,30 +61,16 @@
     ]
   },
   {
-    "id": "side_images",
-    "name": "side_images",
-    "label": "Side Images / Badges",
-    "type": "group",
-    "occurrence": {
-      "min": 0,
-      "max": 6,
-      "default": 2,
-      "sorting_label_field": "side_image"
-    },
-    "children": [
-      {
-        "id": "side_image",
-        "name": "side_image",
-        "label": "Image",
-        "type": "image",
-        "default": {
-          "src": "",
-          "alt": "",
-          "width": 120,
-          "height": 120
-        }
-      }
-    ]
+    "id": "side_image",
+    "name": "side_image",
+    "label": "Side Image / Badge",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "",
+      "width": 120,
+      "height": 120
+    }
   },
   {
     "id": "styles",
@@ -282,62 +268,6 @@
               ["end", "Bottom"]
             ],
             "default": "center"
-          }
-        ]
-      },
-      {
-        "id": "colors",
-        "name": "colors",
-        "label": "Colors",
-        "type": "group",
-        "children": [
-          {
-            "id": "enable_styles",
-            "name": "enable_styles",
-            "label": "Enable Custom Colors",
-            "type": "boolean",
-            "default": false
-          },
-          {
-            "id": "style_fields",
-            "name": "style_fields",
-            "label": "Color Options",
-            "type": "group",
-            "visibility": {
-              "controlling_field_path": "styles.colors.enable_styles",
-              "operator": "EQUAL",
-              "controlling_value_regex": "true"
-            },
-            "children": [
-              {
-                "id": "bg_color",
-                "name": "bg_color",
-                "label": "Background Color",
-                "type": "color",
-                "default": { "color": "#FFFFFF", "opacity": 100 }
-              },
-              {
-                "id": "heading_color",
-                "name": "heading_color",
-                "label": "Heading Color",
-                "type": "color",
-                "default": { "color": "#1A1A2E", "opacity": 100 }
-              },
-              {
-                "id": "text_color",
-                "name": "text_color",
-                "label": "Text Color",
-                "type": "color",
-                "default": { "color": "#333333", "opacity": 100 }
-              },
-              {
-                "id": "icon_color",
-                "name": "icon_color",
-                "label": "Icon Color",
-                "type": "color",
-                "default": { "color": "#E8264C", "opacity": 100 }
-              }
-            ]
           }
         ]
       }
