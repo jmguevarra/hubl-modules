@@ -184,7 +184,7 @@
       {
         "id": "tablet",
         "name": "tablet",
-        "label": "Tablet  (≤ 1024px)",
+        "label": "Tablet",
         "type": "group",
         "children": [
           {
@@ -258,7 +258,7 @@
       {
         "id": "mobile",
         "name": "mobile",
-        "label": "Mobile  (≤ 767px)",
+        "label": "Mobile",
         "type": "group",
         "children": [
           {

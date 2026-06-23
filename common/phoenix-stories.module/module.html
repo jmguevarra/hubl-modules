@@ -126,7 +126,7 @@
       {# Right: content #}
       <div class="dx-stories__content">
         {% if story.quote %}
-        <p class="dx-stories__quote">"{{ story.quote }}"</p>
+        <p class="dx-stories__quote"><span class="dx-stories__quote-mark">"</span>{{ story.quote }}<span class="dx-stories__quote-mark">"</span></p>
         {% endif %}
         {% if story.story_body %}
         <div class="dx-stories__body">{{ story.story_body }}</div>
