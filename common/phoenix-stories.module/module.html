@@ -1,11 +1,24 @@
 {% set m = module %}
 {% set s = m.styles %}
 
+{# ── Alignment maps ────────────────────────────────────── #}
+{% set h_align_map  = {'LEFT': 'left', 'CENTER': 'center', 'RIGHT': 'right'} %}
+{% set flex_map     = {'LEFT': 'flex-start', 'CENTER': 'center', 'RIGHT': 'flex-end'} %}
+
 {# ── Heading alignment ─────────────────────────────────── #}
-{% set h_align_map = {'LEFT': 'left', 'CENTER': 'center', 'RIGHT': 'right'} %}
 {% set d_h_align  = s.desktop.desktop_heading_alignment.horizontal_align | default('LEFT') %}
 {% set t_h_align  = s.tablet.tablet_heading_alignment.horizontal_align | default('LEFT') %}
 {% set m_h_align  = s.mobile.mobile_heading_alignment.horizontal_align | default('LEFT') %}
+
+{# ── Person info alignment ─────────────────────────────── #}
+{% set d_p_align  = s.desktop.desktop_person_alignment.horizontal_align | default('LEFT') %}
+{% set t_p_align  = s.tablet.tablet_person_alignment.horizontal_align | default('LEFT') %}
+{% set m_p_align  = s.mobile.mobile_person_alignment.horizontal_align | default('LEFT') %}
+
+{# ── Content alignment ─────────────────────────────────── #}
+{% set d_c_align  = s.desktop.desktop_content_alignment.horizontal_align | default('LEFT') %}
+{% set t_c_align  = s.tablet.tablet_content_alignment.horizontal_align | default('LEFT') %}
+{% set m_c_align  = s.mobile.mobile_content_alignment.horizontal_align | default('LEFT') %}
 
 {# ── Spacing ───────────────────────────────────────────── #}
 {% set d_sp   = s.desktop.desktop_spacing %}
@@ -21,6 +34,18 @@
     --ps-heading-align-d: {{ h_align_map[d_h_align] | default('left') }};
     --ps-heading-align-t: {{ h_align_map[t_h_align] | default('left') }};
     --ps-heading-align-m: {{ h_align_map[m_h_align] | default('left') }};
+    --ps-person-flex-d: {{ flex_map[d_p_align] | default('center') }};
+    --ps-person-text-d: {{ h_align_map[d_p_align] | default('center') }};
+    --ps-person-flex-t: {{ flex_map[t_p_align] | default('center') }};
+    --ps-person-text-t: {{ h_align_map[t_p_align] | default('center') }};
+    --ps-person-flex-m: {{ flex_map[m_p_align] | default('flex-start') }};
+    --ps-person-text-m: {{ h_align_map[m_p_align] | default('left') }};
+    --ps-content-flex-d: {{ flex_map[d_c_align] | default('flex-start') }};
+    --ps-content-text-d: {{ h_align_map[d_c_align] | default('left') }};
+    --ps-content-flex-t: {{ flex_map[t_c_align] | default('flex-start') }};
+    --ps-content-text-t: {{ h_align_map[t_c_align] | default('left') }};
+    --ps-content-flex-m: {{ flex_map[m_c_align] | default('flex-start') }};
+    --ps-content-text-m: {{ h_align_map[m_c_align] | default('left') }};
     --ps-cols-d: {{ s.desktop.desktop_columns | default('2') }};
     --ps-cols-t: {{ s.tablet.tablet_columns | default('1') }};
     --ps-cols-m: {{ s.mobile.mobile_columns | default('1') }};
@@ -55,6 +80,7 @@
     --ps-ml-m: {{ mob_sp.margin.left.value | default(0) }}{{ mob_sp.margin.left.units | default('px') }};
   "
 >
+<div class="content-wrapper">
 
   {# ── Heading ───────────────────────────────────────────── #}
   {% if m.heading %}
@@ -118,5 +144,5 @@
     {% endfor %}
   </div>
   {% endif %}
-
+</div>
 </div>

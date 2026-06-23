@@ -4,7 +4,7 @@
 
 .dx-stories {
   width: 100%;
-  padding: var(--ps-pt-d, 0) var(--ps-pr-d, 0) var(--ps-pb-d, 0) var(--ps-pl-d, 0);
+  padding: var(--ps-pt-d, 80px) var(--ps-pr-d, 0) var(--ps-pb-d, 80px) var(--ps-pl-d, 0);
   margin: var(--ps-mt-d, 0) var(--ps-mr-d, 0) var(--ps-mb-d, 0) var(--ps-ml-d, 0);
 }
 
@@ -39,8 +39,8 @@
 .dx-stories__person {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: var(--ps-person-flex-d, flex-start);
+  text-align: var(--ps-person-text-d, left);
   flex-shrink: 0;
   width: 130px;
 }
@@ -57,7 +57,7 @@
 .dx-stories__person-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: var(--ps-person-flex-d, flex-start);
   gap: 4px;
 }
 
@@ -93,6 +93,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: var(--ps-content-flex-d, flex-start);
+  text-align: var(--ps-content-text-d, left);
   min-width: 0;
 }
 
@@ -124,7 +126,7 @@
 .dx-stories__cta {
   display: inline-flex;
   align-items: center;
-  align-self: flex-start;
+  align-self: var(--ps-content-flex-d, flex-start);
   font-size: 0.875rem;
   font-weight: 600;
   color: #c0392b;
@@ -153,6 +155,24 @@
   .dx-stories__grid {
     grid-template-columns: repeat(var(--ps-cols-t, 1), 1fr);
     gap: var(--ps-row-gap-t, 24px) var(--ps-col-gap-t, 24px);
+  }
+
+  .dx-stories__person {
+    align-items: var(--ps-person-flex-t, var(--ps-person-flex-d, flex-start));
+    text-align: var(--ps-person-text-t, var(--ps-person-text-d, left));
+  }
+
+  .dx-stories__person-info {
+    align-items: var(--ps-person-flex-t, var(--ps-person-flex-d, flex-start));
+  }
+
+  .dx-stories__content {
+    align-items: var(--ps-content-flex-t, var(--ps-content-flex-d, flex-start));
+    text-align: var(--ps-content-text-t, var(--ps-content-text-d, left));
+  }
+
+  .dx-stories__cta {
+    align-self: var(--ps-content-flex-t, var(--ps-content-flex-d, flex-start));
   }
 }
 
@@ -186,7 +206,21 @@
   }
 
   .dx-stories__person-info {
-    align-items: flex-start;
+    align-items: var(--ps-person-flex-m, var(--ps-person-flex-t, var(--ps-person-flex-d, flex-start)));
+  }
+
+  .dx-stories__person {
+    align-items: var(--ps-person-flex-m, var(--ps-person-flex-t, var(--ps-person-flex-d, flex-start)));
+    text-align: var(--ps-person-text-m, var(--ps-person-text-t, var(--ps-person-text-d, left)));
+  }
+
+  .dx-stories__content {
+    align-items: var(--ps-content-flex-m, var(--ps-content-flex-t, var(--ps-content-flex-d, flex-start)));
+    text-align: var(--ps-content-text-m, var(--ps-content-text-t, var(--ps-content-text-d, left)));
+  }
+
+  .dx-stories__cta {
+    align-self: var(--ps-content-flex-m, var(--ps-content-flex-t, var(--ps-content-flex-d, flex-start)));
   }
 
   .dx-stories__avatar {

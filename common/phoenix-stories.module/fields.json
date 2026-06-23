@@ -115,6 +115,26 @@
             }
           },
           {
+            "id": "desktop_person_alignment",
+            "name": "desktop_person_alignment",
+            "label": "Person Info Alignment",
+            "type": "alignment",
+            "alignment_direction": "HORIZONTAL",
+            "default": {
+              "horizontal_align": "LEFT"
+            }
+          },
+          {
+            "id": "desktop_content_alignment",
+            "name": "desktop_content_alignment",
+            "label": "Content Alignment",
+            "type": "alignment",
+            "alignment_direction": "HORIZONTAL",
+            "default": {
+              "horizontal_align": "LEFT"
+            }
+          },
+          {
             "id": "desktop_columns",
             "name": "desktop_columns",
             "label": "Grid Columns",
@@ -149,7 +169,15 @@
             "id": "desktop_spacing",
             "name": "desktop_spacing",
             "label": "Spacing",
-            "type": "spacing"
+            "type": "spacing",
+            "default": {
+              "padding": {
+                "top": { "value": 80, "units": "px" },
+                "bottom": { "value": 80, "units": "px" },
+                "left": { "value": 0, "units": "px" },
+                "right": { "value": 0, "units": "px" }
+              }
+            }
           }
         ]
       },
@@ -163,6 +191,26 @@
             "id": "tablet_heading_alignment",
             "name": "tablet_heading_alignment",
             "label": "Heading Alignment",
+            "type": "alignment",
+            "alignment_direction": "HORIZONTAL",
+            "default": {
+              "horizontal_align": "LEFT"
+            }
+          },
+          {
+            "id": "tablet_person_alignment",
+            "name": "tablet_person_alignment",
+            "label": "Person Info Alignment",
+            "type": "alignment",
+            "alignment_direction": "HORIZONTAL",
+            "default": {
+              "horizontal_align": "LEFT"
+            }
+          },
+          {
+            "id": "tablet_content_alignment",
+            "name": "tablet_content_alignment",
+            "label": "Content Alignment",
             "type": "alignment",
             "alignment_direction": "HORIZONTAL",
             "default": {
@@ -217,6 +265,26 @@
             "id": "mobile_heading_alignment",
             "name": "mobile_heading_alignment",
             "label": "Heading Alignment",
+            "type": "alignment",
+            "alignment_direction": "HORIZONTAL",
+            "default": {
+              "horizontal_align": "LEFT"
+            }
+          },
+          {
+            "id": "mobile_person_alignment",
+            "name": "mobile_person_alignment",
+            "label": "Person Info Alignment",
+            "type": "alignment",
+            "alignment_direction": "HORIZONTAL",
+            "default": {
+              "horizontal_align": "LEFT"
+            }
+          },
+          {
+            "id": "mobile_content_alignment",
+            "name": "mobile_content_alignment",
+            "label": "Content Alignment",
             "type": "alignment",
             "alignment_direction": "HORIZONTAL",
             "default": {
