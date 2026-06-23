@@ -6,28 +6,28 @@
 {% set h_align_map = {'LEFT': 'left', 'CENTER': 'center', 'RIGHT': 'right'} %}
 
 {# ── Content alignment per breakpoint ─────────────────── #}
-{% set d_align   = s.content.desktop.desktop_content_alignment.horizontal_align | default('LEFT') %}
-{% set t_align   = s.content.tablet.tablet_content_alignment.horizontal_align | default('LEFT') %}
-{% set mob_align = s.content.mobile.mobile_content_alignment.horizontal_align | default('LEFT') %}
+{% set d_align   = s.content.content_desktop.desktop_content_alignment.horizontal_align | default('LEFT') %}
+{% set t_align   = s.content.content_tablet.tablet_content_alignment.horizontal_align | default('LEFT') %}
+{% set mob_align = s.content.content_mobile.mobile_content_alignment.horizontal_align | default('LEFT') %}
 
 {# ── Spacing per breakpoint ────────────────────────────── #}
-{% set d_sp   = s.spacing.desktop.desktop_spacing %}
-{% set t_sp   = s.spacing.tablet.tablet_spacing %}
-{% set mob_sp = s.spacing.mobile.mobile_spacing %}
+{% set d_sp   = s.spacing.spacing_desktop.desktop_spacing %}
+{% set t_sp   = s.spacing.spacing_tablet.tablet_spacing %}
+{% set mob_sp = s.spacing.spacing_mobile.mobile_spacing %}
 
 {# ── Heading tag ───────────────────────────────────────── #}
 {% set htag = m.heading_tag | default('h2') %}
 
 {# ── Image options ─────────────────────────────────────── #}
-{% set img_pos   = s.image.image_position | default('right') %}
-{% set img_align = s.image.image_alignment | default('center') %}
+{% set img_pos   = s.image_style.image_position | default('right') %}
+{% set img_align = s.image_style.image_alignment | default('center') %}
 
 <section
   class="cgli{% if img_pos == 'left' %} cgli--img-left{% endif %}{% if img_pos == 'hidden' %} cgli--img-hidden{% endif %}"
   style="
-    --cgli-list-cols-d: {{ s.content.desktop.desktop_list_columns | default('2') }};
-    --cgli-list-cols-t: {{ s.content.tablet.tablet_list_columns | default('2') }};
-    --cgli-list-cols-m: {{ s.content.mobile.mobile_list_columns | default('1') }};
+    --cgli-list-cols-d: {{ s.content.content_desktop.desktop_list_columns | default('2') }};
+    --cgli-list-cols-t: {{ s.content.content_tablet.tablet_list_columns | default('2') }};
+    --cgli-list-cols-m: {{ s.content.content_mobile.mobile_list_columns | default('1') }};
     --cgli-align-d: {{ h_align_map[d_align] | default('left') }};
     --cgli-align-t: {{ h_align_map[t_align] | default('left') }};
     --cgli-align-m: {{ h_align_map[mob_align] | default('left') }};
@@ -78,14 +78,14 @@
           {% for item in m.items %}
           <li class="cgli__item">
 
-            {% if item.icon.src %}
+            {% if item.item_icon.src %}
             <img
-              src="{{ item.icon.src }}"
-              alt="{{ item.icon.alt }}"
+              src="{{ item.item_icon.src }}"
+              alt="{{ item.item_icon.alt }}"
               class="cgli__icon"
               loading="lazy"
-              {% if item.icon.width %}width="{{ item.icon.width }}"{% endif %}
-              {% if item.icon.height %}height="{{ item.icon.height }}"{% endif %}
+              {% if item.item_icon.width %}width="{{ item.item_icon.width }}"{% endif %}
+              {% if item.item_icon.height %}height="{{ item.item_icon.height }}"{% endif %}
             >
             {% else %}
             <svg
@@ -99,8 +99,8 @@
             </svg>
             {% endif %}
 
-            {% if item.text %}
-            <span class="cgli__item-text">{{ item.text }}</span>
+            {% if item.item_text %}
+            <span class="cgli__item-text">{{ item.item_text }}</span>
             {% endif %}
 
           </li>
@@ -114,14 +114,14 @@
       {% if img_pos != 'hidden' and m.side_images %}
       <div class="cgli__images">
         {% for img_item in m.side_images %}
-        {% if img_item.image.src %}
+        {% if img_item.side_image.src %}
         <img
-          src="{{ img_item.image.src }}"
-          alt="{{ img_item.image.alt }}"
+          src="{{ img_item.side_image.src }}"
+          alt="{{ img_item.side_image.alt }}"
           class="cgli__badge"
           loading="lazy"
-          {% if img_item.image.width %}width="{{ img_item.image.width }}"{% endif %}
-          {% if img_item.image.height %}height="{{ img_item.image.height }}"{% endif %}
+          {% if img_item.side_image.width %}width="{{ img_item.side_image.width }}"{% endif %}
+          {% if img_item.side_image.height %}height="{{ img_item.side_image.height }}"{% endif %}
         >
         {% endif %}
         {% endfor %}

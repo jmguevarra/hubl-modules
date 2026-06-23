@@ -40,8 +40,8 @@
     },
     "children": [
       {
-        "id": "icon",
-        "name": "icon",
+        "id": "item_icon",
+        "name": "item_icon",
         "label": "Custom Icon (optional)",
         "type": "image",
         "default": {
@@ -52,8 +52,8 @@
         }
       },
       {
-        "id": "text",
-        "name": "text",
+        "id": "item_text",
+        "name": "item_text",
         "label": "Item Text",
         "type": "text",
         "default": "List item text"
@@ -69,12 +69,12 @@
       "min": 0,
       "max": 6,
       "default": 2,
-      "sorting_label_field": "image"
+      "sorting_label_field": "side_image"
     },
     "children": [
       {
-        "id": "image",
-        "name": "image",
+        "id": "side_image",
+        "name": "side_image",
         "label": "Image",
         "type": "image",
         "default": {
@@ -100,8 +100,8 @@
         "type": "group",
         "children": [
           {
-            "id": "desktop",
-            "name": "desktop",
+            "id": "spacing_desktop",
+            "name": "spacing_desktop",
             "label": "Desktop",
             "type": "group",
             "children": [
@@ -122,8 +122,8 @@
             ]
           },
           {
-            "id": "tablet",
-            "name": "tablet",
+            "id": "spacing_tablet",
+            "name": "spacing_tablet",
             "label": "Tablet",
             "type": "group",
             "children": [
@@ -136,8 +136,8 @@
             ]
           },
           {
-            "id": "mobile",
-            "name": "mobile",
+            "id": "spacing_mobile",
+            "name": "spacing_mobile",
             "label": "Mobile",
             "type": "group",
             "children": [
@@ -158,8 +158,8 @@
         "type": "group",
         "children": [
           {
-            "id": "desktop",
-            "name": "desktop",
+            "id": "content_desktop",
+            "name": "content_desktop",
             "label": "Desktop",
             "type": "group",
             "children": [
@@ -189,8 +189,8 @@
             ]
           },
           {
-            "id": "tablet",
-            "name": "tablet",
+            "id": "content_tablet",
+            "name": "content_tablet",
             "label": "Tablet",
             "type": "group",
             "children": [
@@ -220,8 +220,8 @@
             ]
           },
           {
-            "id": "mobile",
-            "name": "mobile",
+            "id": "content_mobile",
+            "name": "content_mobile",
             "label": "Mobile",
             "type": "group",
             "children": [
@@ -252,8 +252,8 @@
         ]
       },
       {
-        "id": "image",
-        "name": "image",
+        "id": "image_style",
+        "name": "image_style",
         "label": "Image",
         "type": "group",
         "children": [
