@@ -69,8 +69,6 @@
 
 .cgli__item-text {
   color: var(--dx-color-body-text);
-  font-size: 14px;
-  line-height: 1.5;
 }
 
 /* ── Side images / badges ────────────────────────────────── */
@@ -84,12 +82,12 @@
   justify-content: center;
   gap: 16px;
   flex-shrink: 0;
+  width: var(--cgli-images-w-d, 280px);
 }
 
 .cgli__badge {
   display: block;
-  width: auto;
-  max-height: 140px;
+  width: 100%;
   height: auto;
   object-fit: contain;
 }
@@ -116,8 +114,8 @@
     gap: 36px;
   }
 
-  .cgli__badge {
-    max-height: 120px;
+  .cgli__images {
+    width: var(--cgli-images-w-t, var(--cgli-images-w-d, 280px));
   }
 }
 
@@ -155,9 +153,6 @@
 
   .cgli__images {
     justify-content: flex-start;
-  }
-
-  .cgli__badge {
-    max-height: 100px;
+    width: var(--cgli-images-w-m, var(--cgli-images-w-t, var(--cgli-images-w-d, 280px)));
   }
 }

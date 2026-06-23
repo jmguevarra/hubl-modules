@@ -31,6 +31,9 @@
     --cgli-align-t: {{ h_align_map[t_align] | default('left') }};
     --cgli-align-m: {{ h_align_map[mob_align] | default('left') }};
     --cgli-img-align: {{ img_align }};
+    --cgli-images-w-d: {{ s.image_style.image_desktop_width | default(280) }}px;
+    --cgli-images-w-t: {{ s.image_style.image_tablet_width | default(280) }}px;
+    --cgli-images-w-m: {{ s.image_style.image_mobile_width | default(280) }}px;
     --cgli-pt-d: {{ d_sp.padding.top.value | default(60) }}{{ d_sp.padding.top.units | default('px') }};
     --cgli-pr-d: {{ d_sp.padding.right.value | default(0) }}{{ d_sp.padding.right.units | default('px') }};
     --cgli-pb-d: {{ d_sp.padding.bottom.value | default(60) }}{{ d_sp.padding.bottom.units | default('px') }};
