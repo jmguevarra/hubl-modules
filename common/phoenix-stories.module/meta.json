@@ -1,0 +1,13 @@
+{
+  "label": "Phoenix Stories",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Grid of team/employee story cards with avatar, quote, body text, and CTA link. Supports 1–3 column layouts with per-breakpoint spacing controls.",
+  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_POST"],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}

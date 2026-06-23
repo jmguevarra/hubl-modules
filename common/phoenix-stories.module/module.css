@@ -1,0 +1,198 @@
+/* ============================================================
+   Phoenix Stories  (dx-stories)
+   ============================================================ */
+
+.dx-stories {
+  width: 100%;
+  padding: var(--ps-pt-d, 0) var(--ps-pr-d, 0) var(--ps-pb-d, 0) var(--ps-pl-d, 0);
+  margin: var(--ps-mt-d, 0) var(--ps-mr-d, 0) var(--ps-mb-d, 0) var(--ps-ml-d, 0);
+}
+
+/* ── Heading ─────────────────────────────────────────────── */
+
+.dx-stories__heading {
+  margin: 0 0 32px;
+  text-align: var(--ps-heading-align-d, left);
+}
+
+/* ── Grid ────────────────────────────────────────────────── */
+
+.dx-stories__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--ps-cols-d, 2), 1fr);
+  gap: var(--ps-row-gap-d, 24px) var(--ps-col-gap-d, 24px);
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+
+.dx-stories__card {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid #e4e4e4;
+  border-radius: 12px;
+  background: #fff;
+}
+
+/* ── Person column ───────────────────────────────────────── */
+
+.dx-stories__person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+  width: 130px;
+}
+
+.dx-stories__avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  margin-bottom: 12px;
+}
+
+.dx-stories__person-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.dx-stories__name {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1a1a1a;
+}
+
+.dx-stories__job-title {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.dx-stories__linkedin {
+  display: inline-flex;
+  margin-top: 4px;
+  color: #0077B5;
+  transition: opacity 0.2s ease;
+}
+
+.dx-stories__linkedin:hover {
+  opacity: 0.75;
+}
+
+/* ── Content column ──────────────────────────────────────── */
+
+.dx-stories__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dx-stories__quote {
+  margin: 0 0 14px;
+  font-style: italic;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #1a1a1a;
+}
+
+.dx-stories__body {
+  flex: 1;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+.dx-stories__body p {
+  margin: 0 0 10px;
+}
+
+.dx-stories__body p:last-child {
+  margin-bottom: 0;
+}
+
+.dx-stories__cta {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #c0392b;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: opacity 0.2s ease;
+}
+
+.dx-stories__cta:hover {
+  opacity: 0.75;
+}
+
+/* ── Tablet ──────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .dx-stories {
+    padding: var(--ps-pt-t, 0) var(--ps-pr-t, 0) var(--ps-pb-t, 0) var(--ps-pl-t, 0);
+    margin: var(--ps-mt-t, 0) var(--ps-mr-t, 0) var(--ps-mb-t, 0) var(--ps-ml-t, 0);
+  }
+
+  .dx-stories__heading {
+    text-align: var(--ps-heading-align-t, var(--ps-heading-align-d, left));
+  }
+
+  .dx-stories__grid {
+    grid-template-columns: repeat(var(--ps-cols-t, 1), 1fr);
+    gap: var(--ps-row-gap-t, 24px) var(--ps-col-gap-t, 24px);
+  }
+}
+
+/* ── Mobile ──────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .dx-stories {
+    padding: var(--ps-pt-m, 0) var(--ps-pr-m, 0) var(--ps-pb-m, 0) var(--ps-pl-m, 0);
+    margin: var(--ps-mt-m, 0) var(--ps-mr-m, 0) var(--ps-mb-m, 0) var(--ps-ml-m, 0);
+  }
+
+  .dx-stories__heading {
+    text-align: var(--ps-heading-align-m, var(--ps-heading-align-t, var(--ps-heading-align-d, left)));
+  }
+
+  .dx-stories__grid {
+    grid-template-columns: repeat(var(--ps-cols-m, 1), 1fr);
+    gap: var(--ps-row-gap-m, 16px) 0;
+  }
+
+  .dx-stories__card {
+    flex-direction: column;
+  }
+
+  .dx-stories__person {
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .dx-stories__person-info {
+    align-items: flex-start;
+  }
+
+  .dx-stories__avatar {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+}

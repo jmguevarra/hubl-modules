@@ -1,0 +1,122 @@
+{% set m = module %}
+{% set s = m.styles %}
+
+{# ── Heading alignment ─────────────────────────────────── #}
+{% set h_align_map = {'LEFT': 'left', 'CENTER': 'center', 'RIGHT': 'right'} %}
+{% set d_h_align  = s.desktop.desktop_heading_alignment.horizontal_align | default('LEFT') %}
+{% set t_h_align  = s.tablet.tablet_heading_alignment.horizontal_align | default('LEFT') %}
+{% set m_h_align  = s.mobile.mobile_heading_alignment.horizontal_align | default('LEFT') %}
+
+{# ── Spacing ───────────────────────────────────────────── #}
+{% set d_sp   = s.desktop.desktop_spacing %}
+{% set t_sp   = s.tablet.tablet_spacing %}
+{% set mob_sp = s.mobile.mobile_spacing %}
+
+{# ── Heading tag ───────────────────────────────────────── #}
+{% set htag = m.heading_tag | default('h2') %}
+
+<div
+  class="dx-stories"
+  style="
+    --ps-heading-align-d: {{ h_align_map[d_h_align] | default('left') }};
+    --ps-heading-align-t: {{ h_align_map[t_h_align] | default('left') }};
+    --ps-heading-align-m: {{ h_align_map[m_h_align] | default('left') }};
+    --ps-cols-d: {{ s.desktop.desktop_columns | default('2') }};
+    --ps-cols-t: {{ s.tablet.tablet_columns | default('1') }};
+    --ps-cols-m: {{ s.mobile.mobile_columns | default('1') }};
+    --ps-col-gap-d: {{ s.desktop.desktop_col_gap | default(24) }}px;
+    --ps-col-gap-t: {{ s.tablet.tablet_col_gap | default(24) }}px;
+    --ps-row-gap-d: {{ s.desktop.desktop_row_gap | default(24) }}px;
+    --ps-row-gap-t: {{ s.tablet.tablet_row_gap | default(24) }}px;
+    --ps-row-gap-m: {{ s.mobile.mobile_row_gap | default(16) }}px;
+    --ps-pt-d: {{ d_sp.padding.top.value | default(0) }}{{ d_sp.padding.top.units | default('px') }};
+    --ps-pr-d: {{ d_sp.padding.right.value | default(0) }}{{ d_sp.padding.right.units | default('px') }};
+    --ps-pb-d: {{ d_sp.padding.bottom.value | default(0) }}{{ d_sp.padding.bottom.units | default('px') }};
+    --ps-pl-d: {{ d_sp.padding.left.value | default(0) }}{{ d_sp.padding.left.units | default('px') }};
+    --ps-mt-d: {{ d_sp.margin.top.value | default(0) }}{{ d_sp.margin.top.units | default('px') }};
+    --ps-mr-d: {{ d_sp.margin.right.value | default(0) }}{{ d_sp.margin.right.units | default('px') }};
+    --ps-mb-d: {{ d_sp.margin.bottom.value | default(0) }}{{ d_sp.margin.bottom.units | default('px') }};
+    --ps-ml-d: {{ d_sp.margin.left.value | default(0) }}{{ d_sp.margin.left.units | default('px') }};
+    --ps-pt-t: {{ t_sp.padding.top.value | default(0) }}{{ t_sp.padding.top.units | default('px') }};
+    --ps-pr-t: {{ t_sp.padding.right.value | default(0) }}{{ t_sp.padding.right.units | default('px') }};
+    --ps-pb-t: {{ t_sp.padding.bottom.value | default(0) }}{{ t_sp.padding.bottom.units | default('px') }};
+    --ps-pl-t: {{ t_sp.padding.left.value | default(0) }}{{ t_sp.padding.left.units | default('px') }};
+    --ps-mt-t: {{ t_sp.margin.top.value | default(0) }}{{ t_sp.margin.top.units | default('px') }};
+    --ps-mr-t: {{ t_sp.margin.right.value | default(0) }}{{ t_sp.margin.right.units | default('px') }};
+    --ps-mb-t: {{ t_sp.margin.bottom.value | default(0) }}{{ t_sp.margin.bottom.units | default('px') }};
+    --ps-ml-t: {{ t_sp.margin.left.value | default(0) }}{{ t_sp.margin.left.units | default('px') }};
+    --ps-pt-m: {{ mob_sp.padding.top.value | default(0) }}{{ mob_sp.padding.top.units | default('px') }};
+    --ps-pr-m: {{ mob_sp.padding.right.value | default(0) }}{{ mob_sp.padding.right.units | default('px') }};
+    --ps-pb-m: {{ mob_sp.padding.bottom.value | default(0) }}{{ mob_sp.padding.bottom.units | default('px') }};
+    --ps-pl-m: {{ mob_sp.padding.left.value | default(0) }}{{ mob_sp.padding.left.units | default('px') }};
+    --ps-mt-m: {{ mob_sp.margin.top.value | default(0) }}{{ mob_sp.margin.top.units | default('px') }};
+    --ps-mr-m: {{ mob_sp.margin.right.value | default(0) }}{{ mob_sp.margin.right.units | default('px') }};
+    --ps-mb-m: {{ mob_sp.margin.bottom.value | default(0) }}{{ mob_sp.margin.bottom.units | default('px') }};
+    --ps-ml-m: {{ mob_sp.margin.left.value | default(0) }}{{ mob_sp.margin.left.units | default('px') }};
+  "
+>
+
+  {# ── Heading ───────────────────────────────────────────── #}
+  {% if m.heading %}
+  <{{ htag }} class="dx-stories__heading">{{ m.heading }}</{{ htag }}>
+  {% endif %}
+
+  {# ── Stories grid ──────────────────────────────────────── #}
+  {% if m.stories %}
+  <div class="dx-stories__grid">
+    {% for story in m.stories %}
+    <div class="dx-stories__card">
+
+      {# Left: person info #}
+      <div class="dx-stories__person">
+        {% if story.image.src %}
+        <img
+          class="dx-stories__avatar"
+          src="{{ story.image.src }}"
+          alt="{{ story.image.alt | default(story.person_name) }}"
+          loading="lazy"
+          width="{{ story.image.width }}"
+          height="{{ story.image.height }}"
+        >
+        {% endif %}
+        <div class="dx-stories__person-info">
+          {% if story.person_name %}<p class="dx-stories__name">{{ story.person_name }}</p>{% endif %}
+          {% if story.job_title %}<p class="dx-stories__job-title">{{ story.job_title }}</p>{% endif %}
+          {% if story.linkedin_url.url.href %}
+          <a
+            class="dx-stories__linkedin"
+            href="{{ story.linkedin_url.url.href }}"
+            {% if story.linkedin_url.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+            aria-label="{{ story.person_name }} on LinkedIn"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+
+      {# Right: content #}
+      <div class="dx-stories__content">
+        {% if story.quote %}
+        <p class="dx-stories__quote">"{{ story.quote }}"</p>
+        {% endif %}
+        {% if story.story_body %}
+        <div class="dx-stories__body">{{ story.story_body }}</div>
+        {% endif %}
+        {% if story.cta_text and story.cta_url.url.href %}
+        <a
+          class="dx-stories__cta"
+          href="{{ story.cta_url.url.href }}"
+          {% if story.cta_url.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+        >{{ story.cta_text }} &rarr;</a>
+        {% endif %}
+      </div>
+
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+</div>
