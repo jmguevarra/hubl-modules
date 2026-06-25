@@ -61,23 +61,202 @@
     "tab": "STYLE",
     "children": [
       {
+        "id": "spacing",
+        "name": "spacing",
+        "label": "Spacing",
+        "type": "group",
+        "children": [
+          {
+            "id": "spacing_desktop",
+            "name": "spacing_desktop",
+            "label": "Desktop",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop_spacing",
+                "name": "desktop_spacing",
+                "label": "Spacing",
+                "type": "spacing",
+                "default": {
+                  "padding": {
+                    "top": { "value": 60, "units": "px" },
+                    "bottom": { "value": 60, "units": "px" },
+                    "left": { "value": 0, "units": "px" },
+                    "right": { "value": 0, "units": "px" }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "spacing_tablet",
+            "name": "spacing_tablet",
+            "label": "Tablet",
+            "type": "group",
+            "children": [
+              {
+                "id": "tablet_spacing",
+                "name": "tablet_spacing",
+                "label": "Spacing",
+                "type": "spacing",
+                "default": {
+                  "padding": {
+                    "top": { "value": 40, "units": "px" },
+                    "bottom": { "value": 40, "units": "px" },
+                    "left": { "value": 0, "units": "px" },
+                    "right": { "value": 0, "units": "px" }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "spacing_mobile",
+            "name": "spacing_mobile",
+            "label": "Mobile",
+            "type": "group",
+            "children": [
+              {
+                "id": "mobile_spacing",
+                "name": "mobile_spacing",
+                "label": "Spacing",
+                "type": "spacing",
+                "default": {
+                  "padding": {
+                    "top": { "value": 30, "units": "px" },
+                    "bottom": { "value": 30, "units": "px" },
+                    "left": { "value": 0, "units": "px" },
+                    "right": { "value": 0, "units": "px" }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "layout",
         "name": "layout",
         "label": "Layout",
         "type": "group",
         "children": [
           {
-            "id": "grid_columns",
-            "name": "grid_columns",
-            "label": "Offers Grid Columns",
-            "type": "choice",
-            "choices": [
-              ["cols-2", "2 Columns"],
-              ["cols-3", "3 Columns"],
-              ["cols-4", "4 Columns"],
-              ["cols-5", "5 Columns"]
-            ],
-            "default": "cols-3"
+            "id": "layout_desktop",
+            "name": "layout_desktop",
+            "label": "Desktop",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop_columns",
+                "name": "desktop_columns",
+                "label": "Grid Columns",
+                "type": "choice",
+                "display": "select",
+                "choices": [
+                  ["2", "2 Columns"],
+                  ["3", "3 Columns"],
+                  ["4", "4 Columns"],
+                  ["5", "5 Columns"]
+                ],
+                "default": "3"
+              },
+              {
+                "id": "desktop_col_gap",
+                "name": "desktop_col_gap",
+                "label": "Column Gap (px)",
+                "type": "number",
+                "min": 0,
+                "max": 120,
+                "default": 40
+              },
+              {
+                "id": "desktop_row_gap",
+                "name": "desktop_row_gap",
+                "label": "Row Gap (px)",
+                "type": "number",
+                "min": 0,
+                "max": 200,
+                "default": 80
+              }
+            ]
+          },
+          {
+            "id": "layout_tablet",
+            "name": "layout_tablet",
+            "label": "Tablet",
+            "type": "group",
+            "children": [
+              {
+                "id": "tablet_columns",
+                "name": "tablet_columns",
+                "label": "Grid Columns",
+                "type": "choice",
+                "display": "select",
+                "choices": [
+                  ["1", "1 Column"],
+                  ["2", "2 Columns"],
+                  ["3", "3 Columns"],
+                  ["4", "4 Columns"]
+                ],
+                "default": "2"
+              },
+              {
+                "id": "tablet_col_gap",
+                "name": "tablet_col_gap",
+                "label": "Column Gap (px)",
+                "type": "number",
+                "min": 0,
+                "max": 120,
+                "default": 20
+              },
+              {
+                "id": "tablet_row_gap",
+                "name": "tablet_row_gap",
+                "label": "Row Gap (px)",
+                "type": "number",
+                "min": 0,
+                "max": 200,
+                "default": 32
+              }
+            ]
+          },
+          {
+            "id": "layout_mobile",
+            "name": "layout_mobile",
+            "label": "Mobile",
+            "type": "group",
+            "children": [
+              {
+                "id": "mobile_columns",
+                "name": "mobile_columns",
+                "label": "Grid Columns",
+                "type": "choice",
+                "display": "select",
+                "choices": [
+                  ["1", "1 Column"],
+                  ["2", "2 Columns"]
+                ],
+                "default": "2"
+              },
+              {
+                "id": "mobile_col_gap",
+                "name": "mobile_col_gap",
+                "label": "Column Gap (px)",
+                "type": "number",
+                "min": 0,
+                "max": 60,
+                "default": 16
+              },
+              {
+                "id": "mobile_row_gap",
+                "name": "mobile_row_gap",
+                "label": "Row Gap (px)",
+                "type": "number",
+                "min": 0,
+                "max": 120,
+                "default": 24
+              }
+            ]
           }
         ]
       }

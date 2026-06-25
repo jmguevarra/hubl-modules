@@ -152,7 +152,7 @@
 }
 
 /* Responsive — Tablet */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .dx-hero__columns {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -175,7 +175,7 @@
 }
 
 /* Responsive — Mobile */
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   .dx-hero {
     padding: 35px 0;
   }

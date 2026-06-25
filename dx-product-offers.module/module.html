@@ -1,44 +1,86 @@
-<section class="dx-offers">
+{% set s = module.styles %}
+{% set d_sp   = s.spacing.spacing_desktop.desktop_spacing %}
+{% set t_sp   = s.spacing.spacing_tablet.tablet_spacing %}
+{% set mob_sp = s.spacing.spacing_mobile.mobile_spacing %}
+
+<section
+  class="dx-offers"
+  style="
+    --dxo-cols-d: {{ s.layout.layout_desktop.desktop_columns | default(3) }};
+    --dxo-cols-t: {{ s.layout.layout_tablet.tablet_columns | default(2) }};
+    --dxo-cols-m: {{ s.layout.layout_mobile.mobile_columns | default(2) }};
+    --dxo-col-gap-d: {{ s.layout.layout_desktop.desktop_col_gap | default(40) }}px;
+    --dxo-col-gap-t: {{ s.layout.layout_tablet.tablet_col_gap | default(20) }}px;
+    --dxo-col-gap-m: {{ s.layout.layout_mobile.mobile_col_gap | default(16) }}px;
+    --dxo-row-gap-d: {{ s.layout.layout_desktop.desktop_row_gap | default(80) }}px;
+    --dxo-row-gap-t: {{ s.layout.layout_tablet.tablet_row_gap | default(32) }}px;
+    --dxo-row-gap-m: {{ s.layout.layout_mobile.mobile_row_gap | default(24) }}px;
+    --dxo-pt-d: {{ d_sp.padding.top.value | default(60) }}{{ d_sp.padding.top.units | default('px') }};
+    --dxo-pr-d: {{ d_sp.padding.right.value | default(0) }}{{ d_sp.padding.right.units | default('px') }};
+    --dxo-pb-d: {{ d_sp.padding.bottom.value | default(60) }}{{ d_sp.padding.bottom.units | default('px') }};
+    --dxo-pl-d: {{ d_sp.padding.left.value | default(0) }}{{ d_sp.padding.left.units | default('px') }};
+    --dxo-mt-d: {{ d_sp.margin.top.value | default(0) }}{{ d_sp.margin.top.units | default('px') }};
+    --dxo-mr-d: {{ d_sp.margin.right.value | default(0) }}{{ d_sp.margin.right.units | default('px') }};
+    --dxo-mb-d: {{ d_sp.margin.bottom.value | default(0) }}{{ d_sp.margin.bottom.units | default('px') }};
+    --dxo-ml-d: {{ d_sp.margin.left.value | default(0) }}{{ d_sp.margin.left.units | default('px') }};
+    --dxo-pt-t: {{ t_sp.padding.top.value | default(40) }}{{ t_sp.padding.top.units | default('px') }};
+    --dxo-pr-t: {{ t_sp.padding.right.value | default(0) }}{{ t_sp.padding.right.units | default('px') }};
+    --dxo-pb-t: {{ t_sp.padding.bottom.value | default(40) }}{{ t_sp.padding.bottom.units | default('px') }};
+    --dxo-pl-t: {{ t_sp.padding.left.value | default(0) }}{{ t_sp.padding.left.units | default('px') }};
+    --dxo-mt-t: {{ t_sp.margin.top.value | default(0) }}{{ t_sp.margin.top.units | default('px') }};
+    --dxo-mr-t: {{ t_sp.margin.right.value | default(0) }}{{ t_sp.margin.right.units | default('px') }};
+    --dxo-mb-t: {{ t_sp.margin.bottom.value | default(0) }}{{ t_sp.margin.bottom.units | default('px') }};
+    --dxo-ml-t: {{ t_sp.margin.left.value | default(0) }}{{ t_sp.margin.left.units | default('px') }};
+    --dxo-pt-m: {{ mob_sp.padding.top.value | default(30) }}{{ mob_sp.padding.top.units | default('px') }};
+    --dxo-pr-m: {{ mob_sp.padding.right.value | default(0) }}{{ mob_sp.padding.right.units | default('px') }};
+    --dxo-pb-m: {{ mob_sp.padding.bottom.value | default(30) }}{{ mob_sp.padding.bottom.units | default('px') }};
+    --dxo-pl-m: {{ mob_sp.padding.left.value | default(0) }}{{ mob_sp.padding.left.units | default('px') }};
+    --dxo-mt-m: {{ mob_sp.margin.top.value | default(0) }}{{ mob_sp.margin.top.units | default('px') }};
+    --dxo-mr-m: {{ mob_sp.margin.right.value | default(0) }}{{ mob_sp.margin.right.units | default('px') }};
+    --dxo-mb-m: {{ mob_sp.margin.bottom.value | default(0) }}{{ mob_sp.margin.bottom.units | default('px') }};
+    --dxo-ml-m: {{ mob_sp.margin.left.value | default(0) }}{{ mob_sp.margin.left.units | default('px') }};
+  "
+>
   <div class="dx-module__container content-wrapper">
 
-      {# ---- Left: Heading + Description ---- #}
-      <div class="dx-offers__content">
-        {% if module.heading %}
-        <h2 class="dx-offers__heading">{{ module.heading }}</h2>
-        {% endif %}
-
-        {% if module.description %}
-        <div class="dx-offers__description">{{ module.description }}</div>
-        {% endif %}
-      </div>
-
-      {# ---- Right: Offers grid ---- #}
-      {% if module.offers %}
-      <div class="dx-offers__grid{% if module.styles.layout.grid_columns %} dx-offers__grid--{{ module.styles.layout.grid_columns }}{% endif %}">
-        {% for offer in module.offers %}
-        <div class="dx-offers__item">
-          {% if offer.offer_icon.src %}
-          <img
-            src="{{ offer.offer_icon.src }}"
-            alt="{{ offer.offer_icon.alt }}"
-            class="dx-offers__icon"
-            loading="lazy"
-            {% if offer.offer_icon.width %}width="{{ offer.offer_icon.width }}"{% endif %}
-            {% if offer.offer_icon.height %}height="{{ offer.offer_icon.height }}"{% endif %}
-          >
-          {% endif %}
-
-          {% if offer.offer_text %}
-          <p class="dx-offers__item-text">{{ offer.offer_text }}</p>
-          {% endif %}
-
-          {% if offer.offer_content %}
-          <div class="dx-offers__item-content">{{ offer.offer_content }}</div>
-          {% endif %}
-        </div>
-        {% endfor %}
-      </div>
+    {# ---- Heading + Description ---- #}
+    <div class="dx-offers__content">
+      {% if module.heading %}
+      <h2 class="dx-offers__heading">{{ module.heading }}</h2>
       {% endif %}
+
+      {% if module.description %}
+      <div class="dx-offers__description">{{ module.description }}</div>
+      {% endif %}
+    </div>
+
+    {# ---- Offers grid ---- #}
+    {% if module.offers %}
+    <div class="dx-offers__grid">
+      {% for offer in module.offers %}
+      <div class="dx-offers__item">
+        {% if offer.offer_icon.src %}
+        <img
+          src="{{ offer.offer_icon.src }}"
+          alt="{{ offer.offer_icon.alt }}"
+          class="dx-offers__icon"
+          loading="lazy"
+          {% if offer.offer_icon.width %}width="{{ offer.offer_icon.width }}"{% endif %}
+          {% if offer.offer_icon.height %}height="{{ offer.offer_icon.height }}"{% endif %}
+        >
+        {% endif %}
+
+        {% if offer.offer_text %}
+        <p class="dx-offers__item-text">{{ offer.offer_text }}</p>
+        {% endif %}
+
+        {% if offer.offer_content %}
+        <div class="dx-offers__item-content">{{ offer.offer_content }}</div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
 
   </div>
 </section>
