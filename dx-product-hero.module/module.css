@@ -168,6 +168,7 @@
   .dx-hero__features--cols-4 {
     grid-template-columns: repeat(2, 1fr);
   }
+  .dx-hero__subheading,
   .dx-hero__feature-text {
     font-size: 16px;
   }
