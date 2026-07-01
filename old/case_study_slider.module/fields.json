@@ -142,6 +142,23 @@
       "href" : ""
     }
   }, {
+    "id" : "e1f6b4c5-7e8f-9a0b-1c2d-3e4f5a6b7c9e",
+    "name" : "open_new_tab",
+    "label" : "Open Link in New Tab",
+    "required" : false,
+    "locked" : false,
+    "type" : "boolean",
+    "display_width" : null,
+    "visibility" : {
+      "controlling_field_path" : "slides.button_link",
+      "controlling_field" : null,
+      "controlling_value_regex" : "EXTERNAL",
+      "property" : "type",
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "default" : false
+  }, {
     "id" : "69825065-b6a6-daf0-3063-ea675da85670",
     "name" : "background_color",
     "label" : "Background Color",
@@ -184,6 +201,7 @@
       "type" : "EXTERNAL",
       "href" : ""
     },
+    "open_new_tab" : false,
     "background_color" : {
       "color" : "#E2F6FF",
       "opacity" : 100
@@ -205,6 +223,7 @@
       "type" : "EXTERNAL",
       "href" : ""
     },
+    "open_new_tab" : false,
     "background_color" : {
       "color" : "#E2F6FF",
       "opacity" : 100

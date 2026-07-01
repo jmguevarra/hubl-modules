@@ -50,7 +50,7 @@
                   {% endif %}
 
                   {% if slide.button_text %}
-                  <a class="pdx-case-study-card__button" href="{{ slide.button_link.href }}">
+                  <a class="pdx-case-study-card__button" href="{{ slide.button_link.href }}"{% if slide.button_link.type == "EXTERNAL" and slide.open_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>
                     {{ slide.button_text }}
                     <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006"
