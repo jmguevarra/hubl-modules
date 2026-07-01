@@ -1,0 +1,572 @@
+{
+  "author_designation.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "author_designation.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "author_designation.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "author_designation.label" : {
+    "message" : "Author Name copy",
+    "description" : null,
+    "placeholders" : null
+  },
+  "author_designation.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "author_designation.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "author_name.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "author_name.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "author_name.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "author_name.label" : {
+    "message" : "Text",
+    "description" : null,
+    "placeholders" : null
+  },
+  "author_name.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "author_name.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "featured_layout.choices.value 1" : {
+    "message" : "Label 1",
+    "description" : null,
+    "placeholders" : null
+  },
+  "featured_layout.choices.value 2" : {
+    "message" : "Label 2",
+    "description" : null,
+    "placeholders" : null
+  },
+  "features_group.default.background_image.alt" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "features_group.default.background_image.src" : {
+    "message" : "https://backend.transjt.ai/assets/13b759dde3cd5c9cb864b322",
+    "description" : null,
+    "placeholders" : null
+  },
+  "features_group.default.description" : {
+    "message" : "AI-driven dev for turning ideas into apps fast. Use AI to automate and simplify app generation, delivery, and monitoring—so you can turn ideas into AI-powered applications that drive revenue, efficiency, and customer impact 10x faster.",
+    "description" : null,
+    "placeholders" : null
+  },
+  "features_group.default.link_field.no_follow" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "features_group.default.link_field.open_in_new_tab" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "features_group.default.link_field.url.content_id" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "features_group.default.link_field.url.href" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "features_group.default.link_field.url.type" : {
+    "message" : "EXTERNAL",
+    "description" : null,
+    "placeholders" : null
+  },
+  "features_group.default.title" : {
+    "message" : "OutSystems Mentor",
+    "description" : null,
+    "placeholders" : null
+  },
+  "features_group.link.default.content_id" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "features_group.link.default.href" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "features_group.link.default.type" : {
+    "message" : "BLOG",
+    "description" : null,
+    "placeholders" : null
+  },
+  "features_group.name" : {
+    "message" : "two_column",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "heading.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "heading.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "heading.label" : {
+    "message" : "Text",
+    "description" : null,
+    "placeholders" : null
+  },
+  "heading.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "heading.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "name" : {
+    "message" : "quote",
+    "description" : "",
+    "placeholders" : null
+  },
+  "quote.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "quote.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "quote.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "quote.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "quote.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "quote_icon.default.alt" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "quote_icon.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "quote_icon.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "quote_icon.label" : {
+    "message" : "Image",
+    "description" : null,
+    "placeholders" : null
+  },
+  "quote_icon.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.bottom.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.bottom.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.left.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.left.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.right.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.right.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.top.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing_copy.default.padding.bottom.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.desktop_spacing_copy.default.padding.left.units" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.desktop_spacing_copy.default.padding.left.value" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.desktop_spacing_copy.default.padding.right.units" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.desktop_spacing_copy.default.padding.right.value" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.desktop_spacing_copy.default.padding.top.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.desktop_spacing_copy.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.desktop_spacing_copy.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.desktop_spacing_copy.label" : {
+    "message" : "Desktop Spacing copy",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.desktop_spacing_copy.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.label" : {
+    "message" : "Style",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.name" : {
+    "message" : "two_column",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile_spacing.default.padding.bottom.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile_spacing.default.padding.left.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile_spacing.default.padding.left.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile_spacing.default.padding.right.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile_spacing.default.padding.right.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile_spacing.default.padding.top.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile_spacing.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile_spacing.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile_spacing.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile_spacing.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.bottom.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.left.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.left.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.right.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.right.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.top.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing_copy.default.padding.bottom.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.tablet_spacing_copy.default.padding.left.units" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.tablet_spacing_copy.default.padding.left.value" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.tablet_spacing_copy.default.padding.right.units" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.tablet_spacing_copy.default.padding.right.value" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.tablet_spacing_copy.default.padding.top.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.tablet_spacing_copy.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.tablet_spacing_copy.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.tablet_spacing_copy.label" : {
+    "message" : "Tablet Spacing copy",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.tablet_spacing_copy.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "team.background_image.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "team.background_image.default.alt" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "team.background_image.default.src" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "team.default.background_image.alt" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "team.default.background_image.src" : {
+    "message" : "https://backend.transjt.ai/assets/13b759dde3cd5c9cb864b322",
+    "description" : null,
+    "placeholders" : null
+  },
+  "team.default.description" : {
+    "message" : "AI-driven dev for turning ideas into apps fast. Use AI to automate and simplify app generation, delivery, and monitoring—so you can turn ideas into AI-powered applications that drive revenue, efficiency, and customer impact 10x faster.",
+    "description" : null,
+    "placeholders" : null
+  },
+  "team.default.link_field.no_follow" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "team.default.link_field.open_in_new_tab" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "team.default.link_field.url.content_id" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "team.default.link_field.url.href" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "team.default.link_field.url.type" : {
+    "message" : "EXTERNAL",
+    "description" : null,
+    "placeholders" : null
+  },
+  "team.default.title" : {
+    "message" : "OutSystems Mentor",
+    "description" : null,
+    "placeholders" : null
+  },
+  "team.name" : {
+    "message" : "team",
+    "description" : "",
+    "placeholders" : null
+  }
+}

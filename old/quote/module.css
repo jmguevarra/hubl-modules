@@ -1,0 +1,24 @@
+.pdx-quote__body {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.pdx-quote__body img {
+  margin: 0 auto;
+}
+.pdx-quote__body-content {
+  font-size: 24px;
+  color: #051327;
+  margin-top: 30px;
+  margin-bottom: 24px;
+}
+.pdx-quote__body-author-name {
+  font-weight: bold;
+}
+.pdx-quote__header {
+  text-align: center;
+  margin-top: 64px;
+}
+.pdx-quote__header-title span {
+  color: #D81F26;
+}

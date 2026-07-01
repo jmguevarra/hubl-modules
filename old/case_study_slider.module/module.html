@@ -1,0 +1,149 @@
+<section class="pdx-case-studies-slider pdx-case-studies-slider--id4582">
+  <div class="content-wrapper">
+    <header class="pdx-case-studies-slider__header">
+      {% if module.heading_tag == "h1" %}
+      <h1 class="pdx-case-studies-slider__title">{{ module.section_title }}</h1>
+      {% elif module.heading_tag == "h2" %}
+      <h2 class="pdx-case-studies-slider__title">{{ module.section_title }}</h2>
+      {% elif module.heading_tag == "h3" %}
+      <h3 class="pdx-case-studies-slider__title">{{ module.section_title }}</h3>
+      {% elif module.heading_tag == "h4" %}
+      <h4 class="pdx-case-studies-slider__title">{{ module.section_title }}</h4>
+      {% elif module.heading_tag == "h5" %}
+      <h5 class="pdx-case-studies-slider__title">{{ module.section_title }}</h5>
+      {% elif module.heading_tag == "h6" %}
+      <h6 class="pdx-case-studies-slider__title">{{ module.section_title }}</h6>
+      {% endif %}
+    </header>
+
+    <div class="pdx-case-studies-slider__content">
+      <div class="pdx-slider">
+        <div class="pdx-slider__viewport {{ module.layout == 'slider' ? 'pdx-slider__swiper swiper' : 'dx-case-studies-slider__grid' }}">
+          <div class="pdx-slider__container {{ module.layout == 'slider' ? 'swiper-wrapper' : 'pdx-slider__row' }}">
+            {% for slide in module.slides %}
+            <article
+              class="pdx-slider__slide {{ module.layout == 'slider' ? 'swiper-slide' : 'pdx-slider__col' }}"
+              style="--bg-color: rgba({{ slide.background_color.color|convert_rgb }}, {{ slide.background_color.opacity/100 }});
+                     --on-hover-bg-color: rgba({{ slide.on_hover_background_color.color|convert_rgb }}, {{ slide.on_hover_background_color.opacity/100 }});">
+              <div class="pdx-case-study-card">
+                <div class="pdx-case-study-card__content">
+                  <header class="pdx-case-study-card__header">
+                    {% if slide.title %}
+                    <h3 class="pdx-case-study-card__title">{{ slide.title }}</h3>
+                    {% endif %}
+
+                    {% if slide.description %}
+                    <div class="pdx-case-study-card__description">{{ slide.description }}</div>
+                    {% endif %}
+                  </header>
+
+                  {% if slide.stats %}
+                  <div class="pdx-case-study-card__stats">
+                    {% for stat in slide.stats %}
+                    <div class="pdx-case-study-card__stat">
+                      <div class="pdx-case-study-card__stat-number">{{ stat.number_field }}</div>
+                      <div class="pdx-case-study-card__stat-label">{{ stat.stat_label }}</div>
+                      <div class="pdx-case-study-card__stat-description">{{ stat.stat_description }}</div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  {% endif %}
+
+                  {% if slide.button_text %}
+                  <a class="pdx-case-study-card__button" href="{{ slide.button_link.href }}">
+                    {{ slide.button_text }}
+                    <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </a>
+                  {% endif %}
+                </div>
+
+                <div class="pdx-case-study-card__image">
+                  <img src="{{ slide.image.src }}" alt="{{ slide.image.alt|striptags|escape }}" loading="lazy">
+                </div>
+              </div>
+            </article>
+            {% endfor %}
+          </div>
+        </div>
+
+        {% if module.layout == 'slider' %}
+        <div class="pdx-slider__navigation">
+          <button class="pdx-slider__button pdx-slider__button--prev" aria-label="Previous slide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="4" height="8" viewbox="0 0 4 8" fill="none">
+              <path d="M3 1L1 4L3 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
+
+          <div class="pdx-slider__counter">
+            <span class="pdx-slider__current">1</span> {{ module.counter_separator }} <span class="pdx-slider__total">3</span>
+          </div>
+
+          <button class="pdx-slider__button pdx-slider__button--next" aria-label="Next slide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="4" height="8" viewbox="0 0 4 8" fill="none">
+              <path d="M1 1L3 4L1 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% require_css %}
+<style>
+  {% scope_css %}
+
+  /* Mobile First - Base styles (mobile) */
+  .pdx-case-studies-slider {
+    {{ module.style.spacing.mobile.css }}
+  }
+
+  /*
+    NEW (mobile only):
+    Visually show the image first, then the text (and button).
+    This keeps desktop intact because we are NOT changing the HTML structure.
+  */
+  @media (max-width: 767px) {
+    /* Ensure these children can be re-ordered */
+    .pdx-case-study-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Move the image above the content */
+    .pdx-case-study-card__image {
+      order: -1;
+    }
+
+    /* Content stays after the image */
+    .pdx-case-study-card__content {
+      order: 0;
+    }
+  }
+
+  /* Tablet styles */
+  @media (min-width: 768px) {
+    {% if module.style.spacing.tablet.css %}
+    .pdx-case-studies-slider {
+      {{ module.style.spacing.tablet.css }}
+    }
+    {% endif %}
+  }
+
+  /* Desktop styles */
+  @media (min-width: 1024px) {
+    {% if module.style.spacing.desktop %}
+    .pdx-case-studies-slider {
+      {{ module.style.spacing.desktop.css }}
+    }
+    {% endif %}
+  }
+
+  {% end_scope_css %}
+</style>
+{% end_require_css %}

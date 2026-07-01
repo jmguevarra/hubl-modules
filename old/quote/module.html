@@ -1,0 +1,61 @@
+<section class="pdx-quote">
+  <div class="content-wrapper">
+    <div class="pdx-quote__body">
+      {% if module.quote_icon.src %}
+        {% set sizeAttrs = 'width="{{ module.quote_icon.width|escape_attr }}" height="{{ module.quote_icon.height|escape_attr }}"' %}
+        {% if module.quote_icon.size_type == 'auto' %}
+          {% set sizeAttrs = 'width="{{ module.quote_icon.width|escape_attr }}" height="{{ module.quote_icon.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+        {% elif module.quote_icon.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="{{ module.quote_icon.max_width|escape_attr }}" height="{{ module.quote_icon.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+         {% set loadingAttr = module.quote_icon.loading != 'disabled' ? 'loading="{{ module.quote_icon.loading|escape_attr }}"' : '' %}
+        <img src="{{ module.quote_icon.src|escape_url }}" alt="{{ module.quote_icon.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% endif %}
+      <div class="pdx-quote__body-content">{{ module.quote|safe }}</div>
+      <div class="pdx-quote__body-author-name">
+        {{ module.author_name }}
+      </div>
+      <div class="pdx-quote__body-author-designation">
+        {{ module.author_designation }}
+      </div>
+    </div>
+    {% if module.heading %}
+      <div class="pdx-quote__header">
+        <h2 class="pdx-quote__header-title">
+          {{ module.heading }}
+        </h2>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% require_css %}
+<style>
+  {% scope_css %}
+
+  /* Mobile First - Base styles (mobile) */
+  .pdx-quote {
+    {{ module.style.spacing.mobile_spacing.css }}
+  }
+
+  /* Tablet styles */
+  @media (min-width: 768px) {
+    {% if module.style.spacing.tablet_spacing.css %}
+    .pdx-quote {
+      {{ module.style.spacing.tablet_spacing.css }}
+    }
+    {% endif %}
+  }
+
+  /* Desktop styles */
+  @media (min-width: 1024px) {
+    {% if module.style.spacing.desktop_spacing %}
+    .pdx-quote {
+      {{ module.style.spacing.desktop_spacing.css }}
+    }
+    {% endif %}
+  }
+
+  {% end_scope_css %}
+</style>
+{% end_require_css %}

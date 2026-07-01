@@ -1,0 +1,662 @@
+{
+  "counter_separator.default" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "counter_separator.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "counter_separator.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "counter_separator.label" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "counter_separator.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "counter_separator.validation_regex" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.choices.h1" : {
+    "message" : "H1",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.choices.h2" : {
+    "message" : "H2",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.choices.h3" : {
+    "message" : "H3",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.choices.h4" : {
+    "message" : "H4",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.choices.h5" : {
+    "message" : "H5",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.choices.h6" : {
+    "message" : "H6",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.label" : {
+    "message" : "Section Heading Tag",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "layout.choices.value 1" : {
+    "message" : "Label 1",
+    "description" : null,
+    "placeholders" : null
+  },
+  "layout.choices.value 2" : {
+    "message" : "Label 2",
+    "description" : null,
+    "placeholders" : null
+  },
+  "layout.default" : {
+    "message" : "slider",
+    "description" : null,
+    "placeholders" : null
+  },
+  "layout.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "layout.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "layout.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "layout.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "name" : {
+    "message" : "case_study_slider",
+    "description" : "",
+    "placeholders" : null
+  },
+  "section_title.default" : {
+    "message" : "Case Studies",
+    "description" : "",
+    "placeholders" : null
+  },
+  "section_title.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "section_title.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "section_title.label" : {
+    "message" : "Section Title",
+    "description" : "",
+    "placeholders" : null
+  },
+  "section_title.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "section_title.validation_regex" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.background_color.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.background_color.default.color" : {
+    "message" : "#E2F6FF",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.background_color.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.background_color.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.background_color.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.background_color.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.button_link.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.button_link.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.button_link.label" : {
+    "message" : "Button Link",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.button_link.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.button_text.default" : {
+    "message" : "Read the full case study",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.button_text.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.button_text.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.button_text.label" : {
+    "message" : "Button Text",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.button_text.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.button_text.validation_regex" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.default.background_color.color" : {
+    "message" : "#E2F6FF",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.default.button_link.href" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.default.button_link.type" : {
+    "message" : "EXTERNAL",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.default.button_text" : {
+    "message" : "Read the full case study",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.default.description" : {
+    "message" : "Iconic wine producer used our AI app generator to rapidly replace and improve its outdated vineyard assessment application.",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.default.image.alt" : {
+    "message" : "Mobile app screenshots showing vineyard assessment application",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.default.image.src" : {
+    "message" : "https://backend.transjt.ai/assets/4f7cba92782d56848d41b8d5",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.default.on_hover_background_color.color" : {
+    "message" : "#ffffff",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.default.title" : {
+    "message" : "Field services legacy app replaced in 4 weeks using AI",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.description.default" : {
+    "message" : "Iconic wine producer used our AI app generator to rapidly replace and improve its outdated vineyard assessment application.",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.description.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.description.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.description.label" : {
+    "message" : "Description",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.description.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.description.validation_regex" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.image.default.alt" : {
+    "message" : "Mobile app screenshots showing vineyard assessment application",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.image.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.image.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.image.label" : {
+    "message" : "Image",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.image.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.label" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.name" : {
+    "message" : "case_study_slider",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.on_hover_background_color.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.on_hover_background_color.default.color" : {
+    "message" : "#ffffff",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.on_hover_background_color.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.on_hover_background_color.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.on_hover_background_color.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.on_hover_background_color.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.stats.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.label" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.number_field.default" : {
+    "message" : "4",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.stats.number_field.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.stats.number_field.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.stats.number_field.label" : {
+    "message" : "Number",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.stats.number_field.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.stats.number_field.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "slides.stats.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.stat_description.default" : {
+    "message" : "From AI-app generated to go-live",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.stat_description.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.stat_description.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.stat_description.label" : {
+    "message" : "Description",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.stat_description.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.stat_description.validation_regex" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.stat_label.default" : {
+    "message" : "weeks",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.stat_label.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.stat_label.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.stat_label.label" : {
+    "message" : "Label",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.stat_label.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.stats.stat_label.validation_regex" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.title.default" : {
+    "message" : "Field services legacy app replaced in 4 weeks using AI",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.title.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.title.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.title.label" : {
+    "message" : "Title",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.title.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "slides.title.validation_regex" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.label" : {
+    "message" : "Style",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.name" : {
+    "message" : "case_study_slider",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.desktop.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.desktop.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.desktop.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.desktop.label" : {
+    "message" : "Desktop",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.desktop.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.label" : {
+    "message" : "Field group",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile.label" : {
+    "message" : "Mobile",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.mobile.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.tablet.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.tablet.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.tablet.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.tablet.label" : {
+    "message" : "Tablet",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing.tablet.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  }
+}

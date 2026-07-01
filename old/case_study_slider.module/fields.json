@@ -1,0 +1,312 @@
+[ {
+  "id" : "c8f3a1b2-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+  "name" : "section_title",
+  "label" : "Section Title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Case Studies"
+}, {
+  "id" : "d9e4b2c3-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+  "name" : "heading_tag",
+  "label" : "Section Heading Tag",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "h2"
+}, {
+  "id" : "a2b7e5f6-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+  "name" : "slides",
+  "label" : "Slides",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 2,
+    "max" : 5,
+    "sorting_label_field" : "title",
+    "default" : 2
+  },
+  "children" : [ {
+    "id" : "d1e6b4c5-7e8f-9a0b-1c2d-3e4f5a6b7c8d",
+    "name" : "image",
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "https://backend.transjt.ai/assets/4f7cba92782d56848d41b8d5",
+      "alt" : "Mobile app screenshots showing vineyard assessment application"
+    }
+  }, {
+    "id" : "b3c8f6a7-9c0d-1e2f-3a4b-5c6d7e8f9a0b",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Field services legacy app replaced in 4 weeks using AI"
+  }, {
+    "id" : "c4d9a7b8-0d1e-2f3a-4b5c-6d7e8f9a0b1c",
+    "name" : "description",
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Iconic wine producer used our AI app generator to rapidly replace and improve its outdated vineyard assessment application."
+  }, {
+    "id" : "d5e0b8c9-1e2f-3a4b-5c6d-7e8f9a0b1c2d",
+    "name" : "stats",
+    "label" : "Stats",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : "stat_label",
+      "default" : null
+    },
+    "children" : [ {
+      "id" : "e6f1c9d0-2f3a-4b5c-6d7e-8f9a0b1c2d3e",
+      "name" : "number_field",
+      "label" : "Number",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "4"
+    }, {
+      "id" : "f7a2d0e1-3a4b-5c6d-7e8f-9a0b1c2d3e4f",
+      "name" : "stat_label",
+      "label" : "Label",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "weeks"
+    }, {
+      "id" : "a8b3e1f2-4b5c-6d7e-8f9a-0b1c2d3e4f5a",
+      "name" : "stat_description",
+      "label" : "Description",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "From AI-app generated to go-live"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ ]
+  }, {
+    "id" : "b9c4f2a3-5c6d-7e8f-9a0b-1c2d3e4f5a6b",
+    "name" : "button_text",
+    "label" : "Button Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Read the full case study"
+  }, {
+    "id" : "c0d5a3b4-6d7e-8f9a-0b1c-2d3e4f5a6b7c",
+    "name" : "button_link",
+    "label" : "Button Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "type" : "url",
+    "display_width" : null,
+    "default" : {
+      "type" : "EXTERNAL",
+      "href" : ""
+    }
+  }, {
+    "id" : "69825065-b6a6-daf0-3063-ea675da85670",
+    "name" : "background_color",
+    "label" : "Background Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#E2F6FF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "fd1d5acc-1891-c89b-85e2-5e89d26296b9",
+    "name" : "on_hover_background_color",
+    "label" : "On Hover Background Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "image" : {
+      "src" : "https://backend.transjt.ai/assets/4f7cba92782d56848d41b8d5",
+      "alt" : "Mobile app screenshots showing vineyard assessment application"
+    },
+    "title" : "Field services legacy app replaced in 4 weeks using AI",
+    "description" : "Iconic wine producer used our AI app generator to rapidly replace and improve its outdated vineyard assessment application.",
+    "stats" : [ ],
+    "button_text" : "Read the full case study",
+    "button_link" : {
+      "type" : "EXTERNAL",
+      "href" : ""
+    },
+    "background_color" : {
+      "color" : "#E2F6FF",
+      "opacity" : 100
+    },
+    "on_hover_background_color" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }, {
+    "image" : {
+      "src" : "https://backend.transjt.ai/assets/4f7cba92782d56848d41b8d5",
+      "alt" : "Mobile app screenshots showing vineyard assessment application"
+    },
+    "title" : "Field services legacy app replaced in 4 weeks using AI",
+    "description" : "Iconic wine producer used our AI app generator to rapidly replace and improve its outdated vineyard assessment application.",
+    "stats" : [ ],
+    "button_text" : "Read the full case study",
+    "button_link" : {
+      "type" : "EXTERNAL",
+      "href" : ""
+    },
+    "background_color" : {
+      "color" : "#E2F6FF",
+      "opacity" : 100
+    },
+    "on_hover_background_color" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  } ]
+}, {
+  "id" : "a4b9e7f8-0b1c-2d3e-4f5a-6b7c8d9e0f1a",
+  "name" : "counter_separator",
+  "label" : "Counter Separator",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "layout",
+    "controlling_value_regex" : "slider",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "of"
+}, {
+  "id" : "57b5882b-b6db-6264-3f91-867032d4026f",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "86a2c323-ba03-b7dc-f1ba-37e14cab6346",
+    "name" : "spacing",
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "71e02ba8-2855-b82f-28ac-e18d9de88e11",
+      "name" : "desktop",
+      "label" : "Desktop",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "display_width" : null,
+      "default" : { }
+    }, {
+      "id" : "deb13d5f-e901-f202-2f21-e5626b3332c6",
+      "name" : "tablet",
+      "label" : "Tablet",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "display_width" : null,
+      "default" : { }
+    }, {
+      "id" : "4d8fa1a3-ea83-965a-79ac-b04d1b28217d",
+      "name" : "mobile",
+      "label" : "Mobile",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "display_width" : null,
+      "default" : { }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "desktop" : { },
+      "tablet" : { },
+      "mobile" : { }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "spacing" : {
+      "desktop" : { },
+      "tablet" : { },
+      "mobile" : { }
+    }
+  }
+}, {
+  "id" : "05f7bf59-6444-0ffc-70f8-f0d8e74b0b31",
+  "name" : "layout",
+  "label" : "Layout",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "slider", "Slider" ], [ "grid", "Grid" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "slider"
+} ]
