@@ -1,0 +1,147 @@
+<section class="pdx-image-cards t2">
+  <div class="content-wrapper">
+
+    {% if module.title %}
+      {% if module.title_tag == "h1" %}
+        <h1 class="pdx-image-cards__title">{{ module.title }}</h1>
+      {% elif module.title_tag == "h2" %}
+        <h2 class="pdx-image-cards__title">{{ module.title }}</h2>
+      {% elif module.title_tag == "h3" %}
+        <h3 class="pdx-image-cards__title">{{ module.title }}</h3>
+      {% elif module.title_tag == "h4" %}
+        <h4 class="pdx-image-cards__title">{{ module.title }}</h4>
+      {% elif module.title_tag == "h5" %}
+        <h5 class="pdx-image-cards__title">{{ module.title }}</h5>
+      {% else %}
+        <h6 class="pdx-image-cards__title">{{ module.title }}</h6>
+      {% endif %}
+    {% endif %}
+
+    <div class="pdx-image-cards__grid">
+      {% for card in module.cards %}
+        {% set href = card.link.href|default(card.link) %}
+        {% set target = card.link.open_in_new_tab|default(false) %}
+        {% set rel = card.link.rel|default("") %}
+        {% set align = card.content_alignment|default('left') %}
+
+        <article class="pdx-image-cards__card{% if loop.index == 1 %} pdx-image-cards__card--feature{% endif %}">
+
+          {# Image now controls height #}
+          {% if card.background_image.src %}
+            <img
+              class="pdx-image-cards__img"
+              src="{{ card.background_image.src }}"
+              alt="{{ card.background_image.alt|default(card.title)|striptags|escape }}"
+              loading="lazy"
+              width="{{ card.background_image.width }}"
+              height="{{ card.background_image.height }}"
+            >
+          {% endif %}
+
+          <div class="pdx-image-cards__overlay"></div>
+
+          <div class="pdx-image-cards__content pdx-image-cards__content--{{ align }}">
+
+            {% if card.title %}
+              {% if module.card_title_tag == "h2" %}
+                <h2 class="pdx-image-cards__card-title">{{ card.title }}</h2>
+              {% elif module.card_title_tag == "h3" %}
+                <h3 class="pdx-image-cards__card-title">{{ card.title }}</h3>
+              {% elif module.card_title_tag == "h4" %}
+                <h4 class="pdx-image-cards__card-title">{{ card.title }}</h4>
+              {% elif module.card_title_tag == "h5" %}
+                <h5 class="pdx-image-cards__card-title">{{ card.title }}</h5>
+              {% elif module.card_title_tag == "h6" %}
+                <h6 class="pdx-image-cards__card-title">{{ card.title }}</h6>
+              {% else %}
+                <h3 class="pdx-image-cards__card-title">{{ card.title }}</h3>
+              {% endif %}
+            {% endif %}
+
+            {% if card.description_highlight or card.description_text %}
+              <div class="pdx-image-cards__desc">
+                {% if card.description_highlight %}
+                  <div class="pdx-image-cards__desc-highlight">{{ card.description_highlight }}</div>
+                {% endif %}
+                {% if card.description_text %}
+                  <div class="pdx-image-cards__desc-text">{{ card.description_text }}</div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {% if href %}
+              <a class="pdx-image-cards__cta"
+                 href="{{ href|escape_url }}"
+                 {% if target %}target="_blank"{% endif %}
+                 {% if rel %}rel="{{ rel|escape_attr }}"{% endif %}>
+                {{ card.link_text|default("Learn more") }}
+              </a>
+            {% endif %}
+
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% require_css %}
+<style>
+  {% scope_css %}
+
+  .pdx-image-cards{
+    {{ module.style.spacing.mobile_spacing.css }}
+  }
+  @media (min-width: 768px){
+    {% if module.style.spacing.tablet_spacing %}
+      .pdx-image-cards{ {{ module.style.spacing.tablet_spacing.css }} }
+    {% endif %}
+  }
+  @media (min-width: 1024px){
+    {% if module.style.spacing.desktop_spacing %}
+      .pdx-image-cards{ {{ module.style.spacing.desktop_spacing.css }} }
+    {% endif %}
+  }
+
+  .pdx-image-cards{
+    {% if module.style.title_color.color %}
+      --pdx-ic-title: rgba({{ module.style.title_color.color|convert_rgb }}, {{ module.style.title_color.opacity/100 }});
+    {% else %}
+      --pdx-ic-title: #ffffff;
+    {% endif %}
+
+    {% if module.style.body_color.color %}
+      --pdx-ic-body: rgba({{ module.style.body_color.color|convert_rgb }}, {{ module.style.body_color.opacity/100 }});
+    {% else %}
+      --pdx-ic-body: rgba(255,255,255,0.9);
+    {% endif %}
+
+    {% if module.style.button_bg_color.color %}
+      --pdx-ic-btn-bg: rgba({{ module.style.button_bg_color.color|convert_rgb }}, {{ module.style.button_bg_color.opacity/100 }});
+    {% else %}
+      --pdx-ic-btn-bg: #ffffff;
+    {% endif %}
+
+    {% if module.style.button_text_color.color %}
+      --pdx-ic-btn-text: rgba({{ module.style.button_text_color.color|convert_rgb }}, {{ module.style.button_text_color.opacity/100 }});
+    {% else %}
+      --pdx-ic-btn-text: #0b1b33;
+    {% endif %}
+
+    {% if module.style.button_hover_bg_color.color %}
+      --pdx-ic-btn-bg-hover: rgba({{ module.style.button_hover_bg_color.color|convert_rgb }}, {{ module.style.button_hover_bg_color.opacity/100 }});
+    {% else %}
+      --pdx-ic-btn-bg-hover: #d81f26;
+    {% endif %}
+
+    {% if module.style.button_hover_text_color and module.style.button_hover_text_color.color %}
+      --pdx-ic-btn-text-hover: rgba({{ module.style.button_hover_text_color.color|convert_rgb }}, {{ module.style.button_hover_text_color.opacity/100 }});
+    {% else %}
+      --pdx-ic-btn-text-hover: #ffffff;
+    {% endif %}
+  }
+
+  {% end_scope_css %}
+</style>
+{% end_require_css %}

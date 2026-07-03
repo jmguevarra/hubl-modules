@@ -1,0 +1,531 @@
+[ {
+  "id" : "title_tag",
+  "name" : "title_tag",
+  "label" : "Title tag",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "h2"
+}, {
+  "id" : "title",
+  "name" : "title",
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "OutSystems is consistently named a category leader"
+}, {
+  "id" : "awards",
+  "name" : "awards",
+  "label" : "Awards",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 0,
+    "max" : 10,
+    "sorting_label_field" : null,
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "awards.logo",
+    "name" : "logo",
+    "label" : "Logo",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "https://backend.transjt.ai/assets/d8e605c644e3edf976e4d2c0",
+      "alt" : "Gartner logo"
+    }
+  }, {
+    "id" : "awards.text",
+    "name" : "text",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Gartner® Magic Quadrant™ 2025: OutSystems recognized as a 9x Leader."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "logo" : {
+      "src" : "https://backend.transjt.ai/assets/d8e605c644e3edf976e4d2c0",
+      "alt" : "Gartner logo"
+    },
+    "text" : "Gartner® Magic Quadrant™ 2025: OutSystems recognized as a 9x Leader."
+  }, {
+    "logo" : {
+      "src" : "https://backend.transjt.ai/assets/d8e605c644e3edf976e4d2c0",
+      "alt" : "Gartner logo"
+    },
+    "text" : "Gartner® Magic Quadrant™ 2025: OutSystems recognized as a 9x Leader."
+  }, {
+    "logo" : {
+      "src" : "https://backend.transjt.ai/assets/d8e605c644e3edf976e4d2c0",
+      "alt" : "Gartner logo"
+    },
+    "text" : "Gartner® Magic Quadrant™ 2025: OutSystems recognized as a 9x Leader."
+  } ]
+}, {
+  "id" : "card_title_tag",
+  "name" : "card_title_tag",
+  "label" : "Card title tag",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "h3"
+}, {
+  "id" : "f86fa20f-915d-0fb4-4705-3b368e6b30ae",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "8c92fe37-2726-a613-55c2-7b93e2a53c2b",
+    "name" : "spacing",
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "f3b2d342-d78e-14f5-9d52-d46006a48a95",
+      "name" : "desktop_spacing",
+      "label" : "Desktop Spacing",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "display_width" : null,
+      "default" : {
+        "padding" : {
+          "top" : {
+            "value" : 64,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 64,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      }
+    }, {
+      "id" : "bafb1c46-7727-83e9-bb8c-1ac483a2eea6",
+      "name" : "tablet_spacing",
+      "label" : "Tablet Spacing",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "display_width" : null,
+      "default" : {
+        "padding" : {
+          "top" : {
+            "value" : 50,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 50,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      }
+    }, {
+      "id" : "c7239f1d-20df-56b8-097a-f7cc26dfb527",
+      "name" : "mobile_spacing",
+      "label" : "Mobile Spacing",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "display_width" : null,
+      "default" : {
+        "padding" : {
+          "top" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "desktop_spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 64,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 64,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      },
+      "tablet_spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 50,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 50,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      },
+      "mobile_spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      }
+    }
+  }, {
+    "id" : "9c15f20b-a1db-b6d9-4ff9-d6f04724d8e4",
+    "name" : "title_color",
+    "label" : "title color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : null
+    }
+  }, {
+    "id" : "894a826c-a46f-49c1-7045-c760a3e97c59",
+    "name" : "body_color",
+    "label" : "body color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : null
+    }
+  }, {
+    "id" : "b3b47c2a-ea2f-0688-d961-1c2cb28f2c47",
+    "name" : "button_bg_color",
+    "label" : "button_bg_color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : null
+    }
+  }, {
+    "id" : "8cfedeed-e3a2-3520-62dd-69e48d26aabe",
+    "name" : "button_text_color",
+    "label" : "button text color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : null
+    }
+  }, {
+    "id" : "32937ff1-497f-7d94-52aa-e799242a2ff5",
+    "name" : "button_hover_bg_color",
+    "label" : "button hover bg color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : null
+    }
+  }, {
+    "id" : "6f512f34-6f7f-4441-fb0f-6861fd4ef393",
+    "name" : "button_hover_text_color",
+    "label" : "button hover text color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : null
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "spacing" : {
+      "desktop_spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 64,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 64,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      },
+      "tablet_spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 50,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 50,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      },
+      "mobile_spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      }
+    },
+    "title_color" : {
+      "color" : null,
+      "opacity" : null
+    },
+    "body_color" : {
+      "color" : null,
+      "opacity" : null
+    },
+    "button_bg_color" : {
+      "color" : null,
+      "opacity" : null
+    },
+    "button_text_color" : {
+      "color" : null,
+      "opacity" : null
+    },
+    "button_hover_bg_color" : {
+      "color" : null,
+      "opacity" : null
+    },
+    "button_hover_text_color" : {
+      "color" : null,
+      "opacity" : null
+    }
+  }
+}, {
+  "id" : "cards",
+  "name" : "cards",
+  "label" : "Cards",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : 10,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "cards.background_image",
+    "name" : "background_image",
+    "label" : "Background image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "https://backend.transjt.ai/assets/742f0637a0c7e01974c49b0a",
+      "alt" : "Card background"
+    }
+  }, {
+    "id" : "cards.title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Build your vision"
+  }, {
+    "id" : "cards.description_highlight",
+    "name" : "description_highlight",
+    "label" : "Description highlight",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Develop applications that grow revenue, reduce costs, and manage risk."
+  }, {
+    "id" : "cards.description_text",
+    "name" : "description_text",
+    "label" : "Description text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Ship custom apps and agentic solutions that meet exact specifications, with enterprise-grade security, reliability, and performance: at speed."
+  }, {
+    "id" : "cards.link_text",
+    "name" : "link_text",
+    "label" : "Link text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "See use cases"
+  }, {
+    "id" : "cards.link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "type" : "url",
+    "display_width" : null,
+    "default" : {
+      "type" : "EXTERNAL",
+      "href" : ""
+    }
+  }, {
+    "id" : "d6cf04a2-b74d-afe5-ffda-a7b09f98b500",
+    "name" : "content_alignment",
+    "label" : "Content alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "value 1", "left" ], [ "center", "center" ], [ "right", "right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ ]
+} ]

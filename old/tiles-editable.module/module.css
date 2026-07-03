@@ -1,0 +1,142 @@
+/* ===========================
+   PhoenixDX — Image Cards (FULL CSS)
+   Includes:
+   - Image controls tile height (uses <img>)
+   - Feature card spans full width
+   - Per-card alignment (left/center/right)
+     * Left/Right = vertically centred
+     * Center = vertically TOP
+   - Spacing between tiles + spacing between fields
+   - Description + button text size = 18px
+=========================== */
+
+/* Grid */
+.pdx-image-cards__grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px; /* spacing between tiles */
+}
+
+/* Card */
+.pdx-image-cards__card{
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Image drives tile height */
+.pdx-image-cards__img{
+  width: 100%;
+  height: auto;   /* key: image controls tile height */
+  display: block;
+}
+
+/* Overlay */
+.pdx-image-cards__overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.15) 0%,
+    rgba(0,0,0,0.45) 55%,
+    rgba(0,0,0,0.70) 100%
+  );
+}
+
+/* Content (default: left + vertically centred) */
+.pdx-image-cards__content{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     /* vertical centre default */
+  align-items: flex-start;     /* horizontal left default */
+  text-align: left;            /* text left default */
+  gap: 16px;                   /* spacing between title/desc/button */
+}
+
+/* Left = left edge, vertically centred */
+.pdx-image-cards__content--left{
+  align-items: flex-start;
+  text-align: left;
+  justify-content: center;
+}
+
+/* Right = right edge, vertically centred */
+.pdx-image-cards__content--right{
+  align-items: flex-end;
+  text-align: right;
+  justify-content: center;
+}
+
+/* Center = horizontally centred, vertically TOP */
+.pdx-image-cards__content--center{
+  align-items: center;
+  text-align: center;
+  justify-content: flex-start;
+  padding-top: 28px;
+}
+
+/* Feature card spans full width on tablet+ */
+@media (min-width: 768px){
+  .pdx-image-cards__grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px; /* keep spacing on tablet+ */
+  }
+  .pdx-image-cards__card--feature{
+    grid-column: 1 / -1;
+  }
+}
+
+/* Title */
+.pdx-image-cards__card-title{
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--pdx-ic-title);
+}
+
+/* Description */
+.pdx-image-cards__desc{
+  max-width: 520px;
+  margin: 0;
+}
+
+.pdx-image-cards__desc-highlight,
+.pdx-image-cards__desc-text{
+  color: var(--pdx-ic-body);
+  font-size: 18px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Button */
+.pdx-image-cards__cta{
+  display: inline-flex;
+  align-items: center;       /* fix button text vertical alignment */
+  justify-content: center;
+  height: 44px;              /* sized for 18px text */
+  padding: 0 20px;
+  border-radius: 8px;
+  background: var(--pdx-ic-btn-bg);
+  color: var(--pdx-ic-btn-text);
+  font-size: 18px;           /* required */
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease;
+  margin-top: 4px;
+}
+
+/* Button follows alignment */
+.pdx-image-cards__cta{ align-self: flex-start; }
+.pdx-image-cards__content--center .pdx-image-cards__cta{ align-self: center; }
+.pdx-image-cards__content--right  .pdx-image-cards__cta{ align-self: flex-end; }
+
+.pdx-image-cards__cta:hover{
+  background: var(--pdx-ic-btn-bg-hover);
+  color: var(--pdx-ic-btn-text-hover);
+}

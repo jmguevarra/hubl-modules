@@ -1,0 +1,11 @@
+{
+  "extra_classes" : "widget-type-rich_text",
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "master_language" : "en",
+  "categories" : [ "body_content" ],
+  "host_template_types" : [ "PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "module_id" : 310768042486,
+  "label" : "tiles - editable",
+  "is_available_for_new_content" : true
+}
