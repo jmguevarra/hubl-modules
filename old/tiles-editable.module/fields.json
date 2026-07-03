@@ -509,6 +509,23 @@
       "href" : ""
     }
   }, {
+    "id" : "cards.open_in_new_tab",
+    "name" : "open_in_new_tab",
+    "label" : "Open Link in New Tab",
+    "required" : false,
+    "locked" : false,
+    "type" : "boolean",
+    "display_width" : null,
+    "visibility" : {
+      "controlling_field_path" : "cards.link",
+      "controlling_field" : null,
+      "controlling_value_regex" : "EXTERNAL",
+      "property" : "type",
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "default" : false
+  }, {
     "id" : "d6cf04a2-b74d-afe5-ffda-a7b09f98b500",
     "name" : "content_alignment",
     "label" : "Content alignment",

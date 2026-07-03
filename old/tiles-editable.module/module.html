@@ -20,8 +20,8 @@
     <div class="pdx-image-cards__grid">
       {% for card in module.cards %}
         {% set href = card.link.href|default(card.link) %}
-        {% set target = card.link.open_in_new_tab|default(false) %}
-        {% set rel = card.link.rel|default("") %}
+        {% set target = card.open_in_new_tab|default(false) %}
+        {% set rel = target ? "noopener noreferrer" : "" %}
         {% set align = card.content_alignment|default('left') %}
 
         <article class="pdx-image-cards__card{% if loop.index == 1 %} pdx-image-cards__card--feature{% endif %}">
