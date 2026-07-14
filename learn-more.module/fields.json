@@ -82,6 +82,21 @@
     ]
   },
   {
+    "id": "custom_attributes",
+    "name": "custom_attributes",
+    "label": "Custom Attributes",
+    "type": "group",
+    "children": [
+      {
+        "id": "custom_class",
+        "name": "custom_class",
+        "label": "Custom Class",
+        "type": "text",
+        "default": ""
+      }
+    ]
+  },
+  {
     "id": "styles",
     "name": "styles",
     "label": "Styles",

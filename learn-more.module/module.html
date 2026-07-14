@@ -27,7 +27,7 @@
   }
 </style>
 
-<section id="dx-learn-more" class="dx-learn-more">
+<section id="dx-learn-more" class="dx-learn-more{% if module.custom_attributes.custom_class %} {{ module.custom_attributes.custom_class }}{% endif %}">
   <div class="dx-module__container content-wrapper">
     <div class="dx-learn-more__inner">
       <div class="dx-learn-more__grid dx-learn-more__grid--cols-{{ module.columns }}">
@@ -35,7 +35,8 @@
         {% for item in module.items %}
         <div class="dx-learn-more__column">
 
-          {% if item.col_label %}
+          <div class="dx-learn-more-content__header-wrap">
+            {% if item.col_label %}
           <p class="dx-learn-more__col-label">{{ item.col_label }}</p>
           {% endif %}
 
@@ -52,8 +53,10 @@
             {% endif %}
           </div>
           {% endif %}
+          </div>
 
-          {% if item.col_body_content %}
+          <div class="dx-learn-more-content__body-wrap">
+            {% if item.col_body_content %}
           <div class="dx-learn-more__body">{{ item.col_body_content }}</div>
           {% endif %}
 
@@ -62,9 +65,13 @@
             href="{{ item.col_link_url.href }}"
             class="dx-learn-more__link"
             {% if item.col_link_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
-          >{{ item.col_link_text }} →</a>
+          >{{ item.col_link_text }}
+            <svg class="dx-learn-more__link-icon" width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.89258 4.75L0.74972 4.75M6.99008 0.75L9.89258 4.75L6.99008 8.75" stroke="#CF954A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
           {% endif %}
-
+          </div>
         </div>
         {% endfor %}
 
