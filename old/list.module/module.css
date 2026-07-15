@@ -1,6 +1,9 @@
 .pdx-list--shadow {
   box-shadow: 0 5px 60px -15px rgba(71, 71, 79, 0.15);
 }
+.pdx-list__eyebrow{
+  font-size: 14px;
+}
 .pdx-list--half-shadow {
   box-shadow: 0 5px 25px -15px rgba(71, 71, 79, 0.15);
 }

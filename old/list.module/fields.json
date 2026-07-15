@@ -1,4 +1,14 @@
 [ {
+  "id" : "c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f",
+  "name" : "eyebrow",
+  "label" : "Eyebrow text",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+},{
   "id" : "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
   "name" : "heading_tag",
   "label" : "Main heading tag",
@@ -22,7 +32,7 @@
   "type" : "text",
   "display_width" : null,
   "default" : "Unlock the benefits of modernisation faster"
-}, {
+},{
   "id" : "49fc1fd9-ae05-827b-4f36-537548995e7c",
   "name" : "subtitle",
   "label" : "Content",
@@ -188,6 +198,18 @@
         }
       }
     }
+  }, {
+    "id" : "b7c8d9e0-1f2a-3b4c-5d6e-7f8a9b0c1d2e",
+    "name" : "eyebrow_color",
+    "label" : "Eyebrow Text Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : null
+    }
   } ],
   "tab" : "STYLE",
   "expanded" : false,
@@ -257,6 +279,10 @@
           "units" : null
         }
       }
+    },
+    "eyebrow_color" : {
+      "color" : null,
+      "opacity" : null
     }
   }
 }, {

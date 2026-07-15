@@ -1,6 +1,9 @@
 <section class="pdx-list{% if module.shadow %} pdx-list--shadow {% endif %} {% if module.half_shadow %} pdx-list--half-shadow {% endif %}">
   <div class="content-wrapper">
     <header class="pdx-list__header">
+      {% if module.eyebrow %}
+        <div class="pdx-list__eyebrow">{{ module.eyebrow }}</div>
+      {% endif %}
       {% if module.heading_tag == "h1" %}
         <h1 class="pdx-list__title">{{ module.title }}</h1>
       {% elif module.heading_tag == "h2" %}
@@ -73,7 +76,13 @@
   .pdx-list {
     {{ module.style.mobile_spacing.css }}
   }
-  
+
+  {% if module.style.eyebrow_color.color %}
+    .pdx-list__eyebrow {
+      color: {{ module.style.eyebrow_color.color }};
+    }
+  {% endif %}
+
   /* Tablet styles */
   @media (min-width: 768px) {
     {% if module.style.tablet %}
