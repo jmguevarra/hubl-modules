@@ -28,8 +28,7 @@
     "occurrence": {
       "min": 1,
       "max": 30,
-      "default": 11,
-      "sorting_label_field": "card_text"
+      "default": 11
     },
     "children": [
       {
@@ -43,13 +42,6 @@
           "width": 28,
           "height": 28
         }
-      },
-      {
-        "id": "card_text",
-        "name": "card_text",
-        "label": "Text",
-        "type": "text",
-        "default": "Card text"
       },
       {
         "id": "card_link",
@@ -175,11 +167,29 @@
             "default": "1"
           },
           {
-            "id": "grid_gap",
-            "name": "grid_gap",
-            "label": "Grid Gap (px)",
+            "id": "desktop_gap",
+            "name": "desktop_gap",
+            "label": "Desktop Grid Gap (px)",
             "type": "number",
             "default": 16,
+            "min": 0,
+            "max": 60
+          },
+          {
+            "id": "tablet_gap",
+            "name": "tablet_gap",
+            "label": "Tablet Grid Gap (px)",
+            "type": "number",
+            "default": 16,
+            "min": 0,
+            "max": 60
+          },
+          {
+            "id": "mobile_gap",
+            "name": "mobile_gap",
+            "label": "Mobile Grid Gap (px)",
+            "type": "number",
+            "default": 12,
             "min": 0,
             "max": 60
           }
@@ -199,16 +209,6 @@
             "default": {
               "color": "#F1F2F4",
               "opacity": 100
-            }
-          },
-          {
-            "id": "card_text_color",
-            "name": "card_text_color",
-            "label": "Text Color",
-            "type": "color",
-            "default": {
-              "color": null,
-              "opacity": null
             }
           },
           {

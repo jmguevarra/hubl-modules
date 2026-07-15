@@ -9,21 +9,19 @@
 
 .dx-icg__heading {
   color: var(--dx-color-header-text);
-  font-weight: 700;
-  line-height: 1.2;
-  margin: 0 0 32px;
 }
 
 .dx-icg__grid {
   display: grid;
   grid-template-columns: repeat(var(--dx-icg-cols-d, 4), 1fr);
-  gap: var(--dx-icg-gap, 16px);
+  gap: var(--dx-icg-gap-d, 16px);
+  margin-top: 40px;
 }
 
 .dx-icg__card {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
   padding: 18px 20px;
   background: var(--dx-icg-card-bg, #F1F2F4);
   border-radius: var(--dx-icg-card-radius, 8px);
@@ -38,15 +36,9 @@ a.dx-icg__card:hover {
 
 .dx-icg__icon {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  max-width: 235px;
+  max-height: 40px;
   object-fit: contain;
-}
-
-.dx-icg__card-text {
-  color: var(--dx-icg-card-text, var(--dx-color-header-text));
-  font-weight: 600;
-  line-height: 1.3;
 }
 
 /* ============================================================
@@ -61,6 +53,7 @@ a.dx-icg__card:hover {
 
   .dx-icg__grid {
     grid-template-columns: repeat(var(--dx-icg-cols-t, 2), 1fr);
+    gap: var(--dx-icg-gap-t, 16px);
   }
 }
 
@@ -76,9 +69,7 @@ a.dx-icg__card:hover {
 
   .dx-icg__grid {
     grid-template-columns: repeat(var(--dx-icg-cols-m, 1), 1fr);
+    gap: var(--dx-icg-gap-m, 12px);
   }
 
-  .dx-icg__heading {
-    margin-bottom: 24px;
-  }
 }

@@ -13,12 +13,11 @@
     --dx-icg-cols-d: {{ s.grid.desktop_columns | default('4') }};
     --dx-icg-cols-t: {{ s.grid.tablet_columns | default('2') }};
     --dx-icg-cols-m: {{ s.grid.mobile_columns | default('1') }};
-    --dx-icg-gap: {{ s.grid.grid_gap | default(16) }}px;
+    --dx-icg-gap-d: {{ s.grid.desktop_gap | default(16) }}px;
+    --dx-icg-gap-t: {{ s.grid.tablet_gap | default(16) }}px;
+    --dx-icg-gap-m: {{ s.grid.mobile_gap | default(12) }}px;
     --dx-icg-card-bg: {{ s.card_style.card_bg_color.color | default('#F1F2F4') }};
     --dx-icg-card-radius: {{ s.card_style.card_radius | default(8) }}px;
-    {% if s.card_style.card_text_color.color %}
-    --dx-icg-card-text: {{ s.card_style.card_text_color.color }};
-    {% endif %}
     --dx-icg-pt-d: {{ d_sp.padding.top.value | default(60) }}{{ d_sp.padding.top.units | default('px') }};
     --dx-icg-pr-d: {{ d_sp.padding.right.value | default(0) }}{{ d_sp.padding.right.units | default('px') }};
     --dx-icg-pb-d: {{ d_sp.padding.bottom.value | default(60) }}{{ d_sp.padding.bottom.units | default('px') }};
@@ -71,9 +70,6 @@
             {% if card.card_icon.width %}width="{{ card.card_icon.width }}"{% endif %}
             {% if card.card_icon.height %}height="{{ card.card_icon.height }}"{% endif %}
           >
-          {% endif %}
-          {% if card.card_text %}
-          <span class="dx-icg__card-text">{{ card.card_text }}</span>
           {% endif %}
         </{{ has_link ? 'a' : 'div' }}>
       {% endfor %}
