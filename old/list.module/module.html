@@ -1,0 +1,97 @@
+<section class="pdx-list{% if module.shadow %} pdx-list--shadow {% endif %} {% if module.half_shadow %} pdx-list--half-shadow {% endif %}">
+  <div class="content-wrapper">
+    <header class="pdx-list__header">
+      {% if module.heading_tag == "h1" %}
+        <h1 class="pdx-list__title">{{ module.title }}</h1>
+      {% elif module.heading_tag == "h2" %}
+        <h2 class="pdx-list__title">{{ module.title }}</h2>
+      {% elif module.heading_tag == "h3" %}
+        <h3 class="pdx-list__title">{{ module.title }}</h3>
+      {% elif module.heading_tag == "h4" %}
+        <h4 class="pdx-list__title">{{ module.title }}</h4>
+      {% elif module.heading_tag == "h5" %}
+        <h5 class="pdx-list__title">{{ module.title }}</h5>
+      {% elif module.heading_tag == "h6" %}
+        <h6 class="pdx-list__title">{{ module.title }}</h6>
+      {% endif %}
+      <div class="pdx-list__subtitle">{{ module.subtitle }}</div>
+    </header>
+    <div class="pdx-list__grid">
+     <div class="pdx-list__row">
+        {% for card in module.cards %}
+          <article class="pdx-list__card pdx-list__card--{{ module.cards_per_row }}">
+            <div class="pdx-list__icon">
+              <img class="" src="{{ card.icon.src }}" alt="{{ card.icon.alt|striptags|escape }}" loading="lazy">
+            </div>
+            <div class="pdx-list__content {{ ! card.card_description ? 'pdx-list__content--no-description' : '' }}">
+              {% if module.card_heading_tag == "h1" && card.card_title %}
+                <h1 class="pdx-list__card-title">{{ card.card_title }}</h1>
+              {% elif module.card_heading_tag == "h2" && card.card_title %}
+                <h2 class="pdx-list__card-title">{{ card.card_title }}</h2>
+              {% elif module.card_heading_tag == "h3" && card.card_title %}
+                <h3 class="pdx-list__card-title">{{ card.card_title }}</h3>
+              {% elif module.card_heading_tag == "h4" && card.card_title %}
+                <h4 class="pdx-list__card-title">{{ card.card_title }}</h4>
+              {% elif module.card_heading_tag == "h5" && card.card_title %}
+                <h5 class="pdx-list__card-title">{{ card.card_title }}</h5>
+              {% elif module.card_heading_tag == "h6" && card.card_title %}
+                <h6 class="pdx-list__card-title">{{ card.card_title }}</h6>
+              {% endif %}
+              {% if card.card_description %}
+                <div class="pdx-list__card-description">{{ card.card_description }}</div>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% if module.image_grid %}
+     <div class="pdx-list__grid-images">
+        {% for item in module.image_grid %}
+            {% if item.image_field.src %}
+              {% set sizeAttrs = 'width="{{ item.image_field.width|escape_attr }}" height="{{ item.image_field.height|escape_attr }}"' %}
+              {% if item.image_field.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ item.image_field.width|escape_attr }}" height="{{ item.image_field.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+              {% elif item.image_field.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ item.image_field.max_width|escape_attr }}" height="{{ item.image_field.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+              {% endif %}
+               {% set loadingAttr = item.image_field.loading != 'disabled' ? 'loading="{{ item.image_field.loading|escape_attr }}"' : '' %}
+               <div class="pdx-list__grid-image">
+                 <img src="{{ item.image_field.src|escape_url }}" alt="{{ item.image_field.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+               </div>
+            {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% require_css %}
+<style>
+  {% scope_css %}
+  
+  /* Mobile First - Base styles (mobile) */
+  .pdx-list {
+    {{ module.style.mobile_spacing.css }}
+  }
+  
+  /* Tablet styles */
+  @media (min-width: 768px) {
+    {% if module.style.tablet %}
+      .pdx-list {
+        {{ module.style.tablet_spacing.css }}
+      }
+    {% endif %}
+  }
+  
+  /* Desktop styles */
+  @media (min-width: 1024px) {
+    {% if module.style.desktop %}
+      .pdx-list {
+        {{ module.style.desktop_spacing.css }}
+      }
+    {% endif %}
+  }
+  
+  {% end_scope_css %}
+</style>
+{% end_require_css %}

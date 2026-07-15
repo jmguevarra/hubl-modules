@@ -1,6 +1,10 @@
 {% set styles = module.styles %}
+{% set d_sp = styles.module_wrapper.spacing.spacing_desktop.desktop_spacing %}
+{% set t_sp = styles.module_wrapper.spacing.spacing_tablet.tablet_spacing %}
+{% set m_sp = styles.module_wrapper.spacing.spacing_mobile.mobile_spacing %}
 {% set btn_style_class = {
   "primary":             "dx-btn--primary",
+  "primary-linear":      "dx-btn--primary-linear",
   "secondary":           "dx-btn--secondary",
   "blog":                "dx-btn--blog",
   "training":            "dx-btn--training",
@@ -14,7 +18,35 @@
 {% if module.buttons %}
 <div
   class="dx-buttons"
-  style="flex-direction:{{ styles.layout }};{% if styles.layout == 'column' %}align-items:{{ styles.alignment }};{% else %}justify-content:{{ styles.alignment }};{% endif %}gap:{{ styles.gap }};"
+  style="
+    flex-direction:{{ styles.layout }};
+    {% if styles.layout == 'column' %}align-items:{{ styles.alignment }};{% else %}justify-content:{{ styles.alignment }};{% endif %}
+    gap:{{ styles.gap }};
+    --dxb-pt-d:{{ d_sp.padding.top.value | default(0) }}{{ d_sp.padding.top.units | default('px') }};
+    --dxb-pr-d:{{ d_sp.padding.right.value | default(0) }}{{ d_sp.padding.right.units | default('px') }};
+    --dxb-pb-d:{{ d_sp.padding.bottom.value | default(0) }}{{ d_sp.padding.bottom.units | default('px') }};
+    --dxb-pl-d:{{ d_sp.padding.left.value | default(0) }}{{ d_sp.padding.left.units | default('px') }};
+    --dxb-mt-d:{{ d_sp.margin.top.value | default(0) }}{{ d_sp.margin.top.units | default('px') }};
+    --dxb-mr-d:{{ d_sp.margin.right.value | default(0) }}{{ d_sp.margin.right.units | default('px') }};
+    --dxb-mb-d:{{ d_sp.margin.bottom.value | default(0) }}{{ d_sp.margin.bottom.units | default('px') }};
+    --dxb-ml-d:{{ d_sp.margin.left.value | default(0) }}{{ d_sp.margin.left.units | default('px') }};
+    --dxb-pt-t:{{ t_sp.padding.top.value | default(0) }}{{ t_sp.padding.top.units | default('px') }};
+    --dxb-pr-t:{{ t_sp.padding.right.value | default(0) }}{{ t_sp.padding.right.units | default('px') }};
+    --dxb-pb-t:{{ t_sp.padding.bottom.value | default(0) }}{{ t_sp.padding.bottom.units | default('px') }};
+    --dxb-pl-t:{{ t_sp.padding.left.value | default(0) }}{{ t_sp.padding.left.units | default('px') }};
+    --dxb-mt-t:{{ t_sp.margin.top.value | default(0) }}{{ t_sp.margin.top.units | default('px') }};
+    --dxb-mr-t:{{ t_sp.margin.right.value | default(0) }}{{ t_sp.margin.right.units | default('px') }};
+    --dxb-mb-t:{{ t_sp.margin.bottom.value | default(0) }}{{ t_sp.margin.bottom.units | default('px') }};
+    --dxb-ml-t:{{ t_sp.margin.left.value | default(0) }}{{ t_sp.margin.left.units | default('px') }};
+    --dxb-pt-m:{{ m_sp.padding.top.value | default(0) }}{{ m_sp.padding.top.units | default('px') }};
+    --dxb-pr-m:{{ m_sp.padding.right.value | default(0) }}{{ m_sp.padding.right.units | default('px') }};
+    --dxb-pb-m:{{ m_sp.padding.bottom.value | default(0) }}{{ m_sp.padding.bottom.units | default('px') }};
+    --dxb-pl-m:{{ m_sp.padding.left.value | default(0) }}{{ m_sp.padding.left.units | default('px') }};
+    --dxb-mt-m:{{ m_sp.margin.top.value | default(0) }}{{ m_sp.margin.top.units | default('px') }};
+    --dxb-mr-m:{{ m_sp.margin.right.value | default(0) }}{{ m_sp.margin.right.units | default('px') }};
+    --dxb-mb-m:{{ m_sp.margin.bottom.value | default(0) }}{{ m_sp.margin.bottom.units | default('px') }};
+    --dxb-ml-m:{{ m_sp.margin.left.value | default(0) }}{{ m_sp.margin.left.units | default('px') }};
+  "
 >
   {% for btn in module.buttons %}
   {% if btn.button_text %}

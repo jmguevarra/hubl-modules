@@ -77,6 +77,64 @@
     "tab": "STYLE",
     "children": [
       {
+        "id": "module_wrapper",
+        "name": "module_wrapper",
+        "label": "Module Wrapper",
+        "type": "group",
+        "children": [
+          {
+            "id": "spacing",
+            "name": "spacing",
+            "label": "Spacing",
+            "type": "group",
+            "children": [
+              {
+                "id": "spacing_desktop",
+                "name": "spacing_desktop",
+                "label": "Desktop",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "desktop_spacing",
+                    "name": "desktop_spacing",
+                    "label": "Spacing",
+                    "type": "spacing"
+                  }
+                ]
+              },
+              {
+                "id": "spacing_tablet",
+                "name": "spacing_tablet",
+                "label": "Tablet",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "tablet_spacing",
+                    "name": "tablet_spacing",
+                    "label": "Spacing",
+                    "type": "spacing"
+                  }
+                ]
+              },
+              {
+                "id": "spacing_mobile",
+                "name": "spacing_mobile",
+                "label": "Mobile",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "mobile_spacing",
+                    "name": "mobile_spacing",
+                    "label": "Spacing",
+                    "type": "spacing"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "layout",
         "name": "layout",
         "label": "Layout",
@@ -122,6 +180,7 @@
         "display": "select",
         "choices": [
           ["primary", "Primary"],
+          ["primary-linear", "Primary Linear"],
           ["secondary", "Secondary"],
           ["blog", "Blog"],
           ["training", "Training"],

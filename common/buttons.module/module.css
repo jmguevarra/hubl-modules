@@ -2,6 +2,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  padding: var(--dxb-pt-d, 0) var(--dxb-pr-d, 0) var(--dxb-pb-d, 0) var(--dxb-pl-d, 0);
+  margin: var(--dxb-mt-d, 0) var(--dxb-mr-d, 0) var(--dxb-mb-d, 0) var(--dxb-ml-d, 0);
 }
 
 .dx-buttons__btn {
@@ -13,5 +15,23 @@
 .dx-buttons__btn-icon {
   display: block;
   flex-shrink: 0;
+}
+
+/* ── Responsive — Tablet (≤1023px) ───────────────── */
+
+@media (max-width: 1023px) {
+  .dx-buttons {
+    padding: var(--dxb-pt-t, 0) var(--dxb-pr-t, 0) var(--dxb-pb-t, 0) var(--dxb-pl-t, 0);
+    margin: var(--dxb-mt-t, 0) var(--dxb-mr-t, 0) var(--dxb-mb-t, 0) var(--dxb-ml-t, 0);
+  }
+}
+
+/* ── Responsive — Mobile (≤767px) ────────────────── */
+
+@media (max-width: 767px) {
+  .dx-buttons {
+    padding: var(--dxb-pt-m, 0) var(--dxb-pr-m, 0) var(--dxb-pb-m, 0) var(--dxb-pl-m, 0);
+    margin: var(--dxb-mt-m, 0) var(--dxb-mr-m, 0) var(--dxb-mb-m, 0) var(--dxb-ml-m, 0);
+  }
 }
 

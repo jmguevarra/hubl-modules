@@ -1,0 +1,707 @@
+{
+  "card_heading_tag.choices.h1" : {
+    "message" : "H1",
+    "description" : "",
+    "placeholders" : null
+  },
+  "card_heading_tag.choices.h2" : {
+    "message" : "H2",
+    "description" : "",
+    "placeholders" : null
+  },
+  "card_heading_tag.choices.h3" : {
+    "message" : "H3",
+    "description" : "",
+    "placeholders" : null
+  },
+  "card_heading_tag.choices.h4" : {
+    "message" : "H4",
+    "description" : "",
+    "placeholders" : null
+  },
+  "card_heading_tag.choices.h5" : {
+    "message" : "H5",
+    "description" : "",
+    "placeholders" : null
+  },
+  "card_heading_tag.choices.h6" : {
+    "message" : "H6",
+    "description" : "",
+    "placeholders" : null
+  },
+  "card_heading_tag.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "card_heading_tag.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "card_heading_tag.label" : {
+    "message" : "Card heading tag",
+    "description" : "",
+    "placeholders" : null
+  },
+  "card_heading_tag.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "cards.card_description.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.card_description.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.card_description.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.card_description.label" : {
+    "message" : "Rich text",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.card_description.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.card_title.default" : {
+    "message" : "Card title",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.card_title.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.card_title.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.card_title.label" : {
+    "message" : "Card title",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.card_title.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.card_title.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.icon.default.alt" : {
+    "message" : "Icon",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.icon.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.icon.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.icon.label" : {
+    "message" : "Icon",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.icon.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.label" : {
+    "message" : "Cards",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards.name" : {
+    "message" : "list",
+    "description" : "",
+    "placeholders" : null
+  },
+  "cards.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards_per_row.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards_per_row.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards_per_row.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards_per_row.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "cards_per_row.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "half_shadow.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "half_shadow.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "half_shadow.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "half_shadow.label" : {
+    "message" : "Shadow copy",
+    "description" : null,
+    "placeholders" : null
+  },
+  "half_shadow.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "heading_tag.choices.h1" : {
+    "message" : "H1",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.choices.h2" : {
+    "message" : "H2",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.choices.h3" : {
+    "message" : "H3",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.choices.h4" : {
+    "message" : "H4",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.choices.h5" : {
+    "message" : "H5",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.choices.h6" : {
+    "message" : "H6",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.label" : {
+    "message" : "Main heading tag",
+    "description" : "",
+    "placeholders" : null
+  },
+  "heading_tag.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "image_grid.color_field.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "image_grid.color_field.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "image_grid.color_field.label" : {
+    "message" : "Color",
+    "description" : "",
+    "placeholders" : null
+  },
+  "image_grid.color_field.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "image_grid.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "image_grid.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "image_grid.image_field.default.alt" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "image_grid.image_field.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "image_grid.image_field.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "image_grid.image_field.label" : {
+    "message" : "Image",
+    "description" : null,
+    "placeholders" : null
+  },
+  "image_grid.image_field.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "image_grid.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "image_grid.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "image_grid.name" : {
+    "message" : "list",
+    "description" : "",
+    "placeholders" : null
+  },
+  "image_grid.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "name" : {
+    "message" : "list",
+    "description" : "",
+    "placeholders" : null
+  },
+  "shadow.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "shadow.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "shadow.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "shadow.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "shadow.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop.label" : {
+    "message" : "Tablet copy",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.bottom.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.bottom.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.left.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.left.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.right.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.right.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.top.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.top.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.label" : {
+    "message" : "Style",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.bottom.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.bottom.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.left.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.left.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.right.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.right.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.top.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.name" : {
+    "message" : "list",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.spacing_field.default" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.spacing_field.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.spacing_field.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.spacing_field.label" : {
+    "message" : "Desktop Spacing",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.spacing_field.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.tablet.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet.label" : {
+    "message" : "Boolean",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.bottom.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.bottom.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.left.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.left.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.right.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.right.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.top.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "subtitle.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "subtitle.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "subtitle.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "subtitle.label" : {
+    "message" : "Rich text",
+    "description" : null,
+    "placeholders" : null
+  },
+  "subtitle.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "title.default" : {
+    "message" : "Unlock the benefits of modernisation faster",
+    "description" : "",
+    "placeholders" : null
+  },
+  "title.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "title.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "title.label" : {
+    "message" : "Title",
+    "description" : "",
+    "placeholders" : null
+  },
+  "title.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "title.validation_regex" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  }
+}
