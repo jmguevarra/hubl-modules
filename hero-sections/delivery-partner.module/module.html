@@ -1,0 +1,117 @@
+{% set s = module.styles %}
+{% set kpi_s = s.kpi_style %}
+{% set btn = module.button_section %}
+{% set btn_style_class = {
+  "primary":             "dx-btn--primary",
+  "secondary":           "dx-btn--secondary",
+  "blog":                "dx-btn--blog",
+  "training":            "dx-btn--training",
+  "blog-hover-fill":     "dx-btn--blog-hover-fill",
+  "training-hover-fill": "dx-btn--training-hover-fill",
+  "primary-outline":     "dx-btn--primary-outline",
+  "secondary-outline":   "dx-btn--secondary-outline",
+  "tertiary-outline":    "dx-btn--tertiary-outline"
+}[s.button_style] %}
+
+<section
+  class="dx-dph"
+  style="
+    {% if s.section.bg_color.color %}background-color:{{ s.section.bg_color.color }};{% endif %}
+    {% if s.section.bg_image.src %}background-image:url('{{ s.section.bg_image.src }}');{% endif %}
+    {% if s.heading_style.enable_heading_styles %}--dph-heading-color:{{ s.heading_style.heading_color.css }};{% endif %}
+    {% if s.description_style.enable_description_styles %}--dph-desc-color:{{ s.description_style.description_color.css }};{% endif %}
+    --dph-kpi-bg:{{ kpi_s.kpi_bg_color.css }};
+    --dph-kpi-value-color:{{ kpi_s.value_color.css }};
+    --dph-kpi-label-color:{{ kpi_s.label_color.css }};
+  "
+>
+  <div class="dx-module__container content-wrapper">
+    <div class="dx-dph__columns dx-dph__columns--{{ module.layout }}">
+
+      {# ---- Content column ---- #}
+      <div class="dx-dph__content-col">
+
+        {% if module.top_image.src %}
+        <img
+          src="{{ module.top_image.src }}"
+          alt="{{ module.top_image.alt }}"
+          {% if module.top_image.width %}width="{{ module.top_image.width }}"{% endif %}
+          {% if module.top_image.height %}height="{{ module.top_image.height }}"{% endif %}
+          class="dx-dph__top-image"
+          loading="eager"
+        >
+        {% endif %}
+
+        {% if module.heading %}
+        <h1 class="dx-dph__heading">{{ module.heading }}</h1>
+        {% endif %}
+
+        {% if module.description %}
+        <div class="dx-dph__description">{{ module.description }}</div>
+        {% endif %}
+
+        {% if btn.button_text %}
+        {% set btn_href = btn.button_type == 'anchor' ? btn.button_anchor : btn.button_url.href %}
+        <a
+          href="{{ btn_href }}"
+          class="dx-btn {{ btn_style_class }} dx-dph__btn"
+          {% if btn.button_type != 'anchor' and btn.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+        >
+          <span class="dx-btn-text">{{ btn.button_text }}</span>
+          <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        {% endif %}
+
+      </div>{# end content-col #}
+
+      {# ---- Image column ---- #}
+      {% if module.image.src or module.kpis %}
+      <div class="dx-dph__image-col">
+
+        {% if module.image.src %}
+        <div class="dx-dph__image-wrap">
+          <img
+            src="{{ module.image.src }}"
+            alt="{{ module.image.alt }}"
+            {% if module.image.width %}width="{{ module.image.width }}"{% endif %}
+            {% if module.image.height %}height="{{ module.image.height }}"{% endif %}
+            class="dx-dph__image"
+            loading="eager"
+          >
+
+          {% if module.kpis and kpi_s.enable_floating %}
+          <div class="dx-dph__kpis dx-dph__kpis--floating">
+            {% for kpi in module.kpis %}
+            {% if kpi.kpi_value or kpi.kpi_label %}
+            <div class="dx-dph__kpi dx-dph__kpi--{{ kpi.kpi_position }}">
+              {% if kpi.kpi_value %}<span class="dx-dph__kpi-value">{{ kpi.kpi_value }}</span>{% endif %}
+              {% if kpi.kpi_label %}<span class="dx-dph__kpi-label">{{ kpi.kpi_label }}</span>{% endif %}
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {% if module.kpis and not kpi_s.enable_floating %}
+        <div class="dx-dph__kpis dx-dph__kpis--static dx-dph__kpis--{{ kpi_s.grid_columns }}">
+          {% for kpi in module.kpis %}
+          {% if kpi.kpi_value or kpi.kpi_label %}
+          <div class="dx-dph__kpi">
+            {% if kpi.kpi_value %}<span class="dx-dph__kpi-value">{{ kpi.kpi_value }}</span>{% endif %}
+            {% if kpi.kpi_label %}<span class="dx-dph__kpi-label">{{ kpi.kpi_label }}</span>{% endif %}
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div>{# end image-col #}
+      {% endif %}
+
+    </div>{# end columns #}
+  </div>{# end container #}
+</section>

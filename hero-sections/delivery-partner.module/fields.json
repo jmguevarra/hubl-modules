@@ -1,0 +1,344 @@
+[
+  {
+    "id": "top_image",
+    "name": "top_image",
+    "label": "Top Image",
+    "help_text": "Logo / partner badge shown above the heading",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "",
+      "width": 260,
+      "height": 60
+    }
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Page Title",
+    "type": "text",
+    "default": "PhoenixDX - your trusted OutSystems delivery partner"
+  },
+  {
+    "id": "description",
+    "name": "description",
+    "label": "Page Description",
+    "type": "richtext",
+    "default": "<p>Decades of OutSystems expertise. A team built for enterprise. An AI approach that delivers results.</p>"
+  },
+  {
+    "id": "button_section",
+    "name": "button_section",
+    "label": "Button",
+    "type": "group",
+    "children": [
+      {
+        "id": "button_text",
+        "name": "button_text",
+        "label": "Button Text",
+        "type": "text",
+        "default": "Talk to us"
+      },
+      {
+        "id": "button_type",
+        "name": "button_type",
+        "label": "Button Type",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["link", "Link"],
+          ["anchor", "Anchor"]
+        ],
+        "default": "link"
+      },
+      {
+        "id": "button_url",
+        "name": "button_url",
+        "label": "Button URL",
+        "type": "url",
+        "default": "",
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_new_tab",
+        "name": "button_new_tab",
+        "label": "Open in New Tab",
+        "type": "boolean",
+        "default": false,
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_anchor",
+        "name": "button_anchor",
+        "label": "Anchor ID",
+        "type": "text",
+        "default": "",
+        "help_text": "Enter the section anchor ID to scroll to, e.g. #form-section",
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "anchor"
+        }
+      }
+    ]
+  },
+  {
+    "id": "layout",
+    "name": "layout",
+    "label": "Layout",
+    "help_text": "Order of the content and image columns",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      ["content-image", "Content | Image"],
+      ["image-content", "Image | Content"]
+    ],
+    "default": "content-image"
+  },
+  {
+    "id": "image",
+    "name": "image",
+    "label": "Image",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "",
+      "width": 600,
+      "height": 560
+    }
+  },
+  {
+    "id": "kpis",
+    "name": "kpis",
+    "label": "KPIs",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 3,
+      "sorting_label_field": "kpi_label"
+    },
+    "default": [
+      {
+        "kpi_value": "6",
+        "kpi_label": "OutSystems MVPs (ANZ)",
+        "kpi_position": "top-left"
+      },
+      {
+        "kpi_value": "200+",
+        "kpi_label": "Certifications",
+        "kpi_position": "top-right"
+      },
+      {
+        "kpi_value": "10+",
+        "kpi_label": "Years OutSystems Partner",
+        "kpi_position": "bottom-center"
+      }
+    ],
+    "children": [
+      {
+        "id": "kpi_value",
+        "name": "kpi_value",
+        "label": "Value",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "kpi_label",
+        "name": "kpi_label",
+        "label": "Label",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "kpi_position",
+        "name": "kpi_position",
+        "label": "Floating Position",
+        "help_text": "Only used when 'Float KPIs Over Image' is enabled",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["top-left", "Top Left"],
+          ["top-right", "Top Right"],
+          ["bottom-left", "Bottom Left"],
+          ["bottom-right", "Bottom Right"],
+          ["bottom-center", "Bottom Center"]
+        ],
+        "default": "top-left"
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "section",
+        "name": "section",
+        "label": "Section",
+        "type": "group",
+        "children": [
+          {
+            "id": "bg_color",
+            "name": "bg_color",
+            "label": "Background Color",
+            "type": "color",
+            "default": { "color": "#051327", "opacity": 100 }
+          },
+          {
+            "id": "bg_image",
+            "name": "bg_image",
+            "label": "Background Image",
+            "help_text": "Optional background image/graphic. Overlays the background color.",
+            "type": "image",
+            "default": {
+              "src": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ]
+      },
+      {
+        "id": "heading_style",
+        "name": "heading_style",
+        "label": "Heading",
+        "type": "group",
+        "children": [
+          {
+            "id": "enable_heading_styles",
+            "name": "enable_heading_styles",
+            "label": "Enable Styles",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "heading_color",
+            "name": "heading_color",
+            "label": "Heading Color",
+            "type": "color",
+            "default": { "color": "#FFFFFF", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.heading_style.enable_heading_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          }
+        ]
+      },
+      {
+        "id": "description_style",
+        "name": "description_style",
+        "label": "Description",
+        "type": "group",
+        "children": [
+          {
+            "id": "enable_description_styles",
+            "name": "enable_description_styles",
+            "label": "Enable Styles",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "description_color",
+            "name": "description_color",
+            "label": "Description Color",
+            "type": "color",
+            "default": { "color": "#C7CEDA", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.description_style.enable_description_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          }
+        ]
+      },
+      {
+        "id": "button_style",
+        "name": "button_style",
+        "label": "Button Style",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["primary", "Primary"],
+          ["secondary", "Secondary"],
+          ["blog", "Blog"],
+          ["training", "Training"],
+          ["blog-hover-fill", "Blog Hover-Fill"],
+          ["training-hover-fill", "Training Hover-Fill"],
+          ["primary-outline", "Primary Outline"],
+          ["secondary-outline", "Secondary Outline"],
+          ["tertiary-outline", "Tertiary Outline"]
+        ],
+        "default": "primary"
+      },
+      {
+        "id": "kpi_style",
+        "name": "kpi_style",
+        "label": "KPIs",
+        "type": "group",
+        "children": [
+          {
+            "id": "enable_floating",
+            "name": "enable_floating",
+            "label": "Float KPIs Over Image",
+            "help_text": "When enabled, KPI cards are positioned over the image using the position set on each KPI. When disabled, KPIs display as a static row below the image.",
+            "type": "boolean",
+            "default": true
+          },
+          {
+            "id": "grid_columns",
+            "name": "grid_columns",
+            "label": "Static Grid Columns",
+            "help_text": "Used only when floating is disabled",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["cols-2", "2 Columns"],
+              ["cols-3", "3 Columns"]
+            ],
+            "default": "cols-3",
+            "visibility": {
+              "controlling_field_path": "styles.kpi_style.enable_floating",
+              "operator": "EQUAL",
+              "controlling_value_regex": "false"
+            }
+          },
+          {
+            "id": "kpi_bg_color",
+            "name": "kpi_bg_color",
+            "label": "Background Color",
+            "type": "color",
+            "default": { "color": "#FFFFFF", "opacity": 100 }
+          },
+          {
+            "id": "value_color",
+            "name": "value_color",
+            "label": "Value Color",
+            "type": "color",
+            "default": { "color": "#D81F26", "opacity": 100 }
+          },
+          {
+            "id": "label_color",
+            "name": "label_color",
+            "label": "Label Color",
+            "type": "color",
+            "default": { "color": "#051327", "opacity": 100 }
+          }
+        ]
+      }
+    ]
+  }
+]

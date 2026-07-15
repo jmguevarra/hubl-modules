@@ -1,0 +1,261 @@
+.dx-dph {
+  position: relative;
+  width: 100%;
+  padding: 80px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* Two-column layout */
+.dx-dph__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.dx-dph__columns--image-content .dx-dph__image-col {
+  order: -1;
+}
+
+/* ── Content column ─────────────────────────────── */
+
+.dx-dph__top-image {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: 0 0 24px;
+}
+
+.dx-dph__heading {
+  color: var(--dph-heading-color, #ffffff);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+
+.dx-dph__description {
+  color: var(--dph-desc-color, rgba(255, 255, 255, 0.75));
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 32px;
+}
+
+.dx-dph__description p {
+  margin: 0 0 16px;
+}
+
+.dx-dph__description p:last-child {
+  margin-bottom: 0;
+}
+
+.dx-dph__btn {
+  display: inline-flex;
+}
+
+/* ── Image column ───────────────────────────────── */
+
+.dx-dph__image-col {
+  position: relative;
+}
+
+.dx-dph__image-wrap {
+  position: relative;
+  display: flex;
+}
+
+.dx-dph__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Button variants */
+.dx-dph__btn.dx-btn--primary {}
+.dx-dph__btn.dx-btn--secondary {}
+.dx-dph__btn.dx-btn--blog {}
+.dx-dph__btn.dx-btn--training {}
+.dx-dph__btn.dx-btn--blog-hover-fill {}
+.dx-dph__btn.dx-btn--training-hover-fill {}
+.dx-dph__btn.dx-btn--primary-outline {}
+.dx-dph__btn.dx-btn--secondary-outline {}
+.dx-dph__btn.dx-btn--tertiary-outline {}
+
+/* ── KPI cards — shared ──────────────────────────── */
+
+.dx-dph__kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background-color: var(--dph-kpi-bg, #ffffff);
+  border-radius: 10px;
+  padding: 12px 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.dx-dph__kpi-value {
+  color: var(--dph-kpi-value-color, #d81f26);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.dx-dph__kpi-label {
+  color: var(--dph-kpi-label-color, #051327);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+/* Floating layout — positioned over the image */
+.dx-dph__kpis--floating {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dx-dph__kpis--floating .dx-dph__kpi {
+  position: absolute;
+  pointer-events: auto;
+}
+
+.dx-dph__kpi--top-left {
+  top: 8%;
+  left: -8%;
+}
+
+.dx-dph__kpi--top-right {
+  top: 4%;
+  right: -6%;
+}
+
+.dx-dph__kpi--bottom-left {
+  bottom: 10%;
+  left: -8%;
+}
+
+.dx-dph__kpi--bottom-right {
+  bottom: 6%;
+  right: -6%;
+}
+
+.dx-dph__kpi--bottom-center {
+  bottom: -6%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Static layout — row below the image */
+.dx-dph__kpis--static {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.dx-dph__kpis--static.dx-dph__kpis--cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.dx-dph__kpis--static.dx-dph__kpis--cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.dx-dph__kpis--static .dx-dph__kpi {
+  align-items: center;
+  text-align: center;
+}
+
+/* ── Responsive — Tablet ─────────────────────────── */
+
+@media (max-width: 1024px) {
+  .dx-dph {
+    padding: 60px 0;
+  }
+
+  .dx-dph__columns {
+    gap: 40px;
+  }
+
+  .dx-dph__heading {
+    font-size: 32px;
+  }
+
+  .dx-dph__kpi--top-left,
+  .dx-dph__kpi--bottom-left {
+    left: -4%;
+  }
+
+  .dx-dph__kpi--top-right,
+  .dx-dph__kpi--bottom-right {
+    right: -4%;
+  }
+}
+
+/* ── Responsive — Mobile ─────────────────────────── */
+
+@media (max-width: 767px) {
+  .dx-dph {
+    padding: 40px 0;
+  }
+
+  .dx-dph__columns,
+  .dx-dph__columns--image-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .dx-dph__columns--image-content .dx-dph__image-col {
+    order: 0;
+  }
+
+  .dx-dph__heading {
+    font-size: 26px;
+  }
+
+  .dx-dph__description {
+    font-size: 15px;
+  }
+
+  /* Floating KPIs collapse to a static row on mobile */
+  .dx-dph__kpis--floating {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .dx-dph__kpis--floating .dx-dph__kpi {
+    position: static;
+    transform: none;
+    flex: 1 1 calc(50% - 12px);
+  }
+
+  .dx-dph__kpis--static.dx-dph__kpis--cols-2,
+  .dx-dph__kpis--static.dx-dph__kpis--cols-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .dx-dph__kpi {
+    padding: 10px 14px;
+  }
+
+  .dx-dph__kpi-value {
+    font-size: 20px;
+  }
+
+  .dx-dph__kpi-label {
+    font-size: 12px;
+  }
+
+  .dx-dph__kpis--floating .dx-dph__kpi {
+    flex: 1 1 100%;
+  }
+}
