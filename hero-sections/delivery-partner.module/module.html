@@ -1,6 +1,9 @@
 {% set s = module.styles %}
 {% set kpi_s = s.kpi_style %}
 {% set btn = module.button_section %}
+{% set d_sp = s.section.spacing.spacing_desktop.desktop_spacing %}
+{% set t_sp = s.section.spacing.spacing_tablet.tablet_spacing %}
+{% set m_sp = s.section.spacing.spacing_mobile.mobile_spacing %}
 {% set btn_style_class = {
   "primary":             "dx-btn--primary",
   "secondary":           "dx-btn--secondary",
@@ -23,6 +26,18 @@
     --dph-kpi-bg:{{ kpi_s.kpi_bg_color.css }};
     --dph-kpi-value-color:{{ kpi_s.value_color.css }};
     --dph-kpi-label-color:{{ kpi_s.label_color.css }};
+    --dph-pt-d:{{ d_sp.padding.top.value | default(80) }}{{ d_sp.padding.top.units | default('px') }};
+    --dph-pr-d:{{ d_sp.padding.right.value | default(0) }}{{ d_sp.padding.right.units | default('px') }};
+    --dph-pb-d:{{ d_sp.padding.bottom.value | default(80) }}{{ d_sp.padding.bottom.units | default('px') }};
+    --dph-pl-d:{{ d_sp.padding.left.value | default(0) }}{{ d_sp.padding.left.units | default('px') }};
+    --dph-pt-t:{{ t_sp.padding.top.value | default(60) }}{{ t_sp.padding.top.units | default('px') }};
+    --dph-pr-t:{{ t_sp.padding.right.value | default(0) }}{{ t_sp.padding.right.units | default('px') }};
+    --dph-pb-t:{{ t_sp.padding.bottom.value | default(60) }}{{ t_sp.padding.bottom.units | default('px') }};
+    --dph-pl-t:{{ t_sp.padding.left.value | default(0) }}{{ t_sp.padding.left.units | default('px') }};
+    --dph-pt-m:{{ m_sp.padding.top.value | default(40) }}{{ m_sp.padding.top.units | default('px') }};
+    --dph-pr-m:{{ m_sp.padding.right.value | default(0) }}{{ m_sp.padding.right.units | default('px') }};
+    --dph-pb-m:{{ m_sp.padding.bottom.value | default(40) }}{{ m_sp.padding.bottom.units | default('px') }};
+    --dph-pl-m:{{ m_sp.padding.left.value | default(0) }}{{ m_sp.padding.left.units | default('px') }};
   "
 >
   <div class="dx-module__container content-wrapper">

@@ -208,6 +208,80 @@
               "width": 1920,
               "height": 1080
             }
+          },
+          {
+            "id": "spacing",
+            "name": "spacing",
+            "label": "Spacing",
+            "type": "group",
+            "children": [
+              {
+                "id": "spacing_desktop",
+                "name": "spacing_desktop",
+                "label": "Desktop",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "desktop_spacing",
+                    "name": "desktop_spacing",
+                    "label": "Spacing",
+                    "type": "spacing",
+                    "default": {
+                      "padding": {
+                        "top": { "value": 80, "units": "px" },
+                        "bottom": { "value": 80, "units": "px" },
+                        "left": { "value": 0, "units": "px" },
+                        "right": { "value": 0, "units": "px" }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "spacing_tablet",
+                "name": "spacing_tablet",
+                "label": "Tablet",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "tablet_spacing",
+                    "name": "tablet_spacing",
+                    "label": "Spacing",
+                    "type": "spacing",
+                    "default": {
+                      "padding": {
+                        "top": { "value": 60, "units": "px" },
+                        "bottom": { "value": 60, "units": "px" },
+                        "left": { "value": 0, "units": "px" },
+                        "right": { "value": 0, "units": "px" }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "spacing_mobile",
+                "name": "spacing_mobile",
+                "label": "Mobile",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "mobile_spacing",
+                    "name": "mobile_spacing",
+                    "label": "Spacing",
+                    "type": "spacing",
+                    "default": {
+                      "padding": {
+                        "top": { "value": 40, "units": "px" },
+                        "bottom": { "value": 40, "units": "px" },
+                        "left": { "value": 0, "units": "px" },
+                        "right": { "value": 0, "units": "px" }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
