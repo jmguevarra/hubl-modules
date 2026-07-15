@@ -347,6 +347,7 @@
         "display": "select",
         "choices": [
           ["primary", "Primary"],
+          ["primary-linear", "Primary Linear"],
           ["secondary", "Secondary"],
           ["blog", "Blog"],
           ["training", "Training"],
