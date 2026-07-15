@@ -1,0 +1,227 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "Products and accelerators"
+  },
+  {
+    "id": "heading_tag",
+    "name": "heading_tag",
+    "label": "Heading Tag",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      ["h1", "H1"],
+      ["h2", "H2"],
+      ["h3", "H3"],
+      ["h4", "H4"]
+    ],
+    "default": "h2"
+  },
+  {
+    "id": "cards",
+    "name": "cards",
+    "label": "Cards",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 30,
+      "default": 11,
+      "sorting_label_field": "card_text"
+    },
+    "children": [
+      {
+        "id": "card_icon",
+        "name": "card_icon",
+        "label": "Icon",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 28,
+          "height": 28
+        }
+      },
+      {
+        "id": "card_text",
+        "name": "card_text",
+        "label": "Text",
+        "type": "text",
+        "default": "Card text"
+      },
+      {
+        "id": "card_link",
+        "name": "card_link",
+        "label": "Link (optional)",
+        "type": "link",
+        "default": {
+          "url": { "type": "EXTERNAL", "href": "" },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "spacing",
+        "name": "spacing",
+        "label": "Spacing",
+        "type": "group",
+        "children": [
+          {
+            "id": "spacing_desktop",
+            "name": "spacing_desktop",
+            "label": "Desktop",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop_spacing",
+                "name": "desktop_spacing",
+                "label": "Spacing",
+                "type": "spacing",
+                "default": {
+                  "padding": {
+                    "top": { "value": 60, "units": "px" },
+                    "bottom": { "value": 60, "units": "px" },
+                    "left": { "value": 0, "units": "px" },
+                    "right": { "value": 0, "units": "px" }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "spacing_tablet",
+            "name": "spacing_tablet",
+            "label": "Tablet",
+            "type": "group",
+            "children": [
+              {
+                "id": "tablet_spacing",
+                "name": "tablet_spacing",
+                "label": "Spacing",
+                "type": "spacing"
+              }
+            ]
+          },
+          {
+            "id": "spacing_mobile",
+            "name": "spacing_mobile",
+            "label": "Mobile",
+            "type": "group",
+            "children": [
+              {
+                "id": "mobile_spacing",
+                "name": "mobile_spacing",
+                "label": "Spacing",
+                "type": "spacing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "grid",
+        "name": "grid",
+        "label": "Grid",
+        "type": "group",
+        "children": [
+          {
+            "id": "desktop_columns",
+            "name": "desktop_columns",
+            "label": "Desktop Columns",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["2", "2 Columns"],
+              ["3", "3 Columns"],
+              ["4", "4 Columns"],
+              ["5", "5 Columns"]
+            ],
+            "default": "4"
+          },
+          {
+            "id": "tablet_columns",
+            "name": "tablet_columns",
+            "label": "Tablet Columns",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["1", "1 Column"],
+              ["2", "2 Columns"],
+              ["3", "3 Columns"]
+            ],
+            "default": "2"
+          },
+          {
+            "id": "mobile_columns",
+            "name": "mobile_columns",
+            "label": "Mobile Columns",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["1", "1 Column"],
+              ["2", "2 Columns"]
+            ],
+            "default": "1"
+          },
+          {
+            "id": "grid_gap",
+            "name": "grid_gap",
+            "label": "Grid Gap (px)",
+            "type": "number",
+            "default": 16,
+            "min": 0,
+            "max": 60
+          }
+        ]
+      },
+      {
+        "id": "card_style",
+        "name": "card_style",
+        "label": "Card",
+        "type": "group",
+        "children": [
+          {
+            "id": "card_bg_color",
+            "name": "card_bg_color",
+            "label": "Background Color",
+            "type": "color",
+            "default": {
+              "color": "#F1F2F4",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "card_text_color",
+            "name": "card_text_color",
+            "label": "Text Color",
+            "type": "color",
+            "default": {
+              "color": null,
+              "opacity": null
+            }
+          },
+          {
+            "id": "card_radius",
+            "name": "card_radius",
+            "label": "Corner Radius (px)",
+            "type": "number",
+            "default": 8,
+            "min": 0,
+            "max": 40
+          }
+        ]
+      }
+    ]
+  }
+]

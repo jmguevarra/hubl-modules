@@ -1,0 +1,84 @@
+{% set m = module %}
+{% set s = m.styles %}
+
+{% set d_sp = s.spacing.spacing_desktop.desktop_spacing %}
+{% set t_sp = s.spacing.spacing_tablet.tablet_spacing %}
+{% set mob_sp = s.spacing.spacing_mobile.mobile_spacing %}
+
+{% set htag = m.heading_tag | default('h2') %}
+
+<section
+  class="dx-icg"
+  style="
+    --dx-icg-cols-d: {{ s.grid.desktop_columns | default('4') }};
+    --dx-icg-cols-t: {{ s.grid.tablet_columns | default('2') }};
+    --dx-icg-cols-m: {{ s.grid.mobile_columns | default('1') }};
+    --dx-icg-gap: {{ s.grid.grid_gap | default(16) }}px;
+    --dx-icg-card-bg: {{ s.card_style.card_bg_color.color | default('#F1F2F4') }};
+    --dx-icg-card-radius: {{ s.card_style.card_radius | default(8) }}px;
+    {% if s.card_style.card_text_color.color %}
+    --dx-icg-card-text: {{ s.card_style.card_text_color.color }};
+    {% endif %}
+    --dx-icg-pt-d: {{ d_sp.padding.top.value | default(60) }}{{ d_sp.padding.top.units | default('px') }};
+    --dx-icg-pr-d: {{ d_sp.padding.right.value | default(0) }}{{ d_sp.padding.right.units | default('px') }};
+    --dx-icg-pb-d: {{ d_sp.padding.bottom.value | default(60) }}{{ d_sp.padding.bottom.units | default('px') }};
+    --dx-icg-pl-d: {{ d_sp.padding.left.value | default(0) }}{{ d_sp.padding.left.units | default('px') }};
+    --dx-icg-mt-d: {{ d_sp.margin.top.value | default(0) }}{{ d_sp.margin.top.units | default('px') }};
+    --dx-icg-mr-d: {{ d_sp.margin.right.value | default(0) }}{{ d_sp.margin.right.units | default('px') }};
+    --dx-icg-mb-d: {{ d_sp.margin.bottom.value | default(0) }}{{ d_sp.margin.bottom.units | default('px') }};
+    --dx-icg-ml-d: {{ d_sp.margin.left.value | default(0) }}{{ d_sp.margin.left.units | default('px') }};
+    --dx-icg-pt-t: {{ t_sp.padding.top.value | default(0) }}{{ t_sp.padding.top.units | default('px') }};
+    --dx-icg-pr-t: {{ t_sp.padding.right.value | default(0) }}{{ t_sp.padding.right.units | default('px') }};
+    --dx-icg-pb-t: {{ t_sp.padding.bottom.value | default(0) }}{{ t_sp.padding.bottom.units | default('px') }};
+    --dx-icg-pl-t: {{ t_sp.padding.left.value | default(0) }}{{ t_sp.padding.left.units | default('px') }};
+    --dx-icg-mt-t: {{ t_sp.margin.top.value | default(0) }}{{ t_sp.margin.top.units | default('px') }};
+    --dx-icg-mr-t: {{ t_sp.margin.right.value | default(0) }}{{ t_sp.margin.right.units | default('px') }};
+    --dx-icg-mb-t: {{ t_sp.margin.bottom.value | default(0) }}{{ t_sp.margin.bottom.units | default('px') }};
+    --dx-icg-ml-t: {{ t_sp.margin.left.value | default(0) }}{{ t_sp.margin.left.units | default('px') }};
+    --dx-icg-pt-m: {{ mob_sp.padding.top.value | default(0) }}{{ mob_sp.padding.top.units | default('px') }};
+    --dx-icg-pr-m: {{ mob_sp.padding.right.value | default(0) }}{{ mob_sp.padding.right.units | default('px') }};
+    --dx-icg-pb-m: {{ mob_sp.padding.bottom.value | default(0) }}{{ mob_sp.padding.bottom.units | default('px') }};
+    --dx-icg-pl-m: {{ mob_sp.padding.left.value | default(0) }}{{ mob_sp.padding.left.units | default('px') }};
+    --dx-icg-mt-m: {{ mob_sp.margin.top.value | default(0) }}{{ mob_sp.margin.top.units | default('px') }};
+    --dx-icg-mr-m: {{ mob_sp.margin.right.value | default(0) }}{{ mob_sp.margin.right.units | default('px') }};
+    --dx-icg-mb-m: {{ mob_sp.margin.bottom.value | default(0) }}{{ mob_sp.margin.bottom.units | default('px') }};
+    --dx-icg-ml-m: {{ mob_sp.margin.left.value | default(0) }}{{ mob_sp.margin.left.units | default('px') }};
+  "
+>
+  <div class="dx-module__container content-wrapper">
+
+    {% if m.heading %}
+    <{{ htag }} class="dx-icg__heading">{{ m.heading }}</{{ htag }}>
+    {% endif %}
+
+    {% if m.cards %}
+    <div class="dx-icg__grid">
+      {% for card in m.cards %}
+        {% set has_link = card.card_link.url.href %}
+        <{{ has_link ? 'a' : 'div' }}
+          class="dx-icg__card"
+          {% if has_link %}
+            href="{{ card.card_link.url.href }}"
+            {% if card.card_link.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+          {% endif %}
+        >
+          {% if card.card_icon.src %}
+          <img
+            class="dx-icg__icon"
+            src="{{ card.card_icon.src }}"
+            alt="{{ card.card_icon.alt|striptags|escape }}"
+            loading="lazy"
+            {% if card.card_icon.width %}width="{{ card.card_icon.width }}"{% endif %}
+            {% if card.card_icon.height %}height="{{ card.card_icon.height }}"{% endif %}
+          >
+          {% endif %}
+          {% if card.card_text %}
+          <span class="dx-icg__card-text">{{ card.card_text }}</span>
+          {% endif %}
+        </{{ has_link ? 'a' : 'div' }}>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>

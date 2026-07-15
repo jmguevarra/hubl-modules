@@ -1,0 +1,84 @@
+/* ============================================================
+   Icon Card Grid
+   ============================================================ */
+
+.dx-icg {
+  padding: var(--dx-icg-pt-d, 60px) var(--dx-icg-pr-d, 0) var(--dx-icg-pb-d, 60px) var(--dx-icg-pl-d, 0);
+  margin: var(--dx-icg-mt-d, 0) var(--dx-icg-mr-d, 0) var(--dx-icg-mb-d, 0) var(--dx-icg-ml-d, 0);
+}
+
+.dx-icg__heading {
+  color: var(--dx-color-header-text);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 32px;
+}
+
+.dx-icg__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--dx-icg-cols-d, 4), 1fr);
+  gap: var(--dx-icg-gap, 16px);
+}
+
+.dx-icg__card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  background: var(--dx-icg-card-bg, #F1F2F4);
+  border-radius: var(--dx-icg-card-radius, 8px);
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+a.dx-icg__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.dx-icg__icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.dx-icg__card-text {
+  color: var(--dx-icg-card-text, var(--dx-color-header-text));
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   Tablet (≤1023px)
+   ============================================================ */
+
+@media (max-width: 1023px) {
+  .dx-icg {
+    padding: var(--dx-icg-pt-t, 0) var(--dx-icg-pr-t, 0) var(--dx-icg-pb-t, 0) var(--dx-icg-pl-t, 0);
+    margin: var(--dx-icg-mt-t, 0) var(--dx-icg-mr-t, 0) var(--dx-icg-mb-t, 0) var(--dx-icg-ml-t, 0);
+  }
+
+  .dx-icg__grid {
+    grid-template-columns: repeat(var(--dx-icg-cols-t, 2), 1fr);
+  }
+}
+
+/* ============================================================
+   Mobile (≤767px)
+   ============================================================ */
+
+@media (max-width: 767px) {
+  .dx-icg {
+    padding: var(--dx-icg-pt-m, 0) var(--dx-icg-pr-m, 0) var(--dx-icg-pb-m, 0) var(--dx-icg-pl-m, 0);
+    margin: var(--dx-icg-mt-m, 0) var(--dx-icg-mr-m, 0) var(--dx-icg-mb-m, 0) var(--dx-icg-ml-m, 0);
+  }
+
+  .dx-icg__grid {
+    grid-template-columns: repeat(var(--dx-icg-cols-m, 1), 1fr);
+  }
+
+  .dx-icg__heading {
+    margin-bottom: 24px;
+  }
+}
