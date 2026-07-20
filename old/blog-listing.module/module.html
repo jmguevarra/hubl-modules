@@ -1,0 +1,189 @@
+<section class="pdx-blog-listing">
+  <div class="content-wrapper">
+    {% if module.breadcrumbs %}
+      <ul class="pdx-blog-listing__breadcrumbs">
+        {% for item in module.breadcrumbs %}
+          {% set href = item.link_field.url.href %}
+          {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+          {% elif item.link_field.url.type is equalto "PHONE_NUMBER" %}
+            {% set href = "tel:" + href %}
+          {% endif %}
+          {% if item.text_field %}
+            <li>
+               {% if not loop.last %}
+                    <a {% if item.link_field.url.type is equalto "CALL_TO_ACTION"  %}
+                      href="{{ href }}" {# The href here is not escaped as it is not editable and functions as a JavaScript call to the associated CTA #}
+                    {% else %}
+                      href="{{ href|escape_url }}"
+                    {% endif %}
+                    {% if item.link_field.open_in_new_tab %}
+                      target="_blank"
+                    {% endif %}
+                    {% if item.link_field.rel %}
+                      rel="{{ item.link_field.rel|escape_attr }}"
+                    {% endif %}
+                    >
+                    {{ item.text_field }}
+                  </a>
+                  <svg width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.18205 4.0625L0 0.902637L0.908975 0L5 4.0625L0.908975 8.125L0 7.22238L3.18205 4.0625Z" fill="#051327"/>
+                  </svg>
+                {% else %}
+                  {{ item.text_field }}
+              {% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <div class="pdx-blog-listing__header">
+      <div class="pdx-blog-listing__header-left-col">
+         {% if module.title %}
+          <h1 class="pdx-blog-listing__header-title {% if module.hide_heading && module.title %} pdx-blog-listing__header-title--hide {% endif %}">
+            {{ module.title }}
+            {% if module.highlight_text %}
+              <span>{{ module.highlight_text }}</span>
+            {% endif %}
+          </h1>
+        {% endif %}
+        {% if module.image_field.src %}
+            {% set sizeAttrs = 'width="{{ module.image_field.width|escape_attr }}" height="{{ module.image_field.height|escape_attr }}"' %}
+            {% if module.image_field.size_type == 'auto' %}
+              {% set sizeAttrs = 'width="{{ module.image_field.width|escape_attr }}" height="{{ module.image_field.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.image_field.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'width="{{ module.image_field.max_width|escape_attr }}" height="{{ module.image_field.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+             {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading|escape_attr }}"' : '' %}
+            <img src="{{ module.image_field.src|escape_url }}" alt="{{ module.image_field.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+      </div>
+      {# Need help setting up site search?
+      Start here: https://knowledge.hubspot.com/articles/kcs_article/cos-general/how-do-i-set-up-a-results-page-for-my-search-field-in-hubspot #}
+
+      {% set search_page = module.results.use_custom_search_results_template is truthy and module.results.path_id ? content_by_id(module.results.path_id).absolute_url : site_settings.content_search_results_page_path %}
+
+      {% unless (search_page is string_containing "//") %}
+      {% set search_page = "/" ~ search_page %}
+      {% endunless %}
+
+      {% set search_page = search_page|regex_replace("http:", "") %}
+
+      {% set content_types = [
+      {
+        field_name: "blog_posts",
+        content_type: "BLOG_POST"
+      }
+    ] %}
+
+      {% require_head %}
+      <script id="hs-search-input__valid-content-types" type="application/json">
+          [
+            {% for type in content_types %}
+              "{{ type.content_type }}"{% if not loop.last %},{% endif %}
+            {% endfor %}
+          ]
+      </script>
+      {% end_require_head %}
+
+      <div class="hs-search-field">
+
+        <div class="hs-search-field__bar">
+          <form data-hs-do-not-collect="true" action="{{ search_page|escape_url }}">
+            <label for="term">Search</label>
+            <svg class="hs-search-field__search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.4639 2.5882C13.9148 5.03914 13.9148 9.0129 11.4639 11.4638C9.01292 13.9148 5.03916 13.9148 2.58821 11.4638C0.137263 9.0129 0.137263 5.03914 2.58821 2.5882C5.03916 0.137265 9.01292 0.137265 11.4639 2.5882" stroke="#9F9F9F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14.75 14.75L11.46 11.46" stroke="#9F9F9F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+            <input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="Search" placeholder="{{ module.search_input_placeholder_text }}">
+            {% for type in content_types %}
+              <input type="hidden" name="type" value="{{ type.content_type }}">
+            {% endfor %}
+            <button aria-label="Search">
+              <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.46638 15.698L16.0465 9.39307C16.9858 8.95731 16.9858 7.60767 16.0465 7.17191L2.46638 0.868899C1.49227 0.417138 0.461692 1.37525 0.825924 2.39453L2.92756 8.28061L0.825924 14.1733C0.461692 15.1916 1.49227 16.1497 2.46638 15.698Z" stroke="#9F9F9F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2.9248 8.28333H16.7506" stroke="#9F9F9F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+        <ul class="hs-search-field__suggestions"></ul>
+      </div>
+
+    </div>
+    {% set my_topics = blog_topics('default', 250) %}
+    <div class="pdx-blog-listing__tag-list-wrap">
+      <ul class="pdx-blog-listing__tag-list">
+        {% set my_tags = blog_tags('default', 250) %}
+          <li>
+            <a href="{{group.absolute_url}}" {% if !topic %}class="active"{% endif %}>All</a>
+          </li>
+        {% for item in my_tags|sort(False, False, 'name') %}
+          <li>
+            <a class="tag-link {% if tag == item.slug  %} active{% endif %}" href="{{ blog_tag_url(group.id, item.slug) }}">{{ item }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="pdx-blog-listing__row">
+      {% for content in contents %}
+        <div class="pdx-blog-listing__col">
+          <div class="pdx-blog-listing__box">
+            <div class="pdx-blog-listing__featured-img">
+              <a href="{{content.absolute_url}}">
+                {% if content.featuredImage %}
+                  <img src="{{ content.featuredImage }}" alt="{{ content.name }}" loading="lazy" width="400">
+                {% else %}
+                  <div class="pdx-blog-listing__featured-placeholder">Placeholder text</div>
+                {% endif %}
+              </a>
+            </div>
+            <div class="pdx-blog-listing__content">
+              <h2><a href="{{ content.absolute_url }}" class="ss-blog__title">{{ content.name }}</a></h2>
+              <div  class="pdx-blog-listing__tags">
+                {% for tag in content.tag_list %}
+                  <a href="{{ blog_tag_url(group.id, tag.slug) }}" class="pdx-blog-listing__tag">
+                    {{ tag.name }}
+                  </a>
+              {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {% set total_pages = contents.total_page_count %}
+    {% set current = current_page_num %}
+
+    <div class="pdx-blog-listing__pagination">
+      {% if last_page_num %}
+        <a href="{{ blog_page_link(last_page_num) }}" class="pdx-blog-listing__pagination-prev-arrow">
+          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.06055 0.75L1.06055 4.75L5.06055 8.75" stroke="#3F4F67" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+      {% else %}
+        <span class="pdx-blog-listing__pagination-prev-arrow disabled">
+          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.06055 0.75L1.06055 4.75L5.06055 8.75" stroke="#3F4F67" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+      {% endif %}
+
+      <span class="pdx-blog-listing__pagination-page-info">
+        {{ current }} of {{ total_pages }}
+      </span>
+
+      {% if next_page_num %}
+        <a href="{{ blog_page_link(next_page_num) }}" class="pdx-blog-listing__pagination-next-arrow">
+          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.75 8.75L4.75 4.75L0.749999 0.75" stroke="#3F4F67" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+      {% else %}
+        <span class="pdx-blog-listing__pagination-next-arrow disabled">›</span>
+      {% endif %}
+    </div>
+  </div>
+</section>

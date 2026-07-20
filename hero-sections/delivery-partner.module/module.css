@@ -42,8 +42,7 @@
   display: block;
   height: auto;
   margin: 0 0 24px;
-  width: 100%;
-  max-width: 394px;
+  max-width: 100%;
 }
 
 .dx-dph__heading {

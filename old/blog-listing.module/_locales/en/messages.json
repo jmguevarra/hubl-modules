@@ -1,0 +1,437 @@
+{
+  "breadcrumbs.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "breadcrumbs.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "breadcrumbs.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "breadcrumbs.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "breadcrumbs.link_field.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "breadcrumbs.link_field.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "breadcrumbs.link_field.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "breadcrumbs.link_field.label" : {
+    "message" : "Link",
+    "description" : null,
+    "placeholders" : null
+  },
+  "breadcrumbs.link_field.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "breadcrumbs.name" : {
+    "message" : "blog-listing",
+    "description" : "",
+    "placeholders" : null
+  },
+  "breadcrumbs.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "breadcrumbs.text_field.default" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "breadcrumbs.text_field.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "breadcrumbs.text_field.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "breadcrumbs.text_field.label" : {
+    "message" : "Text",
+    "description" : "",
+    "placeholders" : null
+  },
+  "breadcrumbs.text_field.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "breadcrumbs.text_field.validation_regex" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "hide_heading.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "hide_heading.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "hide_heading.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "hide_heading.label" : {
+    "message" : "Boolean",
+    "description" : null,
+    "placeholders" : null
+  },
+  "hide_heading.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "highlight_text.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "highlight_text.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "highlight_text.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "highlight_text.label" : {
+    "message" : "Title copy",
+    "description" : null,
+    "placeholders" : null
+  },
+  "highlight_text.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "highlight_text.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "image_field.default.alt" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "image_field.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "image_field.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "image_field.label" : {
+    "message" : "Image",
+    "description" : "",
+    "placeholders" : null
+  },
+  "image_field.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "name" : {
+    "message" : "blog-listing",
+    "description" : "",
+    "placeholders" : null
+  },
+  "search_input_placeholder_text.default" : {
+    "message" : "Discover the latest industry insights and tech trends...",
+    "description" : null,
+    "placeholders" : null
+  },
+  "search_input_placeholder_text.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "search_input_placeholder_text.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "search_input_placeholder_text.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "search_input_placeholder_text.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "search_input_placeholder_text.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.bottom.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.bottom.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.left.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.left.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.right.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.right.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.default.padding.top.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.desktop_spacing.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.label" : {
+    "message" : "Style",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.bottom.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.bottom.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.left.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.left.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.right.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.right.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.default.padding.top.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.mobile_spacing.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.name" : {
+    "message" : "accordion",
+    "description" : "",
+    "placeholders" : null
+  },
+  "style.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.bottom.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.bottom.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.left.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.left.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.right.units" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.right.value" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.default.padding.top.units" : {
+    "message" : "px",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "style.tablet_spacing.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "title.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "title.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "title.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "title.label" : {
+    "message" : "Text",
+    "description" : null,
+    "placeholders" : null
+  },
+  "title.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "title.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  }
+}
