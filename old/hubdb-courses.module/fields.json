@@ -1,0 +1,137 @@
+[ {
+  "id" : "3acf8894-a98a-7f88-9d03-c47b842bc4fb",
+  "name" : "title",
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Upcoming Courses"
+}, {
+  "id" : "429d025d-cdd6-75c9-c4b5-c8b68a30c5f2",
+  "name" : "search_placeholder",
+  "label" : "Search Placeholder",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Search OutSystems courses..."
+}, {
+  "id" : "f9b40faf-d28c-fce6-1592-04d163d81279",
+  "name" : "cards_per_page",
+  "label" : "Cards per Page",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "display_width" : null
+}, {
+  "id" : "90869bf2-9fff-dbf8-73f6-c802d4d9d70b",
+  "name" : "upcoming_only",
+  "label" : "Upcoming",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+}, {
+  "id" : "25ee3dda-c158-7666-103d-b5ec0b27b944",
+  "name" : "form_heading",
+  "label" : "Form Heading",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Enroll now."
+}, {
+  "id" : "4297a5ab-be73-5576-1cb0-aff914a4e398",
+  "name" : "form_field",
+  "label" : "Form",
+  "required" : false,
+  "locked" : false,
+  "embed_versions" : [ "v2", "v4" ],
+  "type" : "form",
+  "display_width" : null,
+  "default" : {
+    "form_id" : "e0bfe616-68b9-45f4-895a-3e663bbb8f65",
+    "response_type" : "inline",
+    "message" : "Thanks for submitting the form.",
+    "form_type" : "HUBSPOT"
+  }
+}, {
+  "id" : "2532d9cf-bccf-d36c-7c65-421d7a78bfe8",
+  "name" : "show_related",
+  "label" : "Show Related",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+}, {
+  "id" : "4e709e23-11f5-2996-6c10-0b96488e1e7d",
+  "name" : "related_heading",
+  "label" : "Related Heading",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Related courses"
+}, {
+  "id" : "8f14aa1b-fd13-803f-23c3-4df5b9781dc0",
+  "name" : "related_link",
+  "label" : " Related Link",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "a7bf0b64-1b7a-c0f9-7259-d4d52dee84d9",
+    "name" : "link_field",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "ef458a42-6390-4ac9-3479-5a90bdaabaa5",
+    "name" : "link_text",
+    "label" : "Link text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "link_field" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }
+} ]
