@@ -1,0 +1,277 @@
+{
+  "cta_link.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "cta_link.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "cta_link.label" : {
+    "message" : "CTA Button Link",
+    "description" : "",
+    "placeholders" : null
+  },
+  "cta_link.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "cta_text.default" : {
+    "message" : "Let's Talk",
+    "description" : "",
+    "placeholders" : null
+  },
+  "cta_text.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "cta_text.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "cta_text.label" : {
+    "message" : "CTA Button Text",
+    "description" : "",
+    "placeholders" : null
+  },
+  "cta_text.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "cta_text.validation_regex" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_aria_label.default" : {
+    "message" : "PhoenixDX Homepage",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_aria_label.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_aria_label.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_aria_label.label" : {
+    "message" : "Logo ARIA Label",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_aria_label.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_aria_label.validation_regex" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_image.default.alt" : {
+    "message" : "PhoenixDX",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_image.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_image.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_image.label" : {
+    "message" : "Logo Image",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_image.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_link.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_link.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_link.label" : {
+    "message" : "Logo Link",
+    "description" : "",
+    "placeholders" : null
+  },
+  "logo_link.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "max_levels.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "max_levels.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "max_levels.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "max_levels.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "max_levels.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "menu.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "menu.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "menu.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "menu.label" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "menu.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "menu_toggle_aria_label.default" : {
+    "message" : "Toggle navigation menu",
+    "description" : "",
+    "placeholders" : null
+  },
+  "menu_toggle_aria_label.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "menu_toggle_aria_label.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "menu_toggle_aria_label.label" : {
+    "message" : "Menu Toggle ARIA Label",
+    "description" : "",
+    "placeholders" : null
+  },
+  "menu_toggle_aria_label.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "menu_toggle_aria_label.validation_regex" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "name" : {
+    "message" : "website_header_pdx",
+    "description" : "",
+    "placeholders" : null
+  },
+  "search_aria_label.default" : {
+    "message" : "Search",
+    "description" : "",
+    "placeholders" : null
+  },
+  "search_aria_label.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "search_aria_label.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "search_aria_label.label" : {
+    "message" : "Search ARIA Label",
+    "description" : "",
+    "placeholders" : null
+  },
+  "search_aria_label.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "search_aria_label.validation_regex" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "search_icon.default.alt" : {
+    "message" : "Search",
+    "description" : "",
+    "placeholders" : null
+  },
+  "search_icon.help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "search_icon.inline_help_text" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "search_icon.label" : {
+    "message" : "Search Icon",
+    "description" : "",
+    "placeholders" : null
+  },
+  "search_icon.placeholder" : {
+    "message" : "",
+    "description" : "",
+    "placeholders" : null
+  },
+  "theme_class.choices.tj-theme-dark" : {
+    "message" : "Dark",
+    "description" : "",
+    "placeholders" : null
+  },
+  "theme_class.choices.tj-theme-light" : {
+    "message" : "Light",
+    "description" : "",
+    "placeholders" : null
+  }
+}

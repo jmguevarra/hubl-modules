@@ -1,0 +1,286 @@
+<header class="pdx-header">
+  <div class="pdx-header__container content-wrapper">
+    <div class="pdx-header__left">
+      <button class="pdx-header__menu-toggle js-pdx-header-menu-toggle" aria-label="{{ module.menu_toggle_aria_label }}" aria-expanded="false">
+        <div class="pdx-header__menu-icon">
+          <span class="pdx-header__menu-line"></span>
+          <span class="pdx-header__menu-line"></span>
+          <span class="pdx-header__menu-line"></span>
+        </div>
+      </button>
+      <a class="pdx-header__logo" href="/" aria-label="{{ module.logo_aria_label }}">
+        <img class="pdx-header__logo-image" src="{{ module.logo_image.src }}" alt="{{ module.logo_image.alt|striptags|escape }}">
+      </a>
+    </div>
+    <div class="pdx-header__right">
+      {# Desktop center nav — hidden on mobile #}
+      <nav class="pdx-header__desktop-nav" aria-label="Main menu">
+        {% set menu = menu(module.menu, 'site_root').children %}
+
+        {% macro render_desktop_item(link, depth) %}
+        <li class="pdx-desktop-nav__item {{ 'pdx-desktop-nav__item--has-dropdown' if link.children }} hs-skip-lang-url-rewrite" data-depth="{{ depth }}">
+          {% if link.url %}
+          <a class="pdx-desktop-nav__link {{ 'pdx-desktop-nav__link--active' if link.activeNode }}"
+             href="{{ link.url }}"
+             {{ 'aria-expanded="false"' if link.children }}
+             {{ 'aria-current="page"' if link.activeNode }}
+             {{ 'target="_blank" rel="noopener"' if link.linkTarget }}>
+            {{ link.label }}
+            {% if link.children %}<span class="pdx-desktop-nav__chevron" aria-hidden="true"></span>{% endif %}
+          </a>
+          {% else %}
+          <span class="pdx-desktop-nav__link {{ 'pdx-desktop-nav__link--no-href' if link.children }}"
+                {{ 'aria-expanded="false" tabindex="0" role="button"' if link.children }}>
+            {{ link.label }}
+            {% if link.children %}<span class="pdx-desktop-nav__chevron" aria-hidden="true"></span>{% endif %}
+          </span>
+          {% endif %}
+
+          {% if link.children %}
+          <ul class="pdx-desktop-nav__dropdown no-list" data-depth="{{ depth + 1 }}">
+            {% for sublink in link.children %}
+            {{ render_desktop_item(sublink, depth + 1) }}
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endmacro %}
+
+        <ul class="pdx-desktop-nav__list no-list">
+          {% for link in menu %}
+          {{ render_desktop_item(link, 1) }}
+          {% endfor %}
+        </ul>
+      </nav>
+      <button class="pdx-header__search js-pdx-header-search" aria-label="{{ module.search_aria_label }}">
+        <img class="pdx-header__search-icon" src="{{ module.search_icon.src }}" alt="{{ module.search_icon.alt|striptags|escape }}" loading="lazy">
+      </button>
+      <a class="scale-button" href="{{ module.cta_link.href }}">
+        <span class="pdx-header__cta-text">{{ module.cta_text }}</span>
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  {% macro menu_items() %}
+
+  {% set menu = menu(module.menu, 'site_root').children %}
+  {% macro render_link_item(link, depth) %}
+  <li class="pdx-header-menu__item pdx-header-menu__item--depth-{{ depth }} {{ 'pdx-header-menu__item--has-submenu' if link.children && depth < module.max_levels }} hs-skip-lang-url-rewrite">
+    {% if link.url %}
+    <a class="pdx-header-menu__link {{ 'pdx-header-menu__link--toggle' if link.children && depth < module.max_levels }} {{ 'pdx-header-menu__link--active-branch' if link.activeBranch }} {{ 'pdx-header-menu__link--active-link' if link.activeNode }}" href="{{ link.url }}" {{ 'aria-haspopup="true" aria-expanded="false"' if link.children && depth < module.max_levels }} {{ 'aria-current="page"' if link.activeNode }} {{ 'target="_blank" rel="noopener"' if link.linkTarget }}>{{ link.label }}</a>
+    {% else %}
+    {% if (link.children and depth < module.max_levels) %}
+    <a class="pdx-header-menu__link pdx-header-menu__link--toggle target--{{ setMegaMenuTargetParent }}" href="#" aria-haspopup="true" aria-expanded="false">
+      {{ link.label }}
+      <button class="pdx-header-menu__child-toggle no-button" aria-expanded="false">
+        <span class="show-for-sr">Show submenu for {{ link.label }}</span>
+        <span class="pdx-header-menu__child-toggle-icon"></span>
+      </button>
+    </a>
+    {% else %}
+    <span class="pdx-header-menu__link">{{ link.label }}</span>
+    {% endif %}
+    {% endif %}
+    {% if link.children %}
+    {% if depth && depth < module.max_levels %}
+    <ul class="pdx-header-menu__submenu pdx-header-menu__submenu--level-{{ depth + 1 }} no-list">
+      {% set depth = depth + 1 %}
+      {% for sublink in link.children %}
+      {{ render_link_item(sublink, depth) }}
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endif %}
+  </li>
+  {% endmacro %}
+
+  {% for link in menu %}
+  {{ render_link_item(link, 1, loop.index) }}
+  {% endfor %}
+
+  {% endmacro %}
+  <nav class="pdx-menu-navbar" aria-label="Main menu">
+    <div class="pdx-menu-navbar__controls">
+      <svg class="pdx-menu-navbar__controls-close" version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" aria-hidden="true"><g id="Times1_layer"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></g></svg>
+      <svg class="pdx-menu-navbar__controls-back" version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" aria-hidden="true"><g id="angle-left1_layer"><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path></g></svg>
+    </div>
+    <ul class="pdx-menu-navbar__list no-list">
+      {{ menu_items() }}
+    </ul>
+  </nav>
+</header>
+<div class="pdx-menu-overlay"></div>
+{% require_js %}
+<script>
+  const menuToggle = document.querySelector('.pdx-header__menu-toggle');
+  const menuNavbar = document.querySelector('.pdx-menu-navbar');
+  const menuOverlay = document.querySelector('.pdx-menu-overlay');
+  const menuList = document.querySelector('.pdx-menu-navbar__list');
+  const closeButton = document.querySelector('.pdx-menu-navbar__controls-close');
+  const backButton = document.querySelector('.pdx-menu-navbar__controls-back');
+  
+  let currentLevel = 1;
+  let openSubmenus = []; // Track open submenus for back navigation
+
+  // Function to update control buttons visibility
+  function updateControls() {
+    if (currentLevel === 1) {
+      closeButton.style.display = 'block';
+      backButton.style.display = 'none';
+    } else {
+      closeButton.style.display = 'none';
+      backButton.style.display = 'block';
+    }
+  }
+
+  // Function to reset menu to initial state
+  function resetMenu() {
+    menuToggle.classList.remove('active');
+    menuNavbar.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    
+    menuList.classList.remove('level-2-open', 'level-3-open');
+    document.querySelectorAll('.pdx-header-menu__submenu').forEach(submenu => {
+      submenu.classList.remove('expanded');
+    });
+    
+    // Reset all toggle links
+    document.querySelectorAll('.pdx-header-menu__link--toggle').forEach(link => {
+      link.setAttribute('aria-expanded', 'false');
+    });
+    
+    currentLevel = 1;
+    openSubmenus = [];
+    updateControls();
+  }
+
+  // Menu toggle
+  menuToggle.addEventListener('click', function() {
+    const wasActive = this.classList.contains('active');
+    
+    this.classList.toggle('active');
+    menuNavbar.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+    
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !isExpanded);
+    
+    if (!wasActive) {
+      currentLevel = 1;
+      openSubmenus = [];
+      updateControls();
+    } else {
+      resetMenu();
+    }
+  });
+
+  // Close button click
+  closeButton.addEventListener('click', function() {
+    resetMenu();
+  });
+
+  // Overlay click
+  menuOverlay.addEventListener('click', function() {
+    resetMenu();
+  });
+
+  // Back button click
+  backButton.addEventListener('click', function() {
+    if (openSubmenus.length > 0) {
+      // Get the last opened submenu
+      const lastSubmenu = openSubmenus.pop();
+      
+      // Close it
+      lastSubmenu.classList.remove('expanded');
+      
+      // Update the corresponding link's aria-expanded
+      const parentLink = lastSubmenu.previousElementSibling;
+      if (parentLink && parentLink.classList.contains('pdx-header-menu__link--toggle')) {
+        parentLink.setAttribute('aria-expanded', 'false');
+      }
+      
+      // Update level based on remaining open submenus
+      if (openSubmenus.length === 0) {
+        menuList.classList.remove('level-2-open', 'level-3-open');
+        currentLevel = 1;
+      } else if (openSubmenus.length === 1) {
+        menuList.classList.remove('level-3-open');
+        menuList.classList.add('level-2-open');
+        currentLevel = 2;
+      } else {
+        currentLevel = 3;
+      }
+      
+      updateControls();
+    }
+  });
+
+  // Handle menu link clicks (using event delegation)
+  menuList.addEventListener('click', function(e) {
+    const link = e.target.closest('.pdx-header-menu__link--toggle');
+    
+    if (link) {
+      e.preventDefault();
+      
+      const submenu = link.nextElementSibling;
+      
+      if (submenu && submenu.classList.contains('pdx-header-menu__submenu')) {
+        const parentSubmenu = link.closest('.pdx-header-menu__submenu');
+        
+        // Close sibling submenus at the same level
+        if (parentSubmenu) {
+          const siblings = parentSubmenu.querySelectorAll(':scope > .pdx-header-menu__item > .pdx-header-menu__submenu.expanded');
+          siblings.forEach(sibling => {
+            if (sibling !== submenu) {
+              sibling.classList.remove('expanded');
+              // Remove from openSubmenus array
+              const index = openSubmenus.indexOf(sibling);
+              if (index > -1) {
+                openSubmenus.splice(index, 1);
+              }
+            }
+          });
+        } else {
+          // Close all level-2 submenus if opening from main menu
+          document.querySelectorAll('.pdx-header-menu__submenu--level-2.expanded').forEach(level2 => {
+            if (level2 !== submenu) {
+              level2.classList.remove('expanded');
+              // Also close their children
+              level2.querySelectorAll('.pdx-header-menu__submenu').forEach(child => {
+                child.classList.remove('expanded');
+              });
+            }
+          });
+          // Clear openSubmenus array when opening from main menu
+          openSubmenus = [];
+        }
+        
+        // Open the clicked submenu
+        submenu.classList.add('expanded');
+        link.setAttribute('aria-expanded', 'true');
+        
+        // Add to openSubmenus array
+        openSubmenus.push(submenu);
+        
+        // Determine the level and slide accordingly
+        if (submenu.classList.contains('pdx-header-menu__submenu--level-2')) {
+          menuList.classList.remove('level-3-open');
+          menuList.classList.add('level-2-open');
+          currentLevel = 2;
+        } else if (submenu.classList.contains('pdx-header-menu__submenu--level-3')) {
+          menuList.classList.add('level-3-open');
+          currentLevel = 3;
+        }
+        
+        updateControls();
+      }
+    }
+  });
+
+  // Initialize controls on page load
+  updateControls();
+</script>
+{% end_require_js %}

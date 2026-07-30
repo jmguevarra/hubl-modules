@@ -1,0 +1,119 @@
+[ {
+  "id" : "menu_toggle_aria_label",
+  "name" : "menu_toggle_aria_label",
+  "label" : "Menu Toggle ARIA Label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Toggle navigation menu"
+}, {
+  "id" : "logo_image",
+  "name" : "logo_image",
+  "label" : "Logo Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : false,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "src" : "https://backend.transjt.ai/assets/3761fbcf4b27da64c18609ce",
+    "alt" : "PhoenixDX"
+  }
+}, {
+  "id" : "logo_link",
+  "name" : "logo_link",
+  "label" : "Logo Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "type" : "url",
+  "display_width" : null,
+  "default" : {
+    "type" : "EXTERNAL",
+    "href" : "/"
+  }
+}, {
+  "id" : "logo_aria_label",
+  "name" : "logo_aria_label",
+  "label" : "Logo ARIA Label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "PhoenixDX Homepage"
+}, {
+  "id" : "search_icon",
+  "name" : "search_icon",
+  "label" : "Search Icon",
+  "required" : false,
+  "locked" : false,
+  "responsive" : false,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "src" : "https://backend.transjt.ai/assets/166775d90099318f9552f54e",
+    "alt" : "Search"
+  }
+}, {
+  "id" : "search_aria_label",
+  "name" : "search_aria_label",
+  "label" : "Search ARIA Label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Search"
+}, {
+  "id" : "cta_text",
+  "name" : "cta_text",
+  "label" : "CTA Button Text",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Let's Talk"
+}, {
+  "id" : "cta_link",
+  "name" : "cta_link",
+  "label" : "CTA Button Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "type" : "url",
+  "display_width" : null,
+  "default" : {
+    "type" : "EXTERNAL",
+    "href" : "/contact"
+  }
+}, {
+  "id" : "4b1091d7-0889-8ba9-5751-be751e5277ab",
+  "name" : "menu",
+  "label" : "Menu",
+  "required" : false,
+  "locked" : false,
+  "type" : "menu",
+  "display_width" : null,
+  "default" : 277496289741
+}, {
+  "id" : "b99aaf47-e1af-ef61-7f9c-712e68403869",
+  "name" : "max_levels",
+  "label" : "Max Levels",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "min" : 1,
+  "max" : 3,
+  "step" : 1,
+  "type" : "number",
+  "display_width" : null,
+  "default" : 3
+} ]
