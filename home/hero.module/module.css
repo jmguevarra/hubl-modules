@@ -286,8 +286,7 @@ section.dx-home-hero {
 }
 
 .dx-home-hero__trusted-logo img {
-  height: 50px;
-  width: auto;
+  max-height: 50px;
   max-width: 130px;
   object-fit: contain;
   filter: brightness(0) invert(1);

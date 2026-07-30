@@ -124,7 +124,7 @@
         {% for logo in module.trusted_by.logos %}
         {% if logo.logo_image.src %}
         <div class="dx-home-hero__trusted-logo">
-          <img src="{{ logo.logo_image.src }}" alt="{{ logo.logo_image.alt }}" loading="lazy">
+          <img src="{{ logo.logo_image.src }}" alt="{{ logo.logo_image.alt }}" {% if logo.logo_image.width %}width="{{ logo.logo_image.width }}"{% endif %} {% if logo.logo_image.height %}height="{{ logo.logo_image.height }}"{% endif %} loading="lazy">
         </div>
         {% endif %}
         {% endfor %}
@@ -132,7 +132,7 @@
         {% for logo in module.trusted_by.logos %}
         {% if logo.logo_image.src %}
         <div class="dx-home-hero__trusted-logo" aria-hidden="true">
-          <img src="{{ logo.logo_image.src }}" alt="{{ logo.logo_image.alt }}" loading="lazy">
+          <img src="{{ logo.logo_image.src }}" alt="{{ logo.logo_image.alt }}" {% if logo.logo_image.width %}width="{{ logo.logo_image.width }}"{% endif %} {% if logo.logo_image.height %}height="{{ logo.logo_image.height }}"{% endif %} loading="lazy">
         </div>
         {% endif %}
         {% endfor %}
