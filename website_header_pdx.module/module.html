@@ -9,7 +9,7 @@
         </div>
       </button>
       <a class="pdx-header__logo" href="/" aria-label="{{ module.logo_aria_label }}">
-        <img class="pdx-header__logo-image" src="{{ module.logo_image.src }}" alt="{{ module.logo_image.alt|striptags|escape }}">
+        <img class="pdx-header__logo-image" src="{{ module.logo_image.src }}" alt="{{ module.logo_image.alt|striptags|escape }}" {% if module.logo_image.width %}width="{{ module.logo_image.width }}"{% endif %} {% if module.logo_image.height %}height="{{ module.logo_image.height }}"{% endif %}>
       </a>
     </div>
     <div class="pdx-header__right">
