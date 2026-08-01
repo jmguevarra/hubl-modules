@@ -8,6 +8,42 @@ section.dx-home-hero {
     position: relative;
 }
 
+/* Background video */
+.dx-home-hero__bg-video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.dx-home-hero__poster {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.dx-home-hero__poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dx-home-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.dx-home-hero__video.is-playing {
+  opacity: 1;
+}
+
 .dx-home-hero .dx-module__container{
   position: relative;
   background-size: cover;
@@ -379,6 +415,10 @@ section.dx-home-hero {
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
+  .dx-home-hero__bg-video {
+    display: none;
+  }
+
   .dx-home-hero__marquee-track {
     animation: none;
   }

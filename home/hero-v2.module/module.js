@@ -60,3 +60,56 @@
   timer = setTimeout(tick, 600);
 
 })();
+
+(function () {
+  'use strict';
+
+  // ── Background video (lazy-loaded, delayed) ───────────────────────────────
+  // Deferring the video request until after the page has settled keeps it off
+  // the critical path (LCP/CLS), instead of competing with initial paint.
+
+  var video = document.querySelector('.dx-home-hero__video');
+  if (!video) return;
+
+  var sources = video.querySelectorAll('source[data-src]');
+  if (!sources.length) return;
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (reduceMotion || saveData) return;
+
+  var LOAD_DELAY = 1200; // ms – wait for the page to settle before requesting the video
+
+  function loadVideo() {
+    Array.prototype.forEach.call(sources, function (source) {
+      source.setAttribute('src', source.getAttribute('data-src'));
+    });
+
+    video.addEventListener('loadeddata', function () {
+      video.classList.add('is-playing');
+      var playPromise = video.play();
+      if (playPromise && playPromise.catch) {
+        playPromise.catch(function () {}); // ignore autoplay-blocked rejections
+      }
+    }, { once: true });
+
+    video.load();
+  }
+
+  function schedule() {
+    setTimeout(function () {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadVideo, { timeout: 1500 });
+      } else {
+        loadVideo();
+      }
+    }, LOAD_DELAY);
+  }
+
+  if (document.readyState === 'complete') {
+    schedule();
+  } else {
+    window.addEventListener('load', schedule, { once: true });
+  }
+
+})();

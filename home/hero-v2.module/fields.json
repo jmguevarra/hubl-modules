@@ -178,6 +178,65 @@
     ]
   },
   {
+    "id": "background_video",
+    "name": "background_video",
+    "label": "Background Video",
+    "type": "group",
+    "children": [
+      {
+        "id": "enable_video",
+        "name": "enable_video",
+        "label": "Enable Background Video",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "id": "video_desktop",
+        "name": "video_desktop",
+        "label": "Video (Desktop)",
+        "help_text": "MP4 shown on screens wider than 768px. Upload via the File Manager.",
+        "type": "file",
+        "picker": "video",
+        "default": "https://phoenix-dx.com/hubfs/Videos/wave_-_homepage_-_pdx_v1%20(720p).mp4"
+      },
+      {
+        "id": "video_mobile",
+        "name": "video_mobile",
+        "label": "Video (Mobile)",
+        "help_text": "Optional. MP4 shown on screens 768px and narrower. Falls back to the desktop video if left empty.",
+        "type": "file",
+        "picker": "video",
+        "default": null
+      },
+      {
+        "id": "poster_desktop",
+        "name": "poster_desktop",
+        "label": "Poster Image (Desktop)",
+        "help_text": "Shown behind the video while it loads (and if video is disabled).",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      {
+        "id": "poster_mobile",
+        "name": "poster_mobile",
+        "label": "Poster Image (Mobile)",
+        "help_text": "Optional. Shown on screens 768px and narrower. Falls back to the desktop poster if left empty.",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 1200,
+          "height": 1600
+        }
+      }
+    ]
+  },
+  {
     "id": "styles",
     "name": "styles",
     "label": "Styles",
