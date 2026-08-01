@@ -400,6 +400,10 @@ section.dx-home-hero {
     .dx-home-hero__card-media img {
       margin-left: auto;
   }
+      .dx-home-hero__poster-img,
+    .dx-home-hero__video{
+      height: 500px;
+    }
 }
 
 
