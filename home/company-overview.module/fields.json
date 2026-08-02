@@ -20,15 +20,43 @@
     "type": "group",
     "children": [
       {
+        "id": "media_type",
+        "name": "media_type",
+        "label": "Media Type",
+        "help_text": "Video autoplays muted/looped and is lazy-loaded only when this section nears the viewport, so it doesn't affect initial-load TBT.",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["video", "Video"],
+          ["image", "Image"]
+        ],
+        "default": "video"
+      },
+      {
+        "id": "content_video",
+        "name": "content_video",
+        "label": "Video",
+        "help_text": "MP4 shown when Media Type is Video. Upload via the File Manager.",
+        "type": "file",
+        "picker": "video",
+        "default": "",
+        "visibility": {
+          "controlling_field_path": "content.media_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "video"
+        }
+      },
+      {
         "id": "content_image",
         "name": "content_image",
-        "label": "Image",
+        "label": "Image / Video Poster",
+        "help_text": "Used as the image when Media Type is Image, and as the poster frame shown before the video loads/plays. Width/height are also applied to the video element, reserving the layout space up front to avoid CLS.",
         "type": "image",
         "default": {
           "src": "",
           "alt": "",
-          "width": 600,
-          "height": 600
+          "width": 320,
+          "height": 200
         }
       },
       {
@@ -162,6 +190,22 @@
     "tab": "STYLE",
     "children": [
       {
+        "id": "layout",
+        "name": "layout",
+        "label": "Layout",
+        "type": "group",
+        "children": [
+          {
+            "id": "content_max_width",
+            "name": "content_max_width",
+            "label": "Content Max Width (px)",
+            "help_text": "Caps the width of the image/description row and the stats row.",
+            "type": "number",
+            "default": 860
+          }
+        ]
+      },
+      {
         "id": "background",
         "name": "background",
         "label": "Background",
@@ -175,6 +219,68 @@
             "default": {
               "color": "#FFFFFF",
               "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "spacing",
+        "name": "spacing",
+        "label": "Section Spacing",
+        "type": "group",
+        "children": [
+          {
+            "id": "desktop",
+            "name": "desktop",
+            "label": "Desktop",
+            "type": "spacing",
+            "default": {
+              "padding": {
+                "top": { "value": 80, "units": "px" },
+                "bottom": { "value": 80, "units": "px" },
+                "left": { "value": 0, "units": "px" },
+                "right": { "value": 0, "units": "px" }
+              },
+              "margin": {
+                "top": { "value": 0, "units": "px" },
+                "bottom": { "value": 0, "units": "px" }
+              }
+            }
+          },
+          {
+            "id": "tablet",
+            "name": "tablet",
+            "label": "Tablet",
+            "type": "spacing",
+            "default": {
+              "padding": {
+                "top": { "value": 60, "units": "px" },
+                "bottom": { "value": 60, "units": "px" },
+                "left": { "value": 0, "units": "px" },
+                "right": { "value": 0, "units": "px" }
+              },
+              "margin": {
+                "top": { "value": 0, "units": "px" },
+                "bottom": { "value": 0, "units": "px" }
+              }
+            }
+          },
+          {
+            "id": "mobile",
+            "name": "mobile",
+            "label": "Mobile",
+            "type": "spacing",
+            "default": {
+              "padding": {
+                "top": { "value": 40, "units": "px" },
+                "bottom": { "value": 40, "units": "px" },
+                "left": { "value": 0, "units": "px" },
+                "right": { "value": 0, "units": "px" }
+              },
+              "margin": {
+                "top": { "value": 0, "units": "px" },
+                "bottom": { "value": 0, "units": "px" }
+              }
             }
           }
         ]

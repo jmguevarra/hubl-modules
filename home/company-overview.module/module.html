@@ -1,5 +1,10 @@
 {% set s = module.styles %}
 {% set c = module.content %}
+{% set media_type = c.media_type|default('video') %}
+{% set has_media = (media_type == 'video' and (c.content_video or c.content_image.src)) or (media_type == 'image' and c.content_image.src) %}
+{% set d_sp = s.spacing.desktop %}
+{% set t_sp = s.spacing.tablet %}
+{% set m_sp = s.spacing.mobile %}
 
 <section
   class="dx-company-overview"
@@ -10,6 +15,19 @@
     --dx-co-stat-color: {{ s.stat_style.stat_number_color.css }};
     --dx-co-accent-color: {{ s.stat_style.stat_accent_color.css }};
     --dx-co-stat-label-color: {{ s.stat_style.stat_label_color.css }};
+    --dx-co-content-max-width: {{ s.layout.content_max_width|default(860) }}px;
+    --dx-co-pt-d: {{ d_sp.padding.top.value|default(80) }}{{ d_sp.padding.top.units|default('px') }};
+    --dx-co-pr-d: {{ d_sp.padding.right.value|default(0) }}{{ d_sp.padding.right.units|default('px') }};
+    --dx-co-pb-d: {{ d_sp.padding.bottom.value|default(80) }}{{ d_sp.padding.bottom.units|default('px') }};
+    --dx-co-pl-d: {{ d_sp.padding.left.value|default(0) }}{{ d_sp.padding.left.units|default('px') }};
+    --dx-co-pt-t: {{ t_sp.padding.top.value|default(60) }}{{ t_sp.padding.top.units|default('px') }};
+    --dx-co-pr-t: {{ t_sp.padding.right.value|default(0) }}{{ t_sp.padding.right.units|default('px') }};
+    --dx-co-pb-t: {{ t_sp.padding.bottom.value|default(60) }}{{ t_sp.padding.bottom.units|default('px') }};
+    --dx-co-pl-t: {{ t_sp.padding.left.value|default(0) }}{{ t_sp.padding.left.units|default('px') }};
+    --dx-co-pt-m: {{ m_sp.padding.top.value|default(40) }}{{ m_sp.padding.top.units|default('px') }};
+    --dx-co-pr-m: {{ m_sp.padding.right.value|default(0) }}{{ m_sp.padding.right.units|default('px') }};
+    --dx-co-pb-m: {{ m_sp.padding.bottom.value|default(40) }}{{ m_sp.padding.bottom.units|default('px') }};
+    --dx-co-pl-m: {{ m_sp.padding.left.value|default(0) }}{{ m_sp.padding.left.units|default('px') }};
   "
 >
   <div class="dx-module__container content-wrapper">
@@ -21,16 +39,31 @@
     </header>
     {% endif %}
 
-    {% if c.content_image.src or c.description %}
+    {% if has_media or c.description %}
     <div class="dx-company-overview__content">
-      {% if c.content_image.src %}
+      {% if media_type == 'video' and c.content_video %}
+      <div class="dx-company-overview__media">
+        <video
+          class="dx-company-overview__video"
+          muted
+          loop
+          playsinline
+          preload="none"
+          width="{{ c.content_image.width|default(320) }}"
+          height="{{ c.content_image.height|default(200) }}"
+          {% if c.content_image.src %}poster="{{ c.content_image.src }}"{% endif %}
+        >
+          <source data-src="{{ c.content_video }}" type="video/mp4">
+        </video>
+      </div>
+      {% elif c.content_image.src %}
       <div class="dx-company-overview__media">
         <img
           src="{{ c.content_image.src }}"
           alt="{{ c.content_image.alt }}"
           loading="lazy"
-          {% if c.content_image.width %}width="{{ c.content_image.width }}"{% endif %}
-          {% if c.content_image.height %}height="{{ c.content_image.height }}"{% endif %}
+          width="{{ c.content_image.width|default(320) }}"
+          height="{{ c.content_image.height|default(200) }}"
         >
       </div>
       {% endif %}
