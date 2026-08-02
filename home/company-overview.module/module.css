@@ -1,0 +1,243 @@
+/* ── Base (mobile-first) ─────────────────────────────────────── */
+
+.dx-company-overview {
+  padding: 48px 0;
+  overflow: hidden;
+}
+
+.dx-company-overview__header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 32px;
+}
+
+.dx-company-overview__heading {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--dx-co-heading-color, #0B1526);
+  margin: 0 0 12px;
+}
+
+.dx-company-overview__subheading {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--dx-co-subheading-color, #55617A);
+  margin: 0;
+}
+
+/* ── Content: image + description ───────────────────────────── */
+
+.dx-company-overview__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.dx-company-overview__media {
+  width: 100%;
+  max-width: 320px;
+}
+
+.dx-company-overview__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.dx-company-overview__description {
+  width: 100%;
+  color: var(--dx-co-description-color, #55617A);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ── Stats ───────────────────────────────────────────────────── */
+
+.dx-company-overview__stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px 40px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.dx-company-overview__stat {
+  flex: 1 1 140px;
+}
+
+.dx-company-overview__stat-value {
+  font-size: 2.1rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--dx-co-stat-color, #0B1526);
+  white-space: nowrap;
+}
+
+.dx-company-overview__stat-suffix {
+  color: var(--dx-co-accent-color, #E3342F);
+}
+
+.dx-company-overview__stat-label {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--dx-co-stat-label-color, #55617A);
+}
+
+/* ── Logos slider (infinite marquee) ────────────────────────── */
+
+.dx-company-overview__logos {
+  overflow: hidden;
+  position: relative;
+}
+
+.dx-company-overview__logos::before,
+.dx-company-overview__logos::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 48px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.dx-company-overview__logos::before {
+  left: 0;
+  background: linear-gradient(to right, var(--dx-co-bg, #fff), transparent);
+}
+
+.dx-company-overview__logos::after {
+  right: 0;
+  background: linear-gradient(to left, var(--dx-co-bg, #fff), transparent);
+}
+
+.dx-company-overview__logos-track {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: max-content;
+  animation: dx-co-marquee var(--dx-co-logos-speed, 30s) linear infinite;
+}
+
+.dx-company-overview__logos:hover .dx-company-overview__logos-track {
+  animation-play-state: paused;
+}
+
+.dx-company-overview__logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dx-company-overview__logo img {
+  max-height: 28px;
+  max-width: 100px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+  display: block;
+}
+
+.dx-company-overview__logo:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+@keyframes dx-co-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dx-company-overview__logos-track {
+    animation: none;
+  }
+}
+
+/* ── Tablet ──────────────────────────────────────────────────── */
+
+@media (min-width: 768px) {
+  .dx-company-overview {
+    padding: 64px 0;
+  }
+
+  .dx-company-overview__heading {
+    font-size: 1.85rem;
+  }
+
+  .dx-company-overview__content {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+
+  .dx-company-overview__media {
+    flex: 0 0 38%;
+    max-width: 38%;
+  }
+
+  .dx-company-overview__description {
+    flex: 1;
+    text-align: left;
+  }
+
+  .dx-company-overview__stat-value {
+    font-size: 2.5rem;
+  }
+
+  .dx-company-overview__logo img {
+    max-height: 32px;
+    max-width: 120px;
+  }
+}
+
+/* ── Desktop ─────────────────────────────────────────────────── */
+
+@media (min-width: 1024px) {
+  .dx-company-overview {
+    padding: 80px 0;
+  }
+
+  .dx-company-overview__header {
+    margin-bottom: 48px;
+  }
+
+  .dx-company-overview__heading {
+    font-size: 2.1rem;
+  }
+
+  .dx-company-overview__subheading {
+    font-size: 1.05rem;
+  }
+
+  .dx-company-overview__content {
+    gap: 64px;
+    margin-bottom: 64px;
+  }
+
+  .dx-company-overview__stats {
+    gap: 32px 80px;
+    margin-bottom: 64px;
+  }
+
+  .dx-company-overview__stat-value {
+    font-size: 2.75rem;
+  }
+
+  .dx-company-overview__logos::before,
+  .dx-company-overview__logos::after {
+    width: 80px;
+  }
+
+  .dx-company-overview__logos-track {
+    gap: 56px;
+  }
+}

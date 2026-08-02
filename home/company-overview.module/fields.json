@@ -1,0 +1,282 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "Thrive in an AI-Powered World"
+  },
+  {
+    "id": "subheading",
+    "name": "subheading",
+    "label": "Subheading",
+    "type": "text",
+    "default": "When the environment is volatile, you need solid experience and trustable partners to lean on."
+  },
+  {
+    "id": "content",
+    "name": "content",
+    "label": "Content",
+    "type": "group",
+    "children": [
+      {
+        "id": "content_image",
+        "name": "content_image",
+        "label": "Image",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 600,
+          "height": 600
+        }
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "label": "Description",
+        "type": "richtext",
+        "default": "<p>PhoenixDX delivers with excellence and speed, accelerating your digital capability with a team of experts who thrive on enterprise complexity. We have solid experience in software engineering, consultancy and professional services. We'll partner with you to identify the right opportunities and safely infuse AI across your organisation, unlocking innovation, efficiency and lasting competitive advantage.</p>"
+      }
+    ]
+  },
+  {
+    "id": "stats",
+    "name": "stats",
+    "label": "Stats",
+    "help_text": "Numbers count up automatically once this section scrolls into view.",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 3,
+      "sorting_label_field": "stat_label"
+    },
+    "children": [
+      {
+        "id": "stat_value",
+        "name": "stat_value",
+        "label": "Number",
+        "help_text": "The final value the counter animates to.",
+        "type": "number",
+        "default": 150
+      },
+      {
+        "id": "stat_suffix",
+        "name": "stat_suffix",
+        "label": "Suffix",
+        "help_text": "Shown after the number, e.g. '+' or 'K+'. Not included in the count animation.",
+        "type": "text",
+        "default": "+"
+      },
+      {
+        "id": "stat_label",
+        "name": "stat_label",
+        "label": "Label",
+        "type": "text",
+        "default": "Successfully delivered projects"
+      }
+    ],
+    "default": [
+      {
+        "stat_value": 150,
+        "stat_suffix": "+",
+        "stat_label": "Successfully delivered projects"
+      },
+      {
+        "stat_value": 25,
+        "stat_suffix": "+",
+        "stat_label": "IT Professionals"
+      },
+      {
+        "stat_value": 500,
+        "stat_suffix": "K+",
+        "stat_label": "Users"
+      }
+    ]
+  },
+  {
+    "id": "count_duration",
+    "name": "count_duration",
+    "label": "Counter Animation Duration (ms)",
+    "type": "number",
+    "default": 2000
+  },
+  {
+    "id": "logos",
+    "name": "logos",
+    "label": "Logos",
+    "type": "group",
+    "children": [
+      {
+        "id": "logo_items",
+        "name": "logo_items",
+        "label": "Logo Items",
+        "help_text": "Logos scroll in an infinite slider.",
+        "type": "group",
+        "occurrence": {
+          "min": 1,
+          "max": 20,
+          "default": 8
+        },
+        "children": [
+          {
+            "id": "logo_image",
+            "name": "logo_image",
+            "label": "Logo",
+            "type": "image",
+            "default": {
+              "src": "",
+              "alt": "Partner logo",
+              "width": 120,
+              "height": 40
+            }
+          }
+        ],
+        "default": [
+          { "logo_image": { "src": "", "alt": "OutSystems", "width": 120, "height": 40 } },
+          { "logo_image": { "src": "", "alt": "AWS", "width": 120, "height": 40 } },
+          { "logo_image": { "src": "", "alt": "Microsoft", "width": 120, "height": 40 } },
+          { "logo_image": { "src": "", "alt": "Google", "width": 120, "height": 40 } },
+          { "logo_image": { "src": "", "alt": "OpenAI", "width": 120, "height": 40 } },
+          { "logo_image": { "src": "", "alt": "n8n", "width": 120, "height": 40 } },
+          { "logo_image": { "src": "", "alt": "Claude", "width": 120, "height": 40 } },
+          { "logo_image": { "src": "", "alt": "Cursor", "width": 120, "height": 40 } }
+        ]
+      },
+      {
+        "id": "logos_speed",
+        "name": "logos_speed",
+        "label": "Slider Speed (seconds)",
+        "help_text": "Time for the logo slider to complete one full loop. Lower is faster.",
+        "type": "number",
+        "default": 30
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "background",
+        "name": "background",
+        "label": "Background",
+        "type": "group",
+        "children": [
+          {
+            "id": "bg_color",
+            "name": "bg_color",
+            "label": "Background Color",
+            "type": "color",
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "text_style",
+        "name": "text_style",
+        "label": "Text Colors",
+        "type": "group",
+        "children": [
+          {
+            "id": "enable_styles",
+            "name": "enable_styles",
+            "label": "Enable Custom Colors",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "heading_color",
+            "name": "heading_color",
+            "label": "Heading Color",
+            "type": "color",
+            "default": {
+              "color": "#0B1526",
+              "opacity": 100
+            },
+            "visibility": {
+              "controlling_field_path": "styles.text_style.enable_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "subheading_color",
+            "name": "subheading_color",
+            "label": "Subheading Color",
+            "type": "color",
+            "default": {
+              "color": "#55617A",
+              "opacity": 100
+            },
+            "visibility": {
+              "controlling_field_path": "styles.text_style.enable_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "description_color",
+            "name": "description_color",
+            "label": "Description Color",
+            "type": "color",
+            "default": {
+              "color": "#55617A",
+              "opacity": 100
+            },
+            "visibility": {
+              "controlling_field_path": "styles.text_style.enable_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          }
+        ]
+      },
+      {
+        "id": "stat_style",
+        "name": "stat_style",
+        "label": "Stat Colors",
+        "type": "group",
+        "children": [
+          {
+            "id": "stat_number_color",
+            "name": "stat_number_color",
+            "label": "Number Color",
+            "type": "color",
+            "default": {
+              "color": "#0B1526",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "stat_accent_color",
+            "name": "stat_accent_color",
+            "label": "Suffix Accent Color",
+            "type": "color",
+            "default": {
+              "color": "#E3342F",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "stat_label_color",
+            "name": "stat_label_color",
+            "label": "Label Color",
+            "type": "color",
+            "default": {
+              "color": "#55617A",
+              "opacity": 100
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

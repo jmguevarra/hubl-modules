@@ -1,0 +1,171 @@
+{% set s = module.styles %}
+{% set ss = module.slider_settings %}
+{% set cta = module.footer_cta %}
+{% set cta_style = cta.style %}
+{% set slides = module.case_studies %}
+{% set awards = module.award_logos %}
+{% set d_sp = s.spacing.desktop %}
+{% set t_sp = s.spacing.tablet %}
+{% set m_sp = s.spacing.mobile %}
+{% set cta_btn_class = {
+  "primary":             "dx-btn--primary",
+  "primary-linear":      "dx-btn--primary-linear",
+  "secondary":           "dx-btn--secondary",
+  "blog":                "dx-btn--blog",
+  "training":            "dx-btn--training",
+  "blog-hover-fill":     "dx-btn--blog-hover-fill",
+  "training-hover-fill": "dx-btn--training-hover-fill",
+  "primary-outline":     "dx-btn--primary-outline",
+  "secondary-outline":   "dx-btn--secondary-outline",
+  "tertiary-outline":    "dx-btn--tertiary-outline",
+}[cta_style.button_style] %}
+
+<section
+  class="dx-fcs"
+  id="dx-fcs-{{ module.widget_id }}"
+  data-slider-id="{{ module.widget_id }}"
+  data-autoplay="{{ 'true' if ss.enable_autoplay else 'false' }}"
+  data-autoplay-speed="{{ ss.autoplay_speed if ss.autoplay_speed else 4000 }}"
+  data-loop="{{ 'true' if ss.loop else 'false' }}"
+  style="
+    --fcs-bg: {{ s.background.bg_color.css }};
+    background-color: {{ s.background.bg_color.css }};
+    {% if s.text_style.enable_styles %}
+    --fcs-heading-color: {{ s.text_style.heading_color.css }};
+    --fcs-subheading-color: {{ s.text_style.subheading_color.css }};
+    --fcs-awards-label-color: {{ s.text_style.awards_label_color.css }};
+    {% endif %}
+    --fcs-pt-d: {{ d_sp.padding.top.value|default(96) }}{{ d_sp.padding.top.units|default('px') }};
+    --fcs-pr-d: {{ d_sp.padding.right.value|default(0) }}{{ d_sp.padding.right.units|default('px') }};
+    --fcs-pb-d: {{ d_sp.padding.bottom.value|default(96) }}{{ d_sp.padding.bottom.units|default('px') }};
+    --fcs-pl-d: {{ d_sp.padding.left.value|default(0) }}{{ d_sp.padding.left.units|default('px') }};
+    --fcs-pt-t: {{ t_sp.padding.top.value|default(72) }}{{ t_sp.padding.top.units|default('px') }};
+    --fcs-pr-t: {{ t_sp.padding.right.value|default(0) }}{{ t_sp.padding.right.units|default('px') }};
+    --fcs-pb-t: {{ t_sp.padding.bottom.value|default(72) }}{{ t_sp.padding.bottom.units|default('px') }};
+    --fcs-pl-t: {{ t_sp.padding.left.value|default(0) }}{{ t_sp.padding.left.units|default('px') }};
+    --fcs-pt-m: {{ m_sp.padding.top.value|default(56) }}{{ m_sp.padding.top.units|default('px') }};
+    --fcs-pr-m: {{ m_sp.padding.right.value|default(0) }}{{ m_sp.padding.right.units|default('px') }};
+    --fcs-pb-m: {{ m_sp.padding.bottom.value|default(56) }}{{ m_sp.padding.bottom.units|default('px') }};
+    --fcs-pl-m: {{ m_sp.padding.left.value|default(0) }}{{ m_sp.padding.left.units|default('px') }};
+  "
+>
+  <div class="dx-module__container content-wrapper">
+
+    {# ── Header ─────────────────────────────────── #}
+    <div class="dx-fcs__header">
+      {% if module.heading %}
+      <h2 class="dx-fcs__heading">{{ module.heading }}</h2>
+      {% endif %}
+      {% if module.subheading %}
+      <div class="dx-fcs__subheading">{{ module.subheading }}</div>
+      {% endif %}
+    </div>
+
+    {# ── Slider block: CTA link (top right) + slider ─ #}
+    {% if slides %}
+    <div class="dx-fcs__slider-block">
+      {% if cta.button_text %}
+      <div class="dx-fcs__slider-top">
+        <a
+          href="{{ cta.button_link.url.href }}"
+          class="{% if cta_style.display_type == 'button' %}dx-fcs__cta-btn dx-btn {{ cta_btn_class }}{% else %}dx-fcs__cta-link{% endif %}"
+          {% if cta_style.display_type == 'text' %}
+          style="--fcs-cta-color: {{ cta_style.text_color.css }}; --fcs-cta-arrow-color: {{ cta_style.arrow_color.css }};"
+          {% endif %}
+          {% if cta.button_link.open_in_new_tab and cta.button_link.no_follow %}
+            target="_blank" rel="noopener noreferrer nofollow"
+          {% elif cta.button_link.open_in_new_tab %}
+            target="_blank" rel="noopener noreferrer"
+          {% elif cta.button_link.no_follow %}
+            rel="nofollow"
+          {% endif %}
+        >
+          <span class="dx-fcs__cta-link-text">{{ cta.button_text }}</span>
+          <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      {% endif %}
+
+      <div class="dx-fcs__slider">
+        <div class="dx-fcs__wrapper" aria-label="Featured case studies slider">
+          <div class="dx-fcs__track" role="list">
+            {% for slide in slides %}
+            {% if slide.case_image.src %}
+            <a
+              href="{{ slide.case_link.url.href }}"
+              class="dx-fcs__slide"
+              role="listitem"
+              {% if slide.case_link.open_in_new_tab and slide.case_link.no_follow %}
+                target="_blank" rel="noopener noreferrer nofollow"
+              {% elif slide.case_link.open_in_new_tab %}
+                target="_blank" rel="noopener noreferrer"
+              {% elif slide.case_link.no_follow %}
+                rel="nofollow"
+              {% endif %}
+            >
+              <img
+                src="{{ slide.case_image.src }}"
+                alt="{{ slide.case_image.alt }}"
+                class="dx-fcs__slide-img"
+                loading="lazy"
+                {% if slide.case_image.width %}width="{{ slide.case_image.width }}"{% endif %}
+                {% if slide.case_image.height %}height="{{ slide.case_image.height }}"{% endif %}
+              >
+            </a>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>{# end wrapper #}
+
+        {# Floating side arrows #}
+        {% set show_arrows = ss.show_arrows != false %}
+        {% if show_arrows %}
+        <button class="dx-fcs__nav-btn dx-fcs__nav-btn--prev" aria-label="Previous case study" type="button" disabled>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="dx-fcs__nav-btn dx-fcs__nav-btn--next" aria-label="Next case study" type="button">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        {% endif %}
+
+        <div class="dx-fcs__dots" role="tablist" aria-label="Slider position"></div>
+      </div>{# end slider #}
+    </div>{# end slider-block #}
+    {% endif %}
+
+    {# ── Awards (same repeatable-marquee pattern as the home hero's trusted-by logos) ─── #}
+    {% if awards.logos %}
+    <div class="dx-fcs__awards">
+      {% if awards.section_label %}
+      <p class="dx-fcs__awards-label">{{ awards.section_label }}</p>
+      {% endif %}
+      <div class="dx-fcs__marquee" role="presentation">
+        <div class="dx-fcs__marquee-track">
+          {% for logo in awards.logos %}
+          {% if logo.logo_image.src %}
+          <div class="dx-fcs__award-logo">
+            <img src="{{ logo.logo_image.src }}" alt="{{ logo.logo_image.alt }}" {% if logo.logo_image.width %}width="{{ logo.logo_image.width }}"{% endif %} {% if logo.logo_image.height %}height="{{ logo.logo_image.height }}"{% endif %} loading="lazy">
+          </div>
+          {% endif %}
+          {% endfor %}
+          {# Duplicate for seamless infinite loop #}
+          {% for logo in awards.logos %}
+          {% if logo.logo_image.src %}
+          <div class="dx-fcs__award-logo" aria-hidden="true">
+            <img src="{{ logo.logo_image.src }}" alt="{{ logo.logo_image.alt }}" {% if logo.logo_image.width %}width="{{ logo.logo_image.width }}"{% endif %} {% if logo.logo_image.height %}height="{{ logo.logo_image.height }}"{% endif %} loading="lazy">
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>{# end container #}
+</section>

@@ -1,0 +1,98 @@
+{% set s = module.styles %}
+{% set c = module.content %}
+
+<section
+  class="dx-company-overview"
+  style="
+    --dx-co-bg: {{ s.background.bg_color.css }};
+    background-color: {{ s.background.bg_color.css }};
+    {% if s.text_style.enable_styles %}--dx-co-heading-color: {{ s.text_style.heading_color.css }}; --dx-co-subheading-color: {{ s.text_style.subheading_color.css }}; --dx-co-description-color: {{ s.text_style.description_color.css }};{% endif %}
+    --dx-co-stat-color: {{ s.stat_style.stat_number_color.css }};
+    --dx-co-accent-color: {{ s.stat_style.stat_accent_color.css }};
+    --dx-co-stat-label-color: {{ s.stat_style.stat_label_color.css }};
+  "
+>
+  <div class="dx-module__container content-wrapper">
+
+    {% if module.heading or module.subheading %}
+    <header class="dx-company-overview__header">
+      {% if module.heading %}<h2 class="dx-company-overview__heading">{{ module.heading }}</h2>{% endif %}
+      {% if module.subheading %}<p class="dx-company-overview__subheading">{{ module.subheading }}</p>{% endif %}
+    </header>
+    {% endif %}
+
+    {% if c.content_image.src or c.description %}
+    <div class="dx-company-overview__content">
+      {% if c.content_image.src %}
+      <div class="dx-company-overview__media">
+        <img
+          src="{{ c.content_image.src }}"
+          alt="{{ c.content_image.alt }}"
+          loading="lazy"
+          {% if c.content_image.width %}width="{{ c.content_image.width }}"{% endif %}
+          {% if c.content_image.height %}height="{{ c.content_image.height }}"{% endif %}
+        >
+      </div>
+      {% endif %}
+
+      {% if c.description %}
+      <div class="dx-company-overview__description">{{ c.description }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if module.stats %}
+    <div class="dx-company-overview__stats">
+      {% for stat in module.stats %}
+      <div class="dx-company-overview__stat">
+        <div class="dx-company-overview__stat-value">
+          <span
+            class="dx-company-overview__stat-number"
+            data-count-to="{{ stat.stat_value }}"
+            data-duration="{{ module.count_duration }}"
+          >0</span><span class="dx-company-overview__stat-suffix">{{ stat.stat_suffix }}</span>
+        </div>
+        {% if stat.stat_label %}
+        <div class="dx-company-overview__stat-label">{{ stat.stat_label }}</div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if module.logos.logo_items %}
+    <div class="dx-company-overview__logos" role="presentation" style="--dx-co-logos-speed: {{ module.logos.logos_speed }}s;">
+      <div class="dx-company-overview__logos-track">
+        {% for logo in module.logos.logo_items %}
+        {% if logo.logo_image.src %}
+        <div class="dx-company-overview__logo">
+          <img
+            src="{{ logo.logo_image.src }}"
+            alt="{{ logo.logo_image.alt }}"
+            loading="lazy"
+            {% if logo.logo_image.width %}width="{{ logo.logo_image.width }}"{% endif %}
+            {% if logo.logo_image.height %}height="{{ logo.logo_image.height }}"{% endif %}
+          >
+        </div>
+        {% endif %}
+        {% endfor %}
+        {# Duplicate set for a seamless infinite loop #}
+        {% for logo in module.logos.logo_items %}
+        {% if logo.logo_image.src %}
+        <div class="dx-company-overview__logo" aria-hidden="true">
+          <img
+            src="{{ logo.logo_image.src }}"
+            alt=""
+            loading="lazy"
+            {% if logo.logo_image.width %}width="{{ logo.logo_image.width }}"{% endif %}
+            {% if logo.logo_image.height %}height="{{ logo.logo_image.height }}"{% endif %}
+          >
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
