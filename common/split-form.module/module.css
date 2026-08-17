@@ -5,17 +5,8 @@
 .dx-split-form {
   position: relative;
   padding: var(--sf-pt-d, 80px) 0 var(--sf-pb-d, 80px);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: linear-gradient(200.97deg, #1E3555 -34.82%, #051327 63.32%, #B90007 161.46%);
   overflow: hidden;
-}
-
-.dx-split-form__overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
 }
 
 .dx-split-form__container {

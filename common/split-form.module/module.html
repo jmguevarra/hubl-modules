@@ -1,5 +1,4 @@
 {% set s = module.styles %}
-{% set bgs = s.background_style %}
 {% set cs = s.content_style %}
 {% set content_gap = cs.content_gap %}
 {% set fcs = s.form_card_style %}
@@ -57,15 +56,6 @@
   id="dx-split-form"
   class="dx-split-form"
   style="
-    {% if bgs.background_type == 'solid' %}
-    background-color: {{ bgs.bg_color.css }};
-    {% elif bgs.background_type == 'gradient' %}
-    background-image: linear-gradient({{ bgs.gradient_angle|default(135) }}deg, {{ bgs.gradient_start.css }}, {{ bgs.gradient_end.css }});
-    {% elif bgs.background_type == 'image' and bgs.bg_image.src %}
-    background-image: url('{{ bgs.bg_image.src }}');
-    background-size: cover;
-    background-position: center;
-    {% endif %}
     --sf-pt-d: {{ d_sp.desktop_padding_top|default(80) }}px;
     --sf-pb-d: {{ d_sp.desktop_padding_bottom|default(80) }}px;
     --sf-pt-t: {{ t_sp.tablet_padding_top|default(60) }}px;
@@ -79,10 +69,6 @@
     --sf-content-align: {{ cs.content_align|default('flex-start') }};
   "
 >
-  {% if bgs.background_type == 'image' and bgs.bg_image.src and bgs.overlay_enabled %}
-  <div class="dx-split-form__overlay" style="background-color: {{ bgs.overlay_color.color }}; opacity: {{ bgs.overlay_color.opacity / 100 }};"></div>
-  {% endif %}
-
   <div class="dx-module__container content-wrapper dx-split-form__container">
     <div class="dx-split-form__inner">
 
