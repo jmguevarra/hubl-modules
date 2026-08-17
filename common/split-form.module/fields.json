@@ -48,16 +48,73 @@
   {
     "id": "form",
     "name": "form",
-    "display_width": null,
     "label": "Form",
-    "required": false,
-    "locked": false,
-    "type": "form",
-    "disable_inline_form_editing": true,
-    "default": {
-      "response_type": "inline",
-      "message": "Thanks for submitting the form."
-    }
+    "type": "group",
+    "children": [
+      {
+        "id": "form_type",
+        "name": "form_type",
+        "label": "Form Type",
+        "help_text": "HubSpot's module 'Form' picker only lists Legacy forms — that's a platform limitation, not a bug here. If your form was built in the current form editor, choose 'Current Form' and paste its Form ID instead.",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["current", "Current Form (new editor)"],
+          ["legacy", "Legacy Form"]
+        ],
+        "default": "current"
+      },
+      {
+        "id": "legacy_form",
+        "name": "legacy_form",
+        "display_width": null,
+        "label": "Legacy Form",
+        "required": false,
+        "locked": false,
+        "type": "form",
+        "disable_inline_form_editing": true,
+        "default": {
+          "response_type": "inline",
+          "message": "Thanks for submitting the form."
+        },
+        "visibility": {
+          "controlling_field_path": "form.form_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "legacy"
+        }
+      },
+      {
+        "id": "current_form_id",
+        "name": "current_form_id",
+        "label": "Current Form ID",
+        "help_text": "In the Forms tool, open the form → Share → Embed code, and copy the GUID after data-form-id (or from the form's edit URL). For this Form Card's colors to apply, the form's own Style tab must be set to NOT inherit HubSpot's default styling — otherwise HubSpot renders it inside an iframe your module CSS can't reach.",
+        "type": "text",
+        "default": "",
+        "visibility": {
+          "controlling_field_path": "form.form_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "current"
+        }
+      },
+      {
+        "id": "current_form_region",
+        "name": "current_form_region",
+        "label": "Form Region",
+        "help_text": "Shown in the same embed code as the Form ID (data-region).",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["na1", "NA1"],
+          ["eu1", "EU1"]
+        ],
+        "default": "na1",
+        "visibility": {
+          "controlling_field_path": "form.form_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "current"
+        }
+      }
+    ]
   },
   {
     "id": "form_note",
