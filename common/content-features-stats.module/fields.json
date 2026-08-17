@@ -123,7 +123,7 @@
     "id": "stats",
     "name": "stats",
     "label": "Stats",
-    "help_text": "Full-width row of stat tiles below the content/features.",
+    "help_text": "Full-width row of stat tiles below the content/features. Each number counts up from 0 when the row scrolls into view.",
     "type": "group",
     "occurrence": {
       "min": 0,
@@ -135,9 +135,18 @@
       {
         "id": "stat_value",
         "name": "stat_value",
-        "label": "Value",
+        "label": "Number",
+        "help_text": "The final value the counter animates to.",
+        "type": "number",
+        "default": 150
+      },
+      {
+        "id": "stat_suffix",
+        "name": "stat_suffix",
+        "label": "Suffix",
+        "help_text": "Shown after the number, e.g. '+', ' MVPs', '-Star'. Not included in the count animation.",
         "type": "text",
-        "default": "150+"
+        "default": "+"
       },
       {
         "id": "stat_label",
@@ -146,7 +155,22 @@
         "type": "text",
         "default": "Successfully delivered projects"
       }
+    ],
+    "default": [
+      { "stat_value": 150, "stat_suffix": "+", "stat_label": "Successfully delivered projects" },
+      { "stat_value": 140, "stat_suffix": "+", "stat_label": "IT Professionals" },
+      { "stat_value": 50, "stat_suffix": "+", "stat_label": "Customers" },
+      { "stat_value": 210, "stat_suffix": "+", "stat_label": "Certifications" },
+      { "stat_value": 6, "stat_suffix": " MVPs", "stat_label": "Worldwide Recognised Experts" },
+      { "stat_value": 5, "stat_suffix": "-Star", "stat_label": "Customer Satisfaction Rating" }
     ]
+  },
+  {
+    "id": "count_duration",
+    "name": "count_duration",
+    "label": "Counter Animation Duration (ms)",
+    "type": "number",
+    "default": 2000
   },
   {
     "id": "styles",

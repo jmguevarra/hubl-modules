@@ -86,8 +86,16 @@
       {% for stat in module.stats %}
       {% if stat.stat_value or stat.stat_label %}
       <div class="dx-cfs__stat">
-        {% if stat.stat_value %}<span class="dx-cfs__stat-value">{{ stat.stat_value }}</span>{% endif %}
-        {% if stat.stat_label %}<span class="dx-cfs__stat-label">{{ stat.stat_label }}</span>{% endif %}
+        <div class="dx-cfs__stat-value">
+          <span
+            class="dx-cfs__stat-number"
+            data-count-to="{{ stat.stat_value }}"
+            data-duration="{{ module.count_duration }}"
+          >0</span><span class="dx-cfs__stat-suffix">{{ stat.stat_suffix }}</span>
+        </div>
+        {% if stat.stat_label %}
+        <span class="dx-cfs__stat-label">{{ stat.stat_label }}</span>
+        {% endif %}
       </div>
       {% endif %}
       {% endfor %}

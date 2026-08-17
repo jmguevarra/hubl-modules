@@ -103,6 +103,12 @@
 }
 
 .dx-cfs__stat-value {
+  display: flex;
+  align-items: baseline;
+}
+
+.dx-cfs__stat-number,
+.dx-cfs__stat-suffix {
   color: var(--cfs-stats-value-color, #D81F26);
   font-size: 28px;
   font-weight: 800;

@@ -3,7 +3,7 @@
   "css_assets": [],
   "external_js": [],
   "global": false,
-  "help_text": "Heading, description, and a single CTA button alongside a repeater list of features separated by dividers, with a full-width repeater of stat tiles below. Supports flipping the content/features column order and per-breakpoint section spacing.",
+  "help_text": "Heading, description, and a single CTA button alongside a repeater list of features separated by dividers, with a full-width repeater of stat tiles below that count up from 0 when scrolled into view. Supports flipping the content/features column order and per-breakpoint section spacing.",
   "content_types": [
     "LANDING_PAGE",
     "SITE_PAGE"
@@ -12,5 +12,6 @@
   "other_assets": [],
   "smart_type": "NOT_SMART",
   "tags": [],
-  "is_available_for_new_content": true
+  "is_available_for_new_content": true,
+  "js_render_options": { "position": "footer", "defer": true }
 }
