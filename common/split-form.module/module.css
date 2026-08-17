@@ -1,7 +1,12 @@
 /* ============================================================
    Split Form
    ============================================================ */
-
+.hs_cos_wrapper.form-title{
+  display: none;
+}
+.field.hs-form-field {
+    margin-bottom: 16px;
+}
 .dx-split-form {
   position: relative;
   padding: var(--sf-pt-d, 80px) 0 var(--sf-pb-d, 80px);
@@ -111,6 +116,7 @@
   padding: 14px 28px;
   text-decoration: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
+  background: linear-gradient(270deg, #FF2400 0%, #991600 100%);
 }
 
 .dx-split-form__form-wrapper .hs-form input[type="submit"]:hover,
@@ -118,16 +124,25 @@
 .dx-split-form__form-wrapper [data-hsfc-id=Renderer] .hsfc-Button:hover {
   opacity: 0.9;
   transform: translateY(-1px);
+  background: linear-gradient(270deg, #FF2400 0%, #FF2400 100%);
 }
 
 /* ---- Form Note ---- */
 .dx-split-form__form-note {
   font-size: 12px;
   line-height: 1.6;
+  font-weight: 800;
 }
 
 .dx-split-form__form-note p {
   margin: 0;
+  line-height: 1.5;
+}
+
+@media (min-width: 1280px) {
+  .dx-split-form__heading{
+    font-size: 48px;
+  }
 }
 
 /* ---- Responsive — Tablet (≤1024px) ---- */

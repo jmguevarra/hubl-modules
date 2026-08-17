@@ -298,26 +298,6 @@
         ]
       },
       {
-        "id": "button_style",
-        "name": "button_style",
-        "label": "Button Style",
-        "type": "choice",
-        "display": "select",
-        "choices": [
-          ["primary", "Primary"],
-          ["primary-linear", "Primary Linear"],
-          ["secondary", "Secondary"],
-          ["blog", "Blog"],
-          ["training", "Training"],
-          ["blog-hover-fill", "Blog Hover-Fill"],
-          ["training-hover-fill", "Training Hover-Fill"],
-          ["primary-outline", "Primary Outline"],
-          ["secondary-outline", "Secondary Outline"],
-          ["tertiary-outline", "Tertiary Outline"]
-        ],
-        "default": "primary"
-      },
-      {
         "id": "content_style",
         "name": "content_style",
         "label": "Content Column",

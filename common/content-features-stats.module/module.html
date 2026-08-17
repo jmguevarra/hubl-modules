@@ -6,22 +6,11 @@
 {% set d_sp = s.section.spacing.desktop %}
 {% set t_sp = s.section.spacing.tablet %}
 {% set m_sp = s.section.spacing.mobile %}
-{% set btn_style_class = {
-  "primary":             "dx-btn--primary",
-  "primary-linear":      "dx-btn--primary-linear",
-  "secondary":           "dx-btn--secondary",
-  "blog":                "dx-btn--blog",
-  "training":            "dx-btn--training",
-  "blog-hover-fill":     "dx-btn--blog-hover-fill",
-  "training-hover-fill": "dx-btn--training-hover-fill",
-  "primary-outline":     "dx-btn--primary-outline",
-  "secondary-outline":   "dx-btn--secondary-outline",
-  "tertiary-outline":    "dx-btn--tertiary-outline",
-}[s.button_style] %}
 
 <section
   class="dx-cfs"
   style="
+    box-shadow: 0px 5px 60px -15px #47474F26;
     --cfs-stats-bg: {{ stats_s.bg_color.css }};
     --cfs-stats-value-color: {{ stats_s.value_color.css }};
     --cfs-stats-label-color: {{ stats_s.label_color.css }};
@@ -56,7 +45,7 @@
         {% set btn_href = btn.button_type == 'anchor' ? btn.button_anchor : btn.button_url.href %}
         <a
           href="{{ btn_href }}"
-          class="dx-btn {{ btn_style_class }} dx-cfs__btn"
+          class="scale-button"
           {% if btn.button_type != 'anchor' and btn.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
         >
           <span class="dx-btn-text">{{ btn.button_text }}</span>

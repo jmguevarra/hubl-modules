@@ -90,6 +90,7 @@
   display: grid;
   gap: 16px;
   margin-top: 48px;
+  align-items: center;
 }
 
 .dx-cfs__stats--cols-2 {
@@ -107,6 +108,7 @@
   background-color: var(--cfs-stats-bg, #F1F2F4);
   border-radius: 8px;
   padding: 20px 24px;
+  align-items: center;
 }
 
 .dx-cfs__stat-value {
@@ -117,15 +119,22 @@
 .dx-cfs__stat-number,
 .dx-cfs__stat-suffix {
   color: var(--cfs-stats-value-color, #D81F26);
-  font-size: 28px;
   font-weight: 800;
   line-height: 1.2;
+  font-size: 32px;
 }
 
 .dx-cfs__stat-label {
   color: var(--cfs-stats-label-color, #051327);
   font-size: 14px;
   line-height: 1.4;
+}
+
+@media (min-width: 1280px) {
+.dx-cfs__stat-number,
+.dx-cfs__stat-suffix {
+    font-size: 48px;
+  }
 }
 
 /* ── Responsive — Tablet (≤1023px) ───────────────── */
