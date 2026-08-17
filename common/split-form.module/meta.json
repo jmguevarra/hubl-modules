@@ -1,0 +1,16 @@
+{
+  "label": "Split Form",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Two-column layout: heading/body on a colored panel (solid, gradient, or image background) alongside a white HubSpot form card with a form note below the submit button.",
+  "content_types": [
+    "LANDING_PAGE",
+    "SITE_PAGE"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}

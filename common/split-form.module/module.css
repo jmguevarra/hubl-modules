@@ -1,0 +1,193 @@
+/* ============================================================
+   Split Form
+   ============================================================ */
+
+.dx-split-form {
+  position: relative;
+  padding: var(--sf-pt-d, 80px) 0 var(--sf-pb-d, 80px);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.dx-split-form__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dx-split-form__container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Layout ---- */
+.dx-split-form__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ---- Content Panel ---- */
+.dx-split-form__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-content-gap-d, 20px);
+  justify-content: var(--sf-content-justify, center);
+  align-items: var(--sf-content-align, flex-start);
+}
+
+.dx-split-form__heading {
+  color: #FFFFFF;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.dx-split-form__body {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.dx-split-form__body p {
+  margin: 0 0 16px;
+}
+
+.dx-split-form__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- Form Card ---- */
+.dx-split-form__form-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---- Form Wrapper ---- */
+.dx-split-form__form-wrapper {
+  width: 100%;
+}
+
+.dx-split-form__form-wrapper [data-hsfc-id=Renderer] .hsfc-Step .hsfc-Step__Content {
+  padding: 0;
+}
+
+.dx-split-form__form-wrapper [data-hsfc-id=Renderer] .hsfc-Row {
+  margin-bottom: 15px;
+  gap: 12px;
+}
+
+.dx-split-form__form-wrapper [data-hsfc-id=Renderer] .hsfc-TextareaInput {
+  min-height: 110px;
+}
+
+.dx-split-form__form-wrapper .hs-form input:not([type="submit"]),
+.dx-split-form__form-wrapper .hs-form select,
+.dx-split-form__form-wrapper .hs-form textarea,
+.dx-split-form__form-wrapper [data-hsfc-id=Renderer] input,
+.dx-split-form__form-wrapper [data-hsfc-id=Renderer] textarea {
+  border-radius: 6px;
+  border: 1px solid;
+  padding: 10px 14px;
+  width: 100%;
+}
+
+.dx-split-form__form-wrapper .hs-form label,
+.dx-split-form__form-wrapper [data-hsfc-id=Renderer] .hsfc-FieldLabel {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.dx-split-form__form-wrapper .hs-form input[type="submit"],
+.dx-split-form__form-wrapper .hs-form .hs-button,
+.dx-split-form__form-wrapper [data-hsfc-id=Renderer] .hsfc-Button {
+  border-radius: 999px;
+  border: 1px solid;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  padding: 14px 28px;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dx-split-form__form-wrapper .hs-form input[type="submit"]:hover,
+.dx-split-form__form-wrapper .hs-form .hs-button:hover,
+.dx-split-form__form-wrapper [data-hsfc-id=Renderer] .hsfc-Button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ---- Form Note ---- */
+.dx-split-form__form-note {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.dx-split-form__form-note p {
+  margin: 0;
+}
+
+/* ---- Responsive — Tablet (≤1024px) ---- */
+@media (max-width: 1024px) {
+  .dx-split-form {
+    padding: var(--sf-pt-t, 60px) 0 var(--sf-pb-t, 60px);
+  }
+
+  .dx-split-form__inner {
+    gap: 40px;
+  }
+
+  .dx-split-form__content {
+    gap: var(--sf-content-gap-t, 16px);
+  }
+
+  .dx-split-form__form-card {
+    padding: 32px;
+  }
+}
+
+/* ---- Responsive — Tablet (≤768px) ---- */
+@media (max-width: 768px) {
+  .dx-split-form__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .dx-split-form__form-card {
+    width: 100%;
+    max-width: 560px;
+  }
+}
+
+/* ---- Responsive — Mobile (≤480px) ---- */
+@media (max-width: 480px) {
+  .dx-split-form {
+    padding: var(--sf-pt-m, 40px) 0 var(--sf-pb-m, 40px);
+  }
+
+  .dx-split-form__content {
+    gap: var(--sf-content-gap-m, 14px);
+  }
+
+  .dx-split-form__form-card {
+    padding: 24px 16px;
+    border-radius: 8px;
+  }
+
+  .dx-split-form__form-wrapper .hs-form .form-columns-2 {
+    grid-template-columns: 1fr;
+  }
+}

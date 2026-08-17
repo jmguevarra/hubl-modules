@@ -58,6 +58,22 @@
         "default": "AI-Powered Business"
       },
       {
+        "id": "box_heading_tag",
+        "name": "box_heading_tag",
+        "label": "Heading Tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["h1", "H1"],
+          ["h2", "H2"],
+          ["h3", "H3"],
+          ["h4", "H4"],
+          ["h5", "H5"],
+          ["h6", "H6"]
+        ],
+        "default": "h3"
+      },
+      {
         "id": "box_subheading",
         "name": "box_subheading",
         "label": "Subheading",
@@ -256,6 +272,36 @@
                 "min": 0
               }
             ]
+          },
+          {
+            "id": "content_justify",
+            "name": "content_justify",
+            "label": "Justify Content",
+            "help_text": "Vertical alignment of the heading, card rows, and CTA button (flex column).",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["flex-start", "Start"],
+              ["center", "Center"],
+              ["flex-end", "End"],
+              ["space-between", "Space Between"]
+            ],
+            "default": "flex-start"
+          },
+          {
+            "id": "content_align",
+            "name": "content_align",
+            "label": "Align Items",
+            "help_text": "Horizontal alignment of the heading, card rows, and CTA button (flex column).",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["flex-start", "Start"],
+              ["center", "Center"],
+              ["flex-end", "End"],
+              ["stretch", "Stretch"]
+            ],
+            "default": "stretch"
           }
         ]
       }
@@ -359,6 +405,78 @@
                 ]
               }
             ]
+          }
+        ]
+      },
+      {
+        "id": "header_style",
+        "name": "header_style",
+        "label": "Section Header",
+        "type": "group",
+        "children": [
+          {
+            "id": "header_content_gap",
+            "name": "header_content_gap",
+            "label": "Gap",
+            "help_text": "Space between the section heading and content.",
+            "type": "group",
+            "children": [
+              {
+                "id": "header_desktop_gap",
+                "name": "header_desktop_gap",
+                "label": "Desktop Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 10,
+                "min": 0
+              },
+              {
+                "id": "header_tablet_gap",
+                "name": "header_tablet_gap",
+                "label": "Tablet Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 10,
+                "min": 0
+              },
+              {
+                "id": "header_mobile_gap",
+                "name": "header_mobile_gap",
+                "label": "Mobile Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 8,
+                "min": 0
+              }
+            ]
+          },
+          {
+            "id": "header_content_justify",
+            "name": "header_content_justify",
+            "label": "Justify Content",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["flex-start", "Start"],
+              ["center", "Center"],
+              ["flex-end", "End"],
+              ["space-between", "Space Between"]
+            ],
+            "default": "flex-start"
+          },
+          {
+            "id": "header_content_align",
+            "name": "header_content_align",
+            "label": "Align Items",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["flex-start", "Start"],
+              ["center", "Center"],
+              ["flex-end", "End"],
+              ["stretch", "Stretch"]
+            ],
+            "default": "flex-start"
           }
         ]
       }

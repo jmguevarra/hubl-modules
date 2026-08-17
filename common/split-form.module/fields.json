@@ -1,0 +1,463 @@
+[
+  {
+    "id": "content",
+    "name": "content",
+    "label": "Content",
+    "type": "group",
+    "children": [
+      {
+        "id": "heading",
+        "name": "heading",
+        "label": "Heading",
+        "type": "group",
+        "children": [
+          {
+            "id": "heading_text",
+            "name": "heading_text",
+            "label": "Heading Text",
+            "type": "text",
+            "default": "Claim your FREE AI Use Case Prioritisation Workshop"
+          },
+          {
+            "id": "heading_tag",
+            "name": "heading_tag",
+            "label": "Heading Tag",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["h1", "H1"],
+              ["h2", "H2"],
+              ["h3", "H3"],
+              ["h4", "H4"],
+              ["h5", "H5"],
+              ["h6", "H6"]
+            ],
+            "default": "h2"
+          }
+        ]
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "label": "Body",
+        "type": "richtext",
+        "default": "<p>We'll help you identify the right opportunities so you can move quickly, build with confidence, and start delivering real business value fast.</p>"
+      }
+    ]
+  },
+  {
+    "id": "form",
+    "name": "form",
+    "display_width": null,
+    "label": "Form",
+    "required": false,
+    "locked": false,
+    "type": "form",
+    "disable_inline_form_editing": true,
+    "default": {
+      "response_type": "inline",
+      "message": "Thanks for submitting the form."
+    }
+  },
+  {
+    "id": "form_note",
+    "name": "form_note",
+    "label": "Form Note",
+    "type": "richtext",
+    "default": "<p>This form is only for who attended the DX Connect 2026 event.</p>"
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "section",
+        "name": "section",
+        "label": "Section",
+        "type": "group",
+        "children": [
+          {
+            "id": "spacing",
+            "name": "spacing",
+            "label": "Spacing",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop",
+                "name": "desktop",
+                "label": "Desktop",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "desktop_padding_top",
+                    "name": "desktop_padding_top",
+                    "label": "Padding Top (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 80,
+                    "min": 0
+                  },
+                  {
+                    "id": "desktop_padding_bottom",
+                    "name": "desktop_padding_bottom",
+                    "label": "Padding Bottom (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 80,
+                    "min": 0
+                  }
+                ]
+              },
+              {
+                "id": "tablet",
+                "name": "tablet",
+                "label": "Tablet",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "tablet_padding_top",
+                    "name": "tablet_padding_top",
+                    "label": "Padding Top (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 60,
+                    "min": 0
+                  },
+                  {
+                    "id": "tablet_padding_bottom",
+                    "name": "tablet_padding_bottom",
+                    "label": "Padding Bottom (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 60,
+                    "min": 0
+                  }
+                ]
+              },
+              {
+                "id": "mobile",
+                "name": "mobile",
+                "label": "Mobile",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "mobile_padding_top",
+                    "name": "mobile_padding_top",
+                    "label": "Padding Top (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 40,
+                    "min": 0
+                  },
+                  {
+                    "id": "mobile_padding_bottom",
+                    "name": "mobile_padding_bottom",
+                    "label": "Padding Bottom (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 40,
+                    "min": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "background_style",
+        "name": "background_style",
+        "label": "Background",
+        "type": "group",
+        "children": [
+          {
+            "id": "background_type",
+            "name": "background_type",
+            "label": "Background Type",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["solid", "Solid Color"],
+              ["gradient", "Gradient"],
+              ["image", "Image"]
+            ],
+            "default": "gradient"
+          },
+          {
+            "id": "bg_color",
+            "name": "bg_color",
+            "label": "Background Color",
+            "type": "color",
+            "default": { "color": "#0A1628", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.background_style.background_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "solid"
+            }
+          },
+          {
+            "id": "gradient_angle",
+            "name": "gradient_angle",
+            "label": "Gradient Angle (deg)",
+            "type": "number",
+            "display": "text",
+            "default": 135,
+            "min": 0,
+            "max": 360,
+            "visibility": {
+              "controlling_field_path": "styles.background_style.background_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "gradient"
+            }
+          },
+          {
+            "id": "gradient_start",
+            "name": "gradient_start",
+            "label": "Gradient Start Color",
+            "type": "color",
+            "default": { "color": "#0A1628", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.background_style.background_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "gradient"
+            }
+          },
+          {
+            "id": "gradient_end",
+            "name": "gradient_end",
+            "label": "Gradient End Color",
+            "type": "color",
+            "default": { "color": "#7A2E3A", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.background_style.background_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "gradient"
+            }
+          },
+          {
+            "id": "bg_image",
+            "name": "bg_image",
+            "label": "Background Image",
+            "type": "image",
+            "default": { "src": "", "alt": "" },
+            "visibility": {
+              "controlling_field_path": "styles.background_style.background_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "image"
+            }
+          },
+          {
+            "id": "overlay_enabled",
+            "name": "overlay_enabled",
+            "label": "Enable Color Overlay",
+            "help_text": "Adds a color wash over the image to help the heading/body text stay readable.",
+            "type": "boolean",
+            "default": true,
+            "visibility": {
+              "controlling_field_path": "styles.background_style.background_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "image"
+            }
+          },
+          {
+            "id": "overlay_color",
+            "name": "overlay_color",
+            "label": "Overlay Color",
+            "type": "color",
+            "default": { "color": "#0A1628", "opacity": 60 },
+            "visibility": {
+              "controlling_field_path": "styles.background_style.overlay_enabled",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          }
+        ]
+      },
+      {
+        "id": "content_style",
+        "name": "content_style",
+        "label": "Content Panel",
+        "type": "group",
+        "children": [
+          {
+            "id": "enable_styles",
+            "name": "enable_styles",
+            "label": "Enable Styles",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "heading_color",
+            "name": "heading_color",
+            "label": "Heading Color",
+            "type": "color",
+            "default": { "color": "#FFFFFF", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.content_style.enable_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "description_color",
+            "name": "description_color",
+            "label": "Body Text Color",
+            "type": "color",
+            "default": { "color": "#FFFFFF", "opacity": 80 },
+            "visibility": {
+              "controlling_field_path": "styles.content_style.enable_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "content_gap",
+            "name": "content_gap",
+            "label": "Gap",
+            "help_text": "Space between the heading and body text.",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop_gap",
+                "name": "desktop_gap",
+                "label": "Desktop Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 20,
+                "min": 0
+              },
+              {
+                "id": "tablet_gap",
+                "name": "tablet_gap",
+                "label": "Tablet Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 16,
+                "min": 0
+              },
+              {
+                "id": "mobile_gap",
+                "name": "mobile_gap",
+                "label": "Mobile Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 14,
+                "min": 0
+              }
+            ]
+          },
+          {
+            "id": "content_justify",
+            "name": "content_justify",
+            "label": "Justify Content",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["flex-start", "Start"],
+              ["center", "Center"],
+              ["flex-end", "End"],
+              ["space-between", "Space Between"]
+            ],
+            "default": "center"
+          },
+          {
+            "id": "content_align",
+            "name": "content_align",
+            "label": "Align Items",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["flex-start", "Start"],
+              ["center", "Center"],
+              ["flex-end", "End"],
+              ["stretch", "Stretch"]
+            ],
+            "default": "flex-start"
+          }
+        ]
+      },
+      {
+        "id": "form_card_style",
+        "name": "form_card_style",
+        "label": "Form Card",
+        "type": "group",
+        "children": [
+          {
+            "id": "card_bg_color",
+            "name": "card_bg_color",
+            "label": "Card Background Color",
+            "type": "color",
+            "default": { "color": "#FFFFFF", "opacity": 100 }
+          },
+          {
+            "id": "label_color",
+            "name": "label_color",
+            "label": "Label Color",
+            "type": "color",
+            "default": { "color": "#1C2340", "opacity": 100 }
+          },
+          {
+            "id": "input_bg_color",
+            "name": "input_bg_color",
+            "label": "Input Background",
+            "type": "color",
+            "default": { "color": "#F2F2F2", "opacity": 100 }
+          },
+          {
+            "id": "input_border_color",
+            "name": "input_border_color",
+            "label": "Input Border Color",
+            "type": "color",
+            "default": { "color": "#E0E0E0", "opacity": 100 }
+          },
+          {
+            "id": "input_text_color",
+            "name": "input_text_color",
+            "label": "Input Text Color",
+            "type": "color",
+            "default": { "color": "#1C2340", "opacity": 100 }
+          },
+          {
+            "id": "placeholder_color",
+            "name": "placeholder_color",
+            "label": "Placeholder Color",
+            "type": "color",
+            "default": { "color": "#9CA3AF", "opacity": 100 }
+          },
+          {
+            "id": "button_style",
+            "name": "button_style",
+            "label": "Submit Button",
+            "type": "group",
+            "children": [
+              {
+                "id": "button_bg_color",
+                "name": "button_bg_color",
+                "label": "Background Color",
+                "type": "color",
+                "default": { "color": "#D81F26", "opacity": 100 }
+              },
+              {
+                "id": "button_text_color",
+                "name": "button_text_color",
+                "label": "Text Color",
+                "type": "color",
+                "default": { "color": "#FFFFFF", "opacity": 100 }
+              }
+            ]
+          },
+          {
+            "id": "form_note_color",
+            "name": "form_note_color",
+            "label": "Form Note Color",
+            "type": "color",
+            "default": { "color": "#D81F26", "opacity": 100 }
+          }
+        ]
+      }
+    ]
+  }
+]

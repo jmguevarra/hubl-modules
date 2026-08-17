@@ -1,0 +1,16 @@
+{
+  "label": "Event Promo Panels",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "A full-bleed row of clickable gradient panels (eyebrow text, heading with arrow, date), each with its own link and a choice of two preset gradients or a custom gradient.",
+  "content_types": [
+    "LANDING_PAGE",
+    "SITE_PAGE"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}

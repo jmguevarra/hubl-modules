@@ -1,4 +1,6 @@
 {% set section = module.styles.section %}
+{% set header_s = module.styles.header_style %}
+{% set header_gap = header_s.header_content_gap %}
 {% set d_sp = section.spacing.desktop %}
 {% set t_sp = section.spacing.tablet %}
 {% set m_sp = section.spacing.mobile %}
@@ -12,6 +14,11 @@
     --ccbx-pb-t: {{ t_sp.tablet_padding_bottom|default(32) }}px;
     --ccbx-pt-m: {{ m_sp.mobile_padding_top|default(24) }}px;
     --ccbx-pb-m: {{ m_sp.mobile_padding_bottom|default(24) }}px;
+    --ccbx-header-gap-d: {{ header_gap.header_desktop_gap|default(10) }}px;
+    --ccbx-header-gap-t: {{ header_gap.header_tablet_gap|default(10) }}px;
+    --ccbx-header-gap-m: {{ header_gap.header_mobile_gap|default(8) }}px;
+    --ccbx-header-justify: {{ header_s.header_content_justify|default('flex-start') }};
+    --ccbx-header-align: {{ header_s.header_content_align|default('flex-start') }};
   "
 >
   <div class="dx-module__container content-wrapper">
@@ -46,13 +53,15 @@
           --ccbx-box-gap-d: {{ gap.desktop_gap|default(32) }}px;
           --ccbx-box-gap-t: {{ gap.tablet_gap|default(24) }}px;
           --ccbx-box-gap-m: {{ gap.mobile_gap|default(20) }}px;
+          --ccbx-box-justify: {{ box.box_style.content_justify|default('flex-start') }};
+          --ccbx-box-align: {{ box.box_style.content_align|default('stretch') }};
         "
       >
 
         {% if box.box_heading or box.box_subheading %}
         <div class="dx-ccbx__header">
           {% if box.box_heading %}
-          <h3 class="dx-ccbx__heading">{{ box.box_heading }}</h3>
+          <{{ box.box_heading_tag|default('h3') }} class="dx-ccbx__heading">{{ box.box_heading }}</{{ box.box_heading_tag|default('h3') }}>
           {% endif %}
           {% if box.box_subheading %}
           <p class="dx-ccbx__subheading">{{ box.box_subheading }}</p>

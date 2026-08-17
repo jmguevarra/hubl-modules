@@ -1,0 +1,121 @@
+{% set s = module.styles %}
+{% set bgs = s.background_style %}
+{% set cs = s.content_style %}
+{% set content_gap = cs.content_gap %}
+{% set fcs = s.form_card_style %}
+{% set bs = fcs.button_style %}
+{% set d_sp = s.section.spacing.desktop %}
+{% set t_sp = s.section.spacing.tablet %}
+{% set m_sp = s.section.spacing.mobile %}
+
+<style>
+  {% if cs.enable_styles %}
+  #dx-split-form .dx-split-form__heading {
+    color: {{ cs.heading_color.color }};
+    opacity: {{ cs.heading_color.opacity / 100 }};
+  }
+  #dx-split-form .dx-split-form__body {
+    color: {{ cs.description_color.color }};
+    opacity: {{ cs.description_color.opacity / 100 }};
+  }
+  {% endif %}
+  #dx-split-form .dx-split-form__form-card {
+    background-color: {{ fcs.card_bg_color.color }};
+  }
+  #dx-split-form .dx-split-form__form-wrapper .hs-form label,
+  #dx-split-form .dx-split-form__form-wrapper [data-hsfc-id=Renderer] .hsfc-FieldLabel {
+    color: {{ fcs.label_color.color }};
+  }
+  #dx-split-form .dx-split-form__form-wrapper .hs-form input:not([type="submit"]),
+  #dx-split-form .dx-split-form__form-wrapper .hs-form select,
+  #dx-split-form .dx-split-form__form-wrapper .hs-form textarea,
+  #dx-split-form .dx-split-form__form-wrapper [data-hsfc-id=Renderer] input,
+  #dx-split-form .dx-split-form__form-wrapper [data-hsfc-id=Renderer] textarea {
+    background-color: {{ fcs.input_bg_color.color }};
+    border-color: {{ fcs.input_border_color.color }};
+    color: {{ fcs.input_text_color.color }};
+  }
+  #dx-split-form .dx-split-form__form-wrapper .hs-form input::placeholder,
+  #dx-split-form .dx-split-form__form-wrapper .hs-form textarea::placeholder,
+  #dx-split-form .dx-split-form__form-wrapper [data-hsfc-id=Renderer] input::placeholder {
+    color: {{ fcs.placeholder_color.color }};
+  }
+  #dx-split-form .dx-split-form__form-wrapper .hs-form input[type="submit"],
+  #dx-split-form .dx-split-form__form-wrapper .hs-form .hs-button,
+  #dx-split-form .dx-split-form__form-wrapper [data-hsfc-id=Renderer] .hsfc-Button {
+    background-color: {{ bs.button_bg_color.color }};
+    color: {{ bs.button_text_color.color }};
+    border-color: {{ bs.button_bg_color.color }};
+  }
+  #dx-split-form .dx-split-form__form-note {
+    color: {{ fcs.form_note_color.color }};
+    opacity: {{ fcs.form_note_color.opacity / 100 }};
+  }
+</style>
+
+<section
+  id="dx-split-form"
+  class="dx-split-form"
+  style="
+    {% if bgs.background_type == 'solid' %}
+    background-color: {{ bgs.bg_color.css }};
+    {% elif bgs.background_type == 'gradient' %}
+    background-image: linear-gradient({{ bgs.gradient_angle|default(135) }}deg, {{ bgs.gradient_start.css }}, {{ bgs.gradient_end.css }});
+    {% elif bgs.background_type == 'image' and bgs.bg_image.src %}
+    background-image: url('{{ bgs.bg_image.src }}');
+    background-size: cover;
+    background-position: center;
+    {% endif %}
+    --sf-pt-d: {{ d_sp.desktop_padding_top|default(80) }}px;
+    --sf-pb-d: {{ d_sp.desktop_padding_bottom|default(80) }}px;
+    --sf-pt-t: {{ t_sp.tablet_padding_top|default(60) }}px;
+    --sf-pb-t: {{ t_sp.tablet_padding_bottom|default(60) }}px;
+    --sf-pt-m: {{ m_sp.mobile_padding_top|default(40) }}px;
+    --sf-pb-m: {{ m_sp.mobile_padding_bottom|default(40) }}px;
+    --sf-content-gap-d: {{ content_gap.desktop_gap|default(20) }}px;
+    --sf-content-gap-t: {{ content_gap.tablet_gap|default(16) }}px;
+    --sf-content-gap-m: {{ content_gap.mobile_gap|default(14) }}px;
+    --sf-content-justify: {{ cs.content_justify|default('center') }};
+    --sf-content-align: {{ cs.content_align|default('flex-start') }};
+  "
+>
+  {% if bgs.background_type == 'image' and bgs.bg_image.src and bgs.overlay_enabled %}
+  <div class="dx-split-form__overlay" style="background-color: {{ bgs.overlay_color.color }}; opacity: {{ bgs.overlay_color.opacity / 100 }};"></div>
+  {% endif %}
+
+  <div class="dx-module__container content-wrapper dx-split-form__container">
+    <div class="dx-split-form__inner">
+
+      {# ---- Content Panel ---- #}
+      <div class="dx-split-form__content">
+
+        {% if module.content.heading.heading_text %}
+        <{{ module.content.heading.heading_tag|default('h2') }} class="dx-split-form__heading">{{ module.content.heading.heading_text }}</{{ module.content.heading.heading_tag|default('h2') }}>
+        {% endif %}
+
+        {% if module.content.description %}
+        <div class="dx-split-form__body">{{ module.content.description }}</div>
+        {% endif %}
+
+      </div>
+
+      {# ---- Form Card ---- #}
+      <div class="dx-split-form__form-card">
+
+        <div class="dx-split-form__form-wrapper">
+          {% form form_to_use="{{ module.form.form_id }}"
+                 response_response_type="{{ module.form.response_type }}"
+                 response_message="{{ module.form.message }}"
+                 response_redirect_id="{{ module.form.redirect_id }}"
+                 response_redirect_url="{{ module.form.redirect_url }}" %}
+        </div>
+
+        {% if module.form_note %}
+        <div class="dx-split-form__form-note">{{ module.form_note }}</div>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</section>

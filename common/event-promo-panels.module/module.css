@@ -1,0 +1,98 @@
+/* ============================================================
+   Event Promo Panels
+   ============================================================ */
+
+.dx-epp {
+  display: flex;
+  width: 100%;
+}
+
+.dx-epp__panel {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  padding: 40px 64px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  min-width: 0;
+}
+
+a.dx-epp__panel:hover {
+  opacity: 0.9;
+}
+
+.dx-epp__panel-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--epp-content-gap-d, 12px);
+  justify-content: var(--epp-content-justify, center);
+  align-items: var(--epp-content-align, flex-start);
+  max-width: 100%;
+}
+
+.dx-epp__eyebrow {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.dx-epp__heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.dx-epp__arrow {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+a.dx-epp__panel:hover .dx-epp__arrow {
+  transform: translateX(4px);
+}
+
+.dx-epp__date {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* ── Responsive — Tablet (≤1023px) ───────────────── */
+
+@media (max-width: 1023px) {
+  .dx-epp__panel {
+    padding: 32px 40px;
+  }
+
+  .dx-epp__panel-inner {
+    gap: var(--epp-content-gap-t, 12px);
+  }
+}
+
+/* ── Responsive — Mobile (≤767px) ────────────────── */
+
+@media (max-width: 767px) {
+  .dx-epp {
+    flex-direction: column;
+  }
+
+  .dx-epp__panel {
+    padding: 28px 24px;
+  }
+
+  .dx-epp__panel-inner {
+    gap: var(--epp-content-gap-m, 10px);
+  }
+
+  .dx-epp__heading {
+    font-size: 22px;
+  }
+}

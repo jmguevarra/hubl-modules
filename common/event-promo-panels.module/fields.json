@@ -1,0 +1,233 @@
+[
+  {
+    "id": "panels",
+    "name": "panels",
+    "label": "Panels",
+    "help_text": "Each panel renders as a full-height clickable button with its own gradient background.",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 4,
+      "default": 2,
+      "sorting_label_field": "heading"
+    },
+    "default": [
+      {
+        "eyebrow_text": "REGISTER FOR NEXT EVENT",
+        "heading": "Innovator Day in Sydney",
+        "heading_tag": "h3",
+        "date_text": "17 SEPTEMBER 2026",
+        "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false },
+        "text_color": { "color": "#FFFFFF", "opacity": 100 },
+        "background_type": "gradient-1",
+        "custom_gradient_angle": 95,
+        "custom_gradient_start": { "color": "#C73B3D", "opacity": 100 },
+        "custom_gradient_end": { "color": "#2539A0", "opacity": 100 },
+        "content_style": {
+          "content_gap": { "desktop_gap": 12, "tablet_gap": 12, "mobile_gap": 10 },
+          "content_justify": "center",
+          "content_align": "flex-start"
+        }
+      },
+      {
+        "eyebrow_text": "JOIN THE NEXT EVENT",
+        "heading": "DX Connect in Melbourne",
+        "heading_tag": "h3",
+        "date_text": "19 AUGUST 2026",
+        "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false },
+        "text_color": { "color": "#1C2340", "opacity": 100 },
+        "background_type": "gradient-2",
+        "custom_gradient_angle": 95,
+        "custom_gradient_start": { "color": "#FFD693", "opacity": 100 },
+        "custom_gradient_end": { "color": "#E19E5B", "opacity": 100 },
+        "content_style": {
+          "content_gap": { "desktop_gap": 12, "tablet_gap": 12, "mobile_gap": 10 },
+          "content_justify": "center",
+          "content_align": "flex-start"
+        }
+      }
+    ],
+    "children": [
+      {
+        "id": "eyebrow_text",
+        "name": "eyebrow_text",
+        "label": "Eyebrow Text",
+        "type": "text",
+        "default": "REGISTER FOR NEXT EVENT"
+      },
+      {
+        "id": "heading",
+        "name": "heading",
+        "label": "Heading",
+        "type": "text",
+        "default": "Innovator Day in Sydney"
+      },
+      {
+        "id": "heading_tag",
+        "name": "heading_tag",
+        "label": "Heading Tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["h1", "H1"],
+          ["h2", "H2"],
+          ["h3", "H3"],
+          ["h4", "H4"],
+          ["h5", "H5"],
+          ["h6", "H6"]
+        ],
+        "default": "h3"
+      },
+      {
+        "id": "date_text",
+        "name": "date_text",
+        "label": "Date Text",
+        "type": "text",
+        "default": "17 SEPTEMBER 2026"
+      },
+      {
+        "id": "link",
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "default": {
+          "url": { "type": "EXTERNAL", "href": "" },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "id": "text_color",
+        "name": "text_color",
+        "label": "Text Color",
+        "help_text": "Set to a light color on dark gradients, a dark color on light gradients.",
+        "type": "color",
+        "default": { "color": "#FFFFFF", "opacity": 100 }
+      },
+      {
+        "id": "background_type",
+        "name": "background_type",
+        "label": "Background",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["gradient-1", "Gradient — Red / Blue"],
+          ["gradient-2", "Gradient — Gold / Orange"],
+          ["custom", "Custom Gradient"]
+        ],
+        "default": "gradient-1"
+      },
+      {
+        "id": "custom_gradient_angle",
+        "name": "custom_gradient_angle",
+        "label": "Gradient Angle (deg)",
+        "type": "number",
+        "display": "text",
+        "default": 95,
+        "min": 0,
+        "max": 360,
+        "visibility": {
+          "controlling_field_path": "panels.background_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "custom"
+        }
+      },
+      {
+        "id": "custom_gradient_start",
+        "name": "custom_gradient_start",
+        "label": "Gradient Start Color",
+        "type": "color",
+        "default": { "color": "#C73B3D", "opacity": 100 },
+        "visibility": {
+          "controlling_field_path": "panels.background_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "custom"
+        }
+      },
+      {
+        "id": "custom_gradient_end",
+        "name": "custom_gradient_end",
+        "label": "Gradient End Color",
+        "type": "color",
+        "default": { "color": "#2539A0", "opacity": 100 },
+        "visibility": {
+          "controlling_field_path": "panels.background_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "custom"
+        }
+      },
+      {
+        "id": "content_style",
+        "name": "content_style",
+        "label": "Content",
+        "type": "group",
+        "children": [
+          {
+            "id": "content_gap",
+            "name": "content_gap",
+            "label": "Gap",
+            "help_text": "Space between the eyebrow text, heading, and date.",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop_gap",
+                "name": "desktop_gap",
+                "label": "Desktop Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 12,
+                "min": 0
+              },
+              {
+                "id": "tablet_gap",
+                "name": "tablet_gap",
+                "label": "Tablet Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 12,
+                "min": 0
+              },
+              {
+                "id": "mobile_gap",
+                "name": "mobile_gap",
+                "label": "Mobile Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 10,
+                "min": 0
+              }
+            ]
+          },
+          {
+            "id": "content_justify",
+            "name": "content_justify",
+            "label": "Justify Content",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["flex-start", "Start"],
+              ["center", "Center"],
+              ["flex-end", "End"],
+              ["space-between", "Space Between"]
+            ],
+            "default": "center"
+          },
+          {
+            "id": "content_align",
+            "name": "content_align",
+            "label": "Align Items",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["flex-start", "Start"],
+              ["center", "Center"],
+              ["flex-end", "End"],
+              ["stretch", "Stretch"]
+            ],
+            "default": "flex-start"
+          }
+        ]
+      }
+    ]
+  }
+]

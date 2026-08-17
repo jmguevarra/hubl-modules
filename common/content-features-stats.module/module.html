@@ -1,5 +1,7 @@
 {% set s = module.styles %}
 {% set stats_s = s.stats_style %}
+{% set content_s = s.content_style %}
+{% set content_gap = content_s.content_gap %}
 {% set btn = module.button_section %}
 {% set d_sp = s.section.spacing.desktop %}
 {% set t_sp = s.section.spacing.tablet %}
@@ -29,6 +31,11 @@
     --cfs-pb-t: {{ t_sp.tablet_padding_bottom|default(60) }}px;
     --cfs-pt-m: {{ m_sp.mobile_padding_top|default(40) }}px;
     --cfs-pb-m: {{ m_sp.mobile_padding_bottom|default(40) }}px;
+    --cfs-content-gap-d: {{ content_gap.desktop_gap|default(16) }}px;
+    --cfs-content-gap-t: {{ content_gap.tablet_gap|default(14) }}px;
+    --cfs-content-gap-m: {{ content_gap.mobile_gap|default(12) }}px;
+    --cfs-content-justify: {{ content_s.content_justify|default('flex-start') }};
+    --cfs-content-align: {{ content_s.content_align|default('flex-start') }};
   "
 >
   <div class="dx-module__container content-wrapper">
@@ -37,8 +44,8 @@
 
       {# ---- Content column ---- #}
       <div class="dx-cfs__content-col">
-        {% if module.heading %}
-        <h2 class="dx-cfs__heading">{{ module.heading }}</h2>
+        {% if module.heading.heading_text %}
+        <{{ module.heading.heading_tag|default('h2') }} class="dx-cfs__heading">{{ module.heading.heading_text }}</{{ module.heading.heading_tag|default('h2') }}>
         {% endif %}
 
         {% if module.description %}

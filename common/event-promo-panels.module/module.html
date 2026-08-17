@@ -1,0 +1,59 @@
+{% set gradient_presets = {
+  "gradient-1": "linear-gradient(94.94deg, #C73B3D 0%, #2539A0 100%)",
+  "gradient-2": "linear-gradient(94.81deg, #FFD693 11.63%, #E19E5B 98.62%)"
+} %}
+
+{% if module.panels %}
+<section class="dx-epp">
+  {% for panel in module.panels %}
+  {% set has_link = panel.link.url.href %}
+  {% if panel.background_type == 'custom' %}
+  {% set panel_bg = "linear-gradient(" ~ panel.custom_gradient_angle|default(95) ~ "deg, " ~ panel.custom_gradient_start.css ~ ", " ~ panel.custom_gradient_end.css ~ ")" %}
+  {% else %}
+  {% set panel_bg = gradient_presets[panel.background_type] %}
+  {% endif %}
+  {% set content_gap = panel.content_style.content_gap %}
+  <{{ has_link ? 'a' : 'div' }}
+    class="dx-epp__panel"
+    {% if has_link %}
+      href="{{ panel.link.url.href }}"
+      {% if panel.link.open_in_new_tab and panel.link.no_follow %}
+        target="_blank" rel="noopener noreferrer nofollow"
+      {% elif panel.link.open_in_new_tab %}
+        target="_blank" rel="noopener noreferrer"
+      {% elif panel.link.no_follow %}
+        rel="nofollow"
+      {% endif %}
+    {% endif %}
+    style="
+      background: {{ panel_bg }};
+      color: {{ panel.text_color.css }};
+      --epp-content-gap-d: {{ content_gap.desktop_gap|default(12) }}px;
+      --epp-content-gap-t: {{ content_gap.tablet_gap|default(12) }}px;
+      --epp-content-gap-m: {{ content_gap.mobile_gap|default(10) }}px;
+      --epp-content-justify: {{ panel.content_style.content_justify|default('center') }};
+      --epp-content-align: {{ panel.content_style.content_align|default('flex-start') }};
+    "
+  >
+    <div class="dx-epp__panel-inner">
+      {% if panel.eyebrow_text %}
+      <p class="dx-epp__eyebrow">{{ panel.eyebrow_text }}</p>
+      {% endif %}
+
+      {% if panel.heading %}
+      <{{ panel.heading_tag|default('h3') }} class="dx-epp__heading">
+        <span>{{ panel.heading }}</span>
+        <svg class="dx-epp__arrow" width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M18.4287 8.00006L1.00014 8.00006M18.4287 8.00006L11.8006 15.0001M18.4287 8.00006L11.8006 1.00006" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </{{ panel.heading_tag|default('h3') }}>
+      {% endif %}
+
+      {% if panel.date_text %}
+      <p class="dx-epp__date">{{ panel.date_text }}</p>
+      {% endif %}
+    </div>
+  </{{ has_link ? 'a' : 'div' }}>
+  {% endfor %}
+</section>
+{% endif %}
