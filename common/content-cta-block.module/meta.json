@@ -1,0 +1,16 @@
+{
+  "label": "Content CTA Block",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Heading, content, and multiple CTA buttons alongside an image — supports color/image backgrounds, 1 or 2 column layout, and per-breakpoint spacing. Defaults to a dark hero look.",
+  "content_types": [
+    "LANDING_PAGE",
+    "SITE_PAGE"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}

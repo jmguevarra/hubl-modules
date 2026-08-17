@@ -1,0 +1,504 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "children": [
+      {
+        "id": "heading_text",
+        "name": "heading_text",
+        "label": "Heading Text",
+        "type": "text",
+        "default": "Don't just adopt AI... Make it deliver"
+      },
+      {
+        "id": "heading_tag",
+        "name": "heading_tag",
+        "label": "Heading Tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["h1", "H1"],
+          ["h2", "H2"],
+          ["h3", "H3"],
+          ["h4", "H4"],
+          ["h5", "H5"],
+          ["h6", "H6"]
+        ],
+        "default": "h2"
+      }
+    ]
+  },
+  {
+    "id": "content",
+    "name": "content",
+    "label": "Content",
+    "type": "richtext",
+    "default": "<p>Turn AI into tangible business outcomes — from AI-powered business processes and legacy modernisation to AI-enabled software development.</p>"
+  },
+  {
+    "id": "buttons",
+    "name": "buttons",
+    "label": "Buttons",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 4,
+      "default": 2,
+      "sorting_label_field": "button_text"
+    },
+    "children": [
+      {
+        "id": "button_text",
+        "name": "button_text",
+        "label": "Button Text",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "button_type",
+        "name": "button_type",
+        "label": "Button Type",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["link", "Link"],
+          ["anchor", "Anchor"]
+        ],
+        "default": "link"
+      },
+      {
+        "id": "button_url",
+        "name": "button_url",
+        "label": "Button URL",
+        "type": "url",
+        "default": "",
+        "visibility": {
+          "controlling_field_path": "buttons.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_new_tab",
+        "name": "button_new_tab",
+        "label": "Open in New Tab",
+        "type": "boolean",
+        "default": false,
+        "visibility": {
+          "controlling_field_path": "buttons.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_anchor",
+        "name": "button_anchor",
+        "label": "Anchor ID",
+        "type": "text",
+        "default": "",
+        "help_text": "Enter the section anchor ID to scroll to, e.g. #form-section",
+        "visibility": {
+          "controlling_field_path": "buttons.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "anchor"
+        }
+      },
+      {
+        "id": "button_style",
+        "name": "button_style",
+        "label": "Button Style",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["primary", "Primary"],
+          ["secondary", "Secondary"],
+          ["blog", "Blog"],
+          ["training", "Training"],
+          ["blog-hover-fill", "Blog Hover-Fill"],
+          ["training-hover-fill", "Training Hover-Fill"],
+          ["primary-outline", "Primary Outline"],
+          ["secondary-outline", "Secondary Outline"],
+          ["tertiary-outline", "Tertiary Outline"]
+        ],
+        "default": "primary"
+      }
+    ]
+  },
+  {
+    "id": "image",
+    "name": "image",
+    "label": "Image",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "",
+      "width": 600,
+      "height": 500
+    }
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "section",
+        "name": "section",
+        "label": "Section",
+        "type": "group",
+        "children": [
+          {
+            "id": "section_layout",
+            "name": "section_layout",
+            "label": "Layout",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["two-column", "2 Column"],
+              ["one-column", "1 Column"]
+            ],
+            "default": "two-column"
+          },
+          {
+            "id": "align_items",
+            "name": "align_items",
+            "label": "Align Items",
+            "help_text": "Vertical alignment of the columns (2 Column layout).",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["start", "Start"],
+              ["center", "Center"],
+              ["end", "End"]
+            ],
+            "default": "center"
+          },
+          {
+            "id": "justify_items",
+            "name": "justify_items",
+            "label": "Justify Items",
+            "help_text": "Horizontal alignment/width of the content and image blocks (useful in 1 Column layout).",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["stretch", "Stretch"],
+              ["start", "Start"],
+              ["center", "Center"],
+              ["end", "End"]
+            ],
+            "default": "stretch"
+          },
+          {
+            "id": "image_position",
+            "name": "image_position",
+            "label": "Image Position",
+            "help_text": "Position of the image relative to the content (2 Column layout).",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["right", "Right"],
+              ["left", "Left"]
+            ],
+            "default": "right",
+            "visibility": {
+              "controlling_field_path": "styles.section.section_layout",
+              "operator": "EQUAL",
+              "controlling_value_regex": "two-column"
+            }
+          },
+          {
+            "id": "background_type",
+            "name": "background_type",
+            "label": "Background Type",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["color", "Color"],
+              ["image", "Image"]
+            ],
+            "default": "color"
+          },
+          {
+            "id": "bg_color",
+            "name": "bg_color",
+            "label": "Background Color",
+            "type": "color",
+            "default": { "color": "#051327", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.section.background_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "color"
+            }
+          },
+          {
+            "id": "bg_image",
+            "name": "bg_image",
+            "label": "Background Image",
+            "type": "image",
+            "default": {
+              "src": "",
+              "alt": ""
+            },
+            "visibility": {
+              "controlling_field_path": "styles.section.background_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "image"
+            }
+          },
+          {
+            "id": "overlay_enabled",
+            "name": "overlay_enabled",
+            "label": "Enable Color Overlay",
+            "type": "boolean",
+            "default": false,
+            "visibility": {
+              "controlling_field_path": "styles.section.background_type",
+              "operator": "EQUAL",
+              "controlling_value_regex": "image"
+            }
+          },
+          {
+            "id": "overlay_color",
+            "name": "overlay_color",
+            "label": "Overlay Color",
+            "type": "color",
+            "default": { "color": "#051327", "opacity": 50 },
+            "visibility": {
+              "controlling_field_path": "styles.section.overlay_enabled",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "spacing",
+            "name": "spacing",
+            "label": "Spacing",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop",
+                "name": "desktop",
+                "label": "Desktop",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "desktop_padding_top",
+                    "name": "desktop_padding_top",
+                    "label": "Padding Top (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 80,
+                    "min": 0
+                  },
+                  {
+                    "id": "desktop_padding_bottom",
+                    "name": "desktop_padding_bottom",
+                    "label": "Padding Bottom (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 80,
+                    "min": 0
+                  }
+                ]
+              },
+              {
+                "id": "tablet",
+                "name": "tablet",
+                "label": "Tablet",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "tablet_padding_top",
+                    "name": "tablet_padding_top",
+                    "label": "Padding Top (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 60,
+                    "min": 0
+                  },
+                  {
+                    "id": "tablet_padding_bottom",
+                    "name": "tablet_padding_bottom",
+                    "label": "Padding Bottom (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 60,
+                    "min": 0
+                  }
+                ]
+              },
+              {
+                "id": "mobile",
+                "name": "mobile",
+                "label": "Mobile",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "mobile_padding_top",
+                    "name": "mobile_padding_top",
+                    "label": "Padding Top (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 40,
+                    "min": 0
+                  },
+                  {
+                    "id": "mobile_padding_bottom",
+                    "name": "mobile_padding_bottom",
+                    "label": "Padding Bottom (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 40,
+                    "min": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "colors",
+        "name": "colors",
+        "label": "Content",
+        "type": "group",
+        "children": [
+          {
+            "id": "content_gap",
+            "name": "content_gap",
+            "label": "Gap",
+            "help_text": "Space between the heading, content, and buttons.",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop_gap",
+                "name": "desktop_gap",
+                "label": "Desktop Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 30,
+                "min": 0
+              },
+              {
+                "id": "tablet_gap",
+                "name": "tablet_gap",
+                "label": "Tablet Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 20,
+                "min": 0
+              },
+              {
+                "id": "mobile_gap",
+                "name": "mobile_gap",
+                "label": "Mobile Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 16,
+                "min": 0
+              }
+            ]
+          },
+          {
+            "id": "content_justify",
+            "name": "content_justify",
+            "label": "Justify Content",
+            "help_text": "Horizontal alignment of the heading, content, and buttons (flex column).",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["flex-start", "Start"],
+              ["center", "Center"],
+              ["flex-end", "End"],
+              ["space-between", "Space Between"]
+            ],
+            "default": "flex-start"
+          },
+          {
+            "id": "content_align",
+            "name": "content_align",
+            "label": "Align Items",
+            "help_text": "Horizontal alignment of the heading, content, and buttons (flex column).",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["flex-start", "Start"],
+              ["center", "Center"],
+              ["flex-end", "End"],
+              ["stretch", "Stretch"]
+            ],
+            "default": "flex-start"
+          },
+          {
+            "id": "enable_color_styles",
+            "name": "enable_color_styles",
+            "label": "Override Colors",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "heading_color",
+            "name": "heading_color",
+            "label": "Heading Color",
+            "type": "color",
+            "default": { "color": "#FFFFFF", "opacity": 100 },
+            "visibility": {
+              "controlling_field_path": "styles.colors.enable_color_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          },
+          {
+            "id": "content_color",
+            "name": "content_color",
+            "label": "Content Color",
+            "type": "color",
+            "default": { "color": "#FFFFFF", "opacity": 80 },
+            "visibility": {
+              "controlling_field_path": "styles.colors.enable_color_styles",
+              "operator": "EQUAL",
+              "controlling_value_regex": "true"
+            }
+          }
+        ]
+      },
+      {
+        "id": "buttons_style",
+        "name": "buttons_style",
+        "label": "Buttons Row",
+        "type": "group",
+        "children": [
+          {
+            "id": "buttons_layout",
+            "name": "buttons_layout",
+            "label": "Layout",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["row", "Horizontal"],
+              ["column", "Vertical"]
+            ],
+            "default": "row"
+          },
+          {
+            "id": "buttons_gap",
+            "name": "buttons_gap",
+            "label": "Gap",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["8px", "Small"],
+              ["16px", "Medium"],
+              ["24px", "Large"]
+            ],
+            "default": "16px"
+          }
+        ]
+      }
+    ]
+  }
+]
