@@ -1,0 +1,16 @@
+{
+  "label": "Capability Cards Box",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "A boxed section with a heading/subheading, a repeatable grid of icon cards (optionally split into labelled groups), and a CTA button. The Theme Color style option tints the card icons and the CTA button to match (Coral, Blue, Purple, or a Custom color pair).",
+  "content_types": [
+    "LANDING_PAGE",
+    "SITE_PAGE"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}

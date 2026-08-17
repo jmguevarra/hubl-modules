@@ -90,17 +90,6 @@
   gap: 8px;
 }
 
-/* Button variants — override hooks */
-.ccb__btn.dx-btn--primary {}
-.ccb__btn.dx-btn--secondary {}
-.ccb__btn.dx-btn--blog {}
-.ccb__btn.dx-btn--training {}
-.ccb__btn.dx-btn--blog-hover-fill {}
-.ccb__btn.dx-btn--training-hover-fill {}
-.ccb__btn.dx-btn--primary-outline {}
-.ccb__btn.dx-btn--secondary-outline {}
-.ccb__btn.dx-btn--tertiary-outline {}
-
 /* Image */
 .ccb__image-col {
   display: flex;
