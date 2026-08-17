@@ -3,7 +3,29 @@
    ============================================================ */
 
 .dx-ccbx {
-  padding: 40px 0;
+  padding: var(--ccbx-pt-d, 40px) 0 var(--ccbx-pb-d, 40px);
+}
+
+/* ── Section header ──────────────────────────────── */
+
+.dx-ccbx__section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.dx-ccbx__section-heading {
+  margin: 0;
+  color: var(--dx-color-header-text);
+}
+
+.dx-ccbx__section-content {
+  color: var(--dx-color-body-text);
+}
+
+.dx-ccbx__section-content p {
+  margin: 0;
 }
 
 .dx-ccbx__boxes {
@@ -14,13 +36,12 @@
 
 .dx-ccbx__box {
   background: #FFFFFF;
-  border: 1px solid #E8E9ED;
-  border-radius: 20px;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
+  border: 1px solid #E6E6E6;
+  border-radius: 16px;
   padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: var(--ccbx-box-gap-d, 32px);
 }
 
 /* ── Header ──────────────────────────────────────── */
@@ -70,8 +91,8 @@
 
 .dx-ccbx__card {
   background: #FFFFFF;
-  border: 1px solid #EDEEF1;
-  border-radius: 14px;
+  border: 1px solid #E6E6E6;
+  border-radius: 16px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -80,14 +101,14 @@
 }
 
 .dx-ccbx__card:hover {
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  box-shadow: 0px 5px 60px -15px #47474F26;
   transform: translateY(-2px);
 }
 
 .dx-ccbx__icon-wrap {
   width: 40px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 16px;
   background: var(--ccbx-icon-bg, rgba(232, 67, 75, 0.12));
   display: flex;
   align-items: center;
@@ -96,8 +117,8 @@
 }
 
 .dx-ccbx__icon {
-  width: 20px;
-  height: 20px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   display: block;
 }
@@ -134,14 +155,17 @@
   text-decoration: none;
   padding: 14px 28px;
   border-radius: 999px;
+  opacity: 0.8;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .dx-ccbx__cta-btn:hover {
-  opacity: 0.9;
+  opacity: 1;
   transform: translateY(-1px);
 }
-
+.dx-ccbx__cta-btn:hover{
+  color: #FFFFFF;
+}
 .dx-ccbx__cta-btn svg path {
   stroke: currentColor;
 }
@@ -149,9 +173,13 @@
 /* ── Responsive — Tablet (≤1023px) ───────────────── */
 
 @media (max-width: 1023px) {
+  .dx-ccbx {
+    padding: var(--ccbx-pt-t, 32px) 0 var(--ccbx-pb-t, 32px);
+  }
+
   .dx-ccbx__box {
     padding: 32px 24px;
-    gap: 24px;
+    gap: var(--ccbx-box-gap-t, 24px);
   }
 
   .dx-ccbx__grid {
@@ -163,12 +191,17 @@
 
 @media (max-width: 767px) {
   .dx-ccbx {
-    padding: 24px 0;
+    padding: var(--ccbx-pt-m, 24px) 0 var(--ccbx-pb-m, 24px);
   }
 
   .dx-ccbx__box {
     padding: 24px 16px;
     border-radius: 16px;
+    gap: var(--ccbx-box-gap-m, 20px);
+  }
+
+  .dx-ccbx__section-header {
+    margin-bottom: 24px;
   }
 
   .dx-ccbx__grid {

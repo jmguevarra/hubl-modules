@@ -1,5 +1,43 @@
 [
   {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "children": [
+      {
+        "id": "heading_text",
+        "name": "heading_text",
+        "label": "Heading Text",
+        "type": "text",
+        "default": "How we help you thrive in an AI-powered world"
+      },
+      {
+        "id": "heading_tag",
+        "name": "heading_tag",
+        "label": "Heading Tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["h1", "H1"],
+          ["h2", "H2"],
+          ["h3", "H3"],
+          ["h4", "H4"],
+          ["h5", "H5"],
+          ["h6", "H6"]
+        ],
+        "default": "h2"
+      }
+    ]
+  },
+  {
+    "id": "content",
+    "name": "content",
+    "label": "Content",
+    "type": "richtext",
+    "default": "<p>When the environment is volatile, you need solid experience and trustworthy partners to lean on. Discover the ways PhoenixDX can help your business leverage AI — without the risk and chaos.</p>"
+  },
+  {
     "id": "boxes",
     "name": "boxes",
     "label": "Boxes",
@@ -180,6 +218,145 @@
                   "operator": "EQUAL",
                   "controlling_value_regex": "gradient"
                 }
+              }
+            ]
+          },
+          {
+            "id": "content_gap",
+            "name": "content_gap",
+            "label": "Gap",
+            "help_text": "Space between the heading, card rows, and CTA button inside this box.",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop_gap",
+                "name": "desktop_gap",
+                "label": "Desktop Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 32,
+                "min": 0
+              },
+              {
+                "id": "tablet_gap",
+                "name": "tablet_gap",
+                "label": "Tablet Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 24,
+                "min": 0
+              },
+              {
+                "id": "mobile_gap",
+                "name": "mobile_gap",
+                "label": "Mobile Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 20,
+                "min": 0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "section",
+        "name": "section",
+        "label": "Section",
+        "type": "group",
+        "children": [
+          {
+            "id": "spacing",
+            "name": "spacing",
+            "label": "Spacing",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop",
+                "name": "desktop",
+                "label": "Desktop",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "desktop_padding_top",
+                    "name": "desktop_padding_top",
+                    "label": "Padding Top (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 40,
+                    "min": 0
+                  },
+                  {
+                    "id": "desktop_padding_bottom",
+                    "name": "desktop_padding_bottom",
+                    "label": "Padding Bottom (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 40,
+                    "min": 0
+                  }
+                ]
+              },
+              {
+                "id": "tablet",
+                "name": "tablet",
+                "label": "Tablet",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "tablet_padding_top",
+                    "name": "tablet_padding_top",
+                    "label": "Padding Top (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 32,
+                    "min": 0
+                  },
+                  {
+                    "id": "tablet_padding_bottom",
+                    "name": "tablet_padding_bottom",
+                    "label": "Padding Bottom (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 32,
+                    "min": 0
+                  }
+                ]
+              },
+              {
+                "id": "mobile",
+                "name": "mobile",
+                "label": "Mobile",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "mobile_padding_top",
+                    "name": "mobile_padding_top",
+                    "label": "Padding Top (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 24,
+                    "min": 0
+                  },
+                  {
+                    "id": "mobile_padding_bottom",
+                    "name": "mobile_padding_bottom",
+                    "label": "Padding Bottom (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 24,
+                    "min": 0
+                  }
+                ]
               }
             ]
           }

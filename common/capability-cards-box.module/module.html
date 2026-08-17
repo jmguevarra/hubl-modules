@@ -1,9 +1,37 @@
-<section class="dx-ccbx">
+{% set section = module.styles.section %}
+{% set d_sp = section.spacing.desktop %}
+{% set t_sp = section.spacing.tablet %}
+{% set m_sp = section.spacing.mobile %}
+
+<section
+  class="dx-ccbx"
+  style="
+    --ccbx-pt-d: {{ d_sp.desktop_padding_top|default(40) }}px;
+    --ccbx-pb-d: {{ d_sp.desktop_padding_bottom|default(40) }}px;
+    --ccbx-pt-t: {{ t_sp.tablet_padding_top|default(32) }}px;
+    --ccbx-pb-t: {{ t_sp.tablet_padding_bottom|default(32) }}px;
+    --ccbx-pt-m: {{ m_sp.mobile_padding_top|default(24) }}px;
+    --ccbx-pb-m: {{ m_sp.mobile_padding_bottom|default(24) }}px;
+  "
+>
   <div class="dx-module__container content-wrapper">
+
+    {% if module.heading.heading_text or module.content %}
+    <div class="dx-ccbx__section-header">
+      {% if module.heading.heading_text %}
+      <{{ module.heading.heading_tag }} class="dx-ccbx__section-heading">{{ module.heading.heading_text }}</{{ module.heading.heading_tag }}>
+      {% endif %}
+      {% if module.content %}
+      <div class="dx-ccbx__section-content">{{ module.content }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+
     {% if module.boxes %}
     <div class="dx-ccbx__boxes">
       {% for box in module.boxes %}
       {% set btn = box.box_style.button_style %}
+      {% set gap = box.box_style.content_gap %}
       <div
         class="dx-ccbx__box"
         style="
@@ -13,6 +41,9 @@
           {% else %}
           --ccbx-btn-bg: {{ btn.solid_color.css }};
           {% endif %}
+          --ccbx-box-gap-d: {{ gap.desktop_gap|default(32) }}px;
+          --ccbx-box-gap-t: {{ gap.tablet_gap|default(24) }}px;
+          --ccbx-box-gap-m: {{ gap.mobile_gap|default(20) }}px;
         "
       >
 
