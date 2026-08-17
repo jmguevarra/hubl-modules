@@ -148,13 +148,11 @@
   text-decoration: none;
   padding: 14px 28px;
   border-radius: 999px;
-  opacity: 0.8;
   transition: background 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
 }
 
 .dx-ccbx__cta-btn:hover {
   background: var(--ccbx-btn-bg-hover, var(--ccbx-btn-bg, #E8434B));
-  opacity: 1;
   transform: translateY(-1px);
   color: #FFFFFF;
 }

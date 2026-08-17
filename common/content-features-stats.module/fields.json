@@ -1,0 +1,315 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "Your trusted AI experts"
+  },
+  {
+    "id": "description",
+    "name": "description",
+    "label": "Description",
+    "type": "richtext",
+    "default": "<p>At PhoenixDX, we partner with organisations to help them transform, thrive and grow through the smart use of technology.</p>"
+  },
+  {
+    "id": "button_section",
+    "name": "button_section",
+    "label": "Button",
+    "type": "group",
+    "children": [
+      {
+        "id": "button_text",
+        "name": "button_text",
+        "label": "Button Text",
+        "type": "text",
+        "default": "Let's Talk"
+      },
+      {
+        "id": "button_type",
+        "name": "button_type",
+        "label": "Button Type",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["link", "Link"],
+          ["anchor", "Anchor"]
+        ],
+        "default": "link"
+      },
+      {
+        "id": "button_url",
+        "name": "button_url",
+        "label": "Button URL",
+        "type": "url",
+        "default": "",
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_new_tab",
+        "name": "button_new_tab",
+        "label": "Open in New Tab",
+        "type": "boolean",
+        "default": false,
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "link"
+        }
+      },
+      {
+        "id": "button_anchor",
+        "name": "button_anchor",
+        "label": "Anchor ID",
+        "type": "text",
+        "default": "",
+        "help_text": "Enter the section anchor ID to scroll to, e.g. #form-section",
+        "visibility": {
+          "controlling_field_path": "button_section.button_type",
+          "operator": "EQUAL",
+          "controlling_value_regex": "anchor"
+        }
+      }
+    ]
+  },
+  {
+    "id": "layout",
+    "name": "layout",
+    "label": "Layout",
+    "help_text": "Order of the content and feature list columns",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      ["content-features", "Content | Features"],
+      ["features-content", "Features | Content"]
+    ],
+    "default": "content-features"
+  },
+  {
+    "id": "features",
+    "name": "features",
+    "label": "Features",
+    "help_text": "Right-hand list of value props, separated by a divider line.",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 10,
+      "default": 6,
+      "sorting_label_field": "feature_title"
+    },
+    "children": [
+      {
+        "id": "feature_title",
+        "name": "feature_title",
+        "label": "Title",
+        "type": "text",
+        "default": "Proven AI expertise"
+      },
+      {
+        "id": "feature_description",
+        "name": "feature_description",
+        "label": "Description",
+        "type": "text",
+        "default": ""
+      }
+    ]
+  },
+  {
+    "id": "stats",
+    "name": "stats",
+    "label": "Stats",
+    "help_text": "Full-width row of stat tiles below the content/features.",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 6,
+      "default": 6,
+      "sorting_label_field": "stat_label"
+    },
+    "children": [
+      {
+        "id": "stat_value",
+        "name": "stat_value",
+        "label": "Value",
+        "type": "text",
+        "default": "150+"
+      },
+      {
+        "id": "stat_label",
+        "name": "stat_label",
+        "label": "Label",
+        "type": "text",
+        "default": "Successfully delivered projects"
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "section",
+        "name": "section",
+        "label": "Section",
+        "type": "group",
+        "children": [
+          {
+            "id": "spacing",
+            "name": "spacing",
+            "label": "Spacing",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop",
+                "name": "desktop",
+                "label": "Desktop",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "desktop_padding_top",
+                    "name": "desktop_padding_top",
+                    "label": "Padding Top (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 80,
+                    "min": 0
+                  },
+                  {
+                    "id": "desktop_padding_bottom",
+                    "name": "desktop_padding_bottom",
+                    "label": "Padding Bottom (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 80,
+                    "min": 0
+                  }
+                ]
+              },
+              {
+                "id": "tablet",
+                "name": "tablet",
+                "label": "Tablet",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "tablet_padding_top",
+                    "name": "tablet_padding_top",
+                    "label": "Padding Top (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 60,
+                    "min": 0
+                  },
+                  {
+                    "id": "tablet_padding_bottom",
+                    "name": "tablet_padding_bottom",
+                    "label": "Padding Bottom (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 60,
+                    "min": 0
+                  }
+                ]
+              },
+              {
+                "id": "mobile",
+                "name": "mobile",
+                "label": "Mobile",
+                "type": "group",
+                "children": [
+                  {
+                    "id": "mobile_padding_top",
+                    "name": "mobile_padding_top",
+                    "label": "Padding Top (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 40,
+                    "min": 0
+                  },
+                  {
+                    "id": "mobile_padding_bottom",
+                    "name": "mobile_padding_bottom",
+                    "label": "Padding Bottom (px)",
+                    "type": "number",
+                    "display": "text",
+                    "default": 40,
+                    "min": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "button_style",
+        "name": "button_style",
+        "label": "Button Style",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["primary", "Primary"],
+          ["primary-linear", "Primary Linear"],
+          ["secondary", "Secondary"],
+          ["blog", "Blog"],
+          ["training", "Training"],
+          ["blog-hover-fill", "Blog Hover-Fill"],
+          ["training-hover-fill", "Training Hover-Fill"],
+          ["primary-outline", "Primary Outline"],
+          ["secondary-outline", "Secondary Outline"],
+          ["tertiary-outline", "Tertiary Outline"]
+        ],
+        "default": "primary"
+      },
+      {
+        "id": "stats_style",
+        "name": "stats_style",
+        "label": "Stats",
+        "type": "group",
+        "children": [
+          {
+            "id": "grid_columns",
+            "name": "grid_columns",
+            "label": "Desktop Columns",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["cols-2", "2 Columns"],
+              ["cols-3", "3 Columns"]
+            ],
+            "default": "cols-3"
+          },
+          {
+            "id": "bg_color",
+            "name": "bg_color",
+            "label": "Tile Background Color",
+            "type": "color",
+            "default": { "color": "#F1F2F4", "opacity": 100 }
+          },
+          {
+            "id": "value_color",
+            "name": "value_color",
+            "label": "Value Color",
+            "type": "color",
+            "default": { "color": "#D81F26", "opacity": 100 }
+          },
+          {
+            "id": "label_color",
+            "name": "label_color",
+            "label": "Label Color",
+            "type": "color",
+            "default": { "color": "#051327", "opacity": 100 }
+          }
+        ]
+      }
+    ]
+  }
+]

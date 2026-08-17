@@ -1,0 +1,16 @@
+{
+  "label": "Content + Features + Stats",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Heading, description, and a single CTA button alongside a repeater list of features separated by dividers, with a full-width repeater of stat tiles below. Supports flipping the content/features column order and per-breakpoint section spacing.",
+  "content_types": [
+    "LANDING_PAGE",
+    "SITE_PAGE"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}
