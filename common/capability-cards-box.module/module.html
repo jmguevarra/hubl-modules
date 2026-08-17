@@ -38,8 +38,10 @@
           --ccbx-icon-bg: {{ box.box_style.icon_bg_color.css }};
           {% if btn.style_type == 'gradient' %}
           --ccbx-btn-bg: linear-gradient(90deg, {{ btn.gradient_start.css }}, {{ btn.gradient_end.css }});
+          --ccbx-btn-bg-hover: {{ btn.gradient_start.css }};
           {% else %}
           --ccbx-btn-bg: {{ btn.solid_color.css }};
+          --ccbx-btn-bg-hover: {{ btn.solid_color.css }};
           {% endif %}
           --ccbx-box-gap-d: {{ gap.desktop_gap|default(32) }}px;
           --ccbx-box-gap-t: {{ gap.tablet_gap|default(24) }}px;
