@@ -1,0 +1,127 @@
+{% set s = module.styles %}
+{% set d_sp = s.spacing.desktop %}
+{% set t_sp = s.spacing.tablet %}
+{% set m_sp = s.spacing.mobile %}
+{% set header_gap = s.header.content_gap %}
+{% set htag = module.heading.heading_tag|default('h2') %}
+
+<section
+  class="dx-cs"
+  id="dx-cs-{{ module.widget_id }}"
+  data-loop="{{ 'true' if module.slider_settings.loop else 'false' }}"
+  style="
+    --cs-pt-d: {{ d_sp.padding.top.value|default(80) }}{{ d_sp.padding.top.units|default('px') }};
+    --cs-pr-d: {{ d_sp.padding.right.value|default(0) }}{{ d_sp.padding.right.units|default('px') }};
+    --cs-pb-d: {{ d_sp.padding.bottom.value|default(80) }}{{ d_sp.padding.bottom.units|default('px') }};
+    --cs-pl-d: {{ d_sp.padding.left.value|default(0) }}{{ d_sp.padding.left.units|default('px') }};
+    --cs-pt-t: {{ t_sp.padding.top.value|default(60) }}{{ t_sp.padding.top.units|default('px') }};
+    --cs-pr-t: {{ t_sp.padding.right.value|default(0) }}{{ t_sp.padding.right.units|default('px') }};
+    --cs-pb-t: {{ t_sp.padding.bottom.value|default(60) }}{{ t_sp.padding.bottom.units|default('px') }};
+    --cs-pl-t: {{ t_sp.padding.left.value|default(0) }}{{ t_sp.padding.left.units|default('px') }};
+    --cs-pt-m: {{ m_sp.padding.top.value|default(40) }}{{ m_sp.padding.top.units|default('px') }};
+    --cs-pr-m: {{ m_sp.padding.right.value|default(0) }}{{ m_sp.padding.right.units|default('px') }};
+    --cs-pb-m: {{ m_sp.padding.bottom.value|default(40) }}{{ m_sp.padding.bottom.units|default('px') }};
+    --cs-pl-m: {{ m_sp.padding.left.value|default(0) }}{{ m_sp.padding.left.units|default('px') }};
+    --cs-header-gap-d: {{ header_gap.desktop_gap|default(16) }}px;
+    --cs-header-gap-t: {{ header_gap.tablet_gap|default(14) }}px;
+    --cs-header-gap-m: {{ header_gap.mobile_gap|default(12) }}px;
+    --cs-header-justify: {{ s.header.content_justify|default('flex-start') }};
+    --cs-header-align: {{ s.header.content_align|default('flex-start') }};
+    --cs-card-bg: {{ s.card.card_bg_color.color|default('#F5F6F8') }};
+  "
+>
+  <div class="content-wrapper dx-cs__container">
+
+    {% if module.section_eyebrow or module.heading.heading_text %}
+    <header class="dx-cs__header">
+      {% if module.section_eyebrow %}
+      <p class="dx-cs__eyebrow">{{ module.section_eyebrow }}</p>
+      {% endif %}
+      {% if module.heading.heading_text %}
+      <{{ htag }} class="dx-cs__heading">{{ module.heading.heading_text }}</{{ htag }}>
+      {% endif %}
+    </header>
+    {% endif %}
+
+    {% if module.slides %}
+    <div class="dx-cs__slider">
+      <div class="dx-cs__wrapper">
+        <div class="dx-cs__track" role="list">
+          {% for slide in module.slides %}
+          <article class="dx-cs__slide" role="listitem">
+            <div class="dx-cs__card" style="--cs-badge-color: {{ slide.badge_color.color|default('#E8264C') }};">
+              {% if slide.card_link.url.href %}
+              <a
+                class="dx-cs__card-link"
+                href="{{ slide.card_link.url.href }}"
+                aria-label="{{ slide.title }}"
+                {% if slide.card_link.open_in_new_tab and slide.card_link.no_follow %}
+                  target="_blank" rel="noopener noreferrer nofollow"
+                {% elif slide.card_link.open_in_new_tab %}
+                  target="_blank" rel="noopener noreferrer"
+                {% elif slide.card_link.no_follow %}
+                  rel="nofollow"
+                {% endif %}
+              ></a>
+              {% endif %}
+
+              <div class="dx-cs__content">
+                {% if slide.badge_text %}
+                <span class="dx-cs__badge">{{ slide.badge_text }}</span>
+                {% endif %}
+                {% if slide.title %}
+                <h3 class="dx-cs__title">{{ slide.title }}</h3>
+                {% endif %}
+                {% if slide.description %}
+                <p class="dx-cs__description">{{ slide.description }}</p>
+                {% endif %}
+                {% if slide.bullets %}
+                <ul class="dx-cs__bullets">
+                  {% for bullet in slide.bullets %}
+                  {% if bullet.bullet_text %}
+                  <li>{{ bullet.bullet_text }}</li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+
+              {% if slide.image.src %}
+              <div class="dx-cs__image">
+                <img
+                  src="{{ slide.image.src }}"
+                  alt="{{ slide.image.alt|striptags|escape }}"
+                  loading="lazy"
+                  {% if slide.image.width %}width="{{ slide.image.width }}"{% endif %}
+                  {% if slide.image.height %}height="{{ slide.image.height }}"{% endif %}
+                >
+              </div>
+              {% endif %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+
+      {% if module.slides|length > 1 %}
+      <div class="dx-cs__nav">
+        <button class="dx-cs__nav-btn dx-cs__nav-btn--prev" type="button" aria-label="Previous case study">
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true">
+            <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="dx-cs__counter">
+          <span class="dx-cs__counter-current">1</span> {{ module.slider_settings.counter_separator|default('of') }} <span class="dx-cs__counter-total">{{ module.slides|length }}</span>
+        </div>
+        <button class="dx-cs__nav-btn dx-cs__nav-btn--next" type="button" aria-label="Next case study">
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true">
+            <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>

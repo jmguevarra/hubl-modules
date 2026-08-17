@@ -1,0 +1,20 @@
+{
+  "label": "Case Study Slider",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Single-card case study slider with an eyebrow + heading, per-slide badge (custom color), title, description, bullet list, and image. Prev/next arrows with a numbered counter below.",
+  "content_types": [
+    "LANDING_PAGE",
+    "SITE_PAGE",
+    "BLOG_LISTING",
+    "BLOG_POST"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true,
+  "css_render_options": { "async": true },
+  "js_render_options": { "position": "footer", "defer": true }
+}

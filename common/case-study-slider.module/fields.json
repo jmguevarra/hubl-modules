@@ -1,0 +1,295 @@
+[
+  {
+    "id": "section_eyebrow",
+    "name": "section_eyebrow",
+    "label": "Section Eyebrow",
+    "type": "text",
+    "default": "Case Studies"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "children": [
+      {
+        "id": "heading_text",
+        "name": "heading_text",
+        "label": "Heading Text",
+        "type": "text",
+        "default": "Transforming complex challenges into success stories using AI"
+      },
+      {
+        "id": "heading_tag",
+        "name": "heading_tag",
+        "label": "Heading Tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["h1", "H1"],
+          ["h2", "H2"],
+          ["h3", "H3"],
+          ["h4", "H4"],
+          ["h5", "H5"],
+          ["h6", "H6"]
+        ],
+        "default": "h2"
+      }
+    ]
+  },
+  {
+    "id": "slides",
+    "name": "slides",
+    "label": "Case Studies",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 12,
+      "default": 3,
+      "sorting_label_field": "title"
+    },
+    "children": [
+      {
+        "id": "badge_text",
+        "name": "badge_text",
+        "label": "Badge Text",
+        "type": "text",
+        "default": "AI-Powered Business"
+      },
+      {
+        "id": "badge_color",
+        "name": "badge_color",
+        "label": "Badge Color",
+        "help_text": "Text/border color for this slide's badge — each case study can use a different accent color.",
+        "type": "color",
+        "default": { "color": "#E8264C", "opacity": 100 }
+      },
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Title",
+        "type": "text",
+        "default": "Agentic AI streamlines credit assessment process"
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "label": "Description",
+        "type": "text",
+        "default": "Australian-based financial services company harnesses AI to transform their credit assessment process, while keeping humans in the loop."
+      },
+      {
+        "id": "bullets",
+        "name": "bullets",
+        "label": "Bullet Points",
+        "type": "group",
+        "occurrence": {
+          "min": 0,
+          "max": 6,
+          "default": 3,
+          "sorting_label_field": "bullet_text"
+        },
+        "children": [
+          {
+            "id": "bullet_text",
+            "name": "bullet_text",
+            "label": "Bullet Text",
+            "type": "text",
+            "default": ""
+          }
+        ]
+      },
+      {
+        "id": "image",
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "id": "card_link",
+        "name": "card_link",
+        "label": "Card Link",
+        "help_text": "Optional — if set, the entire card becomes clickable and links to the full case study.",
+        "type": "link",
+        "default": {
+          "url": { "type": "EXTERNAL", "href": "" },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "slider_settings",
+    "name": "slider_settings",
+    "label": "Slider Settings",
+    "type": "group",
+    "children": [
+      {
+        "id": "loop",
+        "name": "loop",
+        "label": "Infinite Loop",
+        "help_text": "When enabled, the slider wraps around — next after the last slide returns to the first, and vice versa.",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "id": "counter_separator",
+        "name": "counter_separator",
+        "label": "Counter Separator",
+        "type": "text",
+        "default": "of"
+      }
+    ]
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "id": "header",
+        "name": "header",
+        "label": "Header",
+        "type": "group",
+        "children": [
+          {
+            "id": "content_gap",
+            "name": "content_gap",
+            "label": "Gap",
+            "help_text": "Space between the eyebrow and heading.",
+            "type": "group",
+            "children": [
+              {
+                "id": "desktop_gap",
+                "name": "desktop_gap",
+                "label": "Desktop Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 16,
+                "min": 0
+              },
+              {
+                "id": "tablet_gap",
+                "name": "tablet_gap",
+                "label": "Tablet Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 14,
+                "min": 0
+              },
+              {
+                "id": "mobile_gap",
+                "name": "mobile_gap",
+                "label": "Mobile Gap (px)",
+                "type": "number",
+                "display": "text",
+                "default": 12,
+                "min": 0
+              }
+            ]
+          },
+          {
+            "id": "content_justify",
+            "name": "content_justify",
+            "label": "Justify Content",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["flex-start", "Start"],
+              ["center", "Center"],
+              ["flex-end", "End"],
+              ["space-between", "Space Between"]
+            ],
+            "default": "flex-start"
+          },
+          {
+            "id": "content_align",
+            "name": "content_align",
+            "label": "Align Items",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["flex-start", "Start"],
+              ["center", "Center"],
+              ["flex-end", "End"],
+              ["stretch", "Stretch"]
+            ],
+            "default": "flex-start"
+          }
+        ]
+      },
+      {
+        "id": "card",
+        "name": "card",
+        "label": "Card",
+        "type": "group",
+        "children": [
+          {
+            "id": "card_bg_color",
+            "name": "card_bg_color",
+            "label": "Card Background Color",
+            "type": "color",
+            "default": { "color": "#F5F6F8", "opacity": 100 }
+          }
+        ]
+      },
+      {
+        "id": "spacing",
+        "name": "spacing",
+        "label": "Section Spacing",
+        "type": "group",
+        "children": [
+          {
+            "id": "desktop",
+            "name": "desktop",
+            "label": "Desktop",
+            "type": "spacing",
+            "default": {
+              "padding": {
+                "top": { "value": 80, "units": "px" },
+                "bottom": { "value": 80, "units": "px" },
+                "left": { "value": 0, "units": "px" },
+                "right": { "value": 0, "units": "px" }
+              }
+            }
+          },
+          {
+            "id": "tablet",
+            "name": "tablet",
+            "label": "Tablet",
+            "type": "spacing",
+            "default": {
+              "padding": {
+                "top": { "value": 60, "units": "px" },
+                "bottom": { "value": 60, "units": "px" },
+                "left": { "value": 0, "units": "px" },
+                "right": { "value": 0, "units": "px" }
+              }
+            }
+          },
+          {
+            "id": "mobile",
+            "name": "mobile",
+            "label": "Mobile",
+            "type": "spacing",
+            "default": {
+              "padding": {
+                "top": { "value": 40, "units": "px" },
+                "bottom": { "value": 40, "units": "px" },
+                "left": { "value": 0, "units": "px" },
+                "right": { "value": 0, "units": "px" }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
