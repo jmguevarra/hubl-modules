@@ -1,151 +1,189 @@
 [
   {
-    "id": "heading",
-    "name": "heading",
-    "label": "Heading",
-    "type": "text",
-    "default": "AI-Powered Business"
-  },
-  {
-    "id": "subheading",
-    "name": "subheading",
-    "label": "Subheading",
-    "type": "text",
-    "default": "We help you unlock compounding business value by embedding AI where it matters most."
-  },
-  {
-    "id": "groups",
-    "name": "groups",
-    "label": "Card Groups",
-    "help_text": "Add more than one group to split the cards into labelled rows (e.g. EXPLORE + DESIGN). Leave the group label blank if you only need a single row of cards.",
+    "id": "boxes",
+    "name": "boxes",
+    "label": "Boxes",
+    "help_text": "Each box renders as its own bordered card section (heading, rows of cards, and a CTA button).",
     "type": "group",
     "occurrence": {
       "min": 1,
       "max": 6,
       "default": 1,
-      "sorting_label_field": "group_label"
+      "sorting_label_field": "box_heading"
     },
     "children": [
       {
-        "id": "group_label",
-        "name": "group_label",
-        "label": "Group Label (optional)",
+        "id": "box_heading",
+        "name": "box_heading",
+        "label": "Heading",
         "type": "text",
-        "default": ""
+        "default": "AI-Powered Business"
       },
       {
-        "id": "cards",
-        "name": "cards",
-        "label": "Cards",
+        "id": "box_subheading",
+        "name": "box_subheading",
+        "label": "Subheading",
+        "type": "text",
+        "default": "We help you unlock compounding business value by embedding AI where it matters most."
+      },
+      {
+        "id": "rows",
+        "name": "rows",
+        "label": "Card Rows",
+        "help_text": "Add more than one row to split the cards into labelled groups (e.g. EXPLORE + DESIGN). If a row's title is left blank, no label is displayed above it.",
         "type": "group",
         "occurrence": {
           "min": 1,
           "max": 6,
-          "default": 3,
-          "sorting_label_field": "card_title"
+          "default": 1,
+          "sorting_label_field": "row_title"
         },
         "children": [
           {
-            "id": "card_icon",
-            "name": "card_icon",
-            "label": "Icon",
-            "type": "image",
-            "default": {
-              "src": "",
-              "alt": "",
-              "width": 24,
-              "height": 24
-            }
-          },
-          {
-            "id": "card_title",
-            "name": "card_title",
-            "label": "Title",
-            "type": "text",
-            "default": "Card title"
-          },
-          {
-            "id": "card_description",
-            "name": "card_description",
-            "label": "Description",
+            "id": "row_title",
+            "name": "row_title",
+            "label": "Row Title (optional)",
             "type": "text",
             "default": ""
+          },
+          {
+            "id": "cards",
+            "name": "cards",
+            "label": "Cards",
+            "type": "group",
+            "occurrence": {
+              "min": 1,
+              "max": 6,
+              "default": 3,
+              "sorting_label_field": "card_title"
+            },
+            "children": [
+              {
+                "id": "card_icon",
+                "name": "card_icon",
+                "label": "Icon",
+                "type": "image",
+                "default": {
+                  "src": "",
+                  "alt": "",
+                  "width": 24,
+                  "height": 24
+                }
+              },
+              {
+                "id": "card_title",
+                "name": "card_title",
+                "label": "Title",
+                "type": "text",
+                "default": "Card title"
+              },
+              {
+                "id": "card_description",
+                "name": "card_description",
+                "label": "Description",
+                "type": "text",
+                "default": ""
+              }
+            ]
           }
         ]
-      }
-    ]
-  },
-  {
-    "id": "cta",
-    "name": "cta",
-    "label": "CTA Button",
-    "type": "group",
-    "children": [
-      {
-        "id": "cta_text",
-        "name": "cta_text",
-        "label": "Button Text",
-        "type": "text",
-        "default": "Book a call to learn more"
       },
       {
-        "id": "cta_link",
-        "name": "cta_link",
-        "label": "Button Link",
-        "type": "link",
-        "default": {
-          "url": { "type": "EXTERNAL", "href": "" },
-          "open_in_new_tab": false,
-          "no_follow": false
-        }
-      }
-    ]
-  },
-  {
-    "id": "styles",
-    "name": "styles",
-    "label": "Styles",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "id": "theme_color",
-        "name": "theme_color",
-        "label": "Theme Color",
-        "help_text": "Controls the icon tint and the CTA button color for this box.",
-        "type": "choice",
-        "display": "select",
-        "choices": [
-          ["coral", "Coral"],
-          ["blue", "Blue"],
-          ["purple", "Purple"],
-          ["custom", "Custom"]
-        ],
-        "default": "coral"
+        "id": "cta",
+        "name": "cta",
+        "label": "CTA Button",
+        "type": "group",
+        "children": [
+          {
+            "id": "cta_text",
+            "name": "cta_text",
+            "label": "Button Text",
+            "type": "text",
+            "default": "Book a call to learn more"
+          },
+          {
+            "id": "cta_link",
+            "name": "cta_link",
+            "label": "Button Link",
+            "type": "link",
+            "default": {
+              "url": { "type": "EXTERNAL", "href": "" },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ]
       },
       {
-        "id": "custom_icon_bg_color",
-        "name": "custom_icon_bg_color",
-        "label": "Custom Icon Background",
-        "type": "color",
-        "default": { "color": "#E8434B", "opacity": 12 },
-        "visibility": {
-          "controlling_field_path": "styles.theme_color",
-          "operator": "EQUAL",
-          "controlling_value_regex": "custom"
-        }
-      },
-      {
-        "id": "custom_accent_color",
-        "name": "custom_accent_color",
-        "label": "Custom Button Color",
-        "type": "color",
-        "default": { "color": "#E8434B", "opacity": 100 },
-        "visibility": {
-          "controlling_field_path": "styles.theme_color",
-          "operator": "EQUAL",
-          "controlling_value_regex": "custom"
-        }
+        "id": "box_style",
+        "name": "box_style",
+        "label": "Box Style",
+        "type": "group",
+        "children": [
+          {
+            "id": "icon_bg_color",
+            "name": "icon_bg_color",
+            "label": "Icon Background Color",
+            "type": "color",
+            "default": { "color": "#E8434B", "opacity": 12 }
+          },
+          {
+            "id": "button_style",
+            "name": "button_style",
+            "label": "Button Color",
+            "type": "group",
+            "children": [
+              {
+                "id": "style_type",
+                "name": "style_type",
+                "label": "Style",
+                "type": "choice",
+                "display": "select",
+                "choices": [
+                  ["solid", "Solid Color"],
+                  ["gradient", "Gradient"]
+                ],
+                "default": "solid"
+              },
+              {
+                "id": "solid_color",
+                "name": "solid_color",
+                "label": "Button Color",
+                "type": "color",
+                "default": { "color": "#E8434B", "opacity": 100 },
+                "visibility": {
+                  "controlling_field_path": "boxes.box_style.button_style.style_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "solid"
+                }
+              },
+              {
+                "id": "gradient_start",
+                "name": "gradient_start",
+                "label": "Gradient Start Color",
+                "type": "color",
+                "default": { "color": "#8B3FE8", "opacity": 100 },
+                "visibility": {
+                  "controlling_field_path": "boxes.box_style.button_style.style_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              },
+              {
+                "id": "gradient_end",
+                "name": "gradient_end",
+                "label": "Gradient End Color",
+                "type": "color",
+                "default": { "color": "#C13FE8", "opacity": 100 },
+                "visibility": {
+                  "controlling_field_path": "boxes.box_style.button_style.style_type",
+                  "operator": "EQUAL",
+                  "controlling_value_regex": "gradient"
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   }

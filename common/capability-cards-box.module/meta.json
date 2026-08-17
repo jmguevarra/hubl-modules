@@ -3,7 +3,7 @@
   "css_assets": [],
   "external_js": [],
   "global": false,
-  "help_text": "A boxed section with a heading/subheading, a repeatable grid of icon cards (optionally split into labelled groups), and a CTA button. The Theme Color style option tints the card icons and the CTA button to match (Coral, Blue, Purple, or a Custom color pair).",
+  "help_text": "A repeater of bordered boxes, each with a heading/subheading, a repeater of card rows (with an optional row title), a repeater of icon cards per row, and a CTA button. Each box has its own icon tint color and a button color that can be solid or a gradient.",
   "content_types": [
     "LANDING_PAGE",
     "SITE_PAGE"

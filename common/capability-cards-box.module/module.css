@@ -6,20 +6,10 @@
   padding: 40px 0;
 }
 
-/* Theme presets — control icon tint and CTA button color */
-.dx-ccbx--coral {
-  --ccbx-icon-bg: rgba(232, 67, 75, 0.12);
-  --ccbx-btn-bg: #E8434B;
-}
-
-.dx-ccbx--blue {
-  --ccbx-icon-bg: rgba(47, 111, 237, 0.12);
-  --ccbx-btn-bg: #2F6FED;
-}
-
-.dx-ccbx--purple {
-  --ccbx-icon-bg: rgba(139, 63, 232, 0.12);
-  --ccbx-btn-bg: linear-gradient(90deg, #8B3FE8, #C13FE8);
+.dx-ccbx__boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .dx-ccbx__box {
@@ -53,15 +43,15 @@
   line-height: 1.5;
 }
 
-/* ── Groups ──────────────────────────────────────── */
+/* ── Rows ────────────────────────────────────────── */
 
-.dx-ccbx__groups {
+.dx-ccbx__rows {
   display: flex;
   flex-direction: column;
   gap: 28px;
 }
 
-.dx-ccbx__group-label {
+.dx-ccbx__row-title {
   margin: 0 0 14px;
   color: var(--dx-color-body-text);
   font-size: 12px;

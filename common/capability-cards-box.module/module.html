@@ -1,88 +1,97 @@
-{% set s = module.styles %}
-{% set cta = module.cta %}
-
-<section
-  class="dx-ccbx dx-ccbx--{{ s.theme_color }}"
-  {% if s.theme_color == 'custom' %}
-  style="--ccbx-icon-bg: {{ s.custom_icon_bg_color.css }}; --ccbx-btn-bg: {{ s.custom_accent_color.css }};"
-  {% endif %}
->
+<section class="dx-ccbx">
   <div class="dx-module__container content-wrapper">
-    <div class="dx-ccbx__box">
-
-      {% if module.heading or module.subheading %}
-      <div class="dx-ccbx__header">
-        {% if module.heading %}
-        <h3 class="dx-ccbx__heading">{{ module.heading }}</h3>
-        {% endif %}
-        {% if module.subheading %}
-        <p class="dx-ccbx__subheading">{{ module.subheading }}</p>
-        {% endif %}
-      </div>
-      {% endif %}
-
-      {% if module.groups %}
-      <div class="dx-ccbx__groups">
-        {% for group in module.groups %}
-        <div class="dx-ccbx__group">
-
-          {% if group.group_label %}
-          <p class="dx-ccbx__group-label">{{ group.group_label }}</p>
+    {% if module.boxes %}
+    <div class="dx-ccbx__boxes">
+      {% for box in module.boxes %}
+      {% set btn = box.box_style.button_style %}
+      <div
+        class="dx-ccbx__box"
+        style="
+          --ccbx-icon-bg: {{ box.box_style.icon_bg_color.css }};
+          {% if btn.style_type == 'gradient' %}
+          --ccbx-btn-bg: linear-gradient(90deg, {{ btn.gradient_start.css }}, {{ btn.gradient_end.css }});
+          {% else %}
+          --ccbx-btn-bg: {{ btn.solid_color.css }};
           {% endif %}
+        "
+      >
 
-          {% if group.cards %}
-          <div class="dx-ccbx__grid">
-            {% for card in group.cards %}
-            <div class="dx-ccbx__card">
-              {% if card.card_icon.src %}
-              <div class="dx-ccbx__icon-wrap">
-                <img
-                  src="{{ card.card_icon.src }}"
-                  alt="{{ card.card_icon.alt|striptags|escape }}"
-                  class="dx-ccbx__icon"
-                  loading="lazy"
-                  {% if card.card_icon.width %}width="{{ card.card_icon.width }}"{% endif %}
-                  {% if card.card_icon.height %}height="{{ card.card_icon.height }}"{% endif %}
-                >
-              </div>
-              {% endif %}
-              {% if card.card_title %}
-              <h4 class="dx-ccbx__card-title">{{ card.card_title }}</h4>
-              {% endif %}
-              {% if card.card_description %}
-              <p class="dx-ccbx__card-desc">{{ card.card_description }}</p>
-              {% endif %}
-            </div>
-            {% endfor %}
-          </div>
+        {% if box.box_heading or box.box_subheading %}
+        <div class="dx-ccbx__header">
+          {% if box.box_heading %}
+          <h3 class="dx-ccbx__heading">{{ box.box_heading }}</h3>
           {% endif %}
-
+          {% if box.box_subheading %}
+          <p class="dx-ccbx__subheading">{{ box.box_subheading }}</p>
+          {% endif %}
         </div>
-        {% endfor %}
-      </div>
-      {% endif %}
+        {% endif %}
 
-      {% if cta.cta_text %}
-      <div class="dx-ccbx__cta-wrap">
-        <a
-          href="{{ cta.cta_link.url.href }}"
-          class="dx-ccbx__cta-btn"
-          {% if cta.cta_link.open_in_new_tab and cta.cta_link.no_follow %}
-            target="_blank" rel="noopener noreferrer nofollow"
-          {% elif cta.cta_link.open_in_new_tab %}
-            target="_blank" rel="noopener noreferrer"
-          {% elif cta.cta_link.no_follow %}
-            rel="nofollow"
-          {% endif %}
-        >
-          <span>{{ cta.cta_text }}</span>
-          <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-      {% endif %}
+        {% if box.rows %}
+        <div class="dx-ccbx__rows">
+          {% for row in box.rows %}
+          <div class="dx-ccbx__row">
 
-    </div>{# end box #}
+            {% if row.row_title %}
+            <p class="dx-ccbx__row-title">{{ row.row_title }}</p>
+            {% endif %}
+
+            {% if row.cards %}
+            <div class="dx-ccbx__grid">
+              {% for card in row.cards %}
+              <div class="dx-ccbx__card">
+                {% if card.card_icon.src %}
+                <div class="dx-ccbx__icon-wrap">
+                  <img
+                    src="{{ card.card_icon.src }}"
+                    alt="{{ card.card_icon.alt|striptags|escape }}"
+                    class="dx-ccbx__icon"
+                    loading="lazy"
+                    {% if card.card_icon.width %}width="{{ card.card_icon.width }}"{% endif %}
+                    {% if card.card_icon.height %}height="{{ card.card_icon.height }}"{% endif %}
+                  >
+                </div>
+                {% endif %}
+                {% if card.card_title %}
+                <h4 class="dx-ccbx__card-title">{{ card.card_title }}</h4>
+                {% endif %}
+                {% if card.card_description %}
+                <p class="dx-ccbx__card-desc">{{ card.card_description }}</p>
+                {% endif %}
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if box.cta.cta_text %}
+        <div class="dx-ccbx__cta-wrap">
+          <a
+            href="{{ box.cta.cta_link.url.href }}"
+            class="dx-ccbx__cta-btn"
+            {% if box.cta.cta_link.open_in_new_tab and box.cta.cta_link.no_follow %}
+              target="_blank" rel="noopener noreferrer nofollow"
+            {% elif box.cta.cta_link.open_in_new_tab %}
+              target="_blank" rel="noopener noreferrer"
+            {% elif box.cta.cta_link.no_follow %}
+              rel="nofollow"
+            {% endif %}
+          >
+            <span>{{ box.cta.cta_text }}</span>
+            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12.4287 6.00006L1.00014 6.00006M12.4287 6.00006L8.80059 11.0001M12.4287 6.00006L8.80059 1.00006" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        {% endif %}
+
+      </div>{# end box #}
+      {% endfor %}
+    </div>{# end boxes #}
+    {% endif %}
   </div>{# end container #}
 </section>
