@@ -3,6 +3,39 @@
    ============================================================ */
 
 .dx-epp {
+  position: relative;
+  width: 100%;
+}
+
+/* Full-bleed background halves — absolutely positioned behind the
+   centered content so they always reach the viewport edges, while the
+   content above stays aligned to the site's max-width container. Since
+   the container is horizontally centered, its midpoint always lands on
+   the viewport's midpoint — so an equal-split content row and an
+   equal-split full-bleed background row line up perfectly. */
+.dx-epp__backgrounds {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 0;
+}
+
+.dx-epp__bg {
+  flex: 1 1 0;
+  min-width: 0;
+  transition: filter 0.25s ease;
+}
+
+.dx-epp__bg.is-hovered {
+  filter: brightness(1.1) saturate(1.08);
+}
+
+.dx-epp__container {
+  position: relative;
+  z-index: 1;
+}
+
+.dx-epp__panels {
   display: flex;
   width: 100%;
 }
@@ -80,7 +113,8 @@ a.dx-epp__panel:hover .dx-epp__arrow {
 /* ── Responsive — Mobile (≤767px) ────────────────── */
 
 @media (max-width: 767px) {
-  .dx-epp {
+  .dx-epp__backgrounds,
+  .dx-epp__panels {
     flex-direction: column;
   }
 
